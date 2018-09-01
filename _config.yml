@@ -48,7 +48,7 @@ kramdown:
 
 
 # Disqus settings
-duoshuo_username: hux
+duoshuo_username: 
 
 # Netease setttings
 netease_comment: false
@@ -56,8 +56,8 @@ netease_comment: false
 
 
 # Analytics settings
-Baidu Analytics 
-ba_track_id: [your track id]
+#Baidu Analytics 
+#ba_track_id: [your track id]
 
 # Google Analytics
 #ga_track_id: ''            # Format: UA-xxxxxx-xx
