@@ -1,0 +1,144 @@
+1
+00:00:17,869 --> 00:00:27,110
+FROM A SMALL office in Montreal an artificial-intelligence business, Aquantix, plays sleuth for faraway investors worried about water risk.
+
+2
+00:00:27,639 --> 00:00:35,370
+Its model combines high-resolution satellite imagery, weather-station data and regulatory documents scraped from the internet.
+
+3
+00:00:36,000 --> 00:00:50,910
+It estimates not only how much water a business uses at its various sites but its water bill, the chances of drought or flooding in surrounding areas and the financial impact such disasters could have—all without contacting the company in question.
+
+4
+00:00:51,990 --> 00:00:56,570
+Firms like Aquantix are proving useful to investors waking up to water risk.
+
+5
+00:00:57,170 --> 00:01:05,850
+At current rates of consumption, the demand for water worldwide will be 40% greater than its supply by 2030, according to the UN.
+
+6
+00:01:06,410 --> 00:01:19,050
+Portfolio managers are realising that physical, reputational and regulatory water risk could hurt their investments, particularly in thirsty industries such as food, mining, textiles and utilities.
+
+7
+00:01:20,070 --> 00:01:25,750
+One worry is that shocks to supply could drown or dry out a company’s assets.
+
+8
+00:01:26,179 --> 00:01:30,970
+In recent years Coca-Cola has been forced to close plants in Indiabecause of drought.
+
+9
+00:01:31,560 --> 00:01:40,089
+In 2019 floods in America’s Midwest caused disruptions at the facilities of two food giants, Cargill and Tyson Foods.
+
+10
+00:01:40,639 --> 00:01:52,120
+A survey by CDP, a non-profit firm, found that 783 big listed companies had faced a total of $40bn of water-related losses in 2018.
+
+11
+00:01:53,070 --> 00:01:57,860
+Another concern is that the price a company pays for water could rocket.
+
+12
+00:01:58,400 --> 00:02:03,149
+The market price of water does not reflect the environmental and social costs of using it.
+
+13
+00:02:03,790 --> 00:02:08,260
+Government subsidies also mean that companies often do not pay for its true cost.
+
+14
+00:02:08,800 --> 00:02:15,780
+As aquifers are depleted, though, subsidies could become more costly and unpopular, forcing governments to retract them.
+
+15
+00:02:16,349 --> 00:02:30,280
+S&P Global Trucost, a data provider, reckons that if Fortune 500 companies paid the true cost of water, based on estimates of scarcity, rather than current prices, their profit margins would shrink by a tenth.
+
+16
+00:02:31,000 --> 00:02:35,650
+Margins for food, drink and tobacco firms would fall by three-quarters.
+
+17
+00:02:37,099 --> 00:02:41,730
+Disclosures of water risk are even patchier than those of greenhouse-gas emissions.
+
+18
+00:02:42,260 --> 00:02:45,260
+In part, that is because it is more difficult to measure.
+
+19
+00:02:45,890 --> 00:02:51,679
+Emitting a tonne of carbon dioxide in the Sahara or in London has the same environmental impact.
+
+20
+00:02:52,150 --> 00:02:54,390
+Using a gallon of water does not.
+
+21
+00:02:55,130 --> 00:02:59,660
+Place-specific data can be commercially sensitive and difficult to aggregate.
+
+22
+00:03:00,180 --> 00:03:03,810
+So businesses resort to vague global estimates instead.
+
+23
+00:03:04,680 --> 00:03:12,560
+Unlike emissions, however, water can be observed, and third-party data providers can have a crack at estimating a company’s water use.
+
+24
+00:03:13,230 --> 00:03:19,160
+Established names like Bloomberg and S&P Global are plugging the gap, as are startups.
+
+25
+00:03:19,690 --> 00:03:27,940
+The result, says Toby Messier, co-founder of Aquantix, is that investors can approach management armed with data rather than questions.
+
+26
+00:03:29,030 --> 00:03:32,719
+“We are getting rid of the black box that companies hide in,”he says.
+
+27
+00:03:33,380 --> 00:03:36,189
+Investors can turn to a range of new methods.
+
+28
+00:03:36,549 --> 00:03:39,410
+Some want a simple score to plug into a model.
+
+29
+00:03:39,890 --> 00:03:47,310
+Ceres, a non-profit firm, scores businesses on everything from direct water management to risks in the supply chain.
+
+30
+00:03:47,770 --> 00:03:58,130
+Those seeking more detail can use visual tools, such as Bloomberg’s“maps”function, which plots a company’s facilities over a heat map based on water stress.
+
+31
+00:03:58,630 --> 00:04:05,420
+(California is the same colour as swathes of sub-Saharan Africa; far-eastern Russia looks a lot like western Europe.
+
+32
+00:04:06,340 --> 00:04:11,330
+) Firms like Aquantix go further, and try to predict the financial cost of water risk.
+
+33
+00:04:12,160 --> 00:04:15,460
+The accuracy of such forecasts is not yet proven.
+
+34
+00:04:15,910 --> 00:04:20,320
+For Andrew Mason of Aberdeen Standard Investments, though, they are still useful.
+
+35
+00:04:20,900 --> 00:04:26,030
+They show companies that investors care about water risk and encourage them to share data.
+
+36
+00:04:26,690 --> 00:04:30,769
+“This is where carbon was ten or 15 years ago,”he says.
+

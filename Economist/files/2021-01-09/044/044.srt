@@ -1,0 +1,216 @@
+1
+00:00:23,630 --> 00:00:33,090
+SCIENTISTS BELIEVE a new variant of covid-19 first passed from one person to another in Kent, in the south-east of England.
+
+2
+00:00:34,029 --> 00:00:43,120
+When it happened, in late September, there were just 79 patients in hospital with the virus in the nine counties that make up the region.
+
+3
+00:00:44,300 --> 00:00:49,160
+Three months later admissions are running higher than during the spring peak.
+
+4
+00:00:50,020 --> 00:00:55,720
+“We haven’t run out of oxygen or dexamethasone or ventilators,”says a local doctor.
+
+5
+00:00:56,520 --> 00:01:03,470
+But medical staff are dangerously thin on the ground:“We are very close to running out of humans.”
+
+6
+00:01:04,820 --> 00:01:07,730
+Britain is now in a race against the virus.
+
+7
+00:01:08,320 --> 00:01:14,480
+The new variant, which is 50-70% more transmissible, is spreading fast.
+
+8
+00:01:15,260 --> 00:01:27,400
+Having been concentrated in the south- east in the autumn, it has now taken root across the country (as well as beyond Britain’s borders, turning up everywhere from New York to Sydney).
+
+9
+00:01:28,279 --> 00:01:39,399
+Much as Lombardy alerted the world to the pressures covid-19 would place on hospitals, south-east England provides a warning about the impact of the new variant.
+
+10
+00:01:40,790 --> 00:01:58,309
+The lack of testing during the first wave makes comparisons difficult, but calculations by The Economist suggest the number of cases in England and Wales is now at around 80% of last year’s peak, and is rising fast (see chart).
+
+11
+00:02:10,250 --> 00:02:10,960
+According to estimates by the Office for National Statistics, one in 30 Londoners had covid-19 in the week ending January 2nd, as did one in 50 Britons overall.
+
+12
+00:02:12,150 --> 00:02:14,650
+The government is trying to contain the spread.
+
+13
+00:02:15,250 --> 00:02:20,050
+On January 4th Boris Johnson announced another national lockdown.
+
+14
+00:02:20,929 --> 00:02:37,360
+Yet the prime minister was once again slow to react, doing so a fortnight after the Scientific Advisory Group for Emergencies, an official body, advised that stronger measures would be necessary, and the day many pupils returned to school.
+
+15
+00:02:38,400 --> 00:02:42,079
+Schools and universities have now closed to most students.
+
+16
+00:02:42,869 --> 00:02:48,830
+Outdoor socialising with another person is permitted only if it involves exercise.
+
+17
+00:02:49,660 --> 00:02:54,100
+Scotland, Wales and Northern Ireland have introduced similar measures.
+
+18
+00:02:55,370 --> 00:02:57,909
+The National Health Service is under strain.
+
+19
+00:02:58,529 --> 00:03:04,670
+Unlike in the first wave, supply chains are holding up and treatment protocols are in place.
+
+20
+00:03:05,410 --> 00:03:11,180
+Patients admitted to intensive-care units are now a bit more likely to survive.
+
+21
+00:03:11,820 --> 00:03:22,900
+But death numbers are rising fast, breaching the 600-a-day mark on December 28th, the current peak (it takes time for deaths to be recorded).
+
+22
+00:03:24,450 --> 00:03:26,920
+The jump in cases is wreaking havoc.
+
+23
+00:03:27,620 --> 00:03:30,379
+Ambulances are queuing up outside hospitals.
+
+24
+00:03:31,349 --> 00:03:40,350
+In a letter seen by ITV News, one institution in London warned staff:“We are now in disaster medicine mode.
+
+25
+00:03:40,830 --> 00:03:45,909
+We are no longer providing high standard critical care, because we cannot.”
+
+26
+00:03:46,700 --> 00:03:58,310
+A doctor in Kent says that patients have been transferred to intensive-care units in Southampton and Plymouth, which is 250 miles away, because of bed shortages.
+
+27
+00:03:59,340 --> 00:04:08,069
+One concern is that opportunities for this sort of mutual aid will become limited as hospitals fill up across the country.
+
+28
+00:04:09,410 --> 00:04:12,240
+New restrictions should ease the pressure.
+
+29
+00:04:12,889 --> 00:04:24,200
+Yet not all scientists advising the government are confident they will be sufficient to halt the growth in the number of cases, given the increased transmissibility of the new variant.
+
+30
+00:04:24,820 --> 00:04:30,570
+Case counts in the south-east have levelled off, even if they have not begun to decline.
+
+31
+00:04:31,189 --> 00:04:43,810
+But during the Christmas break, London’s restrictions were equivalent to the national lockdown, with schools closed for the holidays and most offices shut—and still cases grew.
+
+32
+00:04:45,059 --> 00:04:59,380
+The optimistic interpretation is that this was because people broke the rules over Christmas; the hope is that behaviour will change now Britain has entered, in the words of one scientist, a“real lockdown”.
+
+33
+00:05:00,179 --> 00:05:07,340
+According to data from Google, mobility in London was around 60% lower than normal at the end of the year.
+
+34
+00:05:08,070 --> 00:05:21,979
+Even with the reduction in movement that would be expected over Christmas, as people watch rubbish television rather than head into the office, that was not as low as the 70% reduction during the spring lockdown.
+
+35
+00:05:22,639 --> 00:05:27,640
+As ever, the introduction of new restrictions received widespread support.
+
+36
+00:05:28,350 --> 00:05:33,160
+A poll by YouGov found that 85% back the lockdown.
+
+37
+00:05:34,460 --> 00:05:40,600
+There is not much more behaviour that the government can restrict should cases continue to rise.
+
+38
+00:05:41,440 --> 00:05:46,870
+Nurseries remain open and single households can still form“support bubbles”.
+
+39
+00:05:47,720 --> 00:05:52,930
+People are allowed into workplaces if it is“essential”(which they can define).
+
+40
+00:05:53,820 --> 00:05:58,569
+Once in, they do not have to wear a mask, unless they serve customers.
+
+41
+00:05:59,510 --> 00:06:04,630
+Changing these rules is either unpalatable or unlikely to make a big difference.
+
+42
+00:06:05,950 --> 00:06:10,650
+Rapid delivery of vaccines is thus an overwhelming priority.
+
+43
+00:06:11,500 --> 00:06:27,230
+In the face of the new variant, the Joint Committee on Vaccination and Immunisation, an expert group which advises the government, recommended prioritising first doses, with second ones held back for as long as three months (see Briefing).
+
+44
+00:06:28,090 --> 00:06:49,550
+While announcing the new lockdown, Mr Johnson set a target of offering residents and staff in care homes, front-line health- and social-care workers, the clinically vulnerable and everyone over the age of 70 (who together account for 13,6m people) a dose by mid-February.
+
+45
+00:06:50,700 --> 00:06:58,990
+That would greatly reduce deaths and trips to hospital: those over 70 account for more than eight in ten fatalities.
+
+46
+00:07:00,530 --> 00:07:11,869
+So far 1,3m have received jabs, with Britain delivering more than any other European country, but at too slow a rate to meet Mr Johnson’s target.
+
+47
+00:07:13,150 --> 00:07:19,180
+If he is to succeed, roughly that many vaccines will have to be delivered every four days.
+
+48
+00:07:20,240 --> 00:07:34,220
+The process should accelerate once the MHRA, a regulator, approves more batches of the Oxford-AstraZeneca vaccine, and the Pfizer-BioNTech doses freed up by the dosing strategy are dished out.
+
+49
+00:07:34,820 --> 00:07:50,390
+Next week nearly 1,000 vaccination sites, operated by general practitioners (family doctors) and hospitals, will be joined by seven mass-vaccination centres in exhibition centres and stadiums.
+
+50
+00:07:51,520 --> 00:07:59,600
+It should not take long for this to lighten the health service’s workload, and for the vaccination of medics to reduce staff absences.
+
+51
+00:08:00,250 --> 00:08:05,620
+Yet with hospitals already overloaded, the next few weeks will be bleak.
+
+52
+00:08:06,379 --> 00:08:12,710
+“The thought of [case counts] going up any more is pretty awful,”says the doctor in the south-east.
+
+53
+00:08:13,330 --> 00:08:18,990
+The case for getting vaccines out quickly, always strong, has only strengthened.
+
+54
+00:08:19,929 --> 00:08:23,960
+Any slip-ups in the roll-out will come with a heavy toll.
+

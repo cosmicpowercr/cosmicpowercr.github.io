@@ -1,0 +1,112 @@
+1
+00:00:19,609 --> 00:00:23,090
+“WHAT DO YOU call traditional medicine that works?”
+
+2
+00:00:24,060 --> 00:00:24,710
+“Medicine.”
+
+3
+00:00:25,640 --> 00:00:29,680
+This old joke contains more than a milligram of truth.
+
+4
+00:00:29,750 --> 00:00:47,390
+When, for example, Tu Youyou, a Chinese chemist, began testing the sweet wormwood used in local herbal remedies as a cure for malaria, her isolation of artemisinin saved millions of lives and earned her the Nobel prize for medicine in 2015.
+
+5
+00:00:48,450 --> 00:00:54,620
+But not every folk cure is so closely examined—nor is every condition.
+
+6
+00:00:55,020 --> 00:01:07,290
+Over 1,7bn people, most living in the world’s poorest countries, are affected by a group of 20 illnesses known as Neglected Tropical Diseases (NTDs).
+
+7
+00:01:07,849 --> 00:01:14,490
+These often lead to disability and place a heavy burden on health-care systems badly equipped to deal with them.
+
+8
+00:01:14,970 --> 00:01:17,960
+They are referred to as“neglected”for a reason.
+
+9
+00:01:18,400 --> 00:01:30,020
+A study published in 2009, in International Health, estimated that they received only 0,6% of the money given by rich countries to poor ones for health purposes.
+
+10
+00:01:30,510 --> 00:01:32,550
+Things havenot improved since then.
+
+11
+00:01:32,610 --> 00:01:49,700
+A recent report by Policy Cures Research, an international think-tank, estimates the cash available for treating NTDs has been flat for a decade, with less allocated to all of them collectively than either malaria or tuberculosis receives alone.
+
+12
+00:01:50,440 --> 00:01:53,730
+This lack of resources has consequences.
+
+13
+00:01:54,170 --> 00:02:18,590
+In Ghana, though estimated rates of lymphatic filariasis (also known as elephantiasis) dropped by 88% between 2010 and 2018, those of schistosomiasis (also known as bilharzia) and onchocerciasis (also known as river blindness) rose by 39% and 81% respectively.
+
+14
+00:02:19,370 --> 00:02:25,320
+However, Dorcas Osei-Safo of the University of Ghana has a plan to fight back.
+
+15
+00:02:25,760 --> 00:02:28,320
+Herbal medicine is important in the country.
+
+16
+00:02:28,320 --> 00:02:36,090
+Indeed, its Food and Drugs Authority has already approved several herbal remedies for use against diseases including malaria.
+
+17
+00:02:36,530 --> 00:02:39,110
+She intends to build on this approach.
+
+18
+00:02:39,740 --> 00:02:51,050
+To do so, she and her team first contacted several practitioners of traditional medicine and obtained samples of 15 treatments employed against a range of NTDs.
+
+19
+00:02:51,599 --> 00:02:56,190
+Some were mixtures of dried herbs, others watery concoctions.
+
+20
+00:02:56,620 --> 00:03:08,040
+Her goal was to test their effectiveness against laboratory cultures of a variety of disease-causing parasites, with the aim of isolating any active principles they might contain.
+
+21
+00:03:08,840 --> 00:03:13,720
+Nearly all the samples had some effect against one or more parasites.
+
+22
+00:03:13,770 --> 00:03:20,230
+But one stood out in particular when used against the trypanosomes that cause sleeping sickness.
+
+23
+00:03:20,620 --> 00:03:29,880
+This was a dried mix of Aloe vera, a short-stemmed succulent, and Taraxacum officinale, the common dandelion.
+
+24
+00:03:30,400 --> 00:03:41,850
+Intrigued by that discovery, the team put the crude sample they were working on through two rounds of chromatography, to split it into its constituents, and repeated the tests on these.
+
+25
+00:03:42,620 --> 00:03:58,970
+Their analysis, just published in PLOS Neglected Tropical Diseases, revealed an oil which proved 30% more effective at killing trypanosome parasites than did diminazene aceturate, the standard anti- trypanosomal drug.
+
+26
+00:03:59,810 --> 00:04:07,900
+For many researchers, that would have been the cue for a trip to the patent office and negotiations with a drug company about further rounds of testing.
+
+27
+00:04:08,230 --> 00:04:19,000
+But for Dr Osei-Safo the point is not to make a refined pharmaceutical, but rather to direct those who are ill towards the best treatments available from herbalists.
+
+28
+00:04:19,490 --> 00:04:33,399
+Her next move, funding permitting, will be to try to understand better why the newly discovered oil is effective, and to establish in whatcircumstances the herbal remedy from which it is derived should be recommended.
+

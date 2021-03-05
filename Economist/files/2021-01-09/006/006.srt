@@ -1,0 +1,264 @@
+1
+00:00:19,950 --> 00:00:24,860
+THE URGENCY of vaccination against covid-19 is growing by the day.
+
+2
+00:00:25,440 --> 00:00:32,510
+Two new variants of the virus, spotted in Britain and South Africa, are spreading around the world (see article).
+
+3
+00:00:41,330 --> 00:00:42,190
+Although they do not seem to be more deadly, they are a lot more contagious, threatening to overwhelm hospitals with patients too numerous to be treated.
+
+4
+00:00:43,160 --> 00:00:46,180
+Salvation lies in rapid vaccination.
+
+5
+00:00:46,510 --> 00:00:58,680
+However, vaccines will remain scarce throughout 2021, even as deaths mount along with the sense that protection lies tantalisingly out of reach for billions of people (see Briefing).
+
+6
+00:00:58,970 --> 00:01:02,880
+Getting the details right could save hundreds of thousands of lives.
+
+7
+00:01:03,309 --> 00:01:11,530
+Getting them wrong will shatter people’s faith in their governments, in the benefits of public health and in the world’s ability to work together.
+
+8
+00:01:12,529 --> 00:01:16,550
+Start with government, where accusations have already begun to fly.
+
+9
+00:01:17,150 --> 00:01:28,189
+Although Israel had inoculated 16% of its people by January 5th, France managed just 0,01% and the Netherlands has just started.
+
+10
+00:01:28,719 --> 00:01:37,530
+In Spain Madridused 6% of the vials it had received; the region of Asturias administered over 80%.
+
+11
+00:01:37,530 --> 00:01:45,600
+In America, by January 7th, the federal government had shipped 17,3m doses, well short of its target.
+
+12
+00:01:46,070 --> 00:01:49,680
+Only 5,3m people had received shots.
+
+13
+00:01:50,640 --> 00:01:52,800
+Part of the explanation is structural.
+
+14
+00:01:53,160 --> 00:01:58,260
+A small country like Israel can move ultra-cold vaccine around without it spoiling.
+
+15
+00:01:58,740 --> 00:02:04,659
+It has a digitised health system in which patients can easily be identified and contacted.
+
+16
+00:02:05,180 --> 00:02:09,990
+America is large and federal, and its health care is fragmented.
+
+17
+00:02:10,760 --> 00:02:13,350
+But incompetence has also played a role.
+
+18
+00:02:13,800 --> 00:02:19,000
+Although countries have had months to get ready, they have wasted time and made mistakes.
+
+19
+00:02:19,559 --> 00:02:27,880
+America’s federal government did not adequately fund the states to prepare for vaccination until just before the new year.
+
+20
+00:02:28,330 --> 00:02:35,020
+In France, where anti-vax sentiment is strong, bureaucrats focused on consent instead of action.
+
+21
+00:02:35,530 --> 00:02:41,389
+In some places vaccinations stopped or went slowly over the end-of-year holidays.
+
+22
+00:02:42,320 --> 00:02:49,740
+Given the lives at stake and the trillions of dollars lost to the world economy during lockdowns, governments must be creative.
+
+23
+00:02:50,230 --> 00:02:51,760
+Open centres at night.
+
+24
+00:02:52,280 --> 00:03:01,080
+If medical students, vets, laboratory scientists, dentists and retired medics have not been trained to inoculate, start now.
+
+25
+00:03:01,980 --> 00:03:06,560
+Urge patients to fill out paperwork online before they arrive for a jab.
+
+26
+00:03:07,220 --> 00:03:13,660
+Rather than threaten medics with losing their licence for breaking rules, encourage them to think for themselves.
+
+27
+00:03:14,049 --> 00:03:15,180
+Learn from others.
+
+28
+00:03:15,679 --> 00:03:23,370
+In 1947 New York City vaccinated 5m people against smallpox in two weeks.
+
+29
+00:03:24,300 --> 00:03:27,330
+Vaccination is also a test of public health.
+
+30
+00:03:27,660 --> 00:03:34,900
+When the logistics are ironed out, as eventually they will be, the limiting factor will be how much vaccine is available.
+
+31
+00:03:35,410 --> 00:03:44,939
+Pfizer, Moderna and AstraZeneca could provide a little over 5bn doses in 2021, enough for around 2,5bn people.
+
+32
+00:03:45,429 --> 00:03:53,180
+More is needed, including over a billion doses of Sputnik V, from Russia, and two vaccines from China.
+
+33
+00:03:54,129 --> 00:03:59,450
+Both countries have offered vaccines widely, partly as tools of soft power.
+
+34
+00:03:59,970 --> 00:04:09,850
+However, to fulfil their potential, they need to be licensed by an independent, rigorous regulator from another country or by the World Health Organisation (WHO).
+
+35
+00:04:11,619 --> 00:04:21,480
+If countries sidestep licensing, as Argentina has with Sputnik V, too few people will trust vaccines to stop the virus.
+
+36
+00:04:22,150 --> 00:04:32,250
+If they are licensed without proper trials, as a vaccine made by Bharat Biotech has been in India, vaccination in general may be discredited.
+
+37
+00:04:33,210 --> 00:04:42,250
+Another way to stretch supplies is to administer more first doses by delaying the booster, as Britain and Denmark will and Germany may.
+
+38
+00:04:42,929 --> 00:04:53,760
+Critics argue that the vaccine may be less effective, undermining confidence in vaccination, and that exposure to partially protected people may help the virus acquire resistance.
+
+39
+00:04:54,070 --> 00:05:04,170
+Supporters say they have some evidence that delayed boosters will work and that immunology suggests people will retain plenty of protection against the virus.
+
+40
+00:05:05,119 --> 00:05:09,110
+To resolve this dispute requires real-world trials.
+
+41
+00:05:09,580 --> 00:05:19,740
+Until such evidence has been collected, the WHO has rightly discouraged countries from delaying boosters except in the most desperate circumstances.
+
+42
+00:05:20,420 --> 00:05:25,410
+Those could include the imminent collapse of many hospitals, as in Britain.
+
+43
+00:05:26,360 --> 00:05:34,840
+And vaccination is a test of whether the world can work together to confront common threats, such as organised crime and climate change.
+
+44
+00:05:35,340 --> 00:05:38,399
+Developing countries have hosted clinical trials.
+
+45
+00:05:38,770 --> 00:05:46,010
+Some of them, such as South Africa, which is undergoing a fierce outbreak, also make vaccines for multinational firms.
+
+46
+00:05:46,390 --> 00:05:48,310
+They should share in their benefits.
+
+47
+00:05:48,980 --> 00:05:59,490
+Modelling suggests that an optimal global distribution of vaccine according to need could save one and a half times as many lives as focusing supplies on rich countries alone.
+
+48
+00:06:00,059 --> 00:06:03,770
+The more the virus is circulating, the more mutations there will be.
+
+49
+00:06:04,230 --> 00:06:07,350
+Shortening the pandemic would boost the world economy.
+
+50
+00:06:07,770 --> 00:06:13,360
+America and Europe have an interest in matching the diplomacy of China and Russia.
+
+51
+00:06:14,340 --> 00:06:18,510
+Early criticism about rich countries monopolising vaccines is harsh.
+
+52
+00:06:18,840 --> 00:06:22,760
+Many ordered excess because they did not know which ones would work.
+
+53
+00:06:23,200 --> 00:06:31,690
+The Pfizer and, to a lesser extent, Moderna vaccines require ultra-cold storage that many low- and middle-income countries lack.
+
+54
+00:06:32,210 --> 00:06:45,050
+But by that logic, countries like Canada, which has five doses per Canadian, should release cheaper vaccines that tolerate higher temperatures, such as AstraZeneca’s, as soon as they can.
+
+55
+00:06:46,000 --> 00:06:53,129
+In this they should work through COVAX, a mechanism for pooling the purchasing and fair distribution of vaccines.
+
+56
+00:06:53,350 --> 00:06:56,640
+It hopes to allocate almost 2bn doses this year.
+
+57
+00:06:56,870 --> 00:07:00,470
+Ensuring it has the money to buy them must be a priority.
+
+58
+00:07:01,010 --> 00:07:06,490
+COVAX hopes to inoculate the world’s 100m or so health-care workers by the summer.
+
+59
+00:07:07,020 --> 00:07:12,630
+It will then need to find ways to dish out vaccine by need,which varies from country to country.
+
+60
+00:07:13,280 --> 00:07:19,610
+A global scramble for vaccine that renders COVAX ineffective would lead to needless deaths.
+
+61
+00:07:19,770 --> 00:07:22,340
+Nerd immunity The coming months will be hard.
+
+62
+00:07:22,710 --> 00:07:28,370
+For as long as vaccines are scarce, vaccination will be the subject of conflict and uncertainty.
+
+63
+00:07:28,800 --> 00:07:37,410
+If it is perceived to be chaotic or unjust, it will be taken as yet another example of how elites fail ordinary people.
+
+64
+00:07:38,320 --> 00:07:43,070
+If the rich world monopolises supplies, countries will be set against each other.
+
+65
+00:07:43,719 --> 00:07:53,600
+Either way, people would lose sight of how, within just a year of the coronavirus being spotted, 30 countries have begun to vaccinate against it.
+
+66
+00:07:54,040 --> 00:07:57,090
+And that, after all, is something to cheer.
+

@@ -1,0 +1,136 @@
+1
+00:00:19,120 --> 00:00:32,529
+THE FIRST surge in the price of bitcoin, to around $1,000 in 2013, minted cryptocurrency millionaires, provoked declarations of a bubble and left some early fans kicking themselves.
+
+2
+00:00:32,990 --> 00:00:46,820
+One unlucky man in Wales searched a rubbish dump for a hard drive containing 7,500 accidentally discarded bitcoins, whose value had grown from almost nothing to $7,5m.
+
+3
+00:00:47,330 --> 00:00:50,190
+Since then bitcoin has been on a wild ride.
+
+4
+00:00:50,500 --> 00:01:02,620
+Fuelled by casual speculators and market manipulation, its price surged to about $19,000 in December 2017; over the next year it fell by more than four-fifths.
+
+5
+00:01:03,110 --> 00:01:07,170
+Bitcoin’s most recent ascent has been its giddiest yet.
+
+6
+00:01:07,480 --> 00:01:16,770
+Having tripled in three months its price is now over $35,000 and somewhere under Newport sits a computer part worth over $260m.
+
+7
+00:01:19,800 --> 00:01:27,119
+Today’s bitcoin enthusiasm is striking because basement-dwelling libertarians are not the only ones talking it up.
+
+8
+00:01:27,599 --> 00:01:30,740
+Some of Wall Street’s finest have joined them (see article).
+
+9
+00:01:30,809 --> 00:01:38,250
+Larry Fink of BlackRock, the world’s largestasset manager, said in December that bitcoin could become a“global market”.
+
+10
+00:01:38,660 --> 00:01:43,150
+Big hedge funds such as Renaissance Technologies have been punting on cryptocurrencies.
+
+11
+00:01:44,550 --> 00:01:53,830
+Ruchir Sharma, a strategist at Morgan Stanley’s investment arm, argues that America’s mounting debts may make cryptocurrencies more appealing.
+
+12
+00:01:54,490 --> 00:02:04,690
+The total value of outstanding bitcoins exceeds that of Canadian dollars, narrowly defined to include banknotes and central-bank reserves.
+
+13
+00:02:04,709 --> 00:02:13,410
+But few of the new crypto converts think it has any chance of replacing government money—the dream of early believers.
+
+14
+00:02:13,860 --> 00:02:22,830
+It is far too inefficient to be of much use for making payments; bitcoin is capable of processing fewer than ten transactions per second.
+
+15
+00:02:23,170 --> 00:02:30,250
+By contrast, the firms upending consumer finance, like Alipay and Venmo, minimise friction.
+
+16
+00:02:30,680 --> 00:02:38,159
+Were that problem solved, governments would clamp down quickly on any technology that threatened their monetary sovereignty.
+
+17
+00:02:38,520 --> 00:02:49,550
+Regulatory resistance has already forced Facebook’s mooted digital currency, Libra, to rebrand (to“Diem”) and scale back its early ambition.
+
+18
+00:02:49,970 --> 00:02:57,969
+Meanwhile, the competition is heating up as central banks improve payments systems and launch slick digital currencies of their own.
+
+19
+00:02:58,240 --> 00:03:12,150
+Bitcoin mania is instead rooted in the possibility that it might eventually offer a safe store of value—like gold, but more convenient (because it iseasier to maintain a digital wallet than a physical vault).
+
+20
+00:03:12,670 --> 00:03:17,639
+Then it could win a small but permanent slice of investors’ portfolios.
+
+21
+00:03:18,150 --> 00:03:22,150
+Like bitcoin, gold pays no interest or dividend.
+
+22
+00:03:22,590 --> 00:03:33,949
+Unlike bitcoin, gold has fundamental uses, but it is fluctuating demand from investors for the yellow metal, not jewellers and chipmakers, that drives prices.
+
+23
+00:03:34,389 --> 00:03:40,220
+It is therefore conceivable that bitcoin’s high price could also prove self-sustaining.
+
+24
+00:03:40,320 --> 00:03:53,150
+If bitcoin became as popular with investors as gold (measured by the market value of their positions) the price would rise to $146,000, calculates JPMorgan, a bank.
+
+25
+00:03:53,799 --> 00:03:58,280
+Already, millennial investors appear to prefer cryptocurrencies to bullion.
+
+26
+00:03:58,590 --> 00:04:03,010
+There are plenty of reasons to doubt that bitcoin can emulate gold.
+
+27
+00:04:03,250 --> 00:04:10,290
+Its price is much more volatile and moves with the stockmarket, which is hardly desirable for a supposed haven.
+
+28
+00:04:10,709 --> 00:04:22,680
+The market is illiquid and cryptocurrency trading remains a wild west in which fraud and theft are rampant, and which facilitates crimes such as selling drugs online.
+
+29
+00:04:23,469 --> 00:04:30,099
+Investors in cryptocurrencies must tolerate a large dose of financial and reputational risk.
+
+30
+00:04:30,430 --> 00:04:40,140
+Hedge funds, which thrive on dicey investments, may be piling in but the stolid end of Wall Street, which includes pension funds, is wary.
+
+31
+00:04:40,990 --> 00:04:45,020
+Yet it would be wrong to dismiss bitcoin’s surge out of hand.
+
+32
+00:04:45,380 --> 00:04:57,330
+Eventually, an accommodation with regulators, more liquid trading and clampdowns on criminal activity—the supposed anonymity of bitcoin is overstated—could give it a wide appeal.
+
+33
+00:04:57,820 --> 00:05:02,559
+Bitcoin was originally sold on the promise of upending the global monetary system.
+
+34
+00:05:02,929 --> 00:05:07,800
+Its success now hinges on finding a more modest role within it.
+

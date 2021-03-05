@@ -1,0 +1,340 @@
+1
+00:00:20,660 --> 00:00:25,160
+AN OLD PROVERB says you should not put all your eggs in one basket.
+
+2
+00:00:25,460 --> 00:00:28,609
+That is a particularly good maxim for matters military.
+
+3
+00:00:29,010 --> 00:00:39,890
+America’s armed forces, for example, use modified Boeing jumbo jets, called JSTARS, as airborne control centres for surveillance and operations.
+
+4
+00:00:40,200 --> 00:00:49,780
+These planes are packed with sensors and their job is to orchestrate combat by detecting targets, tracking them and then assigning them to others to deal with.
+
+5
+00:00:50,210 --> 00:00:52,210
+They have done this well for decades.
+
+6
+00:00:52,209 --> 00:00:53,759
+But times change.
+
+7
+00:00:54,029 --> 00:01:05,050
+With its big electronic signature, a JSTARS aircraft now amounts to“a sluggish flying bull’s eye”, according to Will Roper, the American air force’s head of acquisitions.
+
+8
+00:01:06,090 --> 00:01:15,760
+Similar doubts are growing about the satellites, warships and other big pieces of hardware involved in the command and control of America’s military might.
+
+9
+00:01:16,370 --> 00:01:24,809
+For the past couple of decades the country’s generals and admirals have focused their attention on defeating various forms of irregular warfare.
+
+10
+00:01:25,120 --> 00:01:29,499
+For this, these castles in the sky and at sea have worked well.
+
+11
+00:01:30,309 --> 00:01:39,709
+In themeantime, however, America’s rivals have been upgrading their regular forces—including weapons that can destroy such nodes of power.
+
+12
+00:01:40,240 --> 00:01:44,719
+Both China and Russia have successfully blown up orbiting satellites.
+
+13
+00:01:45,030 --> 00:01:51,710
+And both have developed, or are developing, sophisticated long-range anti-aircraft and anti-ship missiles.
+
+14
+00:01:51,710 --> 00:02:01,160
+As a result, America is trying to devise a different approach to C2, as command and control is known in military jargon.
+
+15
+00:02:01,610 --> 00:02:09,840
+The Department of Defence has dubbed this idea“Joint All-Domain Command and Control”, or JADC2.
+
+16
+00:02:10,640 --> 00:02:27,680
+It aims to eliminate vulnerable nodes in the system by multiplying the number of peer-to-peer data links that connect pieces of military hardware directly to one another, rather than via a control centre that might be eliminated by a single, well-aimed missile.
+
+17
+00:02:29,150 --> 00:02:35,009
+Nor is that node-reducing ambition confined merely to the sophisticated and expensive stuff.
+
+18
+00:02:35,330 --> 00:02:41,009
+The goal, officials say, is to create a network that links“every sensor and every shooter”.
+
+19
+00:02:41,660 --> 00:02:56,420
+When complete, this will encompass sensors as small as soldiers’ night-vision gear and sonar buoys drifting at sea, and shooters as potent as ground-based artillery and aerial drones armed with Hellfire missiles.
+
+20
+00:02:56,420 --> 00:03:09,240
+Sense and sensibility One likely beneficiary of the JADC2 approach is Anduril Industries, a Californian firm that makes devices at the sensor end of the sensor-and- shooter list.
+
+21
+00:03:09,580 --> 00:03:24,520
+Its products include small spy helicopter drones; radar, infrared and optical systems constructed as solar-powered towers; and paperback- sized ground sensors that can be disguised as rocks.
+
+22
+00:03:24,650 --> 00:03:34,659
+In tests, the American air force has networked these products with fighter jets, ground-based artillery, surface-to-air missiles and“hunter-killer”drones.
+
+23
+00:03:35,109 --> 00:03:55,690
+As Christian Brose, once staff director of the Senate Armed Services Committee and now Anduril’s chief strategy officer, observes, the variety of kit involved in this sort of approach permits equipment that is failing to do a useful job in a particular set of circumstances to be“swapped out”and replaced by something else.
+
+24
+00:03:56,750 --> 00:04:01,410
+This is not a game Sensors come in still-more-diverse forms than Anduril’s, though.
+
+25
+00:04:01,770 --> 00:04:09,200
+An autonomous doglike robot (pictured on previous page) made by Ghost Robotics of Philadelphia offers a hint of things to come.
+
+26
+00:04:09,639 --> 00:04:32,980
+In addition to infrared and video systems, this quadruped, dubbed V60 Q-UGV, can be equipped with acoustic sensors (to recognise, among other things, animal and human footsteps), a millimetre-wave scanner (to see through walls) and“sniffers”that identify radiation, chemicals and electromagnetic signals.
+
+27
+00:04:33,640 --> 00:04:45,260
+Thanks to navigation systems developed for self-driving cars, V60 Q-UGV can scamper across rough terrain, climb stairs and hide from people.
+
+28
+00:04:45,799 --> 00:04:54,370
+In a test by the air force this robot was able to spot a mobile missile launcher and pass its location on directly to an artillery team.
+
+29
+00:04:55,330 --> 00:04:59,849
+Only connect Artificial intelligence (AI) is an important ingredient of all this.
+
+30
+00:05:00,170 --> 00:05:14,360
+Among other things, AI can work out the combination of hardware best suited to take on threats“popping up in the battlespace”, says Todd Harrison, a defence analyst at the Centre for Strategic and International Studies, an American think-tank.
+
+31
+00:05:14,770 --> 00:05:21,589
+He likens this to the function of apps that match ride- hailers with the most appropriate drivers.
+
+32
+00:05:22,000 --> 00:05:26,160
+The more decentralised the AI processing is, the better.
+
+33
+00:05:27,090 --> 00:05:39,980
+Pushing it“out to the tactical edge”, as JADC2geeks are wont to put it, reduces the amount of data to be transmitted, and thus the amount available for an enemy to intercept or jam.
+
+34
+00:05:40,959 --> 00:05:48,450
+Applying AI to more C2 processes will also increase the celerity with which strikes can be ordered.
+
+35
+00:05:48,980 --> 00:06:00,289
+Existing procedures often require raw sensor data to be sent to an operations centre, where they are stitched together and studied by staff before commanders order strikes.
+
+36
+00:06:00,580 --> 00:06:12,980
+This can take tens of minutes, during which a target may slip away or fight back, says Jeff Kline, a retired naval officer who is now a researcher at the Naval Postgraduate School in Monterey, California.
+
+37
+00:06:13,660 --> 00:06:15,640
+AI should cut that delay.
+
+38
+00:06:15,920 --> 00:06:27,790
+In a demonstration in September, army artillery controlled by AI and fed instructions by air-force sensors shot down a cruise missile in a response that Dr Roper describes as“blistering”.
+
+39
+00:06:28,780 --> 00:06:35,209
+A JADC2 rich in AI promises not just faster decisions, but better ones.
+
+40
+00:06:35,619 --> 00:06:41,980
+It could, for example, assign planes to bombing missions that require aerial refuelling to complete.
+
+41
+00:06:42,410 --> 00:06:55,260
+By taking into account things like wind speeds, air defences, flight altitudes and the weights and stealth of the planes concerned, AI can find efficiencies that might elude rushed human dispatchers.
+
+42
+00:06:56,250 --> 00:07:04,870
+Perhaps most valuably, JADC2 will devise courses of action that commanders might not otherwise have realised were possible.
+
+43
+00:07:05,410 --> 00:07:13,520
+AI can, for example, keep track of a government’s myriad cyber capabilities and propose actions that might be relevant for an operation.
+
+44
+00:07:13,890 --> 00:07:22,100
+It might inform a commander that a building to be destroyed could be first emptied thanks to an ability to activate its fire alarm or sprinklers.
+
+45
+00:07:22,469 --> 00:07:30,669
+Or it might determine that temporarily disabling an area’s electricity or telecommunications network would render a strike unnecessary.
+
+46
+00:07:31,150 --> 00:07:40,330
+It can also sort through probable knock- on effects of an action, to warn, say, that a certain type of blast might contaminate a local water supply.
+
+47
+00:07:41,300 --> 00:07:46,040
+JADC2’s supporters envisage a wide-ranging system.
+
+48
+00:07:46,440 --> 00:07:53,510
+By sifting through satellite imagery, AI could flag a troubling change in activity in a port, says Mr Kline.
+
+49
+00:07:53,890 --> 00:07:58,700
+Postings on social media could alert AI to unusual troop movements abroad.
+
+50
+00:07:59,110 --> 00:08:11,550
+And JADC2 will no doubt also ingest reports written by human spies, says David Deptula, dean of the Mitchell Institute for Aerospace Studies, an American think-tank.
+
+51
+00:08:12,520 --> 00:08:16,890
+There are, however, numerous obstacles to the success of all this.
+
+52
+00:08:17,190 --> 00:08:21,569
+For a start, developing unhackable software for the purpose will be hard.
+
+53
+00:08:21,969 --> 00:08:35,920
+Legions of machines containing proprietary and classified technologies, new and old, will have to be connected seamlessly, often without adding antennae or other equipment that would spoil their stealthiness.
+
+54
+00:08:36,929 --> 00:08:38,960
+There are human obstacles, too.
+
+55
+00:08:39,150 --> 00:08:49,610
+For one thing, JADC2 is intended to link systems belonging to the air force, army, marines, navy, space force and intelligence agencies.
+
+56
+00:08:50,090 --> 00:08:56,010
+Battles over which of these will be crowned the master setter of technical standards have duly begun.
+
+57
+00:08:57,040 --> 00:09:04,710
+The army, which calls its part of JADC2 Project Convergence, is unlikely to carry the day.
+
+58
+00:09:05,000 --> 00:09:13,869
+It has less experience than the other services in managing long-range data networks and is generally considered too low-tech to pull things off.
+
+59
+00:09:14,839 --> 00:09:21,770
+A stronger case is made by the navy, which has dubbed its slice of JADC2 Project Overmatch.
+
+60
+00:09:22,550 --> 00:09:29,700
+The navy already operates impressive networks involving submarines, surface vessels, aircraft and satellites.
+
+61
+00:09:30,009 --> 00:09:35,640
+However, its reputation of having a culture of operational independence may count against it.
+
+62
+00:09:36,609 --> 00:09:39,500
+The likeliest leader, therefore, is the air force.
+
+63
+00:09:39,670 --> 00:09:42,280
+This service is able to operate over the entire planet.
+
+64
+00:09:42,630 --> 00:10:01,500
+It is also already in possession of Battlefield Airborne Communications Node (BACN), a system that translates and relays data between dissimilar communications arrangements without requiring either their prior modification or that they be within line of sight of each other.
+
+65
+00:10:02,309 --> 00:10:12,830
+BACN’s operational success, Mr Deptula says, suggests that it or similar data translators could help build an ethereal nervous system for JADC2.
+
+66
+00:10:14,160 --> 00:10:17,570
+Net benefits Big bucks will be needed, too.
+
+67
+00:10:17,580 --> 00:10:26,620
+Members of America’s Congress tend to like military hardware, which brings the promise of“politically engineered”manufacturing in their constituencies.
+
+68
+00:10:27,030 --> 00:10:31,759
+Intangibles such as data protocols are a more difficult sell.
+
+69
+00:10:32,350 --> 00:10:45,160
+And it probably will not help that some vocal voters fear a weapons network with AI might one day take over for itself the decision of what to attack, in the fashion of Skynet in the“Terminator”films.
+
+70
+00:10:45,780 --> 00:10:49,810
+Officials stress that such autonomy is not on the cards.
+
+71
+00:10:49,840 --> 00:11:02,019
+Beyond that, last year the defence department adopted an AI-ethics charter which requires, among other things, that humans remain in control of, and responsible for, AI systems.
+
+72
+00:11:02,580 --> 00:11:12,200
+The question is whether those limits will continue to hold if America’s adversaries one day secure an edge by giving their own AI freer rein.
+
+73
+00:11:13,210 --> 00:11:16,710
+America’s allies may pose problems of a different sort.
+
+74
+00:11:16,880 --> 00:11:25,030
+Some other countries, especially in Europe, have restrictions on how their armed forces’ kit may be used in multinational operations.
+
+75
+00:11:25,390 --> 00:11:37,530
+Programming JADC2 to respect this patchwork of caveats will not be easy, says Henrik Breitenbauch, head of Copenhagen University’s Centre for Military Studies.
+
+76
+00:11:38,120 --> 00:11:49,060
+Beyond that, some allies’ data networks contain Chinese components, which many suspect harbour secret back doors for espionage or sabotage.
+
+77
+00:11:50,110 --> 00:11:56,959
+Efforts by America’s principal rivals to develop their own weapons- networking software are also thickening the plot.
+
+78
+00:11:57,450 --> 00:12:01,940
+It is by no means clear that America will come out on top in this arms race.
+
+79
+00:12:02,030 --> 00:12:13,220
+China’s AI developers are able to train algorithms using unparalleled pools of data, garnered thanks to the country’s weak privacy protections and huge population.
+
+80
+00:12:13,730 --> 00:12:19,530
+China and Russia are also investing heavily in disrupting C2, Mr Harrison notes.
+
+81
+00:12:20,530 --> 00:12:35,909
+In exercises in the Arctic, and in fighting in Ukraine and Syria, Russian forces have intercepted and disrupted terrestrial and satellite signals, worked out the locations of the hardware involved, and relayed the co-ordinates to targeting systems.
+
+82
+00:12:36,500 --> 00:12:45,900
+The sophistication involved has persuaded the American army to halt a chunk of development work for a new communications network called WIN-T.
+
+83
+00:12:46,360 --> 00:12:52,600
+This will need, Mr Harrison says, to become“much more robust, hardened, protected”than planned.
+
+84
+00:12:53,629 --> 00:13:11,929
+America’s technologists must, then, link the country’s military equipment into a“kill web”so robust that attempts to cripple it will amount to“trying to pop a balloon with one finger”, as Timothy Grayson, head of strategic technologies at DARPA, the defence department’s main research agency, puts it.
+
+85
+00:13:12,480 --> 00:13:17,180
+Yet they must also keep that network under ultimate human control.
+

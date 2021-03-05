@@ -1,0 +1,368 @@
+1
+00:00:24,480 --> 00:00:36,950
+IN 1954 AT&T’s Bell Labs announced, with some fanfare, a“solar battery”—a device which would supply electricity constantly, with no need for recharging, whenever it was illuminated.
+
+2
+00:00:36,950 --> 00:01:00,100
+At a time when scientific miracles were much in vogue, the New York Times thought this gadget front- page news: the conversion of sunlight into electrical power might herald“the realisation of one of mankind’s most cherished dreams—the harnessing of the almost limitless energy of the Sun for the uses of civilisation.”
+
+3
+00:01:01,480 --> 00:01:15,080
+One could quibble with the idea that industrialising solar power was one of humankind’s most cherished dreams—search for it in Shakespeare and you search in vain—but it had certainly had its enthusiasts.
+
+4
+00:01:15,710 --> 00:01:26,470
+As they were and remain keen to inform all and sundry, sunlight delivers more energy to the Earth in an hour than humankind uses in a year.
+
+5
+00:01:27,219 --> 00:01:41,429
+Until 1954, though, the heliophiles could offer no better way of using that bounty than as an agent for warming water and generating steam—tasks that coal and gas performedmuch more readily.
+
+6
+00:01:42,179 --> 00:01:50,360
+The solar battery offered instead a direct route to solar power; light went in, current came out.
+
+7
+00:01:50,870 --> 00:01:58,120
+There were no moving parts to wear out or break down; just little sheets of silicon the size of razor blades.
+
+8
+00:01:59,740 --> 00:02:12,640
+It was this directness that justified the Times’s ideas about harnessing unlimited energy; it was proper journalistic prudence that added the crucial qualifier“eventually”.
+
+9
+00:02:13,320 --> 00:02:16,550
+The adverb cashed out at a bit more than half a century.
+
+10
+00:02:17,020 --> 00:02:23,660
+Solar cells spent 50 years getting cheaper and better in a variety of marginal niches.
+
+11
+00:02:24,219 --> 00:02:30,610
+Then, in the space of little more than a decade, they became both widespread and cheap.
+
+12
+00:02:31,280 --> 00:02:45,780
+In 2020, 132bn watts of new solar generating capacity were installed around the world; in many places solar panels are now by far the cheapest way to produce electricity.
+
+13
+00:02:46,570 --> 00:02:56,289
+This transformation was not brought about by a technological breakthrough in the way that photons arriving from the Sun deliver energy to electrons waiting in the panels.
+
+14
+00:02:56,750 --> 00:03:07,530
+It was the result of a decisive shift in German government policy happening to coincide with China becoming the dominant force in global manufacturing.
+
+15
+00:03:09,349 --> 00:03:15,490
+The origin of AT&T’s solar battery lay in a discovery made 14 years earlier.
+
+16
+00:03:16,170 --> 00:03:31,190
+On February 23rd 1940 Russell Ohl, a researcher at Bell Labs who bore a distinct resemblance to the actor Wallace Shawn, shone a bright light onto an odd rod of silicon he was investigating.
+
+17
+00:03:31,799 --> 00:03:37,740
+A current immediately began to flow between the electrodes stuck to the rod’s ends.
+
+18
+00:03:38,450 --> 00:03:48,700
+When Ohl put a fan in between the light and the rod the current started oscillating to the shadow- light-shadow-light rhythm of the fan’s eclipsing blades.
+
+19
+00:03:49,410 --> 00:03:54,780
+The rod’s odd electrical behaviour was demonstrably down to the light.
+
+20
+00:03:56,040 --> 00:04:08,259
+That light could drive currents in some materials had been known since the 19th century; it was one of the things for which Einstein’s paper of 1905 provided a general explanation.
+
+21
+00:04:08,940 --> 00:04:22,610
+What distinguished Ohl’s observation was that at Bell Labs he and his colleagues had the right tools, physical and conceptual, to make sense of how it was happening and how to improve its efficiency.
+
+22
+00:04:23,780 --> 00:04:37,480
+They discovered that the odd rod contained what came to be called a“p-n junction”—an internal electric field created by two slightly different types of silicon abutting one another.
+
+23
+00:04:38,090 --> 00:04:45,180
+It sounds like a minor defect, but today it is more or less as fundamental to civilisation as the wheel.
+
+24
+00:04:45,809 --> 00:05:01,160
+Applied in the field of electronics, the p-n junction changed AT&T’s world from one of vacuumtubes, physical switches and operators working telephone exchanges to one embodied in slivers of silicon.
+
+25
+00:05:01,960 --> 00:05:08,650
+Configured to make use of light, it is now helping to free the world of the need for fossil fuel.
+
+26
+00:05:10,170 --> 00:05:16,930
+Making such junctions is a matter of“doping”silicon by adding traces of other elements.
+
+27
+00:05:17,639 --> 00:05:24,359
+Atoms in crystals are tied together by chemical bonds made of shared outer electrons.
+
+28
+00:05:24,760 --> 00:05:33,370
+In a crystal of pure silicon, each atom uses its four outer electrons to make four such bonds to four neighbours.
+
+29
+00:05:34,030 --> 00:05:44,360
+Since electrical conductors depend on free-flowing electrons, pure silicon, with all its electrons tied up, is an electrical insulator.
+
+30
+00:05:45,750 --> 00:05:52,089
+Dope the silicon with phosphorus and that changes: the insulator becomes a semiconductor.
+
+31
+00:05:52,770 --> 00:05:57,699
+Phosphorus has five outer electrons, compared with silicon’s four.
+
+32
+00:05:58,240 --> 00:06:06,330
+When a phosphorous atom finds itself in a silicon lattice, four of those electrons will form bonds with its four silicon neighbours.
+
+33
+00:06:07,080 --> 00:06:11,360
+But the fifth will be free to roam, and thus to conduct current.
+
+34
+00:06:12,030 --> 00:06:16,389
+Doping which adds electrons in this way is known as n-type.
+
+35
+00:06:16,879 --> 00:06:22,520
+For p-type doping you add an atom like boron, which has only three outer electrons.
+
+36
+00:06:22,950 --> 00:06:25,410
+Now the lattice has holes in it.
+
+37
+00:06:25,930 --> 00:06:32,090
+Those holes can also, like spare electrons, move through the lattice carrying current.
+
+38
+00:06:33,509 --> 00:06:41,260
+By an accident of its manufacture, Ohl’s sample had layers of p- and n-type silicon right next to each other.
+
+39
+00:06:41,830 --> 00:06:51,790
+While normally both types of doped silicon would pass some current, in conjunction, surprisingly, they could not—at least, not without light.
+
+40
+00:06:52,500 --> 00:06:59,550
+This was because electrons in the n-type silicon had diffused into the p-type, with holes going the other way.
+
+41
+00:07:00,080 --> 00:07:10,170
+These displaced charge carriers created an electric field, and that electric field formed a barrier no further electrons could pass.
+
+42
+00:07:11,240 --> 00:07:21,699
+Shine a light on such a junction, though, and the photons will knock loose fresh electrons—which, if in the junction, will flow in response to the electric field.
+
+43
+00:07:22,360 --> 00:07:42,640
+If you put a metal electrode on the surface of the n-type silicon, another on the surface of the p-type silicon, and run a wire between them, the electrons will flow along that wire to the p-type silicon, where they will recombine with holes moving in the opposite direction: behold, a current.
+
+44
+00:07:43,929 --> 00:07:51,080
+Though its sensitivity to light brought the p-n junction to Ohl’s attention, it was not its initial claim to fame.
+
+45
+00:07:51,710 --> 00:08:00,830
+Bell Labs wanted to find a way of replacing the vacuum tubes and other paraphernalia on which AT&T’s business depended.
+
+46
+00:08:01,370 --> 00:08:04,010
+The p-n junction proved just the ticket.
+
+47
+00:08:04,539 --> 00:08:19,010
+In 1947 colleagues of Ohl’s came up with a device in which the insulating effect of a p-n junction could be manipulated with a second electric field, thus creating an on/off switch: the transistor.
+
+48
+00:08:19,700 --> 00:08:26,640
+Transistors became the basis of new, cheap“solid- state”electronic circuitry.
+
+49
+00:08:26,640 --> 00:08:33,590
+Technology which crammed many of them on to a single piece of semiconductor spawned the silicon chip.
+
+50
+00:08:34,650 --> 00:08:39,729
+Solar cells are made in a similar way to silicon chips but are much less complex.
+
+51
+00:08:40,190 --> 00:08:46,440
+Their junctions just sit there, always on, turning energy from photons into electricity.
+
+52
+00:08:47,120 --> 00:08:50,170
+This was not, at first, a mass-market proposition.
+
+53
+00:08:50,670 --> 00:09:01,290
+In 1954 Bell Labs calculated that using its“photovoltaic”batteries to power an American home would cost $1,5m.
+
+54
+00:09:02,010 --> 00:09:12,660
+But history shows that, in general, new energy technologies do not compete on price; they flourish by serving a market where there are no other options.
+
+55
+00:09:13,500 --> 00:09:20,070
+For photovoltaics this hang-the- expense, has-to-be-you niche turned out to be in orbit.
+
+56
+00:09:20,750 --> 00:09:26,580
+Demand for power on board satellites drove a lucrative early market for solar cells.
+
+57
+00:09:27,000 --> 00:09:37,870
+In time remote terrestrial locations started to find uses for them, too, and the oil shocks of the 1970s saw governments get interested.
+
+58
+00:09:38,470 --> 00:09:48,999
+An industry rule of thumb held that for every doubling of cumulative production, the unit price dropped byalmost 30%—a pretty typical“experience curve”.
+
+59
+00:09:49,590 --> 00:09:56,630
+And early on, when installed capacity was low, repeated doubling was feasible even with limited demand.
+
+60
+00:09:57,640 --> 00:10:19,800
+By 2000 there was almost one gigawatt (1bn watts, or 1GW) of photovoltaic capacity installed worldwide—quite a lot of it on Japanese roofs, courtesy of a subsidy programme aimed at the country’s semiconductor industry—and the price per watt was less than a tenth what it had been in the 1970s.
+
+61
+00:10:20,500 --> 00:10:36,590
+It was against this background that the Social Democrats and strongly pro-solar Greens running Germany beefed up a subsidy system previously geared to encouraging solar power on a village-by-village or roof-by-roof basis.
+
+62
+00:10:37,220 --> 00:10:55,440
+As of 2004, installations of any size could sell any amount of solar energy to the grid for €457 ($567) per megawatt-hour—about five times what it cost to generate electricity from coal at the time.
+
+63
+00:10:55,820 --> 00:10:59,380
+The price was guaranteed for 20 years.
+
+64
+00:10:59,870 --> 00:11:01,760
+The touchpaper was lit.
+
+65
+00:11:02,710 --> 00:11:04,689
+And the rocket took off.
+
+66
+00:11:05,090 --> 00:11:10,410
+By 2012 Germany had paid out more than €200bn in subsidies.
+
+67
+00:11:10,930 --> 00:11:13,120
+It had also changed the world.
+
+68
+00:11:13,630 --> 00:11:25,150
+Between 2004 and 2010 the global market for solar panels grew 30-fold as investors in Germany and the other countries which followed its lead piled in.
+
+69
+00:11:25,800 --> 00:11:35,209
+Initially, and alarmingly for the exchequers involved, prices did not fall; there were worries that the experience curve had gone flat.
+
+70
+00:11:35,849 --> 00:11:43,170
+But the plateau was an artefact of almostunlimited demand meeting a bottleneck in silicon supply.
+
+71
+00:11:43,970 --> 00:11:53,629
+After Spain’s subsidy system collapsed in 2008 solar-panel prices plummeted even as installations continued.
+
+72
+00:11:54,190 --> 00:12:02,230
+By 2012 the price of a panel was a sixth what it had been in 2004, and it has gone on falling ever since.
+
+73
+00:12:06,630 --> 00:12:15,350
+In sunny places new solar-power installations are significantly cheaper than generating electricity from fossil fuels.
+
+74
+00:12:27,070 --> 00:12:30,229
+That does not mean Germany got exactly what it wanted.
+
+75
+00:12:30,700 --> 00:12:41,980
+Solar power is not the decentralised, communal source of self-sufficient energy the Greens dreamed of; its provision is dominated by large industrial installations.
+
+76
+00:12:42,560 --> 00:12:52,190
+And the panels on those installations are not made by the German companies the Social Democrats wanted to support: Chinese manufacturers trounced them.
+
+77
+00:12:52,959 --> 00:13:01,600
+But they do provide the world with a zero-carbon energy source cheaper than fossil fuels, and there is room for many more of them.
+
+78
+00:13:02,440 --> 00:13:21,659
+By striking at a time when the state of the art had evolved enough for a massive scale-up to be just about affordable, Germany forced prices down enough for less expansive subsidies elsewhere to ease them down even further, to the point that subsidy was no longer necessary.
+
+79
+00:13:23,570 --> 00:13:27,480
+It is a striking contrast to the history of nuclear power.
+
+80
+00:13:28,090 --> 00:13:36,000
+Introduced in 1954, like the solar battery, civilian nuclear-power plants were seen as hugely promising.
+
+81
+00:13:36,740 --> 00:13:45,120
+But since the 1970s nuclear experience has grown only slowly, and prices have risen rather than fallen.
+
+82
+00:13:45,900 --> 00:13:53,030
+Of the many reasons for this, one is the benefit brought by extended small-scale experimentation.
+
+83
+00:13:53,760 --> 00:14:03,290
+Energy technologies cannot be magicked into being fully formed, as was attempted in the case of nuclear; they need an adolescence.
+
+84
+00:14:03,960 --> 00:14:17,420
+Jenny Chase of BloombergNEF, a data provider, says that in the company’s“economic transition”scenario solar starts to deliver more kilowatt-hours than nuclear by 2031.
+
+85
+00:14:18,240 --> 00:14:21,220
+In practice she expects it to pull ahead sooner.
+
+86
+00:14:22,529 --> 00:14:25,850
+Yet solar’s success is of a peculiar sort.
+
+87
+00:14:26,470 --> 00:14:29,190
+The sector’s bankruptcies are legion.
+
+88
+00:14:29,770 --> 00:14:48,000
+The German panel manufacturers that went public in 2005 and the Silicon Valley startups generously funded over the following years all fell victim to cheaper silicon and the ambitious, subsidised Chinese manufacturers that now dominate supply.
+
+89
+00:14:48,600 --> 00:14:50,490
+And those firms are hardly huge.
+
+90
+00:14:50,910 --> 00:15:09,120
+The industry boasts no giants comparable to those in aircraft manufacture or pharmaceuticals, letalone computing; no solar company has a market capitalisation of more than $10bn, and no solar CEO is in danger of being recognised on the street.
+
+91
+00:15:09,889 --> 00:15:19,199
+It is a commodity business in which the commodity’s price moves in only one direction and everyone works on very thin margins.
+
+92
+00:15:19,929 --> 00:15:23,050
+Good for the planet— but hardly a gold mine.
+

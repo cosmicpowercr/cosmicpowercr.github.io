@@ -1,0 +1,204 @@
+1
+00:00:21,080 --> 00:00:28,290
+FOR ART historians trying to tell the fake from the real, the Russian avant- garde presents unique challenges.
+
+2
+00:00:28,920 --> 00:00:34,690
+As Soviet rule took hold, adventurous works were spirited abroad and snapped up by collectors.
+
+3
+00:00:35,400 --> 00:00:37,620
+Amid the chaos, forgers abounded.
+
+4
+00:00:38,600 --> 00:00:46,789
+Tracing the early history of a Russian modernist painting —a traditionally genteel business known as provenance study—is tricky.
+
+5
+00:00:47,490 --> 00:00:49,320
+But laboratory tests can help.
+
+6
+00:00:49,840 --> 00:00:56,050
+In a show scheduled to run until February, the Museum Ludwig in Cologne makes a virtue of that predicament.
+
+7
+00:00:56,720 --> 00:01:06,650
+After a hard scientific look at part of its Russian avant-garde collection, it found that 22 of the 49 works it studied were wrongly attributed.
+
+8
+00:01:07,540 --> 00:01:16,080
+ArtDiscovery—a consultancy that offers private laboratory services for paintings—affirmed the authenticity of 14 exhibits.
+
+9
+00:01:16,960 --> 00:01:26,130
+The show presents the downgraded works alongside genuine ones and explains the methods used, from electron microscopy to new X-ray techniques.
+
+10
+00:01:26,790 --> 00:01:31,870
+The public can peruse the scientific reports along withconventional art-historical essays.
+
+11
+00:01:32,540 --> 00:01:40,420
+The Ludwig’s conservators see their investigations as part of an ongoing pursuit of the enigmatic story of Russian modernism.
+
+12
+00:01:41,520 --> 00:01:57,370
+Canvases rescued from Stalin present specific problems, but tracing the path of a 17th-century Old Master (which aristocrat commissioned it, how often it changed hands) can be just as fraught, says Friederike von Brühl, a Berlin- based art lawyer.
+
+13
+00:01:58,090 --> 00:02:06,179
+If great collections were to turn the full light of science on their venerable oil paintings, she reckons,“they will find many wrong attributions”.
+
+14
+00:02:07,139 --> 00:02:14,620
+Yet the spirit of openness—to technology, debate and the public—on show in Cologne is by no means universal.
+
+15
+00:02:15,200 --> 00:02:29,850
+Old-fashioned connoisseurs can be snobbish and defensive about laser-wielding scientists, unsurprisingly, given what is at stake: not just the judgments of scholars, but potentially the reputations and holdings of galleries and collectors.
+
+16
+00:02:30,700 --> 00:02:35,860
+For all the obstinacy, though, the march of science into art is proving irresistible.
+
+17
+00:02:36,340 --> 00:02:41,719
+Conventional scholarship involves the study of aesthetics, style and historical records.
+
+18
+00:02:42,180 --> 00:02:51,790
+The oeuvre of a great painter has traditionally been defined by a scholarly panel that maintains a definitive catalogue of the artist’s authentic works.
+
+19
+00:02:52,469 --> 00:03:05,690
+The Corpus Rubenianum, for instance, is an Antwerp-based body that adjudicates the work of Peter Paul Rubens; it reveres the legacy of Ludwig Burchard, a German-born expert who died in 1960.
+
+20
+00:03:06,540 --> 00:03:16,319
+Yet such scholarly deference can be excessive: many of Burchard’s attributions have turned out to be mistaken, as the Rubenianum has quietly acknowledged.
+
+21
+00:03:16,680 --> 00:03:31,410
+“There is no question that more scientific examination is needed”to clean up the Flemish master’s oeuvre, says Kasia Pisarek, a Polish-born British art scholar, whose doctoral thesis traces what she calls a crisis of connoisseurship.
+
+22
+00:03:48,820 --> 00:03:49,609
+Watching the watchmen The increasing sharpness and availability of scientific tools, including photography at ultra-high resolution, offer curators a fresh, overdue chance to clarify their holdings, Ms Pisarek says:“They now have an opportunity which they take too rarely.”
+
+23
+00:03:50,200 --> 00:03:59,670
+New methods make it easier than ever to dissect the pigments, brushwork, canvas and physical structure of a painting, sometimes without taking it off the wall.
+
+24
+00:04:00,340 --> 00:04:13,089
+In his native Germany, Matthias Alfeld, now of Delft University, operated a synchrotron, a building-sized machine that subjects artefacts or tiny samples to super-powerful beams.
+
+25
+00:04:13,720 --> 00:04:29,970
+Now he teaches Dutch students to use a hand-held tube that analyses objects non-intrusively with X-ray fluorescence, laying bare the composition of paintings and frames—not as powerful as the synchrotron, but easier and cheaper.
+
+26
+00:04:30,820 --> 00:04:36,410
+Another tool is multispectral imaging, which exposes a painting’s many layers.
+
+27
+00:04:36,920 --> 00:04:45,049
+A clever forger can mimic the elements in ancient pigments, but a peep at a reused canvas can expose fraud.
+
+28
+00:04:45,830 --> 00:04:52,650
+Conversely, shadowy, underlying marks known as pentimenti are a sign of authenticity.
+
+29
+00:04:53,190 --> 00:05:08,710
+Charles Falco, an emeritus professor at the University of Arizona, has developed easily portable infrared cameras and spectrometers—though so far, he says gloomily, they are more likely to be used on remote archaeological sites than on national art treasures.
+
+30
+00:05:09,580 --> 00:05:15,100
+Information gleaned from all these tools can be fused to create many gigabytes of data.
+
+31
+00:05:15,750 --> 00:05:34,450
+And an up-and-coming method uses a neural network, a form of artificial intelligence (AI) that mimics the structure of the human brain, to identify common features in a painter’s known works, especially brushstrokes; this information is then employed to scrutinise an uncertain offering.
+
+32
+00:05:35,389 --> 00:05:54,510
+Christiane Hoppe-Oehl, a co-founder of Art Recognition—a Zurich startup that compares images of a contested piece with hundreds of thousands in a database—thinks AI can become a“fourth pillar”of art research along with style analysis, provenance study and laboratory work.
+
+33
+00:05:55,360 --> 00:06:01,520
+In addition to the museum in Cologne, some countries and enthusiasts have embraced these insurgent techniques.
+
+34
+00:06:02,070 --> 00:06:13,800
+Authentication in Art, a movement based in The Hague, has set up an arbitration court that aims to enlist both science and old-fashioned art history to adjudicate puzzling works.
+
+35
+00:06:14,520 --> 00:06:21,550
+The Rembrandt Research Project, a bid to define the oeuvre of the Netherlands’ greatest painter, enjoys global respect.
+
+36
+00:06:46,300 --> 00:06:47,400
+Old masters, new tricksA thorough study of Old Masters, predicts Ms Pisarek, the art scholar, might produce pleasant surprises as well as shocks: paintings now dismissed as copies and lying in museum storage rooms could be upgraded to originals.
+
+37
+00:06:48,190 --> 00:07:00,470
+On the other hand, she too thinks some public collections are still tainted by faulty attributions made in the early 20th century, when Americans snapped up supposed masterpieces from opportunistic sellers.
+
+38
+00:07:01,270 --> 00:07:07,770
+But vested interests and inertia have thus far made the Dutch spirit of glasnost an exception.
+
+39
+00:07:09,160 --> 00:07:10,440
+Perhaps not for long.
+
+40
+00:07:11,299 --> 00:07:15,220
+The commercial art market is well aware that it cannot ignore science.
+
+41
+00:07:15,840 --> 00:07:26,110
+Sotheby’s, the London-based auction house, bought an American laboratory in 2016; its rival Christie’s uses lots of private scientific services.
+
+42
+00:07:26,820 --> 00:07:38,450
+Meanwhile, although many state-owned museums remain cautious, other organs of state, from judges to police, are accepting the value of science in adjudicating disputes over art.
+
+43
+00:07:39,099 --> 00:07:49,020
+In a recent case concerning a copy of an Impressionist painting, a European customs authority asked the owner for a document proving it was not original.
+
+44
+00:07:49,970 --> 00:07:55,210
+The relevant scholarly committee could not help, but a certificate from Art Recognition sufficed.
+
+45
+00:07:56,210 --> 00:08:03,380
+In another case, a German regional government possessed a painting it believed to be fake and wanted legally satisfying proof.
+
+46
+00:08:04,080 --> 00:08:08,320
+Laboratory work by ArtDiscovery supplied the necessary evidence.
+
+47
+00:08:09,230 --> 00:08:23,520
+Jilleen Nadolny, who runs ArtDiscovery’s British arm, sees no risk that human expertise will become otiose; users of her equipment draw on general art history, she says, just as radiographers rely on medicine.
+
+48
+00:08:24,279 --> 00:08:30,010
+Pigment analysis, a great tool for dating pictures, requires fine visual judgment.
+
+49
+00:08:30,710 --> 00:08:42,259
+The precious mineral-based colours preferred by Rubens show up under an electron microscope, but telling a natural ultramarine from a modern synthetic one still requires a sensitive eye.
+
+50
+00:08:43,180 --> 00:08:46,080
+Learned aesthetes have not lost their authority.
+
+51
+00:08:46,780 --> 00:08:48,750
+But, increasingly, they have to share it.
+

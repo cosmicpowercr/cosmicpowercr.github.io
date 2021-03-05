@@ -1,0 +1,344 @@
+1
+00:00:21,700 --> 00:00:35,330
+ALBERT EINSTEIN won the 1921 Nobel prize for physics in 1922.
+
+2
+00:00:35,340 --> 00:00:51,920
+The temporal anomaly embodied in that sentence was not, alas, one of the counterintuitive consequences of his theories of relativity, which distorted accustomed views of time and space.
+
+3
+00:00:52,539 --> 00:01:00,490
+It was down to a stubborn Swedish ophthalmologist—and the fact that Einstein’s genius remade physics in more ways than one.
+
+4
+00:01:01,970 --> 00:01:12,700
+The eye doctor was Allvar Gullstrand, one of the five members of the Nobel Committee for Physics charged with providing an annual laureate for the Swedish Royal Academy of Sciences to approve.
+
+5
+00:01:13,730 --> 00:01:22,869
+Gullstrand thought Einstein’s work on relativity an affront to common sense (which it sort of was) and wrong (which it really wasn’t).
+
+6
+00:01:23,770 --> 00:01:30,599
+Every year from 1918 on, thecommittee received more nominations for Einstein than for any other candidate.
+
+7
+00:01:30,940 --> 00:01:33,990
+And every year, Gullstrand said no.
+
+8
+00:01:35,250 --> 00:01:44,909
+By 1921 the rest of the committee had had enough of settling for lesser laureates: the only decision which could be made unanimously was not to award the prize at all.
+
+9
+00:01:45,889 --> 00:01:54,670
+Amid great embarrassment the academy chose to delay the 1921 prize until the following year, when it would be awarded in tandem with that of 1922.
+
+10
+00:01:55,950 --> 00:02:03,280
+This gave Carl Wilhelm Oseen, a Swedish physicist newly appointed to the committee, time for a cunning plan.
+
+11
+00:02:04,230 --> 00:02:11,910
+He nominated Einstein not for relativity, but for his early work explaining light’s ability to produce electric currents.
+
+12
+00:02:12,720 --> 00:02:16,320
+Though Gullstrand was still peeved, this carried the day.
+
+13
+00:02:17,059 --> 00:02:29,660
+In November 1922 Einstein was awarded the 1921 prize“for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect”.
+
+14
+00:02:31,080 --> 00:02:36,540
+This adroit bit of face-saving also seems, a century on, fully justified.
+
+15
+00:02:37,259 --> 00:02:47,140
+Einstein’s first paper on the nature of light, published in 1905, contained the only aspect of his work that he himself ever referred to as“revolutionary”.
+
+16
+00:02:48,080 --> 00:02:58,119
+It did not explain a new experiment or discovery, nor fill a gap in established theory; physicists were quite happy treating light as waves in a“luminiferous aether”.
+
+17
+00:02:59,000 --> 00:03:06,610
+It simply suggested that a new way of thinking about light might help science describe the world more consistently.
+
+18
+00:03:08,200 --> 00:03:22,890
+That quest for consistency led Einstein to ask whether the energy in a ray of light might usefully be thought of as divided into discrete packets; the amount of energy in each packet depended on the colour, or wavelength, of the light involved.
+
+19
+00:03:23,730 --> 00:03:32,860
+Thus the“law”mentioned in his Nobel citation: the shorter the wavelength of a beam of light, the more energy is contained in each packet.
+
+20
+00:03:34,510 --> 00:03:39,270
+Eight years earlier, in 1897, experiments carried out by J.
+
+21
+00:03:39,270 --> 00:03:39,540
+J.
+
+22
+00:03:39,580 --> 00:03:50,960
+Thompson had convinced his fellow physicists that the“cathode rays”produced by electrodes in vacuum tubes were made up of fundamental particles which he called“electrons”.
+
+23
+00:03:51,809 --> 00:03:56,650
+Over time, Einstein’s energy packets came to be seen as“photons”.
+
+24
+00:03:57,280 --> 00:04:07,020
+The electron showed that electric charge was concentrated into point-like particles; the photon was a way of seeing energy as being concentrated in just the same way.
+
+25
+00:04:07,910 --> 00:04:13,270
+Work by Einstein and others showed that the two particles were intimately involved with each other.
+
+26
+00:04:13,840 --> 00:04:22,620
+To get energyinto an electron, you have to use a photon; and when an electron is induced to give up energy, the result is a photon.
+
+27
+00:04:24,040 --> 00:04:35,040
+This mutualism is embodied in some of today’s most pervasive technologies; solar cells, digital cameras, fibre-optic datalinks, LED lighting and lasers.
+
+28
+00:04:35,720 --> 00:04:39,880
+It is used to measure the cosmos and probe the fabric of space and time.
+
+29
+00:04:40,490 --> 00:04:43,230
+It could yet send space probes to the stars.
+
+30
+00:04:44,870 --> 00:05:03,050
+The settled view of light which provided a context for Einstein’s work dated from 1864, when James Clerk Maxwell rolled everything physics knew about electric and magnetic forces into a theory of electromagnetic“fields”produced by objects carrying an electric charge.
+
+31
+00:05:03,790 --> 00:05:11,450
+Stationary charged objects created electric fields; those moving at a constant speed created magnetic fields.
+
+32
+00:05:12,190 --> 00:05:18,850
+Accelerating charged objects created waves composed of both fields at once: electromagnetic radiation.
+
+33
+00:05:19,849 --> 00:05:22,869
+Light was a form of such radiation, Maxwell said.
+
+34
+00:05:23,340 --> 00:05:25,950
+His equations suggested there could be others.
+
+35
+00:05:26,800 --> 00:05:33,950
+In the late 1880s Heinrich Hertz showed that was true by creating radio waves in his laboratory.
+
+36
+00:05:34,719 --> 00:05:49,500
+As well as proving Maxwell right, he added the possibility of wireless telegraphy to the range of electrical technologies—from streetlights to dynamos to transatlantic telegraph cables—that were revolutionising the late 19th century.
+
+37
+00:05:50,970 --> 00:06:03,490
+Scientists have since detected and/or made use of electromagnetic waves at wavelengths which range from many times the diameter of Earth to a millionth the diameter of an atomic nucleus.
+
+38
+00:06:04,610 --> 00:06:19,300
+The wavelengths of visible light —380 nanometres (billionths of a metre) at the blue end of the spectrum, 700nm at the red end—are special only because they are the ones to which human eyes are sensitive.
+
+39
+00:06:20,430 --> 00:06:38,100
+The reason Einstein found what he called“Maxwell’s brilliant discovery”incomplete was that Maxwell’s fields were described, mathematically, as“continuous”functions: the fields’ strength had a value at every point in space and could not jump in value from one point to the next.
+
+40
+00:06:38,970 --> 00:06:41,520
+But the material world was not continuous.
+
+41
+00:06:41,920 --> 00:06:46,860
+It was lumpy; its molecules, atoms and electrons were separate entities in space.
+
+42
+00:06:47,639 --> 00:07:01,280
+Physics described the material world through statistical accounts of the behaviour of very large numbers of these microscopic lumps; heat, for example, depended on the speed with which they vibrated or bumped into each other.
+
+43
+00:07:02,330 --> 00:07:07,480
+It was a mathematical approach quite unlike Maxwell’s treatment of electromagnetic fields.
+
+44
+00:07:08,509 --> 00:07:13,109
+Yet matter and electromagnetic radiation were intimately associated.
+
+45
+00:07:13,820 --> 00:07:28,790
+Every object emits electromagnetic radiation just by dint of having a temperature; its temperature is a matter of the jiggling of its constituent particles, some of which are charged, and the jiggling of charged particles produces electromagnetic waves.
+
+46
+00:07:29,719 --> 00:07:42,769
+The spread of the wavelengths seen in that radiation —its spectrum—is a function of the body’s temperature; the hotter the body, the shorter both the median and highest wavelengths it will emit.
+
+47
+00:07:43,660 --> 00:07:59,070
+The reason the human eye is sensitive to wavelengths in the 380-700nm range is that those are the wavelengths that a body gives off most prolifically if it is heated to 5,500°C, the temperature of the surface of the Sun.
+
+48
+00:08:00,020 --> 00:08:03,089
+They are thus the wavelengths that dominate sunlight (see chart).
+
+49
+00:08:04,539 --> 00:08:13,550
+If wavelengths and temperature were so intimately involved, Einstein believed, it had to be possible to talk about them in the same mathematical language.
+
+50
+00:08:14,270 --> 00:08:25,330
+So he invented a statistical approach to the way entropy—a tendency towards disorder—varies when the volume of a cavity filled with electromagnetic radiation changes.
+
+51
+00:08:26,140 --> 00:08:32,090
+He then asked, in effect, what sort of lumpiness his statistics might be explaining.
+
+52
+00:08:33,110 --> 00:08:39,040
+The answer was lumps of energy inversely proportional to the wavelength of the light they represented.
+
+53
+00:08:40,350 --> 00:08:50,340
+In 1905 Einstein was willing to go only so far as suggesting that this light- as-lump point of view provided natural-seeming explanations of various phenomena.
+
+54
+00:08:51,070 --> 00:08:53,950
+Over subsequent years he toughened his stance.
+
+55
+00:08:54,650 --> 00:09:04,760
+His work on relativity showed that Maxwell’s luminiferous aether was not required for the propagation of electromagnetic fields; they existed in their own right.
+
+56
+00:09:05,680 --> 00:09:12,760
+His work on light showed that the energy in those fields could be concentrated into the point-like particles in empty space.
+
+57
+00:09:13,309 --> 00:09:22,300
+Light was promoted from what he called“a manifestation of some hypothetical medium”into“an independent entity like matter”.
+
+58
+00:09:23,820 --> 00:09:36,400
+This account was not fully satisfying, because light was now being treated as a continuous wave in some contexts—when being focused by lenses, say— and as something fundamentally lumpy in others.
+
+59
+00:09:37,460 --> 00:09:46,700
+This was resolved by the development of quantum mechanics, in which matter and radiation are both taken to be at the same time particulate and wavy.
+
+60
+00:09:47,660 --> 00:10:02,370
+Part of what it is to be an electron, or a photon, or anything else is to have a“wave function”; the probabilities calculated from these wave functions offer the only access to truth about the particles that physics can have.
+
+61
+00:10:03,740 --> 00:10:05,650
+Einstein was never reconciled to this.
+
+62
+00:10:06,099 --> 00:10:12,080
+He rejected the idea that a theory which provided only probabilities could be truly fundamental.
+
+63
+00:10:12,690 --> 00:10:16,990
+He wanted a better way for a photon to be both wave and a particle.
+
+64
+00:10:17,710 --> 00:10:18,630
+He never found it.
+
+65
+00:10:19,410 --> 00:10:29,200
+“All these 50 years of conscious brooding”, he wrote to a friend in 1951,“have brought me no nearer to the answer to the question, ‘What are light quanta?
+
+66
+00:10:30,109 --> 00:10:34,900
+’ Nowadays every Tom, Dick and Harry thinks he knows it, but he is mistaken.”
+
+67
+00:10:36,150 --> 00:10:57,760
+Though Einstein was probably not thinking of him specifically, one of those Dicks was Richard Feynman, one of four physicists who, in the late 1940s, finished off the intellectual structure of which Einstein had laid the foundations: a complete theory of light and matter called quantum electrodynamics, or QED.
+
+68
+00:10:58,710 --> 00:11:05,520
+It is a theory in which both matter and radiation are described in terms of fields of a fundamentally quantum nature.
+
+69
+00:11:06,359 --> 00:11:13,160
+Particles —whether of light or matter—are treated as“excited states”of those fields.
+
+70
+00:11:13,900 --> 00:11:22,000
+No phenomenon has been found that QED should be able to explain and cannot; no measurement has been made that does not fit with its predictions.
+
+71
+00:11:23,359 --> 00:11:29,510
+Feynman was happy to forgo Einstein’s brooding and straightforwardly assert that“light is made of particles”.
+
+72
+00:11:30,200 --> 00:11:31,630
+His reasoning was pragmatic.
+
+73
+00:11:31,910 --> 00:11:42,309
+All machines made to detect light will, when the light is turned down low enough, provide lumpy it’s-there-or-it’s-not readings rather than continuous ones.
+
+74
+00:11:43,240 --> 00:11:56,499
+The nature of quantum mechanics and its wave functions mean that some of those readings will play havoc with conventional conceptions of what it is for a particle to be in a given place, or to exist as an independent entity.
+
+75
+00:11:57,469 --> 00:12:00,179
+But that is just the way of the quantum, baby.
+
+76
+00:12:01,459 --> 00:12:10,199
+The precise manipulation of photons has shed much light on“non-locality”,“decoherence”and other strange quantum-mechanical phenomena.
+
+77
+00:12:11,070 --> 00:12:19,210
+It is now making their application to practical problems, through quantum computation and quantum cryptography, increasingly plausible.
+
+78
+00:12:20,180 --> 00:12:27,190
+But this Technology Quarterly is not about such quantum weirdness (for that, see our Technology Quarterly of January 2018).
+
+79
+00:12:28,480 --> 00:12:41,940
+It is about how photons’ interactions with electrons have been used to change the world through the creation of systems that can turn light directly into electricity, and electricity directly into light.
+
+80
+00:12:43,210 --> 00:12:46,950
+That light and electricity were linked was known long before Einstein.
+
+81
+00:12:47,200 --> 00:13:02,240
+In the 1880s Werner von Siemens, founder of the engineering firm that bears his name, attached“the most far reaching importance”to the mysterious“photoelectric effect”which led panels of selenium to produce trickles of current.
+
+82
+00:13:03,160 --> 00:13:22,029
+Einstein’s theory was taken seriously in part because it explained why a faint short-wavelength light could produce such a current when a bright longer-wavelength light could not: what mattered was the amount of energy in each photon, not the total number of photons.
+
+83
+00:13:23,349 --> 00:13:30,589
+Technology built on such ideas has since allowed light to be turned into electricity on a scale that would have boggled Siemens’s mind.
+
+84
+00:13:31,280 --> 00:13:38,470
+It lets billions of phone users make digital videos and send them to each other through an infrastructure woven from whiskers of glass.
+
+85
+00:13:38,960 --> 00:13:45,700
+It lights rooms, erases tattoos, sculpts corneas and describes the world to driverless cars.
+
+86
+00:13:46,699 --> 00:14:01,760
+Ingenuity and happy chance, government subsidies and the search for profit have created from Einstein’s suggestion a golden age of light—a burst of innovation that, a century on, is not remotely over.
+

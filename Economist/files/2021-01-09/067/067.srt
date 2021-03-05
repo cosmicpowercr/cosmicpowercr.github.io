@@ -1,0 +1,228 @@
+1
+00:00:14,530 --> 00:00:24,230
+THANKS FOR contacting me for an update on the international corporate- tax landscape.
+
+2
+00:00:24,570 --> 00:00:29,280
+For global tech firms like yours, the headlines make worrying reading.
+
+3
+00:00:29,570 --> 00:00:32,939
+A fragile transatlantic truce has been shattered.
+
+4
+00:00:33,290 --> 00:00:41,970
+France has resumed collecting the digital-services tax it introduced in 2019, targeting tech firms (and catching others in the net).
+
+5
+00:00:42,400 --> 00:00:54,400
+The outgoing Trump administration has lined up retaliatory tariffs on $1,3bn of posh French handbags, cosmetics and more, ready to pull the trigger.
+
+6
+00:00:55,100 --> 00:01:01,340
+If America acts, the European Union may strike back against American products of equivalent value.
+
+7
+00:01:02,370 --> 00:01:08,530
+America complains that national tech taxes unfairly target its digital giants.
+
+8
+00:01:09,000 --> 00:01:10,610
+It had better get used to them.
+
+9
+00:01:10,930 --> 00:01:20,780
+Such levies, typically 2-3% of local sales, are spreading as governments try to claw back taxing rights lost in a dysfunctional global system.
+
+10
+00:01:21,309 --> 00:01:28,249
+Among those joining France in implementing or mulling a digital tax are Brazil, Britain, India and Italy.
+
+11
+00:01:28,719 --> 00:01:31,650
+An EU-wide version has been mooted.
+
+12
+00:01:32,610 --> 00:01:45,980
+You don’t need me to tell you that this is just one front on which big tech is being assailed, alongside alleged anticompetitive behaviour, the handling of user data and the policing of speech.
+
+13
+00:01:46,500 --> 00:01:49,140
+Employees are growing restless, too.
+
+14
+00:01:49,459 --> 00:01:55,070
+I imagine you saw this week’s news from across town about Alphabet’s geeks forming a union.
+
+15
+00:01:56,080 --> 00:01:59,780
+Amid this onslaught, it is worth keeping a sense of perspective.
+
+16
+00:02:00,179 --> 00:02:06,490
+The winds on tax are shifting from favourable to, with luck, no worse than fair.
+
+17
+00:02:06,959 --> 00:02:10,110
+We are coming off a golden age for tax-minimisation.
+
+18
+00:02:10,650 --> 00:02:22,210
+Breakneck globalisation allowed multinationals to replace fears of double taxation with the joys of double non-taxation, using tax havens to game the system.
+
+19
+00:02:22,760 --> 00:02:30,130
+By exploiting mismatches between different countries’ tax laws, taxable profits could be made to vanish.
+
+20
+00:02:30,600 --> 00:02:36,890
+No wonder corporate tax departments swelled, as more brainboxes were hired to find loopholes.
+
+21
+00:02:37,440 --> 00:02:42,510
+You have enough tax lawyers these days to fill a small concert hall (were that allowed).
+
+22
+00:02:43,000 --> 00:02:59,660
+You and other tech firms were some of the craftiest innovators: the five largest Silicon Valley giants paid $220bn in cash taxes over the past decade, or just 16% of their cumulative pre-tax profits.
+
+23
+00:03:00,619 --> 00:03:03,070
+This era could not last for ever.
+
+24
+00:03:03,290 --> 00:03:15,920
+Already, some tax gymnastics are no longer possible, owing to a multilateral clampdown brokered by the OECD club of industrialised countries after the global financial crisis.
+
+25
+00:03:16,559 --> 00:03:27,159
+The“Double Irish with a Dutch Sandwich”, a popular dish that channelled profits through EU- based shell subsidiaries to a tax haven like Bermuda, is off the menu.
+
+26
+00:03:27,420 --> 00:03:42,720
+So are“hybrid mismatches”, whereby differences in two or more countries’ treatment of an instrument or type of entity could be exploited to magic away taxable income or create a long-term tax deferral.
+
+27
+00:03:43,450 --> 00:03:49,740
+The most egregious tricks involving intra-company loans have also been snuffed out.
+
+28
+00:03:50,230 --> 00:04:03,170
+Governments, especially in Europe, have grown teeth in going after what they perceive as aggressive avoidance; Apple, don’t forget, is still tussling with Brussels over a $16bn back-tax demand.
+
+29
+00:04:03,559 --> 00:04:08,150
+And now Facebook reportedly wants to close its Irish holding companies.
+
+30
+00:04:09,150 --> 00:04:20,860
+That still leaves plenty of scope to bring down tax bills, in particular through creative use of intangible assets, such as patents and other intellectual property.
+
+31
+00:04:21,389 --> 00:04:26,200
+Balance-sheets of digitally focused firms like yours are stuffed with these.
+
+32
+00:04:26,610 --> 00:04:38,160
+The tax-free route via the Caribbean has grown trickier, but you can still get the rate down to single figures using the EU’s haven-lites,including Ireland and Luxembourg.
+
+33
+00:04:38,830 --> 00:04:49,190
+Governments, including in Europe, that have excoriated tax-shy firms in public have been quietly cooking up new schemes to attract investment, such as“patent boxes”.
+
+34
+00:04:53,220 --> 00:04:54,570
+Better still,“transfer pricing”also remains largely intact.
+
+35
+00:04:54,870 --> 00:05:06,799
+It has underpinned global tax policy for decades, allowing firms to move profits to lower-tax territories by, in essence, pretending that their subsidiaries deal with each other at arm’s length.
+
+36
+00:05:07,219 --> 00:05:12,690
+From the (patchy) data available, the amount of profits being shifted around hasn’t fallen much.
+
+37
+00:05:13,050 --> 00:05:24,770
+According to the Tax Justice Network, a pesky NGO with gratingly solid number-crunchers, multinationals continue to short-change governments by around $250bn a year.
+
+38
+00:05:25,790 --> 00:05:29,070
+Covid-19 is a worry, to be sure.
+
+39
+00:05:29,430 --> 00:05:37,320
+The huge holes it has blown in budgets could send people reaching for the pitchforks, demanding all pay their“fair share”.
+
+40
+00:05:37,790 --> 00:05:42,639
+And what better target than the tech giants that have“made out like bandits”in the pandemic?
+
+41
+00:05:43,369 --> 00:05:50,320
+Reflecting the mood, some countries have banned firms registered in tax havens from receiving bail-out funds.
+
+42
+00:05:50,770 --> 00:06:03,060
+Self-styled tax- fairness campaigners have been throwing emotionally charged statistics around, for instance that the lost $250bn is equivalent to 20m nurses’ salaries.
+
+43
+00:06:04,050 --> 00:06:12,830
+With risks growing, you may want to wrest control of this issue personally from your tax department, which cannot see the pitchforks for the profit.
+
+44
+00:06:13,309 --> 00:06:17,720
+You should lobby for a multilateral, OECD-led deal.
+
+45
+00:06:17,940 --> 00:06:18,510
+Why?
+
+46
+00:06:18,540 --> 00:06:30,110
+For starters, big tech could do with an armistice in at least one of its global battles with regulators—and the antitrust and data dust-ups will grind on relentlessly for years.
+
+47
+00:06:30,110 --> 00:06:36,090
+Yours, Lou Pohl As important, a global deal is the least bad option for business.
+
+48
+00:06:36,870 --> 00:06:50,620
+It would bring in a minimum global tax rate, but the bar is likely to be set low, at perhaps 12,5% of profits—below the average cash-tax rate you actually pay as a big American tech firm these days.
+
+49
+00:06:51,070 --> 00:07:00,250
+The deal’s other pillar—making digital firms liable for tax in markets where they have customers but lack a physical presence—will make you twitchier.
+
+50
+00:07:00,650 --> 00:07:11,330
+But even its champions accept it is unlikely to skim more than $5bn-10bn in extra revenue globally once allthe horse-trading is done.
+
+51
+00:07:11,699 --> 00:07:17,120
+Much will depend on the incoming Biden administration, which has yet to signal its intentions.
+
+52
+00:07:18,100 --> 00:07:24,400
+Unless it does, and soon, a draft accord by mid-2021 looks optimistic.
+
+53
+00:07:24,940 --> 00:07:26,129
+Push for it nonetheless.
+
+54
+00:07:26,380 --> 00:07:41,480
+The alternative looks ugly: a global tax tit-for-tat as national tech levies of varying severity become the norm, with overlapping tax claims and a possible return to pre-globalisation double taxation.
+
+55
+00:07:41,880 --> 00:07:46,829
+So back a global deal, and trust that it will be relatively modest.
+
+56
+00:07:47,199 --> 00:07:50,630
+The rules of the tax- avoidance game may be changing.
+
+57
+00:07:50,890 --> 00:07:52,930
+But there’s still a game.
+

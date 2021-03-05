@@ -1,0 +1,424 @@
+1
+00:00:19,670 --> 00:00:29,490
+LYING DRUNK in a field outside the Austrian city of Innsbruck in 1971, inspiration struck Douglas Adams, a science-fiction writer.
+
+2
+00:00:29,900 --> 00:00:39,760
+He looked at his copy of“The Hitchhiker’s Guide to Europe”, and then up at the stars, and came up with the idea for a“Hitchhiker’s Guide to the Galaxy”.
+
+3
+00:00:40,270 --> 00:00:51,490
+It would be a (fictional) mixture of travel book and encyclopedia, but with an absurd- seeming twist: instead of being written by experts, anyone could contribute.
+
+4
+00:00:52,469 --> 00:00:54,820
+Adams played his idea for laughs.
+
+5
+00:00:55,190 --> 00:00:58,290
+But today it looks as prescient as it was funny.
+
+6
+00:00:58,890 --> 00:01:07,280
+On January 15th Wikipedia—“the free encyclopedia that anyone can edit”—will celebrate its 20th anniversary.
+
+7
+00:01:07,799 --> 00:01:11,500
+It will do so as the biggest and most-read reference work ever.
+
+8
+00:01:11,500 --> 00:01:19,950
+Wikipedia hosts more than 55m articles in hundreds of languages, each written by volunteers.
+
+9
+00:01:20,870 --> 00:01:28,069
+Its 6,2m English- language articles alone would fill some 2,800 volumes in print.
+
+10
+00:01:30,150 --> 00:01:38,550
+AlexaInternet, a web-analysis firm, ranks Wikipedia as the 13th-most-popular site on the internet, ahead of Reddit, Netflix and Instagram.
+
+11
+00:01:38,550 --> 00:01:42,840
+Yet Wikipedia is an oddity.
+
+12
+00:01:43,240 --> 00:01:46,960
+It defies the Silicon Valley recipe for success.
+
+13
+00:01:47,520 --> 00:01:54,080
+The site has no shareholders, has generated no billionaires and sells no advertising.
+
+14
+00:01:54,670 --> 00:02:07,580
+Today’s aspiring tech giants burn vast quantities of investors’ money subsidising taxi rides (Uber) or millennial messaging (Snap) in pursuit of“scale”.
+
+15
+00:02:08,390 --> 00:02:14,110
+Wikipedia grew organically, as more and more ordinary people decided to contribute.
+
+16
+00:02:14,830 --> 00:02:21,670
+The site has its roots in the techno-optimism that characterised the internet at the end of the 20th century.
+
+17
+00:02:22,209 --> 00:02:30,220
+It held that ordinary people could use their computers as tools for liberation, education and enlightenment.
+
+18
+00:02:31,900 --> 00:02:39,610
+Like most Utopian thinking, the idea of an amateur encyclopedia was, for many years, treated as a bit of a joke.
+
+19
+00:02:40,350 --> 00:02:42,870
+“A few endorse Wikipedia heartily.
+
+20
+00:02:43,160 --> 00:02:48,800
+This mystifies me,”wrote a former president of the American Library Association in 2007.
+
+21
+00:02:50,730 --> 00:03:01,329
+“A professor who encourages the use of Wikipedia is the intellectual equivalent of a dietician who recommends a steady diet of Big Macs with everything,”he sneered.
+
+22
+00:03:02,450 --> 00:03:19,639
+Even now, after numerous academic studies highlighting its reliability, Wikipedia still lacks the gravitas and authority of older encyclopedias like“Britannica”, which are written by paid academic experts rather than amateurs.
+
+23
+00:03:20,329 --> 00:03:27,340
+Schools, universities and The Economist’s fact-checkers frown on relying on it.
+
+24
+00:03:29,620 --> 00:03:32,510
+Wikipedia may not have vanquished its doubters in theory.
+
+25
+00:03:32,540 --> 00:03:34,859
+But it has triumphed in practice.
+
+26
+00:03:35,340 --> 00:03:43,290
+With over 20bn page views a month, it has become the standard reference work for anyone with an internet connection.
+
+27
+00:03:44,070 --> 00:03:54,139
+As social-media sites are lambasted for censorship,“fake news”, disinformation and conspiracy theories, its reputation is higher than ever.
+
+28
+00:03:54,859 --> 00:04:08,819
+Toby Negrin, chief product officer at the Wikimedia Foundation, the San Francisco-based charity that provides the site’s infrastructure, describes the online encyclopedia as a“guardian of truth”.
+
+29
+00:04:10,199 --> 00:04:12,169
+That sounds grandiose.
+
+30
+00:04:12,690 --> 00:04:16,150
+But other tech behemoths now use it as a neutral arbiter.
+
+31
+00:04:16,820 --> 00:04:23,160
+Conspiracy-theory videos on YouTube often come tagged with warning information from Wikipedia.
+
+32
+00:04:24,090 --> 00:04:32,020
+Since 2018 Facebook has used Wikipedia to provide information buttons with the sources of news articles.
+
+33
+00:04:33,320 --> 00:04:35,320
+Others are also enthusiastic.
+
+34
+00:04:35,600 --> 00:04:46,900
+In October the World Health Organisation (WHO) started working with Wikipedia to make information on covid-19 available via the site.
+
+35
+00:04:47,690 --> 00:04:55,010
+It considered the collaboration vital to its efforts to prevent an“infodemic”of misinformation about the virus.
+
+36
+00:04:55,850 --> 00:05:06,159
+Brewster Kahle, the founder of the Internet Archive, which preserves websites for posterity, describes Wikipedia as“a treasure of the internet”.
+
+37
+00:05:07,519 --> 00:05:10,880
+Wikipedia’s value and influence are hard to compute.
+
+38
+00:05:11,210 --> 00:05:15,690
+Its revenues come from charitable grants and donations from its users.
+
+39
+00:05:16,360 --> 00:05:26,700
+“Wikipedia is an example of what I like to call ‘digital dark matter’,”says Shane Greenstein, an economist at Harvard who has studied the site closely.
+
+40
+00:05:27,340 --> 00:05:38,050
+Like parenting and housework, contributing to it is a valuable service that, because it is unpaid, remains mostly invisible to standard economic tools.
+
+41
+00:05:39,480 --> 00:05:41,609
+A few researchers have tried to guess.
+
+42
+00:05:41,990 --> 00:05:50,050
+One study in 2018 estimated that American consumers put a value of about $150 a year on Wikipedia.
+
+43
+00:05:50,670 --> 00:05:56,329
+If true, the site would be worth around $42bn a year in America alone.
+
+44
+00:05:56,980 --> 00:05:59,489
+Then add indirect benefits.
+
+45
+00:05:59,930 --> 00:06:03,140
+Many firms use Wikipedia in profitable ways.
+
+46
+00:06:03,530 --> 00:06:11,790
+Amazon and Apple rely on it to allow Alexa and Siri, their voice assistants, to answer factual questions.
+
+47
+00:06:12,160 --> 00:06:19,000
+Google uses it to populate the“fact boxes”that often accompany searches based on factual questions.
+
+48
+00:06:20,320 --> 00:06:22,060
+Facebook has started to do something similar.
+
+49
+00:06:22,750 --> 00:06:26,790
+This drives traffic to Wikipedia from those keen to learn more.
+
+50
+00:06:26,790 --> 00:06:34,999
+AI language models of the sort employed by Google or Facebook need huge collections of text on which to train.
+
+51
+00:06:35,350 --> 00:06:37,870
+Wikipedia fits the bill nicely.
+
+52
+00:06:39,300 --> 00:06:42,190
+The cult of the amateur Its biggest power is its subtlest.
+
+53
+00:06:42,800 --> 00:06:53,119
+Since it is the first resort of students, professors, journalists and any number of curious people, its contributors do much to make the intellectual weather.
+
+54
+00:06:54,680 --> 00:07:05,200
+The WHO’s decision to work with Wikipedia reflects research suggesting that the site is the most-read source of medical information in the world—for doctors as well as patients.
+
+55
+00:07:06,080 --> 00:07:08,639
+Its reach is clearest when things go wrong.
+
+56
+00:07:09,239 --> 00:07:19,630
+In 2008 one user inserted a joke claiming that the South American coati, a small mammal, is sometimes known as the“Brazilian aardvark”.
+
+57
+00:07:21,240 --> 00:07:32,830
+By the time the jape was revealed, in 2014, it had found its way on to various websites and into news articles and a book published by a university press.
+
+58
+00:07:33,660 --> 00:07:48,410
+In 2012 a senior British judge wascaught out when, in a report on the shortcomings and criminality of parts of the British press, he named Brett Straub as one of the founders of the Independent, a newspaper.
+
+59
+00:07:48,940 --> 00:07:51,710
+Mr Straub has nothing to do with the Independent.
+
+60
+00:07:52,120 --> 00:07:56,530
+His friends had been adding his name to Wikipedia’s pages as a joke.
+
+61
+00:07:57,880 --> 00:08:09,430
+Yet despite a string of notable embarrassments—and its own disclaimer that“Wikipedia is not a reliable source”—it is, on the whole, fairly accurate.
+
+62
+00:08:10,310 --> 00:08:22,649
+An investigation by Nature in 2005 compared the site with“Britannica”, and found little difference in the number of errors that experts could find in a typical article.
+
+63
+00:08:23,350 --> 00:08:28,280
+Other studies, conducted since, have mostly endorsed that conclusion.
+
+64
+00:08:28,900 --> 00:08:33,640
+Explaining exactly why Wikipedia’s articles are so good is trickier.
+
+65
+00:08:34,139 --> 00:08:40,109
+A common joke holds that it is just as well that Wikipedia works in practice, because it does not work in theory.
+
+66
+00:08:41,270 --> 00:08:44,070
+Deliberate decisions are one explanation.
+
+67
+00:08:44,700 --> 00:08:54,020
+Wikipedia compares well with other reference works when it comes to honest mistakes, but it is uniquely vulnerable to vandalism and pranks.
+
+68
+00:08:54,670 --> 00:09:02,530
+In an effort to combat them, says Mr Negrin, the site has developed algorithms that monitor articles for mischief.
+
+69
+00:09:03,320 --> 00:09:13,870
+For America’s recent presidential election, editing articles was restricted to accounts more than 30 days old, and with at least 500 edits to their name.
+
+70
+00:09:14,969 --> 00:09:16,649
+Other reasons are structural.
+
+71
+00:09:17,010 --> 00:09:25,560
+The site’s open nature and its popularity help ensure that errors in well-read articles are usually spotted and fixed quickly.
+
+72
+00:09:26,059 --> 00:09:30,819
+(By the same token, mistakes in more obscure entries may languish for years.
+
+73
+00:09:31,740 --> 00:09:38,360
+) Mr Greenstein notes that, unlike with a printed encyclopedia,“another paragraph doesn’t cost anything”.
+
+74
+00:09:38,920 --> 00:09:46,850
+That means that ideological rows can often be defused simply by adding paragraphs outlining different views.
+
+75
+00:09:47,740 --> 00:09:53,230
+The site’s intimidating list of rules means that new editors face a steep learning curve.
+
+76
+00:09:53,600 --> 00:10:00,150
+But it also helps to filter out dilettantes, ideologues and bores with an axe to grind.
+
+77
+00:10:02,610 --> 00:10:14,890
+Wikipedia’s not-for-profit structure, points out Mr Kahle, means it can focus on the interests of readers and editors without having to consider the (possibly conflicting) demands of advertisers.
+
+78
+00:10:15,610 --> 00:10:20,250
+The site is unusual since it is run by humans, not algorithms.
+
+79
+00:10:20,900 --> 00:10:40,179
+Though social-media sites rely on idiot- savant computer programs to maximise“engagement”(ie, to sell moreadvertising), Wikipedia’s humans try to uphold woolly ideals such as accuracy, impartiality and arguing in good faith.
+
+80
+00:10:41,290 --> 00:10:47,269
+Much of its success, in other words, is because of the culture its users have created.
+
+81
+00:10:47,889 --> 00:11:03,450
+It is evident in the discussion pages that accompany every article, as the site’s contributors debate with each other the noteworthiness of a topic, the quality of its primary sources, what information to include and to leave out, and more.
+
+82
+00:11:04,090 --> 00:11:07,919
+Rules of thumb gradually become more solid guidelines.
+
+83
+00:11:08,600 --> 00:11:18,550
+The Wikipedia page outlining the“Neutral Point of View”—one of the most widely discussed and referred to—runs to 4,500 words.
+
+84
+00:11:19,320 --> 00:11:28,450
+It includes recommendations on how best to describe aesthetic opinions, which assumptions count as necessary, and which must be justified.
+
+85
+00:11:29,050 --> 00:11:35,450
+It also points out the risks of providing“false balance”about controversial subjects.
+
+86
+00:11:36,570 --> 00:11:38,670
+Cultures constantly change.
+
+87
+00:11:39,130 --> 00:11:43,940
+Relying on Wikipedia’s current one may, therefore, seem a risky strategy.
+
+88
+00:11:44,560 --> 00:11:58,190
+Katherine Maher, the Wikimedia Foundation’s executive director, says that if Wikipedia did not already exist it might not be possible to create it on today’s fragmented, commercially minded internet.
+
+89
+00:11:58,889 --> 00:12:03,350
+But given that it does, she is bullish about its prospects for survival.
+
+90
+00:12:03,960 --> 00:12:11,889
+Much of the site’s work appeals to human nature, she says:“People love to be right, to demonstrate their competence.”
+
+91
+00:12:12,969 --> 00:12:14,850
+Even errors can be helpful.
+
+92
+00:12:15,400 --> 00:12:22,830
+Ms Maher cites Cunningham’s Law, which holds that“the best way to get the right answer to a question on the internet.
+
+93
+00:12:23,160 --> 00:12:24,840
+is to post the wrong answer.”
+
+94
+00:12:25,710 --> 00:12:42,730
+She recalls meeting a committed Chinese editor who began contributing to the Chinese-language project because“a lot of what he saw was just wrong, and he felt he had to fix it!”Keeping Wikipedia’s culture healthy means moving with the times.
+
+95
+00:12:43,560 --> 00:12:48,330
+“Wikipedia is a child of the desktop internet,”says Mr Negrin.
+
+96
+00:12:48,330 --> 00:12:54,369
+But“increasingly, when people talk about internet users, they’re talking about smartphones.”
+
+97
+00:12:55,209 --> 00:12:59,660
+So the foundation is improving the site’s mobile-editing tools.
+
+98
+00:13:00,290 --> 00:13:12,960
+Typing long articles on a smartphone is inescapably awkward, so attention has focused on helping users to make“micro-edits”, such as fixing spelling mistakes or correcting dates.
+
+99
+00:13:13,710 --> 00:13:25,660
+The hope is that this will also act as a gateway drug for young editors and for those in poorer countries for whom smartphones are the standard or only way of getting online.
+
+100
+00:13:26,400 --> 00:13:32,610
+Attracting a steady supply of new editors is vital for Wikipedia’s long-term survival.
+
+101
+00:13:33,160 --> 00:13:36,080
+So is attracting new kinds of contributors.
+
+102
+00:13:54,350 --> 00:13:55,040
+The encyclopedia itself is popular in America, Europe, Russia and Japan, but not much read in India and sub- Saharan Africa (see chart).
+
+103
+00:13:55,040 --> 00:14:02,509
+Changing that, she says, is vital to the health of a project whose idealism remains undimmed.
+
+104
+00:14:03,349 --> 00:14:10,570
+“Our vision is a world where every single human being can share in all knowledge,”she says.
+
+105
+00:14:11,360 --> 00:14:15,030
+This time, such Utopianism is harder to dismiss.
+
+106
+00:14:15,460 --> 00:14:19,810
+After all, it is backed up by 20 years of success.
+

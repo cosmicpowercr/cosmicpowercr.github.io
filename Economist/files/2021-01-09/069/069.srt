@@ -1,0 +1,288 @@
+1
+00:00:19,279 --> 00:00:26,580
+IN A FAST-CHANGING world, the investment bankers of Wall Street and the City of London have clung to certain rituals.
+
+2
+00:00:26,980 --> 00:00:35,160
+One of these is the annual“outlook”, which lays out the path the economy and financial markets might take over the coming year.
+
+3
+00:00:35,719 --> 00:00:41,460
+These hefty documents start to appear in inboxes a few weeks before the year’s end.
+
+4
+00:00:42,400 --> 00:00:48,840
+In mid-November a strategist at one bank had just put his outlook to bed with satisfaction.
+
+5
+00:00:49,259 --> 00:00:57,570
+His call on stocks for 2021 was“constructive”: Wall- Street-speak for“bullish, but not mindlessly so”.
+
+6
+00:00:58,020 --> 00:01:02,080
+But a few days later he was feeling a little less pleased with himself.
+
+7
+00:01:02,530 --> 00:01:04,570
+His outlook was not distinctive.
+
+8
+00:01:04,780 --> 00:01:07,910
+Rival strategists too were constructive.
+
+9
+00:01:08,599 --> 00:01:10,199
+It is not hard to see why.
+
+10
+00:01:10,469 --> 00:01:13,680
+An end to the covid-19 pandemic is in sight.
+
+11
+00:01:14,030 --> 00:01:18,940
+Rich- world governments are rediscovering the joys of fiscal pump-priming.
+
+12
+00:01:19,410 --> 00:01:24,269
+Realinterest rates are so low as to make sky-high stocks look cheap (see Buttonwood).
+
+13
+00:01:24,500 --> 00:01:29,090
+In short, the conditions seem ripe for further stockmarket gains.
+
+14
+00:01:29,570 --> 00:01:35,020
+So ripe, indeed, that a persistent thought keeps surfacing in the minds of strategists.
+
+15
+00:01:35,470 --> 00:01:40,860
+What is to stop stock prices worldwide going on a really crazy run?
+
+16
+00:01:41,090 --> 00:01:45,350
+Several things could get in the way of a market melt-up.
+
+17
+00:01:46,010 --> 00:01:47,169
+One is the economy.
+
+18
+00:01:47,439 --> 00:01:54,410
+Since April markets have been looking beyond the damage from covid-19 to the post-pandemic recovery.
+
+19
+00:01:54,980 --> 00:01:59,510
+The discovery of workable vaccines seemed to bring that world closer.
+
+20
+00:02:00,050 --> 00:02:06,409
+Economic indicators for America and China towards the end of 2020 were surprisingly strong.
+
+21
+00:02:07,049 --> 00:02:09,770
+But the pandemic is not going quietly.
+
+22
+00:02:10,200 --> 00:02:16,110
+More virulent strains of covid-19 have forced stricter lockdowns in parts of Europe.
+
+23
+00:02:16,870 --> 00:02:21,360
+The harm to the world economy is likely to be more prolonged than hoped.
+
+24
+00:02:22,820 --> 00:02:25,260
+Another obstacle is bullish sentiment.
+
+25
+00:02:25,990 --> 00:02:37,440
+The last time fund mangers were this optimistic about the scope for stockmarket gains was January 2018, according to a monthly survey by Bank of America done in December.
+
+26
+00:02:38,190 --> 00:02:46,800
+A large majority think the world economy is in the“early-cycle”phase (ie, that there is a long runway of growth ahead).
+
+27
+00:02:47,660 --> 00:02:55,109
+Paradoxically, positive sentiment is often seen as a reason to be wary, and that investors have got ahead ofthemselves.
+
+28
+00:02:55,630 --> 00:03:03,230
+Indeed, 2018 began with much talk of a market melt-up, but ended with heavy stockmarket losses.
+
+29
+00:03:04,360 --> 00:03:10,970
+A lot of the current optimism rests on the idea that policy will continue to support the economy.
+
+30
+00:03:11,570 --> 00:03:14,240
+What if policymakers change tack?
+
+31
+00:03:14,940 --> 00:03:22,310
+Continued fiscal support requires political action and agreement, which cannot always be relied upon.
+
+32
+00:03:22,710 --> 00:03:28,570
+A natural concern is that stimulus might be withdrawn abruptly, as it was after 2010.
+
+33
+00:03:29,440 --> 00:03:32,000
+So far, though, there is little sign of this.
+
+34
+00:03:32,429 --> 00:03:45,430
+In America the $900bn fiscal package passed after Christmas will add two percentage points to GDP growth in 2021, reckon economists at JPMorgan Chase, a bank.
+
+35
+00:03:46,250 --> 00:03:52,099
+The loss of the Republican majority in the Senate may open the door to further fiscal easing.
+
+36
+00:03:52,799 --> 00:04:03,430
+In Europe the boost from the €750bn ($920bn) recovery fund should start to be felt from the middle of the year.
+
+37
+00:04:04,360 --> 00:04:10,640
+Yet another risk, and one that keeps some market bulls awake at night, is resurgent inflation.
+
+38
+00:04:11,520 --> 00:04:23,440
+Lockdowns and fiscal transfers have left rich-world consumers with extra savings and a lot of pent-up demand—fuel for a post- pandemic spending spree.
+
+39
+00:04:24,259 --> 00:04:31,920
+Meanwhile recession has also taken out supply capacity: a lot of small firms (and some large ones) have gone under.
+
+40
+00:04:32,630 --> 00:04:37,630
+With enough bottlenecks, a surge in spending could drive up inflation.
+
+41
+00:04:38,280 --> 00:04:53,800
+A dynamic of this kind has been playing out in commodity markets: a revival in industrial demand (notably from China) for copper and iron ore has bumped up against supply constraints and led to a run-up in prices.
+
+42
+00:04:54,920 --> 00:04:58,080
+A temporary bout of inflation seems plausible.
+
+43
+00:04:58,559 --> 00:05:06,500
+A sustained burst of higher inflation—and one that forces central banks into abruptly raising interest rates—appears less so.
+
+44
+00:05:07,390 --> 00:05:14,610
+Nor is it obvious that bond markets will react so violently as to fatally undermine stock prices.
+
+45
+00:05:15,309 --> 00:05:24,720
+Bond yields have been edging up for months: this week the ten-year Treasury yield exceeded 1% for the first time since March 2020.
+
+46
+00:05:25,410 --> 00:05:33,329
+This upward creep does reflect higher market expectations of inflation, which are now above 2% in America.
+
+47
+00:05:33,950 --> 00:05:43,090
+But yields on inflation-protected Treasuries have barely budged—and it is these real yields that are the benchmark for stockmarket valuations.
+
+48
+00:05:44,120 --> 00:05:57,830
+If the pattern of modestly above-target inflation expectations, a relaxed Federal Reserve and steady real yields stays intact, it may well boost equity prices, not retard them.
+
+49
+00:05:58,840 --> 00:06:01,900
+There are other hangover effects from the pandemic to consider.
+
+50
+00:06:02,310 --> 00:06:03,790
+A big one is debt.
+
+51
+00:06:04,380 --> 00:06:10,810
+Companies borrowed heavily to ensure they had enough cash to withstand the revenue losses from lockdowns.
+
+52
+00:06:11,340 --> 00:06:18,660
+The increased debt load will drag on companies’ finances and could in turn weigh on equity prices.
+
+53
+00:06:19,200 --> 00:06:21,240
+But it may not be a heavy weight.
+
+54
+00:06:21,960 --> 00:06:38,510
+Central-bank buying of corporate bonds has kept financing costs remarkably low for companies with access to wholesale capital markets: just consider the cost of borrowing for companies with debt rated BBB, the riskiest investment-grade rating.
+
+55
+00:06:39,030 --> 00:06:47,460
+The spread over Treasuries is about as low as it was in 2006, when wider credit conditions were dangerously easy.
+
+56
+00:06:48,120 --> 00:06:52,480
+Such low borrowing costs make debt burdens easier to carry.
+
+57
+00:06:53,350 --> 00:06:59,700
+A related concern is that the explosion in public debt will eventually push up real interest rates.
+
+58
+00:07:00,390 --> 00:07:05,720
+But demand for liquid safe assets tends to stay high after crises.
+
+59
+00:07:06,290 --> 00:07:08,550
+Chief among these are government bonds.
+
+60
+00:07:09,620 --> 00:07:16,880
+On a closer look, then, many of the obstacles to the stockmarket’s upward march do not seem so formidable.
+
+61
+00:07:17,340 --> 00:07:23,190
+A terrible year for the economy still produced positive returns in many stockmarkets.
+
+62
+00:07:23,700 --> 00:07:31,690
+The fact that recession has hurt small unlisted businesses more than large listed firms is one part of the story.
+
+63
+00:07:32,260 --> 00:07:35,580
+The other is the paucity of yields on offer from bonds.
+
+64
+00:07:36,290 --> 00:07:45,500
+In a note this week Jeremy Grantham, co-founder of GMO, an asset manager, argues that stocks in America have already gone too far.
+
+65
+00:07:46,070 --> 00:07:57,640
+“My best guess as to the longest this bubble might survive is the late spring or early summer,”he writes, and advises seeking refuge in cheap emerging-market stocks.
+
+66
+00:07:58,570 --> 00:08:00,860
+Mr Grantham’s note is well worth reading.
+
+67
+00:08:01,170 --> 00:08:02,399
+But a thought lingers.
+
+68
+00:08:02,799 --> 00:08:08,340
+The case for owning stocks at these prices depends on low interest rates.
+
+69
+00:08:08,640 --> 00:08:10,640
+This is a global condition.
+
+70
+00:08:11,200 --> 00:08:14,910
+So why would stock prices not melt up elsewhere?
+
+71
+00:08:15,620 --> 00:08:23,259
+Perhaps Wall Street’s year-ahead notes for 2022 will survey the wreckage of a stockmarket bust in America.
+
+72
+00:08:23,940 --> 00:08:31,610
+But it seems as plausible that strategists will be cheering on prices from higher peaks—constructively, of course.
+

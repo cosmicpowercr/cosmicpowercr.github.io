@@ -1,0 +1,200 @@
+1
+00:00:15,780 --> 00:00:25,640
+BILLY CONNOLLY, the great Scottish comedian who recently retired from performing, had a joke about two men filming a lion for a wildlife documentary.
+
+2
+00:00:26,500 --> 00:00:28,060
+The lion suddenly looks up.
+
+3
+00:00:28,400 --> 00:00:30,650
+The men fear they have been spotted.
+
+4
+00:00:31,349 --> 00:00:36,040
+One of them slowly removes his boots and puts on a pair of running shoes.
+
+5
+00:00:37,010 --> 00:00:40,910
+“You will never outrun a lion in those,”says his colleague.
+
+6
+00:00:41,380 --> 00:00:46,930
+“I don’t need to outrun the lion,”replies the first man as he slowly ties his shoelaces.
+
+7
+00:00:47,509 --> 00:00:49,360
+“I just need to outrun you.”
+
+8
+00:00:50,320 --> 00:00:54,420
+The joke rather neatly captures a particular approach to investing.
+
+9
+00:00:54,699 --> 00:01:00,700
+What matters is not so much whether you can get ahead of some absolute goal for returns.
+
+10
+00:01:01,450 --> 00:01:08,070
+The important thing is whether the asset you choose to invest in will comfortably beat the alternatives.
+
+11
+00:01:09,040 --> 00:01:12,929
+Share prices in America are at all-time highs.
+
+12
+00:01:13,680 --> 00:01:29,909
+The cyclically adjusted price- earnings (CAPE) ratio, a measure of value popularised by Robert Shiller of Yale University, has only twice been higher than it is now—in the late 1920sand the early 2000s.
+
+13
+00:01:31,109 --> 00:01:44,300
+Yet a recent study by Mr Shiller, Laurence Black and Farouk Jivraj suggests that today’s steep stock prices may still be warranted, because interest rates are so low.
+
+14
+00:01:45,040 --> 00:01:53,300
+Indeed, compared with the real yields offered on risk-free government bonds, equity prices have plenty of appeal.
+
+15
+00:01:54,190 --> 00:02:00,019
+Equities do not have to beat their historical returns to be worth holding, it would seem.
+
+16
+00:02:00,660 --> 00:02:03,940
+They just need to outrun bonds by a decent margin.
+
+17
+00:02:04,900 --> 00:02:15,590
+A key strut to this thinking is that the earnings yield—the inverse of the price-earnings ratio—is a decent forecast of expected returns on equities.
+
+18
+00:02:16,240 --> 00:02:26,440
+An empirical study in 1988 by Mr Shiller and John Campbell found that yields on equities help predict long-term returns.
+
+19
+00:02:27,530 --> 00:02:42,990
+The dividend yield (ie, the dividend-to-price ratio) and three different measures of earnings yield all show some forecasting power, which is to say they explain at least some of the variation in future returns.
+
+20
+00:02:44,260 --> 00:02:48,880
+The longer the horizon over which returns are measured, the better the prediction.
+
+21
+00:02:49,810 --> 00:02:57,720
+And the best measure to use is an average of a few years of earnings, because profits are noisy from one year to the next.
+
+22
+00:02:58,600 --> 00:03:06,090
+The use of an average of recent earnings goes back at least to Benjamin Graham, a pioneer of stock valuation.
+
+23
+00:03:06,980 --> 00:03:10,840
+Mr Shiller’s CAPE is simply an extension of this approach.
+
+24
+00:03:11,780 --> 00:03:15,710
+The intuition behind the predictive relationship is straightforward.
+
+25
+00:03:16,469 --> 00:03:25,900
+If stock prices are high relative to a measure of fundamental value, such as earnings,then subsequent returns tend to be low, and vice versa.
+
+26
+00:03:26,790 --> 00:03:35,430
+A low earnings yield implies that investors are willing, at that point in time, to accept puny returns in the future.
+
+27
+00:03:36,609 --> 00:03:39,810
+If you think this is trivial, consider the following.
+
+28
+00:03:40,680 --> 00:03:45,700
+Low yields might instead be a forecast of bumper corporate profits.
+
+29
+00:03:46,590 --> 00:03:47,660
+But they are not.
+
+30
+00:03:48,610 --> 00:04:05,389
+This yields-predicts-returns analysis applies to assets other than equities, according to“Discount Rates”(2011), a panoramic survey by John Cochrane of the University of Chicago’s Booth School of Business.
+
+31
+00:04:06,259 --> 00:04:12,530
+High house prices relative to rents signal low returns, not rising rents.
+
+32
+00:04:13,430 --> 00:04:19,070
+Credit spreads on bonds are a signal of returns, not default probabilities.
+
+33
+00:04:20,010 --> 00:04:29,170
+All else being equal, you should be less keen to hold equities (or keener to hold fewer equities) the lower the earnings yield is.
+
+34
+00:04:30,260 --> 00:04:32,300
+But not everything else is equal.
+
+35
+00:04:32,970 --> 00:04:39,080
+The price of assets should equal expected cashflows discounted over the life of the asset.
+
+36
+00:04:39,870 --> 00:04:47,700
+The earnings yield gives you the“expected”part of this equation; real bond yields cover the“discounted”part.
+
+37
+00:04:48,699 --> 00:04:56,090
+The gap between these two is a forward-looking measure of the equity risk premium, the excess return for holding shares.
+
+38
+00:04:56,090 --> 00:04:59,090
+The chart shows a crude measure of this risk premium.
+
+39
+00:04:59,090 --> 00:05:04,370
+It varies over time in large part because risk appetite varies over time.
+
+40
+00:05:04,510 --> 00:05:09,420
+Although it has been higher in the past, it is not obviously low now.
+
+41
+00:05:10,210 --> 00:05:19,520
+In the 1990s, during the dotcom boom, the premium for owning stocks was negative—real interest rates were a handsome 4%.
+
+42
+00:05:20,420 --> 00:05:22,480
+Now real rates are negative.
+
+43
+00:05:23,150 --> 00:05:26,260
+It is not hard to outrun that sort of yield.
+
+44
+00:05:26,970 --> 00:05:35,350
+Mr Shiller and his colleagues use a similar measure, based on CAPE yields, and extend it to stockmarkets other than America’s.
+
+45
+00:05:36,200 --> 00:05:48,540
+Their conclusion is that, despite high prices, equities are attractively priced relative to bonds—even in America, but more so in Britain, the rest of Europe and Japan.
+
+46
+00:05:49,490 --> 00:05:57,170
+A jump in real long-term interest rates worldwide would upset the whole constellation of high asset prices.
+
+47
+00:05:58,180 --> 00:06:01,320
+It is hard to be confident that this is forthcoming.
+
+48
+00:06:02,130 --> 00:06:07,950
+In an ideal world for investors, expected returns on all assets would be better.
+
+49
+00:06:08,920 --> 00:06:10,440
+But we are where we are.
+
+50
+00:06:10,790 --> 00:06:17,059
+If you can’t outrun the lion, perhaps all you can do is to try to outrun the other guy.
+

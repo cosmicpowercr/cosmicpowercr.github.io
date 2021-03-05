@@ -1,0 +1,148 @@
+1
+00:00:16,840 --> 00:00:26,719
+THE TIES that bind the world’s two biggest economies are unravelling, in fits and starts.
+
+2
+00:00:27,429 --> 00:00:31,539
+The latest episode involved fits, starts and chaos.
+
+3
+00:00:32,509 --> 00:00:47,620
+On December 31st the New York Stock Exchange (NYSE) announced that it would delist China Telecom, China Mobile and China Unicom, three telecoms giants, shares in which have been traded on Wall Street for years.
+
+4
+00:00:48,160 --> 00:00:59,670
+It did so, it said, to comply with President Donald Trump’s executive order in November banning American investments in companies with links to the People’s Liberation Army (PLA).
+
+5
+00:01:01,590 --> 00:01:05,270
+This set off a fit among their American shareholders.
+
+6
+00:01:06,000 --> 00:01:16,710
+As the trio’s share prices swung wildly, funds scrambled to sell their stakes before the delisting, which the NYSE said would occur by January 11th.
+
+7
+00:01:17,590 --> 00:01:25,989
+Speculation raged that CNOOC and PetroChina, state-run energy goliaths also listed in New York, could be next.
+
+8
+00:01:26,730 --> 00:01:28,079
+Then came the start.
+
+9
+00:01:28,660 --> 00:01:34,000
+Late on January 4th the NYSE declared it would not eject the firms after all.
+
+10
+00:01:34,530 --> 00:01:42,910
+Those same funds faced the prospect ofrepurchasing the shares, the price of which had popped up on news of the NYSE’s U-turn.
+
+11
+00:01:44,120 --> 00:01:49,900
+If that weren’t chaotic enough, two days later the NYSE changed its mind again.
+
+12
+00:01:50,380 --> 00:01:53,470
+It would, after all, boot out the three companies.
+
+13
+00:01:54,930 --> 00:02:00,080
+One thing is clear: Chinese companies listed in America face uncertain times.
+
+14
+00:02:00,679 --> 00:02:13,200
+In December Mr Trump signed a bipartisan law that would expel from exchanges in America those companies that do not allow American regulators to audit their accounts, which is the case for many Chinese ones.
+
+15
+00:02:14,059 --> 00:02:23,989
+On top of this law, Mr Trump’s executive order is likely to remain a problem; Joe Biden may hesitate to rescind it after he takes office on January 20th.
+
+16
+00:02:24,350 --> 00:02:29,170
+It affects more than 30 firms deemed too cosy with the PLA.
+
+17
+00:02:30,160 --> 00:02:39,530
+To comply, FTSE Russell, which maintains global equity indices, plans to cut at least 11 Chinese technology firms from its roster.
+
+18
+00:02:40,180 --> 00:02:46,250
+MSCI, a rival indexer, plans to boot ten Chinese firms from its benchmarks.
+
+19
+00:02:47,430 --> 00:02:49,560
+A rupture seems inevitable, then.
+
+20
+00:02:50,410 --> 00:02:51,360
+How much will it matter?
+
+21
+00:02:52,809 --> 00:02:59,749
+If it is limited to Chinese state-owned enterprises (SOEs), then not much.
+
+22
+00:03:00,160 --> 00:03:03,810
+Only about a dozen SOEs trade in New York—and only thinly.
+
+23
+00:03:04,390 --> 00:03:08,470
+Most have a more robust listing in Hong Kong or mainland China.
+
+24
+00:03:08,880 --> 00:03:17,570
+Paul Gillis of Peking University argues that“it makes no sense for these companies to have US listings and be subject to US regulations”.
+
+25
+00:03:18,910 --> 00:03:21,830
+That leaves two other potential casualties.
+
+26
+00:03:22,800 --> 00:03:33,429
+If private-sector firms are included the number of Chinese firms listed in America swells to over 200, many of them in hot industries like technology and finance.
+
+27
+00:03:34,029 --> 00:03:39,140
+Their combined market capitalisation exceeds $2,2trn.
+
+28
+00:03:39,900 --> 00:03:43,620
+Many may have links (however tenuous) with the PLA.
+
+29
+00:03:44,910 --> 00:03:59,280
+Losing access to America’s sophisticated investors and deep pools of capital would sting such innovators as Lufax, a mainland fintech giant, which pulled off a $2,4bn flotation in New York in late October.
+
+30
+00:04:00,340 --> 00:04:10,750
+That risk is why Alibaba, China’s e-commerce titan with a New York listing, hedged its bets in late 2019 by floating in Hong Kong as well.
+
+31
+00:04:11,369 --> 00:04:12,409
+Others may follow.
+
+32
+00:04:13,790 --> 00:04:15,950
+American investors would suffer, too.
+
+33
+00:04:16,180 --> 00:04:25,390
+Goldman Sachs, a bank, estimates that they hold 28% of the $2,2trn in Chinese-linked market value in America.
+
+34
+00:04:25,990 --> 00:04:32,180
+These stocks have outperformed the S&P 500 index of big American firms in recent years.
+
+35
+00:04:32,660 --> 00:04:39,270
+Those with no secondary listing in China, which have most to lose from expulsion, have done even better (see chart).
+
+36
+00:04:40,280 --> 00:04:45,010
+A hasty exodus by Chinese stars could force a fire sale.
+
+37
+00:04:45,860 --> 00:04:55,030
+With Mr Biden unlikely to go easy on China, the most investors can hope for is more coherence—and fewer fits and starts.
+

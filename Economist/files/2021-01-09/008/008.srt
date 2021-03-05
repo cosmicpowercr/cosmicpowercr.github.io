@@ -1,0 +1,188 @@
+1
+00:00:14,920 --> 00:00:19,940
+WIKIPEDIA IS CLEAR on the matter: Wikipedia is not a reliable source.
+
+2
+00:00:20,740 --> 00:00:26,160
+Yet on this particular question, few people seem to agree with the world’s most popular encyclopedia.
+
+3
+00:00:26,720 --> 00:00:38,700
+The site approaches its 20th birthday, on January 15th, as the 13th-most-visited place on the web, offering more than 55m articles written in 300 languages.
+
+4
+00:00:39,460 --> 00:00:47,519
+Worries about fake news, filter bubbles and market power have soured public opinion on the Utopian promises of the early internet.
+
+5
+00:00:47,740 --> 00:00:54,319
+But Wikipedia—written by amateurs, freely available to all—stands as the great exception.
+
+6
+00:00:54,799 --> 00:00:56,940
+It is the dream that worked.
+
+7
+00:00:58,220 --> 00:00:59,260
+Or at least, mostly worked.
+
+8
+00:00:59,260 --> 00:01:06,089
+Wikipedia’s crowdsourced model remains vulnerable to the occasional hoaxer or chancer.
+
+9
+00:01:06,509 --> 00:01:16,810
+In August it emerged that many articles on the Scots version of the site had been written by an American editor who, by his own admission, was not really a speaker of the dialect.
+
+10
+00:01:17,410 --> 00:01:20,120
+Nor is it free from honest mistakes.
+
+11
+00:01:20,800 --> 00:01:32,770
+That can cause problems: for better or worse, powerful platforms from social-media firms to the WorldHealth Organisation have come to treat it as a wellspring of truth online (see article).
+
+12
+00:01:32,770 --> 00:01:36,590
+All the same, the world is much better off for its existence.
+
+13
+00:01:37,530 --> 00:01:41,140
+Indeed, familiarity may have dulled the scale of its achievements.
+
+14
+00:01:41,599 --> 00:01:49,060
+As well as being roughly as accurate as old-style encyclopedias, Wikipedia is also incomparably broader.
+
+15
+00:01:49,820 --> 00:01:57,080
+Curious readers can learn about worthy subjects like Homer, general relativity or the Taiping Rebellion.
+
+16
+00:01:57,639 --> 00:02:09,930
+They can also read about Québécois slang, the nature of magic in the“Harry Potter”novels and the fortunes of Yeovil Town Football Club, which toils in obscurity in the fifth tier of the English league.
+
+17
+00:02:10,760 --> 00:02:19,300
+Denis Diderot, the 18th-century editor of the French Encyclopédie, hoped to“assemble all the knowledge scattered over the face of the Earth”.
+
+18
+00:02:20,090 --> 00:02:22,250
+Wikipedia would have delighted him.
+
+19
+00:02:23,389 --> 00:02:27,360
+The project owes much of its success to its unique structure.
+
+20
+00:02:28,050 --> 00:02:31,340
+Funded by donations, Wikipedia earns no profits.
+
+21
+00:02:31,610 --> 00:02:35,640
+It has no venture-capital backers demanding growth at all costs.
+
+22
+00:02:36,139 --> 00:02:42,739
+Without advertisers to satisfy, it can focus exclusively on the interests of its readers and contributors.
+
+23
+00:02:43,350 --> 00:02:47,100
+It is curated and run by people, not machines.
+
+24
+00:02:47,610 --> 00:02:55,890
+There is no recommendation algorithm humming away in the background, choosing what to show readers in order to keep them glued to the site for as long as possible.
+
+25
+00:02:57,330 --> 00:03:00,170
+Other tech titans should study its success.
+
+26
+00:03:00,709 --> 00:03:06,870
+Relying on algorithms is one reason they have achieved enormous scale with so few employees.
+
+27
+00:03:07,210 --> 00:03:10,120
+Yet the downsides have begun to haunt them.
+
+28
+00:03:22,730 --> 00:03:23,770
+As the social-media giants hire ever more people as moderators, and write ever longer sets of rules about what is allowed, Wikipedia offers a lesson in how to run a human-powered website.
+
+29
+00:03:25,070 --> 00:03:32,429
+It is also a welcome boost for Enlightenment values, which have suffered at the hands of populism and authoritarian capitalism.
+
+30
+00:03:32,439 --> 00:03:42,940
+If Wikipedia’s occasional scandals make people approach it with a little scepticism, all the better, for fair-minded scepticism is a healthy attitude in general.
+
+31
+00:03:43,740 --> 00:03:46,060
+Wikipedia sees itself as a work in progress.
+
+32
+00:03:46,520 --> 00:03:51,889
+If a fact is wrong, it invites users to persuade others so that it can be corrected.
+
+33
+00:03:52,580 --> 00:04:02,020
+Its internal culture holds that knowledge comes from evidence, reason and good-faith debate, not pronouncements from the pulpit or the party.
+
+34
+00:04:03,050 --> 00:04:05,520
+Like any institution, Wikipedia has flaws.
+
+35
+00:04:05,679 --> 00:04:08,580
+It sometimes fails to live up to its own ideals.
+
+36
+00:04:09,190 --> 00:04:12,469
+The nature of crowdsourcing means its quality varies.
+
+37
+00:04:13,460 --> 00:04:17,580
+The mostpopular articles receive the most scrutiny, and tend to be the best.
+
+38
+00:04:18,200 --> 00:04:21,990
+That leaves a long tail of obscure entries of lower quality.
+
+39
+00:04:22,570 --> 00:04:25,539
+Articles can be overlong, or too technical.
+
+40
+00:04:25,790 --> 00:04:33,440
+Much of its magic comes from the distinctive culture that has built up among contributors—but cultures can be fragile.
+
+41
+00:04:34,980 --> 00:04:40,150
+Perhaps its biggest flaw is that, for all its breadth, it is still too narrow.
+
+42
+00:04:46,090 --> 00:04:48,870
+A small number do a disproportionate share of the work.
+
+43
+00:04:49,369 --> 00:04:54,190
+That colours both the encyclopedia’s choice of entries and the way it covers them.
+
+44
+00:04:54,820 --> 00:04:58,470
+Wikipedians have been trying to change that, but progress has been too slow.
+
+45
+00:04:59,280 --> 00:05:00,630
+A lot is at stake.
+
+46
+00:05:01,340 --> 00:05:07,450
+In rich, liberal countries, where information is widely available, Wikipedia is a convenience.
+
+47
+00:05:08,240 --> 00:05:13,670
+In poorer places, and illiberal ones, it can be quietly revolutionary.
+

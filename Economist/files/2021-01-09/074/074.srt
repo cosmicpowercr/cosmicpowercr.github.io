@@ -1,0 +1,128 @@
+1
+00:00:03,720 --> 00:00:20,910
+THE ECONOMIC toll of the covid-19 pandemic is incalculable.
+
+2
+00:00:21,410 --> 00:00:22,630
+But let’s try anyway.
+
+3
+00:00:23,160 --> 00:00:30,130
+A useful starting point is the semi-annual Global Economic Prospects report released this week by the World Bank.
+
+4
+00:00:30,650 --> 00:00:40,010
+It calculates that the world economy probably shrank by 4,3% in 2020, a setback matched only by the Depression and the two world wars.
+
+5
+00:00:40,700 --> 00:00:43,890
+But this dramatic figure still understates the cost.
+
+6
+00:00:44,510 --> 00:00:51,970
+It measures the world economy’s fall from where it was before the pandemic, not from where it would have been had the virus not spread.
+
+7
+00:00:53,330 --> 00:01:01,460
+To calculate that bigger fall, economists need an estimate of how global GDP might have evolved in the absence of covid-19.
+
+8
+00:01:02,040 --> 00:01:10,360
+One simple baseline is the World Bank’s projection released this time last year, when it was still blissfully unaware of the lurking viral threat.
+
+9
+00:01:11,059 --> 00:01:18,580
+Back then, it expected global GDP to expand by 2,5% in 2020 to $86trn.
+
+10
+00:01:26,590 --> 00:01:37,190
+That isequivalent to about $5,6trn (at the market exchange rates and prices prevailing in 2010, which the bank uses for analytical convenience).
+
+11
+00:01:38,550 --> 00:01:46,189
+In 2021 the world economy should grow unusually briskly, the bank projects, helped by the roll-out of vaccines.
+
+12
+00:01:46,709 --> 00:02:02,530
+But even if this expectation is met and no further calamities intrude, the level of output in 2021 will remain 5,3% below the bank’s pre-pandemic projections: a further shortfall of almost $4,7trn (see chart).
+
+13
+00:02:04,070 --> 00:02:17,860
+Put these two numbers together and the cost of covid-19 this year and last will amount to about $10,3trn in forgone output: goods and services the world could have produced had it remained unafflicted.
+
+14
+00:02:18,509 --> 00:02:21,609
+That is, to put it mildly, a big number.
+
+15
+00:02:22,299 --> 00:02:26,200
+Only America and China have an annual GDP greater than $10trn.
+
+16
+00:02:26,990 --> 00:02:32,950
+And there are 153 economies that produced less than that between them in 2019.
+
+17
+00:02:33,830 --> 00:02:43,800
+Converted into today’s money, $10,3trn is enough to buy the ten biggest listed companies in the world, including Amazon, Apple and Saudi Aramco.
+
+18
+00:02:44,460 --> 00:02:49,580
+It is also enough to buy all the property in New York City nine times over.
+
+19
+00:02:51,380 --> 00:02:54,430
+Over $2trn of the cost will be suffered by the euro area.
+
+20
+00:02:54,910 --> 00:02:58,039
+America will bear roughly $1,7trn.
+
+21
+00:02:58,600 --> 00:03:11,020
+Among developing countries, India is set to endure the biggest loss in dollar terms: about $950bn (although the bank’s forecast forIndia’s growth in 2021 seems unduly pessimistic).
+
+22
+00:03:11,750 --> 00:03:21,390
+Although China’s economy is much bigger than that of India, it will suffer a smaller GDP shortfall of about $680bn.
+
+23
+00:03:21,400 --> 00:03:24,920
+Even these colossal numbers understate the cost, however.
+
+24
+00:03:25,490 --> 00:03:29,989
+The economic damage, after all, will not be confined to this year and last.
+
+25
+00:03:30,630 --> 00:03:38,560
+The World Bank expects global GDP in 2022 to remain 4,4% below its pre-pandemic predictions.
+
+26
+00:03:39,180 --> 00:03:45,120
+It fears lasting harm to investment, human capital and, therefore, the growth potential of the world economy.
+
+27
+00:03:45,760 --> 00:03:53,350
+It also worries that the debt that governments and companies have issued to help them weather the pandemic may harm growth in the future.
+
+28
+00:03:54,590 --> 00:03:58,320
+There is another reason why these figures understate the economic tab.
+
+29
+00:03:58,950 --> 00:04:05,410
+If the pandemic had never happened, world GDP would not only have been higher, it would also have been different.
+
+30
+00:04:05,860 --> 00:04:13,349
+Instead of masks, tests, vaccines, Zoom calls and parcel deliveries, the world economy would have produced other items.
+
+31
+00:04:13,999 --> 00:04:24,020
+Because the pandemic is so damaging to health and society, it is worth diverting vast resources to fight it—these efforts are of enormous economic value.
+
+32
+00:04:24,550 --> 00:04:32,700
+But if the virus had never spread, these same efforts would have been unnecessary, making them an expense the world could have been spared.
+
