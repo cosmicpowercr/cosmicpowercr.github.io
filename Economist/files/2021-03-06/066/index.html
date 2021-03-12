@@ -1,0 +1,564 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">066 Business - Schumpeter</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='066';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "ONE OF THE best explanations for the triumph of a“solution shop”like McKinsey was co-written by the late Clayton Christensen of Harvard Business School in 2013.",
+    "start_Offset": 0,
+    "end_Offset": 27,
+    "start": 18.01,
+    "end": 28.38
+  },
+  {
+    "val": "When hiring a management-consulting firm, he said, clients do not know what they are getting in advance, because they are looking for knowledge that they themselves lack.",
+    "start_Offset": 28,
+    "end_Offset": 55,
+    "start": 28.91,
+    "end": 37.72
+  },
+  {
+    "val": "They cannot measure the results, either, because outside factors, such as the quality of execution, influence the outcome of the consultant’s recommendations.",
+    "start_Offset": 56,
+    "end_Offset": 77,
+    "start": 38.18,
+    "end": 18.14
+  },
+  {
+    "val": "So they rely on reputation and other squishy factors—the consultants’“educational pedigrees, eloquence, and demeanour”—as substitutes for tangible results.",
+    "start_Offset": 78,
+    "end_Offset": 98,
+    "start": 57.88,
+    "end": 59.07000000000001
+  },
+  {
+    "val": "On that basis, no one would hire Schumpeter to help fix McKinsey’s problems.",
+    "start_Offset": 99,
+    "end_Offset": 111,
+    "start": 59.49,
+    "end": 64.17999999999999
+  },
+  {
+    "val": "His diagnosis is as lacking in eloquence as he is in demeanour.",
+    "start_Offset": 112,
+    "end_Offset": 123,
+    "start": 64.53999999999999,
+    "end": 68.39
+  },
+  {
+    "val": "In his unschooled view, those of the firm’s 650 senior partners who voted to oust their global managing partner, Kevin Sneader, on February 24th, are in a clueless mess.",
+    "start_Offset": 124,
+    "end_Offset": 152,
+    "start": 68.759999,
+    "end": 81.709999
+  },
+  {
+    "val": "Worse, they don’t get that they don’t get it.",
+    "start_Offset": 153,
+    "end_Offset": 161,
+    "start": 82.059999,
+    "end": 84.83
+  },
+  {
+    "val": "The Byzantine voting system that has done away with Mr Sneader has not yet determined which of his two potential successors will replace him.",
+    "start_Offset": 162,
+    "end_Offset": 185,
+    "start": 85.77,
+    "end": 93.46
+  },
+  {
+    "val": "Nor is it clear for what precisely the 54-year-old Scot is paying the price.",
+    "start_Offset": 186,
+    "end_Offset": 201,
+    "start": 94.19,
+    "end": 98.559999
+  },
+  {
+    "val": "Some see his departure as the firm’s strangled mea culpa; the ousting of a boss is typical of a firm engulfed in the sort of scandals Mr Sneader has had to cope with, from dodgy dealings in South Africa and settling conflict-of-interest lawsuits to paying almost $575m to settle claims that its advice helped exacerbate America’s opioid crisis.",
+    "start_Offset": 202,
+    "end_Offset": 261,
+    "start": 99.099999,
+    "end": 123.67
+  },
+  {
+    "val": "Yet the roots of all those crises predate his three-year tenure.",
+    "start_Offset": 262,
+    "end_Offset": 273,
+    "start": 124.190001,
+    "end": 128.22
+  },
+  {
+    "val": "He is, at most, the fall guy.",
+    "start_Offset": 274,
+    "end_Offset": 280,
+    "start": 128.43,
+    "end": 130.39999999999998
+  },
+  {
+    "val": "More likely, sticking his nose into his partners’ businesses to avoid future calamities could have rubbed enough of them up the wrong way that they voted against him.",
+    "start_Offset": 281,
+    "end_Offset": 308,
+    "start": 131.46,
+    "end": 140.6
+  },
+  {
+    "val": "That would suggest that a majority cannot fathom how serious McKinsey’s problems are.",
+    "start_Offset": 309,
+    "end_Offset": 321,
+    "start": 140.98,
+    "end": 146.04000000000002
+  },
+  {
+    "val": "At heart, they stem from a simple delusion.",
+    "start_Offset": 322,
+    "end_Offset": 329,
+    "start": 146.79,
+    "end": 149.45
+  },
+  {
+    "val": "Its partners see themselves as missionaries.",
+    "start_Offset": 330,
+    "end_Offset": 335,
+    "start": 149.81,
+    "end": 152.28
+  },
+  {
+    "val": "Yet they are also mercenaries—“guns for hire”, as Duff McDonald, a biographer of the firm, calls them.",
+    "start_Offset": 336,
+    "end_Offset": 353,
+    "start": 152.57,
+    "end": 159.03
+  },
+  {
+    "val": "They have a mantra that puts their clients’ interests above their own, and a belief, drawn from the firm’s pristine heritage, that no one knows better how to distinguish between right and wrong.",
+    "start_Offset": 354,
+    "end_Offset": 386,
+    "start": 159.49,
+    "end": 171.09
+  },
+  {
+    "val": "Yet in some cases, as in working with Purdue Pharma, maker of the addictive painkiller OxyContin, their moral compasses go haywire.",
+    "start_Offset": 387,
+    "end_Offset": 407,
+    "start": 171.719999,
+    "end": 180.6
+  },
+  {
+    "val": "That is most likely because of the lure of lucre.",
+    "start_Offset": 408,
+    "end_Offset": 417,
+    "start": 181.309999,
+    "end": 184.48
+  },
+  {
+    "val": "Numerous notes of dissonance follow from this.",
+    "start_Offset": 418,
+    "end_Offset": 424,
+    "start": 185.45,
+    "end": 188.24
+  },
+  {
+    "val": "For almost 95 years, McKinsey has sought to portray itself as a genteel professional-services company, not a grubby business.",
+    "start_Offset": 425,
+    "end_Offset": 444,
+    "start": 188.47,
+    "end": 196.63
+  },
+  {
+    "val": "Unlike, say, a profit-hungry Goldman Sachs banker, who walks into a room aware she may be hissed at, a McKinsey consultant expects his halo to be noticed.",
+    "start_Offset": 445,
+    "end_Offset": 472,
+    "start": 197.029999,
+    "end": 207.51000000000002
+  },
+  {
+    "val": "However much its senior partners insist that they are not motivated by outsized profits, they can earn as much each year as that Goldman banker.",
+    "start_Offset": 473,
+    "end_Offset": 497,
+    "start": 207.96,
+    "end": 216.789999
+  },
+  {
+    "val": "Revenues have roughly doubled in a decade to over $10bn.",
+    "start_Offset": 498,
+    "end_Offset": 507,
+    "start": 217.23,
+    "end": 221.54
+  },
+  {
+    "val": "Partners number 2,600.",
+    "start_Offset": 508,
+    "end_Offset": 511,
+    "start": 221.87,
+    "end": 224.36
+  },
+  {
+    "val": "The firm’s employees revel in the aura of the old McKinsey—of autonomy, discretion and intellectual prestige—while embracing the growth, profits and power that have come in more recent years.",
+    "start_Offset": 512,
+    "end_Offset": 542,
+    "start": 224.73,
+    "end": 238.28
+  },
+  {
+    "val": "Rarely do they doubt whether they can have it all.",
+    "start_Offset": 543,
+    "end_Offset": 552,
+    "start": 238.61,
+    "end": 241.51
+  },
+  {
+    "val": "More people and more wealth inevitably make oversight more important.",
+    "start_Offset": 553,
+    "end_Offset": 562,
+    "start": 242.54,
+    "end": 247.39
+  },
+  {
+    "val": "Still, McKinsey continues to think of itself as a partnership built on trust, not one that requires centralised command and control.",
+    "start_Offset": 563,
+    "end_Offset": 583,
+    "start": 247.78,
+    "end": 255.68
+  },
+  {
+    "val": "Its voting system resembles an elite Athenian democracy.",
+    "start_Offset": 584,
+    "end_Offset": 591,
+    "start": 256.13,
+    "end": 260.09
+  },
+  {
+    "val": "The more trouble it is in, the more it needs a Spartan leader, backed by a strong risk-control apparatus, to keep it on the straight and narrow.",
+    "start_Offset": 592,
+    "end_Offset": 619,
+    "start": 260.51,
+    "end": 269.15000000000003
+  },
+  {
+    "val": "McKinsey’s 30-person“shareholder council”, its board of directors, may be too steeped in the firm’s cult-like culture to realise how pressing is the need for change.",
+    "start_Offset": 620,
+    "end_Offset": 647,
+    "start": 269.559999,
+    "end": 280.61
+  },
+  {
+    "val": "Mr Sneader started the reforms.",
+    "start_Offset": 648,
+    "end_Offset": 652,
+    "start": 281.0,
+    "end": 282.95
+  },
+  {
+    "val": "His defenestration seems ominous for those hoping they will go much further under his successor.",
+    "start_Offset": 653,
+    "end_Offset": 667,
+    "start": 283.16,
+    "end": 289.11
+  },
+  {
+    "val": "As scrutiny of it intensifies, McKinsey must learn to balance preserving its discretion on behalf of clients with greater transparency.",
+    "start_Offset": 668,
+    "end_Offset": 687,
+    "start": 290.03,
+    "end": 299.35
+  },
+  {
+    "val": "The more work it does for governments, the more public attention it will receive.",
+    "start_Offset": 688,
+    "end_Offset": 701,
+    "start": 299.66,
+    "end": 303.94
+  },
+  {
+    "val": "Its costly legal encounters are bringing to light details of more client contacts, including with Johnson & Johnson, which last year settled an opioids lawsuit with a group of state attorneys-general.",
+    "start_Offset": 702,
+    "end_Offset": 732,
+    "start": 304.27,
+    "end": 316.08000000000004
+  },
+  {
+    "val": "McKinsey’s settlements over opioids—in which it did not admit wrongdoing—require it to publish reams of correspondence, which increase the risk of reputational damage.",
+    "start_Offset": 733,
+    "end_Offset": 757,
+    "start": 316.59,
+    "end": 326.87
+  },
+  {
+    "val": "First, identify the problem Within the cryptic world of McKinsey, what signs would indicate that the firm recognises the crisis that it is in?",
+    "start_Offset": 758,
+    "end_Offset": 781,
+    "start": 327.84,
+    "end": 335.22999899999996
+  },
+  {
+    "val": "The winner of the run-off to replace Mr Sneader, which will reportedly be between Sven Smit from the Amsterdam practice and Bob Sternfels from San Francisco, should say which aspects of his predecessor’s reforms he intends to keep.",
+    "start_Offset": 782,
+    "end_Offset": 820,
+    "start": 335.849999,
+    "end": 350.62
+  },
+  {
+    "val": "More risk control is a must.",
+    "start_Offset": 821,
+    "end_Offset": 826,
+    "start": 351.01,
+    "end": 353.21999999999997
+  },
+  {
+    "val": "Client payments should be more standardised.",
+    "start_Offset": 827,
+    "end_Offset": 832,
+    "start": 353.63,
+    "end": 356.01
+  },
+  {
+    "val": "Most are flat fees (albeit fat ones) but about 15% are tied to performance; the latter create incentives for abnormally turbocharging results.",
+    "start_Offset": 833,
+    "end_Offset": 854,
+    "start": 356.299999,
+    "end": 367.28000000000003
+  },
+  {
+    "val": "Bruised by scandal, a truly progressive firm would launch its own version of a truth-and-reconciliation commission to see if anything else is lurking in the closet.",
+    "start_Offset": 855,
+    "end_Offset": 882,
+    "start": 367.84,
+    "end": 377.179999
+  },
+  {
+    "val": "It could shunt a generation of partners towards retirement.",
+    "start_Offset": 883,
+    "end_Offset": 891,
+    "start": 377.65,
+    "end": 380.91
+  },
+  {
+    "val": "That would make it less unwieldy and make way for those more accustomed to the glare of publicity.",
+    "start_Offset": 892,
+    "end_Offset": 909,
+    "start": 381.24,
+    "end": 386.45
+  },
+  {
+    "val": "Above all, when it does open up, the firm should adopt some radical new talking-points.",
+    "start_Offset": 910,
+    "end_Offset": 925,
+    "start": 387.44,
+    "end": 392.89
+  },
+  {
+    "val": "Rather than cloak itself in righteousness and assert its right to complete discretion and total opacity over how it behaves, it should admit that it exists to make cold, hard cash, and make explicit the ethical lines that it will not cross and the process it has to police them.",
+    "start_Offset": 926,
+    "end_Offset": 975,
+    "start": 393.24,
+    "end": 412.6
+  },
+  {
+    "val": "Well-run companies confront and manage conflicts of interest.",
+    "start_Offset": 976,
+    "end_Offset": 984,
+    "start": 413.23,
+    "end": 416.94
+  },
+  {
+    "val": "McKinsey has tried to blag its way through them with a narcissistic recklessness.",
+    "start_Offset": 985,
+    "end_Offset": 997,
+    "start": 417.42,
+    "end": 422.03999999999996
+  },
+  {
+    "val": "Its partners like to think of themselves as the smartest guys in the room.",
+    "start_Offset": 998,
+    "end_Offset": 1011,
+    "start": 422.37,
+    "end": 426.40000000000003
+  },
+  {
+    "val": "They should have realised the perils of their self-delusion long ago.",
+    "start_Offset": 1012,
+    "end_Offset": 1023,
+    "start": 426.759999,
+    "end": 431.28999999999996
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

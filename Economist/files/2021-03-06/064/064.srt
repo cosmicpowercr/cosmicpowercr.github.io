@@ -1,0 +1,100 @@
+1
+00:00:08,260 --> 00:00:21,650
+FROM DRIVE-IN cinemas to drive-through restaurants, Americans love doing things without getting out of their cars.
+
+2
+00:00:22,140 --> 00:00:26,870
+During the covid-19 pandemic they have taken to shopping in a similar fashion, too.
+
+3
+00:00:27,380 --> 00:00:38,020
+Kerbside pickup, where buyers’ vehicles pull up to retail outlets and dedicated staff help load online orders into the boot, helped supermarket chains notch up a banner year.
+
+4
+00:00:38,590 --> 00:00:47,570
+One in two American shoppers used kerbside or in-store collection last year, according to a survey by ShipStation, a maker of shipping software.
+
+5
+00:00:48,520 --> 00:00:52,009
+No big retailer in America can do without kerbside pickup.
+
+6
+00:00:52,359 --> 00:00:58,510
+Those that had it before the pandemic, including Target, Walmart and Kohl’s, have expanded their offerings.
+
+7
+00:00:58,870 --> 00:01:06,250
+On March 2nd Target reported record digital sales, which accounted for two-thirds of revenue growth last year.
+
+8
+00:01:06,780 --> 00:01:13,840
+These were powered by such“drive-up”purchases, which ballooned more than six-fold in the final quarter of 2020.
+
+9
+00:01:14,390 --> 00:01:18,640
+Shops that lacked kerbside operations hurriedly created them from scratch.
+
+10
+00:01:19,050 --> 00:01:26,870
+Some analyses have found that around 60% of American retailers now have the service, twice the share 12 months ago.
+
+11
+00:01:27,830 --> 00:01:37,460
+Even malls, which were struggling before the pandemic added to their woes as self-isolating consumers moved en masse to online purchases, are giving it a whirl.
+
+12
+00:01:37,800 --> 00:01:57,310
+Sarah Fossen, head of marketing at Rosedale Centre, a mall near Minneapolis with 150 retail tenants, recalls starting a service with parking space set aside for kerbside pickup at two entrances, only to discover that there was sufficient demand to add such space at all five main entrances.
+
+13
+00:01:58,300 --> 00:02:04,020
+Successful efforts get a number of things right, says Tom Enright of Gartner, a research firm.
+
+14
+00:02:04,559 --> 00:02:09,800
+Some of the imperatives are straightforward (install clear signs, offer sufficient parking space).
+
+15
+00:02:10,250 --> 00:02:22,480
+Others require retailers to make bigger changes; since they do not have to lug stuff to their car themselves, for example, kerbside shoppers often buy bulkier crates of bottled water or bigger bags of pet food.
+
+16
+00:02:23,039 --> 00:02:25,510
+A bit of technological nous comes in handy.
+
+17
+00:02:25,810 --> 00:02:36,990
+Some retailers are, for instance, using location tracking in their apps to know when exactly customers might arrive, so as to minimise waiting times, says Jean Chick of Deloitte, a consultancy.
+
+18
+00:02:37,980 --> 00:02:39,819
+Some waiting will be inevitable.
+
+19
+00:02:39,880 --> 00:02:48,680
+But, says Mike Robinson, who used to run digital operations at Macy’s, a big department-store chain, the period in line need not be wasted.
+
+20
+00:02:49,330 --> 00:02:58,760
+Lingering customers could be enticed with other offerings, from promotions to new products, in the same way that you might grab a chocolate bar while waiting at the cashier.
+
+21
+00:02:59,250 --> 00:03:03,400
+It is“the perfect time”to engage shoppers, Mr Robinson says.
+
+22
+00:03:04,400 --> 00:03:08,280
+Many shops still have to crack important aspects of this transition.
+
+23
+00:03:08,700 --> 00:03:16,449
+Most are not equipped for returns or exchanges and lack a seamless way for customers to add and pay for last-minute items.
+
+24
+00:03:16,990 --> 00:03:22,760
+Retailers could improve the experience with pop-up tables in the parking lot stocked with popular items.
+
+25
+00:03:23,110 --> 00:03:32,340
+As Mr Enright notes,“If kerbside is going to replace an in-store experience, it has to bring a lot of those in-store experiences out into the parking lot.”
+

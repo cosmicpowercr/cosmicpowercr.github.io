@@ -1,0 +1,192 @@
+1
+00:00:17,510 --> 00:00:21,680
+RARELY HAS supposedly bitter medicine tasted so sweet.
+
+2
+00:00:22,440 --> 00:00:34,189
+For weeks, the Treasury has been briefing journalists that Rishi Sunak, the chancellor, was set to“level with the people”and embark on a programme of tax rises to repair the public finances.
+
+3
+00:00:34,719 --> 00:00:42,150
+This, it turned out, was expectations management: the budget, delivered on March 3rd, was loaded with sugar.
+
+4
+00:00:42,680 --> 00:00:46,510
+The nastier stuff has been pushed back by at least two years.
+
+5
+00:00:47,320 --> 00:00:56,440
+The explanation lay in the forecasts which the Office for Budget Responsibility (OBR), the government’s fiscal watchdog, publishes with the budget.
+
+6
+00:00:57,070 --> 00:01:00,910
+A lot has changed since it released its previous set in November.
+
+7
+00:01:01,680 --> 00:01:10,859
+A spike in covid-19 cases in December and January prompted a stringent third lockdown, which depressed expected growth further in 2021.
+
+8
+00:01:11,979 --> 00:01:15,850
+Lower growth this year means an even larger bounce-back in 2022.
+
+9
+00:01:17,120 --> 00:01:34,020
+The OBR now reckons that the economy will grow by 4% in 2021, down from 5,5% in the previous forecast, but then motor forward by 7,3% in 2022, the fastest rise in eight decades.
+
+10
+00:01:34,720 --> 00:01:40,310
+This year’s difficult start means that government schemes to keep people solvent are being extended.
+
+11
+00:01:40,870 --> 00:01:49,480
+The Coronavirus Job Retention Scheme, under which the government pays 80% of the wages of furloughed employees, was due to end in April.
+
+12
+00:01:49,880 --> 00:01:51,850
+It will now stay until September.
+
+13
+00:01:52,330 --> 00:02:00,230
+Grants and cheap loans to firms have been rolled forward too, as have lower levels of value-added tax for hospitality businesses.
+
+14
+00:02:00,929 --> 00:02:11,220
+Spending has been increased by almost £35bn ($49bn) and taxes cut by £24bn in the coming financial year.
+
+15
+00:02:12,070 --> 00:02:17,790
+Taken together, these measures represent a giveaway worth some 3% of GDP.
+
+16
+00:02:17,790 --> 00:02:21,670
+Every budget must contain a surprise for the chancellor to unveil.
+
+17
+00:02:22,170 --> 00:02:29,470
+The uncertainty after the Brexit referendum in 2016, followed by the pandemic, has depressed business investment.
+
+18
+00:02:30,170 --> 00:02:44,550
+So the centrepiece of Mr Sunak’s stimulus was the“super-deduction”, which will allow companies to set 130% of the value of new investment in plant and equipment against their taxable income for two years from April.
+
+19
+00:02:45,200 --> 00:02:55,060
+The government is hoping that this generous tax-break will spur firms to use some of the record-high cash piles on which they are sitting to bring forward capital spending.
+
+20
+00:02:55,530 --> 00:03:04,800
+An IMF study of such incentive schemes last year found that they tend to produce a strong response from firms by increasing the rate of return on investment.
+
+21
+00:03:05,550 --> 00:03:19,170
+With the economy buoyed by more fiscal support, the OBR thinks the output gap (the difference between the current level of GDP and its potential) will close more rapidly over the next couple of years than it previously believed.
+
+22
+00:03:19,780 --> 00:03:25,810
+In other words, the cyclical recovery in the economy should proceed at a faster clip than expected.
+
+23
+00:03:26,510 --> 00:03:32,710
+A speedier cyclical pickup, though, will not eradicate the structural damage wrought by the pandemic.
+
+24
+00:03:33,250 --> 00:03:41,130
+The OBR reckons that the economy will be 3% smaller in five years’ time than it would have been in a universe without a pandemic.
+
+25
+00:03:41,820 --> 00:03:48,689
+That is bleaker than the Bank of England’s 1,75% estimate but broadly in line with Britain’s peers.
+
+26
+00:03:49,179 --> 00:03:54,010
+The German budgetary authorities, for example, reckon their country will take a similar hit.
+
+27
+00:03:54,830 --> 00:03:58,950
+Lasting economic damage will have an impact on the public finances.
+
+28
+00:03:59,410 --> 00:04:09,620
+Although Britain is currently operating without a formal set of fiscal rules, Mr Sunak has indicated that he wants to balance the current budget while borrowing for long-term investment.
+
+29
+00:04:10,199 --> 00:04:19,110
+Given the blow to growth, achieving that aim means adopting some combination of spending cuts and tax rises once the immediate crisis has passed.
+
+30
+00:04:19,830 --> 00:04:28,990
+Mr Sunak has chosen to lean heavily on taxes, undoing the reductions in both personal and business tax that George Osborne introduced a decade ago.
+
+31
+00:04:29,279 --> 00:04:36,930
+The tax take, as a share of the overall economy, is now forecast to rise to its highest level since the late 1960s (see chart).
+
+32
+00:04:37,510 --> 00:04:40,840
+Some of the extra revenue will come directly from workers.
+
+33
+00:04:41,110 --> 00:04:48,639
+From 2023 income-tax thresholds will be frozen in cash terms, increasing the tax burden as incomes grow.
+
+34
+00:04:49,070 --> 00:05:00,180
+But most of the cash will come from a striking rise in the headline rate of corporation tax, which is set to jump from 19% to 25% by 2023.
+
+35
+00:05:00,190 --> 00:05:15,350
+According to the OBR, corporation-tax receipts will rise to their highest share of GDP since 1990 by 2024, though Mr Sunak was keen to emphasise that only around three in ten firms are likely to face the full increase.
+
+36
+00:05:16,059 --> 00:05:23,919
+The small companies’ exemption will rise while firms will be able to carry forward up to three years of losses to reduce their bills.
+
+37
+00:05:24,449 --> 00:05:32,110
+In effect, Mr Sunak is signalling a windfall tax on the companies that have done well during the pandemic, without calling it such.
+
+38
+00:05:32,679 --> 00:05:41,340
+Announcing the largest increases in corporation tax in a generation might have been expected to elicit more than a few groans from Britain’s boardrooms.
+
+39
+00:05:41,869 --> 00:05:46,540
+Business trade bodies have, however, been quick to welcome the overall budget package.
+
+40
+00:05:47,130 --> 00:05:57,729
+No doubt that is in part because of the large giveaways over the coming two years; but it is probably also because they suspect the tax rises will never fully materialise.
+
+41
+00:05:58,639 --> 00:06:06,080
+One reason to doubt that corporation tax will actually shoot up after 2023 is the cliff-edge that would create.
+
+42
+00:06:06,630 --> 00:06:19,690
+The end of the super-deduction followed by an immediate and steep hike in headline rates would lead the effective rate, inclusive of allowances, to increase by more than five percentage points between 2023 and 2025 (see chart).
+
+43
+00:06:19,690 --> 00:06:23,600
+That would be historically unusual.
+
+44
+00:06:24,280 --> 00:06:39,770
+Mr Sunak will be hoping that as economic activity rebounds the OBR will revise down its view of the lasting hit from covid-19, and as the fiscal targets become easier to meet the mooted tax rises can then be scaled back.
+
+45
+00:06:40,490 --> 00:06:43,250
+“It’s smart politics,”says a business leader.
+
+46
+00:06:43,830 --> 00:06:51,330
+“If you say you are putting up tax by 6% and then only put it up by 3% everyone is grateful instead of horrified.”
+
+47
+00:06:52,090 --> 00:06:57,290
+Mr Sunak has announced a plan to balance the budget because that’s what Conservatives do.
+
+48
+00:06:57,710 --> 00:07:06,139
+But it is far enough away that he has plenty of space for more giveaways in the future if the economy performs better than expected.
+

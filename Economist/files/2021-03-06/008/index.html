@@ -1,0 +1,459 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">008 Leaders - Chinese politics</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='008';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "PURGES HAVE grown more common since Xi Jinping took over as China’s leader in 2012.",
+    "start_Offset": 0,
+    "end_Offset": 14,
+    "start": 18.859999,
+    "end": 25.19
+  },
+  {
+    "val": "To curb graft and snuff out any opposition to his rule, Mr Xi has been hunting in every corner of the country’s vast bureaucracy.",
+    "start_Offset": 15,
+    "end_Offset": 38,
+    "start": 25.73,
+    "end": 34.209999999999994
+  },
+  {
+    "val": "Hundreds of thousands of officials have been punished.",
+    "start_Offset": 39,
+    "end_Offset": 46,
+    "start": 34.799999,
+    "end": 37.81999999999999
+  },
+  {
+    "val": "Thousands, many of them high-ranking, have been sent to prison.",
+    "start_Offset": 47,
+    "end_Offset": 57,
+    "start": 38.26,
+    "end": 41.75
+  },
+  {
+    "val": "Remarkably, however, some people do not appear to have got the message.",
+    "start_Offset": 58,
+    "end_Offset": 69,
+    "start": 42.25,
+    "end": 46.029999
+  },
+  {
+    "val": "A new campaign has just been launched within the domestic security services (see article).",
+    "start_Offset": 70,
+    "end_Offset": 83,
+    "start": 46.36,
+    "end": 51.1
+  },
+  {
+    "val": "Weeding out the disloyal is its primary goal.",
+    "start_Offset": 84,
+    "end_Offset": 91,
+    "start": 51.32,
+    "end": 54.9
+  },
+  {
+    "val": "Can there still be serious opposition to Mr Xi?",
+    "start_Offset": 92,
+    "end_Offset": 100,
+    "start": 55.86,
+    "end": 59.150000000000006
+  },
+  {
+    "val": "There is certainly little sign of it on the streets.",
+    "start_Offset": 101,
+    "end_Offset": 110,
+    "start": 59.75,
+    "end": 62.24
+  },
+  {
+    "val": "Many ordinary citizens express content with his rule.",
+    "start_Offset": 111,
+    "end_Offset": 118,
+    "start": 62.559999,
+    "end": 66.28
+  },
+  {
+    "val": "Under him, China has become far more influential globally.",
+    "start_Offset": 119,
+    "end_Offset": 127,
+    "start": 66.78999999999999,
+    "end": 70.629999
+  },
+  {
+    "val": "The economy has kept on growing at a healthy rate (and surprisingly well despite the pandemic).",
+    "start_Offset": 128,
+    "end_Offset": 143,
+    "start": 71.049999,
+    "end": 77.43
+  },
+  {
+    "val": "His anti-corruption efforts are popular.",
+    "start_Offset": 144,
+    "end_Offset": 149,
+    "start": 77.97,
+    "end": 80.3
+  },
+  {
+    "val": "Neither is there any obvious sign of discontent within the Communist Party elite.",
+    "start_Offset": 150,
+    "end_Offset": 162,
+    "start": 80.82,
+    "end": 85.62
+  },
+  {
+    "val": "It seems likely that many bitterly resent the anti-graft inspectors, and that some senior officials even gnash their teeth.",
+    "start_Offset": 163,
+    "end_Offset": 182,
+    "start": 86.27,
+    "end": 94.59
+  },
+  {
+    "val": "But those with misgivings about Mr Xi know they must keep their mouths shut and their heads down.",
+    "start_Offset": 183,
+    "end_Offset": 200,
+    "start": 95.11,
+    "end": 101.56
+  },
+  {
+    "val": "A lesson from this latest purge, however, is that the outside world only dimly understands Mr Xi’s political world.",
+    "start_Offset": 201,
+    "end_Offset": 219,
+    "start": 102.48,
+    "end": 110.98
+  },
+  {
+    "val": "One stated aim of the campaign is to remove the“pernicious influence”of Zhou Yongkang, who was China’s security overlord just before Mr Xi took power.",
+    "start_Offset": 220,
+    "end_Offset": 245,
+    "start": 111.78,
+    "end": 122.34
+  },
+  {
+    "val": "Mr Zhou was jailed in 2015 for corruption and leaking state secrets.",
+    "start_Offset": 246,
+    "end_Offset": 257,
+    "start": 123.44,
+    "end": 128.77
+  },
+  {
+    "val": "Officials also accused him of“political plotting”—shorthand, many observers believe, for scheming against Mr Xi.",
+    "start_Offset": 258,
+    "end_Offset": 273,
+    "start": 129.29,
+    "end": 137.68
+  },
+  {
+    "val": "That his name is still being invoked years later hints at tensions, but it is hard for outsiders to judge how serious they are.",
+    "start_Offset": 274,
+    "end_Offset": 297,
+    "start": 138.7,
+    "end": 147.46
+  },
+  {
+    "val": "The agencies being targeted in the new campaign occupy the darkest corners of an opaque political system: the police, the secret police, the judiciary and the prison service.",
+    "start_Offset": 298,
+    "end_Offset": 325,
+    "start": 147.95,
+    "end": 161.559999
+  },
+  {
+    "val": "In the months leading up to the purge several powerful figures within this apparatus were toppled.",
+    "start_Offset": 326,
+    "end_Offset": 341,
+    "start": 162.61,
+    "end": 168.41
+  },
+  {
+    "val": "One was the chief of police in Shanghai, who has been accused of forming“factions”.",
+    "start_Offset": 342,
+    "end_Offset": 356,
+    "start": 168.86,
+    "end": 174.42
+  },
+  {
+    "val": "All detail of what that may mean is a closely guarded secret.",
+    "start_Offset": 357,
+    "end_Offset": 368,
+    "start": 174.91,
+    "end": 178.69
+  },
+  {
+    "val": "Despite this, the new purge contains clear messages.",
+    "start_Offset": 369,
+    "end_Offset": 376,
+    "start": 179.82999999999998,
+    "end": 183.57
+  },
+  {
+    "val": "One is Mr Xi’s appetite for power.",
+    "start_Offset": 377,
+    "end_Offset": 383,
+    "start": 184.3,
+    "end": 187.29
+  },
+  {
+    "val": "The campaign will wrap up in time for a big political event late in 2022: the five-yearly party congress.",
+    "start_Offset": 384,
+    "end_Offset": 403,
+    "start": 188.349999,
+    "end": 195.60999999999999
+  },
+  {
+    "val": "He looks sure to use this to extend his rule for another five years, in defiance of the convention that general secretaries step down after a decade.",
+    "start_Offset": 404,
+    "end_Offset": 430,
+    "start": 196.34,
+    "end": 207.07
+  },
+  {
+    "val": "Tightening control over the security forces will help crush any opposition to his innovation.",
+    "start_Offset": 431,
+    "end_Offset": 444,
+    "start": 207.99,
+    "end": 214.66
+  },
+  {
+    "val": "That raises the other, still bigger, reason to pay attention.",
+    "start_Offset": 445,
+    "end_Offset": 454,
+    "start": 215.469999,
+    "end": 219.18
+  },
+  {
+    "val": "For all the seeming relentlessness of the rise of China under an increasingly adamantine authoritarianism, politics can pack surprises that suddenly change the country’s trajectory.",
+    "start_Offset": 455,
+    "end_Offset": 479,
+    "start": 219.86,
+    "end": 233.76999899999998
+  },
+  {
+    "val": "Consider the arrest of Mao Zedong’s widow and others in the“Gang of Four”in 1976, the struggle that brought Deng Xiaoping to power two years later, the regime-threatening splits within the party that emerged during the Tiananmen Square protests of 1989 and the political bloodletting that eliminated Mr Xi’s rivals in the lead-up to his own anointment.",
+    "start_Offset": 480,
+    "end_Offset": 539,
+    "start": 234.57999999999998,
+    "end": 260.21999999999997
+  },
+  {
+    "val": "You cannot rule out more such disruptive shocks.",
+    "start_Offset": 540,
+    "end_Offset": 547,
+    "start": 261.0,
+    "end": 264.55
+  },
+  {
+    "val": "In the build-up to next year’s congress, the murky waters of Chinese politics will deserve even closer scrutiny.",
+    "start_Offset": 548,
+    "end_Offset": 566,
+    "start": 265.38,
+    "end": 273.30999999999995
+  },
+  {
+    "val": "That is in part because Mr Xi defies norms.",
+    "start_Offset": 567,
+    "end_Offset": 575,
+    "start": 274.16,
+    "end": 278.14
+  },
+  {
+    "val": "As well as rejecting the modern principle that China’s leader gets only ten years at the top, he has seized more levers of power than any ruler since Mao.",
+    "start_Offset": 576,
+    "end_Offset": 604,
+    "start": 278.94,
+    "end": 289.97
+  },
+  {
+    "val": "It is also because, under Mr Xi, the regime has become even more secretive.",
+    "start_Offset": 605,
+    "end_Offset": 618,
+    "start": 290.74,
+    "end": 295.71
+  },
+  {
+    "val": "Alas, such secrecy makes for a government less accountable to citizens and more likely to catch the world unaware.",
+    "start_Offset": 619,
+    "end_Offset": 637,
+    "start": 296.24,
+    "end": 304.989999
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

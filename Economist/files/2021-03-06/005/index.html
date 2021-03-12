@@ -1,0 +1,579 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">005 Leaders - Welfare in the 21st century</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='005';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = [];
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+
+        var INLINE_JSON=[
+  {
+    "val": "AFTER THE Depression and the second world war, voters and governments in rich countries recast the relationship between the state and its citizens.",
+    "start_Offset": 0,
+    "end_Offset": 22,
+    "start": 14.19,
+    "end": 22.48
+  },
+  {
+    "val": "Now the pandemic has seen the old rules on social spending ripped up.",
+    "start_Offset": 23,
+    "end_Offset": 35,
+    "start": 23.009999999999998,
+    "end": 27.069999999999997
+  },
+  {
+    "val": "More than three-quarters of Americans support President Joe Biden’s $1,9trn stimulus bill, which is due in the Senate and includes $1,400 cheques for most adults.",
+    "start_Offset": 36,
+    "end_Offset": 63,
+    "start": 27.53,
+    "end": 39.58
+  },
+  {
+    "val": "And in the budget on March 3rd Britain extended a scheme to pay the wages of furloughed workers until September, even as public debt hit its highest level since 1945 (see article).",
+    "start_Offset": 64,
+    "end_Offset": 95,
+    "start": 40.01,
+    "end": 51.120000000000005
+  },
+  {
+    "val": "Such boldness brings dangers: governments could stretch the public finances to breaking-point, distort incentives and create sclerotic societies.",
+    "start_Offset": 96,
+    "end_Offset": 114,
+    "start": 51.59,
+    "end": 61.01
+  },
+  {
+    "val": "But they also have a chance to create new social-welfare policies that are affordable and which help workers thrive in an economy facing technological disruption.",
+    "start_Offset": 115,
+    "end_Offset": 140,
+    "start": 61.41,
+    "end": 71.51
+  },
+  {
+    "val": "They must seize it.",
+    "start_Offset": 141,
+    "end_Offset": 144,
+    "start": 71.940001,
+    "end": 73.53
+  },
+  {
+    "val": "The past year has seen a wild experiment in social spending.",
+    "start_Offset": 145,
+    "end_Offset": 155,
+    "start": 74.52,
+    "end": 77.93
+  },
+  {
+    "val": "The world launched at least 1,600 new social-protection programmes in 2020 (see article).",
+    "start_Offset": 156,
+    "end_Offset": 170,
+    "start": 78.35,
+    "end": 84.34
+  },
+  {
+    "val": "Rich countries have provided 5,8% of GDP on average to help record numbers of workers.",
+    "start_Offset": 171,
+    "end_Offset": 186,
+    "start": 84.759999,
+    "end": 91.36
+  },
+  {
+    "val": "Government debts are piling up, but so far low interest rates mean that they are cheap to service.",
+    "start_Offset": 187,
+    "end_Offset": 204,
+    "start": 91.72,
+    "end": 97.52
+  },
+  {
+    "val": "The public’s mood had already been shifting.",
+    "start_Offset": 205,
+    "end_Offset": 211,
+    "start": 97.92,
+    "end": 100.11999999999999
+  },
+  {
+    "val": "Britons used to grumble that layabouts sponged off the welfare state; now they are more likely to say help is too stingy.",
+    "start_Offset": 212,
+    "end_Offset": 233,
+    "start": 100.13,
+    "end": 107.74000000000001
+  },
+  {
+    "val": "Last year over two-thirds of Europeans said they supported a universal basic income (UBI), an unconditional recurring payment to all adults.",
+    "start_Offset": 234,
+    "end_Offset": 255,
+    "start": 108.359999,
+    "end": 118.52999899999999
+  },
+  {
+    "val": "Affluent professionals have had their gaze drawn to the working conditions of those who deliver food and look after the sick.",
+    "start_Offset": 256,
+    "end_Offset": 276,
+    "start": 118.99,
+    "end": 125.899999
+  },
+  {
+    "val": "The struggles of women who have dropped out of the workforce to care for children and the elderly have become impossible to ignore.",
+    "start_Offset": 277,
+    "end_Offset": 299,
+    "start": 126.35,
+    "end": 133.14000000000001
+  },
+  {
+    "val": "The social safety net in many rich countries was creaking before covid-19 struck.",
+    "start_Offset": 300,
+    "end_Offset": 313,
+    "start": 134.08,
+    "end": 139.279999
+  },
+  {
+    "val": "Modelled on the ideas of Otto von Bismarck and William Beveridge, it had often failed to cushion workers from globalisation and technological and social change.",
+    "start_Offset": 314,
+    "end_Offset": 338,
+    "start": 139.679999,
+    "end": 148.93
+  },
+  {
+    "val": "In 1999-2019 the number of Americans aged 25-54 outside the labour force grew by 25%, or 4,7m, over six times more than the number who received help from the main assistance programme for displaced workers.",
+    "start_Offset": 339,
+    "end_Offset": 376,
+    "start": 149.36,
+    "end": 166.39000000000001
+  },
+  {
+    "val": "As health-care and pension costs soared in recent years, governments cut back support for working-age people.",
+    "start_Offset": 377,
+    "end_Offset": 394,
+    "start": 167.08,
+    "end": 173.41
+  },
+  {
+    "val": "Between 2014 and 2018 Britain’s state-pension bill grew in real terms by £4bn ($5,8bn), even as the rest of its welfare budget shrank by £16,5bn.",
+    "start_Offset": 395,
+    "end_Offset": 422,
+    "start": 173.87,
+    "end": 188.67000000000002
+  },
+  {
+    "val": "A dwindling share of middle-income jobs and the growth of the gig economy fuelled fears that labour markets were changing faster than flat-footed governments could.",
+    "start_Offset": 423,
+    "end_Offset": 449,
+    "start": 188.67,
+    "end": 198.11
+  },
+  {
+    "val": "With the public and some economists cheering on, it is tempting for politicians to stoke the economy with more ad hoc spending, or put in place vast schemes such as UBI.",
+    "start_Offset": 450,
+    "end_Offset": 480,
+    "start": 199.119999,
+    "end": 209.929999
+  },
+  {
+    "val": "Instead they need to take a measured, long-term view.",
+    "start_Offset": 481,
+    "end_Offset": 490,
+    "start": 210.45,
+    "end": 213.77999899999998
+  },
+  {
+    "val": "The safety net must be affordable.",
+    "start_Offset": 491,
+    "end_Offset": 496,
+    "start": 214.119999,
+    "end": 216.139999
+  },
+  {
+    "val": "Tight budgets, not milk and honey, will define the 2020s.",
+    "start_Offset": 497,
+    "end_Offset": 506,
+    "start": 216.51,
+    "end": 220.04999999999998
+  },
+  {
+    "val": "The annual deficit of big advanced economies was 4% of their combined GDP even before the pandemic—and much ageing is still to come.",
+    "start_Offset": 507,
+    "end_Offset": 530,
+    "start": 220.69,
+    "end": 229.83999999999997
+  },
+  {
+    "val": "Already bond yields are rising again (see article).",
+    "start_Offset": 531,
+    "end_Offset": 538,
+    "start": 230.259999,
+    "end": 233.01999899999998
+  },
+  {
+    "val": "Social spending must flow quickly and automatically to those who need it—not, as in America, only during crises when a panicked government passes emergency legislation.",
+    "start_Offset": 539,
+    "end_Offset": 564,
+    "start": 233.059999,
+    "end": 243.70000000000002
+  },
+  {
+    "val": "And governments need to find mechanisms that cushion people more effectively against income shocks and joblessness without discouraging work or crushing economic dynamism.",
+    "start_Offset": 565,
+    "end_Offset": 587,
+    "start": 244.12,
+    "end": 255.39999999999998
+  },
+  {
+    "val": "The first step towards satisfying these goals is to use technology to make ancient bureaucracies more efficient.",
+    "start_Offset": 588,
+    "end_Offset": 604,
+    "start": 256.42,
+    "end": 263.239999
+  },
+  {
+    "val": "Postal cheques, 1980s mainframe computers and shoddy data need to be relegated to the past.",
+    "start_Offset": 605,
+    "end_Offset": 619,
+    "start": 263.67,
+    "end": 270.89000000000004
+  },
+  {
+    "val": "In the pandemic many governments temporarily short-circuited their existing systems because they were too slow.",
+    "start_Offset": 620,
+    "end_Offset": 635,
+    "start": 271.29,
+    "end": 277.45000000000005
+  },
+  {
+    "val": "In Estonia and Singapore digital-identification systems and a disdain for form-filling became an asset in the crisis.",
+    "start_Offset": 636,
+    "end_Offset": 654,
+    "start": 277.73,
+    "end": 285.4
+  },
+  {
+    "val": "More countries need to copy them and also to ensure universal access to the internet and bank accounts.",
+    "start_Offset": 655,
+    "end_Offset": 672,
+    "start": 285.78,
+    "end": 292.05
+  },
+  {
+    "val": "The call for efficient administration may sound like tinkering but one in five poor Americans eligible for wage top-ups fails to claim them.",
+    "start_Offset": 673,
+    "end_Offset": 696,
+    "start": 292.58,
+    "end": 301.93
+  },
+  {
+    "val": "Nimbler digital-payment systems will reduce the need for costly universalism as a fail-safe, and allow better targeting and quicker response times.",
+    "start_Offset": 697,
+    "end_Offset": 719,
+    "start": 302.46,
+    "end": 311.93
+  },
+  {
+    "val": "Digital systems also permit the emergency option of making temporary cash payments to all households.",
+    "start_Offset": 720,
+    "end_Offset": 734,
+    "start": 312.31,
+    "end": 318.94
+  },
+  {
+    "val": "That is the easy part.",
+    "start_Offset": 735,
+    "end_Offset": 739,
+    "start": 319.549999,
+    "end": 321.059999
+  },
+  {
+    "val": "Balancing generosity and dynamism is harder.",
+    "start_Offset": 740,
+    "end_Offset": 745,
+    "start": 321.52,
+    "end": 324.58
+  },
+  {
+    "val": "Part of the solution is to top up the wages of low-paid workers.",
+    "start_Offset": 746,
+    "end_Offset": 759,
+    "start": 325.21,
+    "end": 329.09000000000003
+  },
+  {
+    "val": "Anglo-Saxon countries have done this well since reforms in the 1990s and 2000s.",
+    "start_Offset": 760,
+    "end_Offset": 773,
+    "start": 329.46,
+    "end": 334.88
+  },
+  {
+    "val": "But wage top-ups are of little use to the jobless and are often scant compensation for people who lose good jobs to forces beyond their control.",
+    "start_Offset": 774,
+    "end_Offset": 800,
+    "start": 335.219999,
+    "end": 343.82
+  },
+  {
+    "val": "Paltry support for the unemployed in Britain and America preserves incentives to work but at high human cost.",
+    "start_Offset": 801,
+    "end_Offset": 818,
+    "start": 344.48,
+    "end": 352.06
+  },
+  {
+    "val": "The sparsity of social insurance has undermined political support for creative destruction, the catalyst for rising living standards.",
+    "start_Offset": 819,
+    "end_Offset": 836,
+    "start": 352.37,
+    "end": 360.71999999999997
+  },
+  {
+    "val": "Continental Europe tends to underwrite traditional workers’ incomes more generously.",
+    "start_Offset": 837,
+    "end_Offset": 846,
+    "start": 361.209999,
+    "end": 366.22
+  },
+  {
+    "val": "But the distortion of incentives leads to higher unemployment and divisions between coddled insiders and a precariat.",
+    "start_Offset": 847,
+    "end_Offset": 863,
+    "start": 366.52,
+    "end": 374.149999
+  },
+  {
+    "val": "Both sides of the Atlantic lack a permanent safety net that insures gig workers and the self-employed.",
+    "start_Offset": 864,
+    "end_Offset": 881,
+    "start": 374.73,
+    "end": 381.55
+  },
+  {
+    "val": "There is one country that combines labour-market flexibility with generosity: Denmark, which spends large sums—1,9% of GDP in 2018—on retraining and on advising the jobless.",
+    "start_Offset": 882,
+    "end_Offset": 910,
+    "start": 382.34,
+    "end": 396.399999
+  },
+  {
+    "val": "These interventions stop the unemployed from falling into dependency.",
+    "start_Offset": 911,
+    "end_Offset": 919,
+    "start": 396.779999,
+    "end": 400.84
+  },
+  {
+    "val": "The inadequacies of policies elsewhere are often glaring.",
+    "start_Offset": 920,
+    "end_Offset": 927,
+    "start": 401.17,
+    "end": 404.78999999999996
+  },
+  {
+    "val": "Britain’s efforts have flopped.",
+    "start_Offset": 928,
+    "end_Offset": 931,
+    "start": 405.22,
+    "end": 406.66999999999996
+  },
+  {
+    "val": "America’s comparable spending is less than a 20th as large as Denmark’s, even though the few lucky beneficiaries of its“trade-adjustment assistance”earn $50,000 more in wages, on average, over a decade.",
+    "start_Offset": 932,
+    "end_Offset": 965,
+    "start": 406.99,
+    "end": 421.04
+  },
+  {
+    "val": "Bungee economics For years social spending has favoured the elderly and an outdated safety net.",
+    "start_Offset": 966,
+    "end_Offset": 980,
+    "start": 421.69,
+    "end": 426.63999900000005
+  },
+  {
+    "val": "It should be rebuilt around active labour-market policies that use technology to help everyone from shopworkers who are victims of disruption to mothers whose skills have atrophied and those whose jobs are replaced by machines.",
+    "start_Offset": 981,
+    "end_Offset": 1016,
+    "start": 427.009999,
+    "end": 441.03999999999996
+  },
+  {
+    "val": "Governments cannot eliminate risk, but they can help ensure that if calamity strikes, people bounce back.",
+    "start_Offset": 1017,
+    "end_Offset": 1032,
+    "start": 441.41,
+    "end": 449.23
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

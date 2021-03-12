@@ -1,0 +1,140 @@
+1
+00:00:15,960 --> 00:00:22,030
+SUPPLIERS HATE being made to wait for the cash they are owed almost as much as their customers hate parting with it.
+
+2
+00:00:22,480 --> 00:00:24,290
+What if high finance could help?
+
+3
+00:00:24,770 --> 00:00:33,079
+Specialist firms have indeed sprung up, offering to pay suppliers up front, then cashing in their customer’s cheque as the bill comes due weeks later.
+
+4
+00:00:33,719 --> 00:00:38,900
+By charging fees or a spread, the intermediary takes a cut for what is in effect a loan.
+
+5
+00:00:39,200 --> 00:00:49,360
+But the woes this week of Greensill Capital, a provider of such supply-chain financing, highlight some of the risks lurking in overlooked bits of the financial system.
+
+6
+00:00:50,139 --> 00:00:55,030
+Greensill, founded just ten years ago, boasted it could help companies“unlock capital”.
+
+7
+00:00:55,490 --> 00:01:05,130
+Using techniques mastered by erstwhile slicers-and-dicers of subprime mortgages, it transformed the bills it took on into bond-like investments.
+
+8
+00:01:05,639 --> 00:01:12,340
+These could be sold to outside investors, such as hedge funds, desperate to find some yield in a low-interest world.
+
+9
+00:01:12,810 --> 00:01:20,470
+As long as the customers kept settling their invoices, a tidy profit could be made for investors—and the financiers behind all the alchemy.
+
+10
+00:01:20,900 --> 00:01:29,719
+By 2019 Greensill claimed to have arranged financing worth more than $140bn to over 10m customers.
+
+11
+00:01:30,369 --> 00:01:34,180
+Questions over whether the money would indeed keep flowing were never far away.
+
+12
+00:01:51,310 --> 00:01:52,270
+On March 1st Credit Suisse froze $10bn of funds stuffed with paper sourced by Greensill.
+
+13
+00:01:52,830 --> 00:01:59,960
+The Swiss investment bank warned of“considerable uncertainties”with respect to the valuation of the bonds linked to Greensill.
+
+14
+00:02:01,020 --> 00:02:04,170
+Within days Greensill itself was fighting off bankruptcy.
+
+15
+00:02:04,469 --> 00:02:13,770
+The firm is said to have sought relief from insolvent-trading laws in Australia, where part of its corporate set-up is based (its founder, Lex Greensill, is Australian).
+
+16
+00:02:14,320 --> 00:02:22,530
+By March 3rd it was reported by the Financial Times to be preparing to file for insolvency in Britain, where it conducts much of its business.
+
+17
+00:02:23,139 --> 00:02:35,749
+Apollo Global Management, an American private-equity giant, has been in talks to buy at least part of the franchise, at a fraction of the $7bn value Greensill, which had planned to list its shares, once hoped to achieve.
+
+18
+00:02:36,340 --> 00:02:43,040
+The swift downfall of a once-lauded financial firm will reverberate beyond the niche world of trade finance.
+
+19
+00:02:43,500 --> 00:02:53,000
+Greensill had worked up a profile as a scrappy innovator while also courting the establishment (David Cameron, a former British prime minister, was flaunted as an adviser).
+
+20
+00:02:53,750 --> 00:03:03,330
+Mr Greensill, who said the idea for the business came from seeing his farmer parents run into financial difficulty, and who is now in his 40s, became a youngish billionaire.
+
+21
+00:03:03,910 --> 00:03:15,870
+After a previous sticky patch in 2018 the firm had received $1,5bn in investment from SoftBank, a Japanese investment group fond of backing wildly ambitious undertakings.
+
+22
+00:03:16,559 --> 00:03:21,030
+Regulators are now wondering whether the model highlights risks they ought to have fretted about.
+
+23
+00:03:21,520 --> 00:03:30,030
+On March 2nd BaFin, Germany’s financial watchdog, took over control of a bank Greensill runs there, closing it to new business.
+
+24
+00:03:30,580 --> 00:03:36,179
+It has filed a criminal complaint against the bank’s management, accusing it of manipulating its balance-sheet.
+
+25
+00:03:36,639 --> 00:03:42,810
+(Greensill says it followed its auditors’ advice and was complying with the regulator’s previous requests.
+
+26
+00:03:43,440 --> 00:03:49,160
+) Another concern is what will happen to companies that used Greensill’s services to access capital.
+
+27
+00:03:49,770 --> 00:03:58,270
+One noteworthy borrower is Sanjeev Gupta, an Indian-born industrialist who has snapped up steelmaking assets in Britain and beyond.
+
+28
+00:03:58,870 --> 00:04:09,949
+Greensill was a big provider of finance to the GFG Alliance, a group of firms controlled by Mr Gupta’s family; Mr Gupta also once owned a stake in Greensill itself.
+
+29
+00:04:10,330 --> 00:04:18,620
+It was transactions linked to loans to Mr Gupta’s empire (which has not been accused of wrongdoing) that prompted BaFin to step in.
+
+30
+00:04:19,220 --> 00:04:26,820
+A spokesman for GFG said it had adequate funding, even as reports emerged of talks to secure loans from other sources.
+
+31
+00:04:27,589 --> 00:04:31,530
+The episode will also shine a light on the world of supply-chain financing.
+
+32
+00:04:32,030 --> 00:04:39,460
+Fans of the practice point out it keeps money flowing even as some cash-strapped businesses keep suppliers waiting for months to be paid.
+
+33
+00:04:40,070 --> 00:04:42,459
+But its accounting treatment is tricky.
+
+34
+00:04:42,910 --> 00:04:50,470
+There is evidence that some struggling businesses may seek to hide spiralling debt piles by using supply-chain-finance techniques.
+
+35
+00:04:51,110 --> 00:04:55,060
+Creative forms of financing work best when they rely on conservative accounting.
+

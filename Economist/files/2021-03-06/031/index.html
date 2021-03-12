@@ -1,0 +1,522 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">031 China - Domestic security</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='031';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "FOR MANY members of China’s 3m-strong domestic-security forces, these must be worrying times.",
+    "start_Offset": 0,
+    "end_Offset": 14,
+    "start": 22.82,
+    "end": 30.01
+  },
+  {
+    "val": "On February 27th the Communist Party declared the start of a long-expected purge of their ranks.",
+    "start_Offset": 15,
+    "end_Offset": 31,
+    "start": 30.559998999999998,
+    "end": 36.910000000000004
+  },
+  {
+    "val": "It will involve, say officials,“turning the knife-blade inward”to gouge out those deemed corrupt or insufficiently loyal to the party and its leader, Xi Jinping.",
+    "start_Offset": 32,
+    "end_Offset": 58,
+    "start": 37.56,
+    "end": 49.019999
+  },
+  {
+    "val": "More than eight years into Mr Xi’s iron rule, the party appears to wonder whether a vital bulwark of its power is entirely trustworthy.",
+    "start_Offset": 59,
+    "end_Offset": 82,
+    "start": 49.889999,
+    "end": 59.29
+  },
+  {
+    "val": "State-controlled media have described it as the biggest such campaign since the late 1990s within the domestic-security system, which includes the police, the secret police, the judiciary and prisons.",
+    "start_Offset": 83,
+    "end_Offset": 113,
+    "start": 60.16,
+    "end": 74.53
+  },
+  {
+    "val": "It is due to last for about a year.",
+    "start_Offset": 114,
+    "end_Offset": 122,
+    "start": 75.24,
+    "end": 77.42
+  },
+  {
+    "val": "The aim is to ensure that these agencies are“absolutely loyal, absolutely pure and absolutely reliable”.",
+    "start_Offset": 123,
+    "end_Offset": 138,
+    "start": 78.02,
+    "end": 86.28999999999999
+  },
+  {
+    "val": "Officials say the campaign will be like the“Yan’an Rectification”of the early 1940s.",
+    "start_Offset": 139,
+    "end_Offset": 152,
+    "start": 87.12,
+    "end": 92.78
+  },
+  {
+    "val": "That was when Mao—then the leader of a communist insurgency—staged a sweeping and brutal purge of the party’s ranks to consolidate his control.",
+    "start_Offset": 153,
+    "end_Offset": 177,
+    "start": 93.52,
+    "end": 103.32000000000001
+  },
+  {
+    "val": "Such language suggests that many heads will roll as the party attempts to clear the“dense miasma”surrounding the security apparatus, cure it of“chronic illness”and ensure it remains“surnamed Party”(meaning as loyal to the party as if to a family member).",
+    "start_Offset": 178,
+    "end_Offset": 221,
+    "start": 104.25,
+    "end": 124.02
+  },
+  {
+    "val": "It is remarkable that such a campaign is deemed necessary.",
+    "start_Offset": 222,
+    "end_Offset": 231,
+    "start": 125.039999,
+    "end": 129.17000000000002
+  },
+  {
+    "val": "After he took over as China’s leader in 2012 Mr Xi launched the country’s toughest battle against corruption in decades.",
+    "start_Offset": 232,
+    "end_Offset": 251,
+    "start": 129.87,
+    "end": 137.91000000000003
+  },
+  {
+    "val": "Hundreds of thousands of officials were punished, including powerful people with security backgrounds.",
+    "start_Offset": 252,
+    "end_Offset": 264,
+    "start": 138.429999,
+    "end": 144.629999
+  },
+  {
+    "val": "One of them was Zhou Yongkang, a former member of the Politburo Standing Committee.",
+    "start_Offset": 265,
+    "end_Offset": 278,
+    "start": 145.17000000000002,
+    "end": 150.42
+  },
+  {
+    "val": "Before Mr Xi assumed power, Mr Zhou had overseen the entire law-enforcement apparatus.",
+    "start_Offset": 279,
+    "end_Offset": 292,
+    "start": 150.87,
+    "end": 156.29
+  },
+  {
+    "val": "In 2015 he was sentenced to life in prison—ostensibly for graft and leaking state secrets.",
+    "start_Offset": 293,
+    "end_Offset": 308,
+    "start": 157.54,
+    "end": 165.02
+  },
+  {
+    "val": "Officials later alleged—without giving details—that he had engaged in“political plotting”, too.",
+    "start_Offset": 309,
+    "end_Offset": 322,
+    "start": 165.76,
+    "end": 172.36
+  },
+  {
+    "val": "It is widely believed that he was an opponent of Mr Xi.",
+    "start_Offset": 323,
+    "end_Offset": 334,
+    "start": 173.13,
+    "end": 176.17000000000002
+  },
+  {
+    "val": "But on February 3rd party investigators said the police had failed to eliminate Mr Zhou’s“pernicious influence”within the force and had not followed the party line“satisfactorily enough”.",
+    "start_Offset": 335,
+    "end_Offset": 363,
+    "start": 176.48,
+    "end": 189.22
+  },
+  {
+    "val": "Several high-ranking security officials have been snared by the party’s anti-corruption agency in the past few months.",
+    "start_Offset": 364,
+    "end_Offset": 382,
+    "start": 189.94,
+    "end": 197.57
+  },
+  {
+    "val": "The most prominent is Gong Daoan, then Shanghai’s police chief and one of the city’s deputy mayors.",
+    "start_Offset": 383,
+    "end_Offset": 399,
+    "start": 198.23,
+    "end": 205.24
+  },
+  {
+    "val": "Last August he became the third policeman with a rank equivalent to that of a vice-minister to be placed under investigation since the start of 2020.",
+    "start_Offset": 400,
+    "end_Offset": 426,
+    "start": 205.85,
+    "end": 216.21
+  },
+  {
+    "val": "The following month Mr Gong was stripped of his posts.",
+    "start_Offset": 427,
+    "end_Offset": 436,
+    "start": 216.85,
+    "end": 220.26
+  },
+  {
+    "val": "On March 1st the government announced that he had been arrested and his case referred to prosecutors.",
+    "start_Offset": 437,
+    "end_Offset": 453,
+    "start": 220.68,
+    "end": 227.0
+  },
+  {
+    "val": "The charges against Mr Gong include abuse of his positions to promote his and others’ business interests, corruption related to the approval of appointments, misuse of his official car and frequent attendance of banquets that raised questions about his impartiality.",
+    "start_Offset": 454,
+    "end_Offset": 493,
+    "start": 227.88,
+    "end": 247.64
+  },
+  {
+    "val": "But Mr Gong’s alleged political offences are listed first: forming factions within the party and“completely lacking the four awarenesses”, ie, of the need for loyalty to the party and to Mr Xi, and for compliance with their orders and total adherence to the party’s line.",
+    "start_Offset": 494,
+    "end_Offset": 539,
+    "start": 248.52,
+    "end": 268.2
+  },
+  {
+    "val": "Such accusations will probably be levelled at more police chiefs during the upcoming purge.",
+    "start_Offset": 540,
+    "end_Offset": 553,
+    "start": 268.65,
+    "end": 274.03999999999996
+  },
+  {
+    "val": "The loyalty of the security agencies“directly affects the party’s position at the helm of state and the continuance of political stability”, said an official report on a meeting of party bosses that kicked off the nationwide campaign.",
+    "start_Offset": 554,
+    "end_Offset": 591,
+    "start": 274.93,
+    "end": 289.79
+  },
+  {
+    "val": "Its launch was heralded in July with trial runs in a handful of local police forces, courts and prosecutors’ offices, as well as in two prisons and one local state-security bureau (home to the dissident- and spy-hunting secret police).",
+    "start_Offset": 592,
+    "end_Offset": 632,
+    "start": 290.33,
+    "end": 306.489999
+  },
+  {
+    "val": "In charge of this experimental phase was Chen Yixin, a senior security official who appears to be a troubleshooter for Mr Xi—in February last year, in the early days of the covid-19 pandemic, he was sent to Wuhan to help supervise efforts to crush and contain the central city’s massive outbreak of the disease.",
+    "start_Offset": 633,
+    "end_Offset": 688,
+    "start": 307.19,
+    "end": 329.29
+  },
+  {
+    "val": "Mr Chen said“education and rectification”of the security forces was a task of“urgency and extreme importance”.",
+    "start_Offset": 689,
+    "end_Offset": 706,
+    "start": 330.03,
+    "end": 338.08999900000003
+  },
+  {
+    "val": "He described the campaign as“scraping the bones to remove the poison, and draining away the filth to bring in fresh water”.",
+    "start_Offset": 707,
+    "end_Offset": 728,
+    "start": 338.61,
+    "end": 348.32
+  },
+  {
+    "val": "Police at the time were reaching the end of a three-year campaign against criminal gangs and their“protective umbrellas”within the government.",
+    "start_Offset": 729,
+    "end_Offset": 751,
+    "start": 349.21,
+    "end": 357.19
+  },
+  {
+    "val": "That effort resulted in the smashing of more than 14,700 criminal groups.",
+    "start_Offset": 752,
+    "end_Offset": 764,
+    "start": 357.839999,
+    "end": 363.90000000000003
+  },
+  {
+    "val": "But apparently it did not succeed in purifying the police.",
+    "start_Offset": 765,
+    "end_Offset": 774,
+    "start": 364.46,
+    "end": 368.57
+  },
+  {
+    "val": "Assuming the campaign will follow the pattern of last year’s experiments, participants can expect to spend a month studying the kind of behaviour that is expected of them.",
+    "start_Offset": 775,
+    "end_Offset": 802,
+    "start": 369.27,
+    "end": 379.37
+  },
+  {
+    "val": "They will then perform“self-examination”and be required to admit to any wrongdoing.",
+    "start_Offset": 803,
+    "end_Offset": 816,
+    "start": 379.89,
+    "end": 385.9
+  },
+  {
+    "val": "These confessions will be compared with other submissions, including complaints from members of the public.",
+    "start_Offset": 817,
+    "end_Offset": 831,
+    "start": 386.62,
+    "end": 393.179999
+  },
+  {
+    "val": "High-level teams will be dispatched from Beijing to ensure the job is done properly.",
+    "start_Offset": 832,
+    "end_Offset": 846,
+    "start": 393.799999,
+    "end": 398.72999999999996
+  },
+  {
+    "val": "Among the 16,000 people who were involved in the trial phase, more than 2,200 were disciplined, including 39 who were formally charged.",
+    "start_Offset": 847,
+    "end_Offset": 870,
+    "start": 399.48,
+    "end": 410.43
+  },
+  {
+    "val": "If punishments are meted out at the same rate nationally, then the“overall reckoning”, as one newspaper described the purge, may result in thousands being jailed and hundreds of thousands punished in other ways.",
+    "start_Offset": 871,
+    "end_Offset": 904,
+    "start": 411.36,
+    "end": 22.96
+  },
+  {
+    "val": "The campaign may benefit Mr Xi.",
+    "start_Offset": 905,
+    "end_Offset": 910,
+    "start": 421.769999,
+    "end": 421.98
+  },
+  {
+    "val": "Late next year he will preside over a five-yearly party congress, which will mark a critical juncture of his leadership.",
+    "start_Offset": 911,
+    "end_Offset": 931,
+    "start": 426.95,
+    "end": 436.66
+  },
+  {
+    "val": "Normally he would be expected to step down at this event, having served as general secretary for a decade.",
+    "start_Offset": 932,
+    "end_Offset": 950,
+    "start": 437.35,
+    "end": 443.92
+  },
+  {
+    "val": "But he shows no intention of doing so.",
+    "start_Offset": 951,
+    "end_Offset": 958,
+    "start": 444.62,
+    "end": 446.97999999999996
+  },
+  {
+    "val": "There have been few obvious signs of opposition to granting him another five-year term.",
+    "start_Offset": 959,
+    "end_Offset": 973,
+    "start": 447.339999,
+    "end": 452.25
+  },
+  {
+    "val": "The contrast between China’s successful control of the coronavirus and the West’s fumbling response may have further strengthened his hand.",
+    "start_Offset": 974,
+    "end_Offset": 993,
+    "start": 452.83,
+    "end": 462.4
+  },
+  {
+    "val": "But by tightening his grip on the security forces he can be even more certain that no one will dare to oppose him.",
+    "start_Offset": 994,
+    "end_Offset": 1016,
+    "start": 463.32,
+    "end": 472.28
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

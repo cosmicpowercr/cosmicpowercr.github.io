@@ -1,0 +1,668 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">021 The Americas - Elections in El Salvador</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='021';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "OUTSIDE A POLLING station in El Salvador’s capital city Jennifer Vásquez, a 36-year-old selling water, explains why she voted for candidates from New Ideas, the party of the president, who is just a few years older than she is.",
+    "start_Offset": 0,
+    "end_Offset": 40,
+    "start": 17.709999,
+    "end": 30.990000000000002
+  },
+  {
+    "val": "“Nayib Bukele has done things no president has ever done before,”she gushes, dressed in a T-shirt the sky blue of Mr Bukele’s party.",
+    "start_Offset": 41,
+    "end_Offset": 65,
+    "start": 31.970000000000002,
+    "end": 40.68
+  },
+  {
+    "val": "“We have received packages of food, including tuna and rice, and he is going to send computers to my children.”",
+    "start_Offset": 66,
+    "end_Offset": 85,
+    "start": 41.54,
+    "end": 47.480000000000004
+  },
+  {
+    "val": "Most voters in the country of 6,5m seem similarly smitten.",
+    "start_Offset": 86,
+    "end_Offset": 96,
+    "start": 48.57,
+    "end": 53.13000099999999
+  },
+  {
+    "val": "New Ideas won a landslide in the legislative and municipal elections on February 28th.",
+    "start_Offset": 97,
+    "end_Offset": 110,
+    "start": 53.93,
+    "end": 58.81
+  },
+  {
+    "val": "The party, which was founded in 2018—too late for the previous general election—won at least 56 seats in the 84-seat assembly, giving it a two-thirds majority.",
+    "start_Offset": 111,
+    "end_Offset": 140,
+    "start": 59.64,
+    "end": 70.0
+  },
+  {
+    "val": "The result has shattered El Salvador’s political duopoly.",
+    "start_Offset": 141,
+    "end_Offset": 148,
+    "start": 71.029999,
+    "end": 74.19999999999999
+  },
+  {
+    "val": "Since the end of the civil war in 1992 politics has been dominated by the Farabundo Martí National Liberation Front (FMLN), a left-wing party that grew out of guerrilla groups, and the Nationalist Republican Alliance (Arena), a conservative party that was founded by a former soldier to oppose those guerrillas.",
+    "start_Offset": 149,
+    "end_Offset": 199,
+    "start": 75.02,
+    "end": 94.72
+  },
+  {
+    "val": "Now these parties have fewer than two dozen lawmakers between them.",
+    "start_Offset": 200,
+    "end_Offset": 210,
+    "start": 95.55,
+    "end": 99.27
+  },
+  {
+    "val": "At first glance Mr Bukele does not seem like a traditional caudillo.",
+    "start_Offset": 211,
+    "end_Offset": 222,
+    "start": 100.26,
+    "end": 104.24000000000001
+  },
+  {
+    "val": "The 39-year-old, who was elected president in 2019, wears his baseball cap backwards and broadcasts his every passing thought on social media.",
+    "start_Offset": 223,
+    "end_Offset": 246,
+    "start": 105.2,
+    "end": 113.72
+  },
+  {
+    "val": "An astute publicist, he has enthralled a populace sick of graft.",
+    "start_Offset": 247,
+    "end_Offset": 257,
+    "start": 114.49,
+    "end": 119.12
+  },
+  {
+    "val": "(Three of the previous four presidents have been investigated for corruption; one is now in jail.",
+    "start_Offset": 258,
+    "end_Offset": 273,
+    "start": 119.59,
+    "end": 124.78
+  },
+  {
+    "val": ") Mr Bukele’s approval ratings, at around 90%, are higher than those of any other Latin American leader.",
+    "start_Offset": 274,
+    "end_Offset": 290,
+    "start": 125.809999,
+    "end": 132.29000000000002
+  },
+  {
+    "val": "Critics see in his ascendancy a danger to democracy.",
+    "start_Offset": 291,
+    "end_Offset": 299,
+    "start": 133.24,
+    "end": 136.97
+  },
+  {
+    "val": "He controls two branches of the state: the legislature and the executive.",
+    "start_Offset": 300,
+    "end_Offset": 311,
+    "start": 137.7,
+    "end": 142.109999
+  },
+  {
+    "val": "His super-majority gives him a chance to shape the third: the legislative assembly must pick a new attorney-general and five Supreme Court judges this year.",
+    "start_Offset": 312,
+    "end_Offset": 338,
+    "start": 142.68,
+    "end": 151.87
+  },
+  {
+    "val": "Since he came to office Mr Bukele has shown little regard for institutions.",
+    "start_Offset": 339,
+    "end_Offset": 351,
+    "start": 152.889999,
+    "end": 157.22
+  },
+  {
+    "val": "“He treats laws like we treat driving regulations,”says Nelson Rauda, a journalist.",
+    "start_Offset": 352,
+    "end_Offset": 364,
+    "start": 158.02,
+    "end": 163.42
+  },
+  {
+    "val": "In February last year, frustrated by lawmakers’ refusal to approve the budget for his security programme, Mr Bukele entered Congress with gun-toting soldiers.",
+    "start_Offset": 365,
+    "end_Offset": 388,
+    "start": 164.11,
+    "end": 173.58999899999998
+  },
+  {
+    "val": "In April, after a rise in the murder rate, his government forced hundreds of prisoners (mostly gang members) to huddle together with their hands tied behind their backs, naked apart from their underwear and face-masks.",
+    "start_Offset": 389,
+    "end_Offset": 424,
+    "start": 174.38,
+    "end": 186.41
+  },
+  {
+    "val": "Mr Bukele tweeted the photo, unembarrassed by the risk that jam-packing prisoners might spread covid-19.",
+    "start_Offset": 425,
+    "end_Offset": 441,
+    "start": 187.07,
+    "end": 194.31
+  },
+  {
+    "val": "He has demonised anyone who opposes him, including businessmen, journalists and politicians; a fact some blame for the shooting of two FMLN activists in January, the worst act of political violence since the end of the civil war.",
+    "start_Offset": 442,
+    "end_Offset": 479,
+    "start": 195.32,
+    "end": 209.82
+  },
+  {
+    "val": "And like other populist leaders, he foments distrust of democratic institutions.",
+    "start_Offset": 480,
+    "end_Offset": 490,
+    "start": 210.42,
+    "end": 215.34
+  },
+  {
+    "val": "Last week he warned, without evidence, of possible fraud, and just before the polls closed he broke electoral law by giving a press conference urging people to vote.",
+    "start_Offset": 491,
+    "end_Offset": 518,
+    "start": 215.869999,
+    "end": 225.39000000000001
+  },
+  {
+    "val": "Those in power say the election result will mollify Mr Bukele (along with tweeting furiously about his detractors, he keenly watches his approval ratings).",
+    "start_Offset": 519,
+    "end_Offset": 542,
+    "start": 226.48,
+    "end": 234.86
+  },
+  {
+    "val": "Felix Ulloa, the vice-president, says the“resistance”of the bureaucracy and assembly“generated a confrontational attitude in him”.",
+    "start_Offset": 543,
+    "end_Offset": 561,
+    "start": 235.439999,
+    "end": 244.119999
+  },
+  {
+    "val": "Others are more worried.",
+    "start_Offset": 562,
+    "end_Offset": 565,
+    "start": 244.95,
+    "end": 246.23
+  },
+  {
+    "val": "“We will see how he governs once there are no obstacles,”says Alex Segovia, an economist and former FMLN official.",
+    "start_Offset": 566,
+    "end_Offset": 585,
+    "start": 247.02,
+    "end": 254.64999999999998
+  },
+  {
+    "val": "Mr Bukele has a lot to tackle.",
+    "start_Offset": 586,
+    "end_Offset": 592,
+    "start": 255.62,
+    "end": 258.14
+  },
+  {
+    "val": "The World Health Organisation has praised El Salvador’s handling of covid-19—the government invested in hospitals and handed out money to ease the economic pain of the pandemic.",
+    "start_Offset": 593,
+    "end_Offset": 621,
+    "start": 258.78,
+    "end": 268.09999899999997
+  },
+  {
+    "val": "However, it also imposed lockdown rules so harsh that the Supreme Court ruled some of them unconstitutional.",
+    "start_Offset": 622,
+    "end_Offset": 638,
+    "start": 268.9,
+    "end": 275.65999999999997
+  },
+  {
+    "val": "And these measures contributed to an economic contraction of close to 9% in 2020, among the worst in the region.",
+    "start_Offset": 639,
+    "end_Offset": 658,
+    "start": 276.5,
+    "end": 283.619999
+  },
+  {
+    "val": "Public debt is around 90% of GDP.",
+    "start_Offset": 659,
+    "end_Offset": 665,
+    "start": 284.73,
+    "end": 18.109999
+  },
+  {
+    "val": "Crime, corruption and poverty remain entrenched.",
+    "start_Offset": 666,
+    "end_Offset": 671,
+    "start": 288.699999,
+    "end": 292.24
+  },
+  {
+    "val": "Mr Bukele claims to have no ideology; he says he simply wants to get things done.",
+    "start_Offset": 672,
+    "end_Offset": 687,
+    "start": 293.28,
+    "end": 298.36999899999995
+  },
+  {
+    "val": "But he has no plan, says Bertha Deleón, his former lawyer who cut contact with the president after his gun-toting antics in February.",
+    "start_Offset": 688,
+    "end_Offset": 711,
+    "start": 299.09,
+    "end": 307.3
+  },
+  {
+    "val": "“Everything is pure publicity,”she says.",
+    "start_Offset": 712,
+    "end_Offset": 717,
+    "start": 308.13,
+    "end": 310.87
+  },
+  {
+    "val": "His advisers are typically yes-men.",
+    "start_Offset": 718,
+    "end_Offset": 723,
+    "start": 311.8,
+    "end": 313.9
+  },
+  {
+    "val": "Some are his brothers: one heads his party; another led his presidential campaign.",
+    "start_Offset": 724,
+    "end_Offset": 736,
+    "start": 314.46,
+    "end": 319.81
+  },
+  {
+    "val": "His record so far is decidedly mixed.",
+    "start_Offset": 737,
+    "end_Offset": 743,
+    "start": 320.639999,
+    "end": 323.46
+  },
+  {
+    "val": "Drifting to demagoguery Take corruption, which he has vowed to curb.",
+    "start_Offset": 744,
+    "end_Offset": 754,
+    "start": 324.43,
+    "end": 326.84000000000003
+  },
+  {
+    "val": "Early in his term, he set up an independent anti-corruption body.",
+    "start_Offset": 755,
+    "end_Offset": 766,
+    "start": 327.6,
+    "end": 330.63
+  },
+  {
+    "val": "But his government has produced no evidence of how it has spent the hundreds of millions of dollars it received from donors during the pandemic.",
+    "start_Offset": 767,
+    "end_Offset": 791,
+    "start": 331.1,
+    "end": 338.28999899999997
+  },
+  {
+    "val": "When the anti-graft body sent to the attorney-general evidence suggesting mishandling of such aid, the government obstructed the investigations.",
+    "start_Offset": 792,
+    "end_Offset": 812,
+    "start": 338.889999,
+    "end": 346.91
+  },
+  {
+    "val": "In November the police, who like the army now seem loyal to Mr Bukele rather than the state, stopped agents from entering the health ministry to gather more evidence relating to procurement contracts, including those with companies owned by ministerial relatives.",
+    "start_Offset": 813,
+    "end_Offset": 853,
+    "start": 347.63,
+    "end": 362.51000000000005
+  },
+  {
+    "val": "Since Mr Bukele took office the murder rate has fallen, as he often reminds voters.",
+    "start_Offset": 854,
+    "end_Offset": 868,
+    "start": 363.82,
+    "end": 369.32000000000005
+  },
+  {
+    "val": "He has given the security forces better pay and fancier equipment.",
+    "start_Offset": 869,
+    "end_Offset": 879,
+    "start": 370.02,
+    "end": 373.59999899999997
+  },
+  {
+    "val": "He has also dispersed them around the country to areas with particularly high criminality.",
+    "start_Offset": 880,
+    "end_Offset": 893,
+    "start": 374.33,
+    "end": 378.689999
+  },
+  {
+    "val": "But criminologists point out that the homicide rate has been falling since 2015, before Mr Bukele was in charge (see chart).",
+    "start_Offset": 894,
+    "end_Offset": 914,
+    "start": 380.33,
+    "end": 388.33000000000004
+  },
+  {
+    "val": "The International Crisis Group, a think-tank, says that one reason why crime has ebbed is that the state may have cut deals with gangs.",
+    "start_Offset": 915,
+    "end_Offset": 939,
+    "start": 388.33,
+    "end": 396.14
+  },
+  {
+    "val": "Such deals often backfire in the end.",
+    "start_Offset": 940,
+    "end_Offset": 946,
+    "start": 397.09,
+    "end": 399.69
+  },
+  {
+    "val": "Meanwhile, extortion remains as common as ever.",
+    "start_Offset": 947,
+    "end_Offset": 953,
+    "start": 400.55,
+    "end": 402.91
+  },
+  {
+    "val": "By one estimate, it costs El Salvador 3% of GDP a year.",
+    "start_Offset": 954,
+    "end_Offset": 965,
+    "start": 403.43,
+    "end": 408.37
+  },
+  {
+    "val": "Asked why they love Mr Bukele, some Salvadoreans point to snazzy infrastructure projects.",
+    "start_Offset": 966,
+    "end_Offset": 978,
+    "start": 409.53,
+    "end": 414.549999
+  },
+  {
+    "val": "On a sweltering Saturday afternoon, crowds stood snapping photos of a new road to“Surf City”, a coastal strip that hopes to become a tourism hub.",
+    "start_Offset": 979,
+    "end_Offset": 1004,
+    "start": 415.189999,
+    "end": 423.88
+  },
+  {
+    "val": "Others mention handouts: since the pandemic started, the state has given many people food packages and $300 lump sums.",
+    "start_Offset": 1005,
+    "end_Offset": 1023,
+    "start": 424.94,
+    "end": 432.46999999999997
+  },
+  {
+    "val": "It has also pledged to give laptops to 1,2m pupils, to the delight of people like Ms Vásquez.",
+    "start_Offset": 1024,
+    "end_Offset": 1042,
+    "start": 433.21,
+    "end": 439.25
+  },
+  {
+    "val": "How all this will all be paid for remains to be seen—possibly with a loan from the IMF.",
+    "start_Offset": 1043,
+    "end_Offset": 1061,
+    "start": 439.9,
+    "end": 445.34000000000003
+  },
+  {
+    "val": "A lack of checks and balances is worrying in any country.",
+    "start_Offset": 1062,
+    "end_Offset": 1072,
+    "start": 446.389999,
+    "end": 449.729999
+  },
+  {
+    "val": "It is doubly so in El Salvador, given Mr Bukele’s track record and unprecedented power.",
+    "start_Offset": 1073,
+    "end_Offset": 1087,
+    "start": 450.34,
+    "end": 456.12
+  },
+  {
+    "val": "Few other politicians are trying to stand up to him.",
+    "start_Offset": 1088,
+    "end_Offset": 1097,
+    "start": 456.95,
+    "end": 459.66
+  },
+  {
+    "val": "The only source of criticism seems to be coming from the United States, where President Joe Biden’s new administration has raised concerns about Mr Bukele’s tactics.",
+    "start_Offset": 1098,
+    "end_Offset": 1123,
+    "start": 460.57,
+    "end": 469.7
+  },
+  {
+    "val": "Salvadoreans may be willing to overlook their leader’s caudillo-like tendencies if they continue to feel that he is looking out for them.",
+    "start_Offset": 1124,
+    "end_Offset": 1146,
+    "start": 470.76,
+    "end": 478.26
+  },
+  {
+    "val": "Many have low expectations of their politicians, anyhow: at 28%, support for democracy as the preferred form of government is the lowest in Latin America (jointly with Guatemala).",
+    "start_Offset": 1147,
+    "end_Offset": 1174,
+    "start": 479.059999,
+    "end": 490.17
+  },
+  {
+    "val": "“We have seen this story many times before in this region,”says Celia Medrano, a candidate for the Inter-American Court of Human Rights, a regional body.",
+    "start_Offset": 1175,
+    "end_Offset": 1201,
+    "start": 490.94,
+    "end": 499.3
+  },
+  {
+    "val": "She is referring to populists who end up wrecking their countries, such as Hugo Chávez in Venezuela.",
+    "start_Offset": 1202,
+    "end_Offset": 1218,
+    "start": 499.91,
+    "end": 506.05
+  },
+  {
+    "val": "“The president wants to, and can, make history but needs to learn from history,”she thinks.",
+    "start_Offset": 1219,
+    "end_Offset": 1234,
+    "start": 507.26,
+    "end": 513.81
+  },
+  {
+    "val": "Unfortunately, New Ideas may turn out to be the party of old tricks.",
+    "start_Offset": 1235,
+    "end_Offset": 1247,
+    "start": 514.929999,
+    "end": 520.409999
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

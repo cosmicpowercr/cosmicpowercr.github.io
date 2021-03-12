@@ -1,0 +1,417 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">059 Business - Business and covid-19</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='059';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "GERMANS ARE used to being top of the class.",
+    "start_Offset": 0,
+    "end_Offset": 8,
+    "start": 16.449999,
+    "end": 16.569999
+  },
+  {
+    "val": "Early in the pandemic, when Germany controlled its outbreak better than most of the West, they felt they were.",
+    "start_Offset": 9,
+    "end_Offset": 27,
+    "start": 17.699999,
+    "end": 17.739999
+  },
+  {
+    "val": "In vaccinating citizens against covid-19, by contrast, the country has been a laggard.",
+    "start_Offset": 28,
+    "end_Offset": 41,
+    "start": 17.74,
+    "end": 33.28
+  },
+  {
+    "val": "One in 20 has received a shot, compared with nearly a third of Britons, a sixth of Americans and, as Die Welt, a daily, recently grumbled, even a tenth of Moroccans.",
+    "start_Offset": 42,
+    "end_Offset": 72,
+    "start": 34.08,
+    "end": 46.91
+  },
+  {
+    "val": "German bosses are losing patience.",
+    "start_Offset": 73,
+    "end_Offset": 77,
+    "start": 46.92,
+    "end": 49.290000000000006
+  },
+  {
+    "val": "Many workers at the industrial firms that dominate corporate Germany are vulnerable to covid-19 because factory or construction jobs cannot be done from home.",
+    "start_Offset": 78,
+    "end_Offset": 102,
+    "start": 49.769999999999996,
+    "end": 60.459999999999994
+  },
+  {
+    "val": "Nearly all companies in the DAX 30 blue-chip stockmarket index, as well as countless CEOs of smaller firms, are therefore preparing to launch their own immunisation drives.",
+    "start_Offset": 103,
+    "end_Offset": 130,
+    "start": 61.04,
+    "end": 72.91
+  },
+  {
+    "val": "They include BASF and Bayer (in chemicals), BMW and Volkswagen (carmaking), Deutsche Wohnen and Vonovia (property development) and RWE (energy).",
+    "start_Offset": 131,
+    "end_Offset": 150,
+    "start": 73.51,
+    "end": 85.999999
+  },
+  {
+    "val": "The vaccines will come from the government, which has the doses but apparently not the capacity to get them quickly into arms.",
+    "start_Offset": 151,
+    "end_Offset": 172,
+    "start": 86.99,
+    "end": 95.11
+  },
+  {
+    "val": "Firms are buying ultra-cold freezers for shots that need such storage.",
+    "start_Offset": 173,
+    "end_Offset": 184,
+    "start": 95.73,
+    "end": 100.57000000000001
+  },
+  {
+    "val": "The jabs will be administered by company doctors.",
+    "start_Offset": 185,
+    "end_Offset": 192,
+    "start": 101.0,
+    "end": 104.15
+  },
+  {
+    "val": "Germany has between 15,000 and 20,000 of them (not counting nurses), many more than other European Union countries, America or Britain.",
+    "start_Offset": 193,
+    "end_Offset": 215,
+    "start": 104.589999,
+    "end": 115.81
+  },
+  {
+    "val": "About one-third of them are employed directly by firms and the rest run practices that serve employers in their area.",
+    "start_Offset": 216,
+    "end_Offset": 236,
+    "start": 116.34,
+    "end": 124.47000000000001
+  },
+  {
+    "val": "Anette Wahl-Wachendorf of VDBW, an association of company doctors, hopes that from April such medics will be able to dispense jabs alongside family physicians and 400-odd public vaccination centres.",
+    "start_Offset": 237,
+    "end_Offset": 267,
+    "start": 124.48,
+    "end": 140.75
+  },
+  {
+    "val": "They may reach perhaps 45m employees and their relatives, she reckons.",
+    "start_Offset": 268,
+    "end_Offset": 278,
+    "start": 141.349999,
+    "end": 146.76999999999998
+  },
+  {
+    "val": "That is more than half of all Germans.",
+    "start_Offset": 279,
+    "end_Offset": 286,
+    "start": 147.14,
+    "end": 149.9
+  },
+  {
+    "val": "“As soon as we get the vaccine, we will get started,”promises Rolf Buch, boss of Vonovia.",
+    "start_Offset": 287,
+    "end_Offset": 303,
+    "start": 150.95,
+    "end": 156.819999
+  },
+  {
+    "val": "His firm has already set up centres that will, starting this month, test employees who wish to return to the office for the virus.",
+    "start_Offset": 304,
+    "end_Offset": 327,
+    "start": 157.36,
+    "end": 164.45000000000002
+  },
+  {
+    "val": "These venues will be used to vaccinate its 10,000 employees and adult members of their immediate families, in keeping with official guidelines on who gets priority.",
+    "start_Offset": 328,
+    "end_Offset": 354,
+    "start": 164.94,
+    "end": 176.07999999999998
+  },
+  {
+    "val": "German labour law allows companies to give bonuses to workers who get vaccinated for any illness (though not at this time to make vaccination mandatory).",
+    "start_Offset": 355,
+    "end_Offset": 379,
+    "start": 177.049999,
+    "end": 187.49
+  },
+  {
+    "val": "Such carrots are common in America, where Aldi and Lidl, two big German supermarkets, are offering workers payments of up to $200 to roll up their sleeves.",
+    "start_Offset": 380,
+    "end_Offset": 406,
+    "start": 188.13,
+    "end": 199.92999999999998
+  },
+  {
+    "val": "Neither grocer, nor any other big German firm, is currently planning to use such incentives at home, for fear of the controversy this might cause (see article).",
+    "start_Offset": 407,
+    "end_Offset": 433,
+    "start": 200.69,
+    "end": 210.48999999999998
+  },
+  {
+    "val": "Still, Mr Buch expects the vast majority of his staff to accept the offer of free shots.",
+    "start_Offset": 434,
+    "end_Offset": 450,
+    "start": 210.5,
+    "end": 216.70999999999998
+  },
+  {
+    "val": "Those who decline may be barred from office parties and other group activities.",
+    "start_Offset": 451,
+    "end_Offset": 463,
+    "start": 217.25,
+    "end": 222.36
+  },
+  {
+    "val": "Once Mr Buch is done with Vonovia employees and their families, he is willing to turn the company’s centres over to the general vaccination effort.",
+    "start_Offset": 464,
+    "end_Offset": 488,
+    "start": 223.31,
+    "end": 231.89
+  },
+  {
+    "val": "Other bosses are starting with the broader population.",
+    "start_Offset": 489,
+    "end_Offset": 496,
+    "start": 232.559999,
+    "end": 235.57
+  },
+  {
+    "val": "In early December, before the first vaccines were approved for use in the EU, business folk in Bremen, a city in north-west Germany, launched a campaign to convert an exhibition centre next to the central railway station into a giant vaccination site.",
+    "start_Offset": 497,
+    "end_Offset": 539,
+    "start": 235.97,
+    "end": 252.499999
+  },
+  {
+    "val": "Kurt Zech, a hotel-and-construction tycoon, contributed furloughed staff.",
+    "start_Offset": 540,
+    "end_Offset": 549,
+    "start": 253.32999999999998,
+    "end": 258.72999999999996
+  },
+  {
+    "val": "Mercedes, a carmaker, threw in tables and chairs.",
+    "start_Offset": 550,
+    "end_Offset": 557,
+    "start": 259.2,
+    "end": 262.60999999999996
+  },
+  {
+    "val": "Another company donated laptops.",
+    "start_Offset": 558,
+    "end_Offset": 561,
+    "start": 262.89,
+    "end": 264.89
+  },
+  {
+    "val": "A software firm adapted its programs for use in a call centre that helps residents to schedule appointments.",
+    "start_Offset": 562,
+    "end_Offset": 579,
+    "start": 265.139999,
+    "end": 271.86
+  },
+  {
+    "val": "Thanks to the pushiness of Bremer businesspeople, up to 16,000 of their fellow burghers a day will get jabbed from mid-March, more than ten times what the local government had planned.",
+    "start_Offset": 580,
+    "end_Offset": 612,
+    "start": 272.85,
+    "end": 285.76
+  },
+  {
+    "val": "Their goal is to have 70% of the city’s adults inoculated by the end of July, months ahead of the government’s schedule.",
+    "start_Offset": 613,
+    "end_Offset": 634,
+    "start": 286.389999,
+    "end": 295.25
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

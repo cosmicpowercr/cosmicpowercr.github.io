@@ -1,0 +1,319 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">084 Books and arts - Kazuo Ishiguro's new novel</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='084';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "IN“THE BURIED GIANT”, published in 2015, an elderly couple make a perilous journey through a war-ravaged post-Arthurian Britain, a land mysteriously afflicted by widespread amnesia.",
+    "start_Offset": 0,
+    "end_Offset": 27,
+    "start": 28.259999999999998,
+    "end": 39.75
+  },
+  {
+    "val": "Sir Kazuo Ishiguro’s slippery allegory about the aftermath of conflict, and the value of forgetting as well as remembering, confounded some critics.",
+    "start_Offset": 28,
+    "end_Offset": 49,
+    "start": 40.59,
+    "end": 48.829999
+  },
+  {
+    "val": "It was seen as a puzzling left-turn into fantasy—a tag the author rejected, prompting accusations that not only had he raided a downmarket genre, he had done so ungraciously.",
+    "start_Offset": 50,
+    "end_Offset": 80,
+    "start": 49.480000000000004,
+    "end": 60.36
+  },
+  {
+    "val": "These arguments fell away when Sir Kazuo, now 66, won the Nobel prize for literature in 2017 (he was knighted two years later).",
+    "start_Offset": 81,
+    "end_Offset": 103,
+    "start": 61.5,
+    "end": 69.69999999999999
+  },
+  {
+    "val": "But they may resurface now that he has turned to science fiction—or rather turned back to it, following his boarding-school dystopia“Never Let Me Go”(2005), which contemplated human cloning.",
+    "start_Offset": 104,
+    "end_Offset": 135,
+    "start": 70.469999,
+    "end": 82.16999899999999
+  },
+  {
+    "val": "Set in an overheated, rigidly stratified America,“Klara and the Sun”, his first post-Nobel novel, is a coming-of-age tale in which sophisticated solar-powered androids—entirely human in appearance and known as AFs, or Artificial Friends—are purchased by wealthy parents as company for their offspring.",
+    "start_Offset": 136,
+    "end_Offset": 184,
+    "start": 83.19,
+    "end": 102.16
+  },
+  {
+    "val": "These children are taught remotely via smartphones and are genetically modified, or“lifted”, in a potentially fatal procedure intended to guarantee future entry into an elite university.",
+    "start_Offset": 185,
+    "end_Offset": 211,
+    "start": 103.02,
+    "end": 114.05
+  },
+  {
+    "val": "One of the book’s pleasures is that it trusts the reader to infer such details.",
+    "start_Offset": 212,
+    "end_Offset": 226,
+    "start": 115.13,
+    "end": 119.55000000000001
+  },
+  {
+    "val": "What makes the subtly sinister setting doubly strange is that it is refracted through the partial understanding of the narrator, an especially sensitive AF named Klara, who recounts her bittersweet experience serving a mysteriously ill teenager, Josie.",
+    "start_Offset": 227,
+    "end_Offset": 263,
+    "start": 120.23,
+    "end": 136.58
+  },
+  {
+    "val": "In a distinctly unrobotic bout of magical thinking, she begs the sun—the source of her energy—to cure Josie, vowing in return to combat air pollution.",
+    "start_Offset": 264,
+    "end_Offset": 290,
+    "start": 137.86,
+    "end": 148.67
+  },
+  {
+    "val": "Keeping her bargain requires a furtive and quixotic quest and help from Josie’s loyal friend, Rick.",
+    "start_Offset": 291,
+    "end_Offset": 306,
+    "start": 149.82,
+    "end": 155.51999999999998
+  },
+  {
+    "val": "Unlike Josie, Rick has not been“lifted”, one of many points of slow-burn conflict.",
+    "start_Offset": 307,
+    "end_Offset": 321,
+    "start": 156.3,
+    "end": 162.34
+  },
+  {
+    "val": "Sir Kazuo’s characteristically unassuming style draws the reader into a richly layered plot.",
+    "start_Offset": 322,
+    "end_Offset": 334,
+    "start": 163.439999,
+    "end": 168.95000000000002
+  },
+  {
+    "val": "His speculative scenario of technological innovation is also a domestic satire on aspirational parenting.",
+    "start_Offset": 335,
+    "end_Offset": 348,
+    "start": 169.5,
+    "end": 175.96
+  },
+  {
+    "val": "Philosophical questions of faith and mortality mix with storylines involving boy trouble and mother-daughter strife.",
+    "start_Offset": 349,
+    "end_Offset": 364,
+    "start": 176.75,
+    "end": 183.46
+  },
+  {
+    "val": "Josie’s sickness is a metaphor for the pressures of a hot-housed adolescence, yet the story holds attention on its own terms, too.",
+    "start_Offset": 365,
+    "end_Offset": 387,
+    "start": 184.59,
+    "end": 191.96
+  },
+  {
+    "val": "The effect ultimately resembles a cross between“Never Let Me Go”and“The Remains of the Day”(1989), with Klara in the place of Stevens, the butler whose first-person narration provided a between-the-lines portrait of morality among the English upper crust in the interwar years.",
+    "start_Offset": 388,
+    "end_Offset": 435,
+    "start": 193.16,
+    "end": 209.57
+  },
+  {
+    "val": "As a rebuke to the hyper-engineered society that created her, Klara’s paradoxically humane conduct lends the book a melancholy beauty.",
+    "start_Offset": 436,
+    "end_Offset": 456,
+    "start": 210.52,
+    "end": 218.76
+  },
+  {
+    "val": "Her devotion to a form of true love may be artificial, but, tragically, it is more than her flesh-and-blood counterparts can offer one another.",
+    "start_Offset": 457,
+    "end_Offset": 482,
+    "start": 219.6,
+    "end": 228.86
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

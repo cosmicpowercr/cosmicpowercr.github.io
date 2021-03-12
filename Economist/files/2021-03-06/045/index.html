@@ -1,0 +1,522 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">045 Europe - Charlemagne</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='045';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "WINFRIED KRETSCHMANN has a strong claim to be the world’s most powerful Green politician.",
+    "start_Offset": 0,
+    "end_Offset": 13,
+    "start": 17.209999,
+    "end": 22.29
+  },
+  {
+    "val": "True, Greens occupy a few junior ministries in places such as Austria and New Zealand.",
+    "start_Offset": 14,
+    "end_Offset": 28,
+    "start": 22.86,
+    "end": 28.38
+  },
+  {
+    "val": "But Mr Kretschmann is the undisputed ruler of the state of Baden-Württemberg, an industrial powerhouse in Germany’s south-west that, with 11m people, is bigger than most EU countries.",
+    "start_Offset": 29,
+    "end_Offset": 58,
+    "start": 28.759999999999998,
+    "end": 41.29
+  },
+  {
+    "val": "Ten years ago, voters spooked by the Fukushima nuclear accident and sick of decades of rule under the conservative Christian Democrats (CDU) doubled the Greens’ vote, elevating them to power at the head of a left-wing coalition.",
+    "start_Offset": 59,
+    "end_Offset": 96,
+    "start": 41.78,
+    "end": 56.190000000000005
+  },
+  {
+    "val": "Even Mr Kretschmann was surprised.",
+    "start_Offset": 97,
+    "end_Offset": 101,
+    "start": 56.76,
+    "end": 58.86
+  },
+  {
+    "val": "Yet he handily secured re-election in 2016, and may well repeat the feat at Baden-Württemberg’s election on March 14th.",
+    "start_Offset": 102,
+    "end_Offset": 122,
+    "start": 58.95,
+    "end": 67.19
+  },
+  {
+    "val": "How he pulled it off carries lessons for the rest of the country, and perhaps beyond.",
+    "start_Offset": 123,
+    "end_Offset": 138,
+    "start": 67.549999,
+    "end": 72.21
+  },
+  {
+    "val": "After a brief flirtation with revolutionary communism at university, by 1980 Mr Kretschmann had found his voice on the moderate“Realo”wing of the newly formed German Green Party.",
+    "start_Offset": 139,
+    "end_Offset": 167,
+    "start": 73.059999,
+    "end": 84.37
+  },
+  {
+    "val": "For years he nourished a small but growing audience for his message, articulated in the state legislature, that sustainability and other green topics ought to be combined with innovation and wealth creation.",
+    "start_Offset": 168,
+    "end_Offset": 199,
+    "start": 84.78,
+    "end": 96.82
+  },
+  {
+    "val": "This put him“way ahead of his time”, says Danyal Bayaz, a Green MP from Baden-Württemberg.",
+    "start_Offset": 200,
+    "end_Offset": 216,
+    "start": 97.22,
+    "end": 103.27
+  },
+  {
+    "val": "Pro-business centrism is one of two pillars of Mr Kretschmann’s appeal today.",
+    "start_Offset": 217,
+    "end_Offset": 229,
+    "start": 104.0,
+    "end": 108.289999
+  },
+  {
+    "val": "Happy to label himself a“conservative”, he emphasises that climate protection must go hand in hand with economic growth, and readily slaps down bad ideas emanating from his own side.",
+    "start_Offset": 230,
+    "end_Offset": 259,
+    "start": 108.639999,
+    "end": 120.96999899999999
+  },
+  {
+    "val": "“People like it,”says Boris Palmer, the Green mayor of Tübingen, a town in Baden-Württemberg.",
+    "start_Offset": 260,
+    "end_Offset": 275,
+    "start": 121.52,
+    "end": 126.98
+  },
+  {
+    "val": "“They don’t want party soldiers, they like politicians interested in their needs.”",
+    "start_Offset": 276,
+    "end_Offset": 287,
+    "start": 127.28,
+    "end": 132.10999999999999
+  },
+  {
+    "val": "This has helped the Greens expand beyond their comfort zone, in cities such as Stuttgart and Freiburg, to former CDU voters and Mittelstand exporters, often in far-flung rural areas.",
+    "start_Offset": 288,
+    "end_Offset": 317,
+    "start": 132.66,
+    "end": 144.87
+  },
+  {
+    "val": "The second pillar is a well-crafted image that combines Mr Kretschmann’s down-home style—a devoted churchgoer and nature-lover who speaks in a hokey Swabian accent—with that of the philosopher-king who peppers interviews with Hannah Arendt quotes and lets it be known he spends his summers on Aegean islands thumbing through“The Iliad”.",
+    "start_Offset": 318,
+    "end_Offset": 374,
+    "start": 145.61,
+    "end": 165.82000000000002
+  },
+  {
+    "val": "His big-tent Politik des Gehörtwerdens, the“politics of being heard”, is an antidote to divisive radicalism.",
+    "start_Offset": 375,
+    "end_Offset": 391,
+    "start": 166.35,
+    "end": 174.399999
+  },
+  {
+    "val": "Colleagues describe a patient leader open to fresh ideas on everything from school reform to artificial intelligence.",
+    "start_Offset": 392,
+    "end_Offset": 408,
+    "start": 174.92,
+    "end": 181.82
+  },
+  {
+    "val": "All this gives Mr Kretschmann a statesmanlike aura that politicians from the CDU, now serving as the Greens’ junior coalition partner in the state, concede is damnably hard to run against.",
+    "start_Offset": 409,
+    "end_Offset": 439,
+    "start": 182.26,
+    "end": 194.64999999999998
+  },
+  {
+    "val": "It is a potent combination.",
+    "start_Offset": 440,
+    "end_Offset": 444,
+    "start": 195.27,
+    "end": 197.01999999999998
+  },
+  {
+    "val": "Mr Kretschmann has at times led national popularity polls, despite having no ambitions beyond his home state (“Whenever I’m in Berlin, I am always reminded how beautiful it is in Baden-Württemberg,”he once quipped).",
+    "start_Offset": 445,
+    "end_Offset": 479,
+    "start": 197.07,
+    "end": 210.439999
+  },
+  {
+    "val": "Two-thirds of CDU voters in the state say they would vote for him directly given the chance.",
+    "start_Offset": 480,
+    "end_Offset": 497,
+    "start": 210.98,
+    "end": 216.79999999999998
+  },
+  {
+    "val": "His popularity has inspired a mild personality cult.",
+    "start_Offset": 498,
+    "end_Offset": 505,
+    "start": 217.2,
+    "end": 220.4
+  },
+  {
+    "val": "In a personalised campaign where the pandemic makes traditional electioneering impossible, voters are left to gaze at posters of their 72-year-old leader’s kindly visage overlaid with slogans such as:“He thinks about the big picture.”",
+    "start_Offset": 506,
+    "end_Offset": 542,
+    "start": 220.79,
+    "end": 235.44000000000003
+  },
+  {
+    "val": "Yet what do the Greens have to show for a decade in power?",
+    "start_Offset": 543,
+    "end_Offset": 555,
+    "start": 236.36,
+    "end": 239.59
+  },
+  {
+    "val": "Mr Kretschmann’s government with the CDU can boast a strong biodiversity law, and an expansion of renewable power as the atomic sort disappears.",
+    "start_Offset": 556,
+    "end_Offset": 578,
+    "start": 248.179999,
+    "end": 249.13
+  },
+  {
+    "val": "Yet“given the constraints of the coalition, you won’t find so many concrete achievements,”says Mr Palmer.",
+    "start_Offset": 579,
+    "end_Offset": 595,
+    "start": 249.44,
+    "end": 255.92
+  },
+  {
+    "val": "Take the car sector, which provides around one in five jobs.",
+    "start_Offset": 596,
+    "end_Offset": 606,
+    "start": 256.34,
+    "end": 260.26
+  },
+  {
+    "val": "Not far from the grand Villa Reitzenstein in Stuttgart in which Mr Kretschmann conducts state business lie museums devoted to Mercedes and Porsche cars, and a square called Daimlerplatz.",
+    "start_Offset": 607,
+    "end_Offset": 635,
+    "start": 260.559999,
+    "end": 272.4
+  },
+  {
+    "val": "Mr Kretschmann once said he looked forward to a time with fewer cars on Germany’s roads.",
+    "start_Offset": 636,
+    "end_Offset": 651,
+    "start": 272.81,
+    "end": 277.57
+  },
+  {
+    "val": "But he was condemned to hug the industry close.",
+    "start_Offset": 652,
+    "end_Offset": 660,
+    "start": 277.87,
+    "end": 280.73
+  },
+  {
+    "val": "Too close, for some.",
+    "start_Offset": 661,
+    "end_Offset": 664,
+    "start": 281.28,
+    "end": 282.39
+  },
+  {
+    "val": "Mr Kretschmann’s commitment to yanking his state’s sometimes-dozy carmakers into the 21st century is genuine.",
+    "start_Offset": 665,
+    "end_Offset": 680,
+    "start": 282.75,
+    "end": 289.69
+  },
+  {
+    "val": "Fearing that Baden-Württemberg could face a fate like Detroit’s, he has chivvied carmakers to confront challenges, such as the switch to electric cars, via a seven-year“strategic dialogue”started in 2017.",
+    "start_Offset": 681,
+    "end_Offset": 713,
+    "start": 290.08,
+    "end": 304.109999
+  },
+  {
+    "val": "But results are thin.",
+    "start_Offset": 714,
+    "end_Offset": 717,
+    "start": 304.559999,
+    "end": 306.239999
+  },
+  {
+    "val": "In 2020 Mr Kretschmann disappointed many by teaming up with premiers of other petrolhead states to lobby for subsidies for diesel-fuelled cars.",
+    "start_Offset": 718,
+    "end_Offset": 740,
+    "start": 306.859999,
+    "end": 316.33
+  },
+  {
+    "val": "Some young activists fed up with Mr Kretschmann’s caution have formed a“Climate List”to contest the election.",
+    "start_Offset": 741,
+    "end_Offset": 758,
+    "start": 316.67,
+    "end": 323.669999
+  },
+  {
+    "val": "“The Greens have forgotten their roots,”grumbles Daniel Wagner, one of its candidates.",
+    "start_Offset": 759,
+    "end_Offset": 771,
+    "start": 324.119999,
+    "end": 329.01
+  },
+  {
+    "val": "Over the years Mr Kretschmann has clashed with his party on everything from phasing out combustion engines to deporting failed asylum-seekers.",
+    "start_Offset": 772,
+    "end_Offset": 793,
+    "start": 329.72,
+    "end": 337.71
+  },
+  {
+    "val": "For left-leaning Greens in other states, the party’s success in Baden-Württemberg can seem a mixed blessing: why seek office only to ape the conservatives?",
+    "start_Offset": 794,
+    "end_Offset": 819,
+    "start": 338.08,
+    "end": 348.01
+  },
+  {
+    "val": "Mr Kretschmann replies that power is useless if you leave half of society behind.",
+    "start_Offset": 820,
+    "end_Offset": 833,
+    "start": 348.37,
+    "end": 353.47
+  },
+  {
+    "val": "And as the only Green in charge of a state, he carries outsized weight in Germany’s federal system.",
+    "start_Offset": 834,
+    "end_Offset": 851,
+    "start": 353.469999,
+    "end": 360.38
+  },
+  {
+    "val": "His tendency to present himself as the voice of the party in national debates irritates colleagues elsewhere.",
+    "start_Offset": 852,
+    "end_Offset": 868,
+    "start": 360.859999,
+    "end": 367.04999999999995
+  },
+  {
+    "val": "But it has also made a difference, notably in 2019 when Greens in Germany’s upper house, where state representatives sit, sharpened a woefully unambitious climate-change package.",
+    "start_Offset": 869,
+    "end_Offset": 895,
+    "start": 367.45,
+    "end": 378.79
+  },
+  {
+    "val": "Don’t scare the horses For all the hand-wringing, Mr Kretschmann’s centrism has carried the day in the national party, now firmly in the hands of Realos and gearing up to enter government after a general election in September.",
+    "start_Offset": 896,
+    "end_Offset": 934,
+    "start": 379.22,
+    "end": 391.34
+  },
+  {
+    "val": "The habit of governing has become ingrained for the Greens, who sit in coalition in 11 of Germany’s 16 states.",
+    "start_Offset": 935,
+    "end_Offset": 954,
+    "start": 391.34,
+    "end": 399.07000000000005
+  },
+  {
+    "val": "Should they agree to serve as junior partner to the CDU at national level, as polls suggest is likely, they will have to accept painful compromises.",
+    "start_Offset": 955,
+    "end_Offset": 980,
+    "start": 399.49,
+    "end": 408.55999999999995
+  },
+  {
+    "val": "Yet if power is no longer the dirty word it once was in some Green circles, the party has its Swabian champion to thank.",
+    "start_Offset": 981,
+    "end_Offset": 1004,
+    "start": 408.83,
+    "end": 416.79
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

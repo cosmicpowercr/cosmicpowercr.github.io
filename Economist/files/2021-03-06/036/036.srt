@@ -1,0 +1,200 @@
+1
+00:00:16,719 --> 00:00:21,080
+AT FIRST GLANCE one might have thought the cardboard box was a visiting head of state.
+
+2
+00:00:21,520 --> 00:00:29,730
+On February 13th Lebanon’s first batch of covid-19 vaccines emerged from a jet at Beirut’s international airport.
+
+3
+00:00:30,250 --> 00:00:35,390
+A delegation of officials drove out to meet it; local media broadcast the event live.
+
+4
+00:00:35,719 --> 00:00:40,180
+Never mind that the shipment contained a meagre 28,500 jabs.
+
+5
+00:00:40,650 --> 00:00:48,849
+After a miserable year of pandemic, economic collapse and a catastrophic explosion in Beirut, the vaccines offered a dose of hope.
+
+6
+00:00:49,889 --> 00:00:55,050
+Scepticism, a pre-existing condition in a country notorious for corruption, prevailed too.
+
+7
+00:00:59,200 --> 00:00:59,910
+Many Lebanese expected the rich and powerful to jump the queue to get their shots.
+
+8
+00:01:00,330 --> 00:01:13,080
+They drew some comfort from the involvement of the World Bank, which in January allocated $34m to fund vaccine imports, enough to cover doses for more than 2m people (a third of the population).
+
+9
+00:01:14,020 --> 00:01:17,560
+Lebanon was the first country to strike such an agreement with the bank.
+
+10
+00:01:17,830 --> 00:01:19,860
+It came, however, with conditions.
+
+11
+00:01:20,160 --> 00:01:22,110
+The bank demanded transparency.
+
+12
+00:01:22,380 --> 00:01:25,879
+Lebanon would have to set up a system for distributing vaccines.
+
+13
+00:01:26,309 --> 00:01:28,089
+Everyone would have to wait their turn.
+
+14
+00:01:28,379 --> 00:01:36,240
+“There will be no wasta,”said Ferid Belhaj, the bank’s top official for the Middle East, using an Arabic word that connotes nepotism.
+
+15
+00:01:36,720 --> 00:01:42,580
+The health ministry published a plan that allocated the first doses for medical workers and over-75s.
+
+16
+00:01:44,420 --> 00:01:45,120
+Elie Ferzli is neither.
+
+17
+00:01:45,500 --> 00:01:51,940
+That did not stop the 71-year-old MP and 15 of his colleagues from getting a dose on February 23rd.
+
+18
+00:01:52,510 --> 00:01:59,339
+About half were under 75, and they took their jabs at the parliament building rather than a designated hospital.
+
+19
+00:01:59,870 --> 00:02:01,660
+The World Bank raged.
+
+20
+00:02:02,469 --> 00:02:07,460
+Saroj Kumar Jha, a regional director, said the bank could halt its funds.
+
+21
+00:02:08,000 --> 00:02:09,550
+A few MPs apologised.
+
+22
+00:02:09,620 --> 00:02:12,840
+Others claimed they were front-line workers in need of protection.
+
+23
+00:02:13,400 --> 00:02:21,870
+Mr Ferzli embarked on a series of televised diatribes, called Mr Jha a liar and urged his bosses to“send a replacement”.
+
+24
+00:02:22,129 --> 00:02:28,580
+He took a further jab at him by mispronouncing his first name as“Farouj”, Arabic for a roast chicken.
+
+25
+00:02:29,180 --> 00:02:32,470
+The World Bank faced a dilemma familiar to Lebanon’s donors.
+
+26
+00:02:32,720 --> 00:02:37,900
+To do nothing would set a bad precedent, in Lebanon and other countries with similar agreements.
+
+27
+00:02:38,259 --> 00:02:42,429
+But to halt funding would delay an already sluggish vaccine roll-out.
+
+28
+00:02:42,889 --> 00:02:48,990
+So far it has demanded only that the health ministry publish weekly data on vaccine distribution.
+
+29
+00:02:49,670 --> 00:02:53,210
+Most of Lebanon’s friends have tired of such scandals.
+
+30
+00:02:53,410 --> 00:02:55,270
+The country desperately needs help.
+
+31
+00:02:55,610 --> 00:03:00,569
+Its currency has lost 85% of its value since October 2019.
+
+32
+00:03:01,010 --> 00:03:07,920
+Hyperinflation has pushed more than half the population into poverty, with food prices up fourfold last year.
+
+33
+00:03:08,550 --> 00:03:12,420
+Daily blackouts are growing longer as power plants run short of fuel.
+
+34
+00:03:12,740 --> 00:03:21,640
+Despite a restrictive lockdown imposed in mid-January, Lebanon still has some of the world’s highest rates of new covid-19 infections and deaths.
+
+35
+00:03:22,420 --> 00:03:24,310
+Almost no one is queuing up to help.
+
+36
+00:03:24,560 --> 00:03:29,910
+The Gulf states have closed their purses, judging Lebanon too friendly with Iran, their arch-rival.
+
+37
+00:03:30,309 --> 00:03:33,940
+Western donors are tired of funding corruption and dysfunction.
+
+38
+00:03:34,340 --> 00:03:44,750
+A pot of $11bn in aid pledged at a donors’ conference in 2018 remains undisbursed because the Lebanese government failed to approve minimal reforms.
+
+39
+00:03:45,210 --> 00:03:47,610
+Talks with the IMF last year went nowhere.
+
+40
+00:03:48,210 --> 00:03:51,360
+The World Bank has been among Lebanon’s few remaining friends.
+
+41
+00:03:51,670 --> 00:04:01,220
+In January it pledged a $204m loan to provide cash transfers to 147,000 poor Lebanese families for the next year.
+
+42
+00:04:01,910 --> 00:04:06,440
+Even there, though, Lebanon’s leaders found a way to twist the scheme to their advantage.
+
+43
+00:04:06,880 --> 00:04:14,150
+The money will be transferred to Lebanon in dollars but distributed to recipients in local currency at a below-market rate.
+
+44
+00:04:14,540 --> 00:04:19,760
+The Lebanese central bank, in other words, spotted an arbitrage opportunity in humanitarian aid.
+
+45
+00:04:20,410 --> 00:04:28,300
+Last month gunmen assassinated Lokman Slim, a prominent critic of Hizbullah, the Shia militant group-cum-political party.
+
+46
+00:04:28,650 --> 00:04:33,790
+(The murder, like most such killings in Lebanon, has not been solved and probably never will be.
+
+47
+00:04:34,420 --> 00:04:42,510
+) On March 2nd the pound hit 10,000 to the dollar, its weakest rate ever, which led to angry protests across the country.
+
+48
+00:04:43,030 --> 00:04:50,380
+Gone was the hopeful atmosphere of October 2019, when hundreds of thousands of people turned out for anti-government rallies.
+
+49
+00:04:50,900 --> 00:04:52,140
+The mood has turned dark.
+
+50
+00:04:52,240 --> 00:04:58,020
+Lebanon’s avaricious leaders may need protection against more than covid-19 in the months to come.
+

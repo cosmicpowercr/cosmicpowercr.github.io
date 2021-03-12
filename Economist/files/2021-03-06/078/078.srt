@@ -1,0 +1,136 @@
+1
+00:00:17,789 --> 00:00:26,230
+OFF THE coast of Formentera, an island in the Spanish Mediterranean, lives an organism that stretches 15km from one end to the other.
+
+2
+00:00:27,290 --> 00:00:34,649
+Posidonia oceanica, more prosaically known as seagrass, spreads by sending shoots out beneath the sediment.
+
+3
+00:00:35,119 --> 00:00:40,410
+Entire meadows, covering several hectares, can thus be made up of a single organism.
+
+4
+00:00:40,940 --> 00:00:42,960
+The grasses are long-lived, too.
+
+5
+00:00:43,340 --> 00:00:49,309
+The vast meadow in Formentera is thought to have been spreading for tens or hundreds of thousands of years.
+
+6
+00:00:50,309 --> 00:00:53,600
+But the seagrass is more than just a biological curiosity.
+
+7
+00:00:54,010 --> 00:01:06,939
+Along with two other kinds of coastal ecosystem—mangrove swamps and tidal marshes—seagrass meadows are particularly good at taking carbon dioxide from the air and converting it into plant matter.
+
+8
+00:01:07,380 --> 00:01:13,069
+That makes all three ecosystems important for efforts to control climate change.
+
+9
+00:01:14,049 --> 00:01:25,520
+This role was highlighted in a report published on March 2nd by UNESCO, an arm of the United Nations, on“blue carbon”—the sort captured by Earth’s oceanic and coastal ecosystems.
+
+10
+00:01:26,150 --> 00:01:36,880
+In total around 33bn tonnes of carbon dioxide (about three-quarters of the world’s emissions in 2019) are locked away in the planet’s blue-carbon sinks.
+
+11
+00:01:37,480 --> 00:01:52,940
+Research by Carlos Duarte, the report’s author and a marine ecologist at King Abdullah University in Saudi Arabia, has shown that one hectare of seagrass can soak up as much carbon dioxide each year as 15 hectares of rainforest.
+
+12
+00:01:53,920 --> 00:02:07,310
+All this is attracting interest in blue carbon from those keen to use natural processes, rather than human technologies such as direct-air capture, to suck greenhouse gases from the atmosphere.
+
+13
+00:02:07,710 --> 00:02:17,040
+In 2018 Apple partnered with Conservation International, a charity, to protect 11,000 hectares of mangroves on the Colombian coast.
+
+14
+00:02:17,349 --> 00:02:22,290
+The firm estimates the project could lock away around 1m tonnes of carbon.
+
+15
+00:02:23,279 --> 00:02:32,340
+One reason that blue-carbon ecosystems make such effective sinks is that submerged forests are denser than their land-based equivalents.
+
+16
+00:02:32,360 --> 00:02:40,440
+They can also trap floating debris and organic matter, which settles on the sea floor and can double the amount of carbon stored away.
+
+17
+00:02:41,420 --> 00:02:43,309
+They posses another advantage, too.
+
+18
+00:02:43,629 --> 00:02:48,690
+Unlike forests on land, blue-carbon ecosystems do not burn.
+
+19
+00:02:49,290 --> 00:02:52,950
+Climate change is intensifying wildfires around the world.
+
+20
+00:02:53,270 --> 00:02:58,329
+As forests burn, their carbon stocks are released back into the atmosphere.
+
+21
+00:02:58,770 --> 00:03:04,200
+And fires can impede a forest’s ability to capture carbon even after they have burned out.
+
+22
+00:03:04,710 --> 00:03:16,019
+In a study published on February 25th in Nature Ecology and Evolution,researchers at the University of Stanford found that repeated fires favour slow-growing tree species.
+
+23
+00:03:16,070 --> 00:03:23,280
+These are better able to survive blazes, but they are also less effective at soaking up carbon than faster-growing species.
+
+24
+00:03:24,330 --> 00:03:30,910
+Submerged forests may be impervious to fires, but they remain vulnerable to other sorts of disasters.
+
+25
+00:03:31,160 --> 00:03:42,370
+In May 2020 cyclone Amphan destroyed 1,200 square kilometres of mangrove forest on the border between Bangladesh and the Indian state of West Bengal.
+
+26
+00:03:42,900 --> 00:03:51,470
+A marine heatwave in Australian waters in 2010 and 2011 damaged around one third of the world’s largest seagrass meadow, in Shark Bay.
+
+27
+00:03:51,969 --> 00:03:58,600
+Over the next three years field studies showed that uprooted plants were releasing their carbon back into the atmosphere.
+
+28
+00:03:59,660 --> 00:04:07,880
+Fortunately, an older, man-made ecological disaster suggests that restoring damaged blue-carbon ecosystems is possible.
+
+29
+00:04:08,400 --> 00:04:17,210
+During the Vietnam war, napalm and a cocktail of weaponised herbicides destroyed more than half of the mangroves in the Mekong delta.
+
+30
+00:04:17,670 --> 00:04:29,410
+A report published in 2014 by the International Society for Mangrove Ecosystems showed that an intense post-war replanting programme was able to restore it within two decades.
+
+31
+00:04:30,410 --> 00:04:35,750
+And there is more to such ecosystems than simply acting as sponges for greenhouse gasses.
+
+32
+00:04:36,050 --> 00:04:43,010
+They also serve as buffers for vulnerable shorelines, shielding them from storms that barrel in from the high seas.
+
+33
+00:04:43,599 --> 00:05:01,880
+One study of 59 subtropical countries estimated that by dampening waves and providing natural barriers to storm surges, mangrove forests prevent more than $65bn in property damage each year, and help shelter more than 15 million people.
+
+34
+00:05:02,349 --> 00:05:06,700
+Protecting and expanding them, then, appears to be a no-brainer.
+

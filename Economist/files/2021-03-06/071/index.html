@@ -1,0 +1,438 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">071 Finance and economics - Greensill Capital</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='071';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "SUPPLIERS HATE being made to wait for the cash they are owed almost as much as their customers hate parting with it.",
+    "start_Offset": 0,
+    "end_Offset": 21,
+    "start": 15.96,
+    "end": 22.03
+  },
+  {
+    "val": "What if high finance could help?",
+    "start_Offset": 22,
+    "end_Offset": 27,
+    "start": 22.48,
+    "end": 24.29
+  },
+  {
+    "val": "Specialist firms have indeed sprung up, offering to pay suppliers up front, then cashing in their customer’s cheque as the bill comes due weeks later.",
+    "start_Offset": 28,
+    "end_Offset": 52,
+    "start": 24.77,
+    "end": 33.079999
+  },
+  {
+    "val": "By charging fees or a spread, the intermediary takes a cut for what is in effect a loan.",
+    "start_Offset": 53,
+    "end_Offset": 70,
+    "start": 33.719999,
+    "end": 38.9
+  },
+  {
+    "val": "But the woes this week of Greensill Capital, a provider of such supply-chain financing, highlight some of the risks lurking in overlooked bits of the financial system.",
+    "start_Offset": 71,
+    "end_Offset": 98,
+    "start": 39.2,
+    "end": 49.36
+  },
+  {
+    "val": "Greensill, founded just ten years ago, boasted it could help companies“unlock capital”.",
+    "start_Offset": 99,
+    "end_Offset": 111,
+    "start": 50.139999,
+    "end": 55.029999999999994
+  },
+  {
+    "val": "Using techniques mastered by erstwhile slicers-and-dicers of subprime mortgages, it transformed the bills it took on into bond-like investments.",
+    "start_Offset": 112,
+    "end_Offset": 133,
+    "start": 55.49,
+    "end": 65.13
+  },
+  {
+    "val": "These could be sold to outside investors, such as hedge funds, desperate to find some yield in a low-interest world.",
+    "start_Offset": 134,
+    "end_Offset": 154,
+    "start": 65.639999,
+    "end": 72.34
+  },
+  {
+    "val": "As long as the customers kept settling their invoices, a tidy profit could be made for investors—and the financiers behind all the alchemy.",
+    "start_Offset": 155,
+    "end_Offset": 178,
+    "start": 72.81,
+    "end": 80.47
+  },
+  {
+    "val": "By 2019 Greensill claimed to have arranged financing worth more than $140bn to over 10m customers.",
+    "start_Offset": 179,
+    "end_Offset": 194,
+    "start": 80.9,
+    "end": 89.719999
+  },
+  {
+    "val": "Questions over whether the money would indeed keep flowing were never far away.",
+    "start_Offset": 195,
+    "end_Offset": 207,
+    "start": 90.369999,
+    "end": 94.17999999999999
+  },
+  {
+    "val": "As concerns mounted over the creditworthiness of the companies Greensill had to collect money from, the value of the bonds underpinned by the invoices wobbled.",
+    "start_Offset": 208,
+    "end_Offset": 232,
+    "start": 94.62,
+    "end": 16.6
+  },
+  {
+    "val": "On March 1st Credit Suisse froze $10bn of funds stuffed with paper sourced by Greensill.",
+    "start_Offset": 233,
+    "end_Offset": 247,
+    "start": 111.31,
+    "end": 112.27
+  },
+  {
+    "val": "The Swiss investment bank warned of“considerable uncertainties”with respect to the valuation of the bonds linked to Greensill.",
+    "start_Offset": 248,
+    "end_Offset": 266,
+    "start": 112.83,
+    "end": 119.96000000000001
+  },
+  {
+    "val": "Within days Greensill itself was fighting off bankruptcy.",
+    "start_Offset": 267,
+    "end_Offset": 274,
+    "start": 121.02,
+    "end": 124.17
+  },
+  {
+    "val": "The firm is said to have sought relief from insolvent-trading laws in Australia, where part of its corporate set-up is based (its founder, Lex Greensill, is Australian).",
+    "start_Offset": 275,
+    "end_Offset": 303,
+    "start": 124.469999,
+    "end": 133.76999999999998
+  },
+  {
+    "val": "By March 3rd it was reported by the Financial Times to be preparing to file for insolvency in Britain, where it conducts much of its business.",
+    "start_Offset": 304,
+    "end_Offset": 329,
+    "start": 134.32,
+    "end": 142.53
+  },
+  {
+    "val": "Apollo Global Management, an American private-equity giant, has been in talks to buy at least part of the franchise, at a fraction of the $7bn value Greensill, which had planned to list its shares, once hoped to achieve.",
+    "start_Offset": 330,
+    "end_Offset": 368,
+    "start": 143.139999,
+    "end": 155.749999
+  },
+  {
+    "val": "The swift downfall of a once-lauded financial firm will reverberate beyond the niche world of trade finance.",
+    "start_Offset": 369,
+    "end_Offset": 386,
+    "start": 156.34,
+    "end": 163.04
+  },
+  {
+    "val": "Greensill had worked up a profile as a scrappy innovator while also courting the establishment (David Cameron, a former British prime minister, was flaunted as an adviser).",
+    "start_Offset": 387,
+    "end_Offset": 413,
+    "start": 163.5,
+    "end": 173.0
+  },
+  {
+    "val": "Mr Greensill, who said the idea for the business came from seeing his farmer parents run into financial difficulty, and who is now in his 40s, became a youngish billionaire.",
+    "start_Offset": 414,
+    "end_Offset": 443,
+    "start": 173.75,
+    "end": 183.33
+  },
+  {
+    "val": "After a previous sticky patch in 2018 the firm had received $1,5bn in investment from SoftBank, a Japanese investment group fond of backing wildly ambitious undertakings.",
+    "start_Offset": 444,
+    "end_Offset": 470,
+    "start": 183.91,
+    "end": 195.87
+  },
+  {
+    "val": "Regulators are now wondering whether the model highlights risks they ought to have fretted about.",
+    "start_Offset": 471,
+    "end_Offset": 485,
+    "start": 196.559999,
+    "end": 201.03
+  },
+  {
+    "val": "On March 2nd BaFin, Germany’s financial watchdog, took over control of a bank Greensill runs there, closing it to new business.",
+    "start_Offset": 486,
+    "end_Offset": 506,
+    "start": 201.52,
+    "end": 210.03
+  },
+  {
+    "val": "It has filed a criminal complaint against the bank’s management, accusing it of manipulating its balance-sheet.",
+    "start_Offset": 507,
+    "end_Offset": 523,
+    "start": 210.58,
+    "end": 216.179999
+  },
+  {
+    "val": "(Greensill says it followed its auditors’ advice and was complying with the regulator’s previous requests.",
+    "start_Offset": 524,
+    "end_Offset": 538,
+    "start": 216.639999,
+    "end": 222.81
+  },
+  {
+    "val": ") Another concern is what will happen to companies that used Greensill’s services to access capital.",
+    "start_Offset": 539,
+    "end_Offset": 553,
+    "start": 223.44,
+    "end": 229.16
+  },
+  {
+    "val": "One noteworthy borrower is Sanjeev Gupta, an Indian-born industrialist who has snapped up steelmaking assets in Britain and beyond.",
+    "start_Offset": 554,
+    "end_Offset": 573,
+    "start": 229.77,
+    "end": 238.27
+  },
+  {
+    "val": "Greensill was a big provider of finance to the GFG Alliance, a group of firms controlled by Mr Gupta’s family; Mr Gupta also once owned a stake in Greensill itself.",
+    "start_Offset": 574,
+    "end_Offset": 603,
+    "start": 238.87,
+    "end": 249.949999
+  },
+  {
+    "val": "It was transactions linked to loans to Mr Gupta’s empire (which has not been accused of wrongdoing) that prompted BaFin to step in.",
+    "start_Offset": 604,
+    "end_Offset": 626,
+    "start": 250.32999999999998,
+    "end": 258.62
+  },
+  {
+    "val": "A spokesman for GFG said it had adequate funding, even as reports emerged of talks to secure loans from other sources.",
+    "start_Offset": 627,
+    "end_Offset": 647,
+    "start": 259.22,
+    "end": 266.82
+  },
+  {
+    "val": "The episode will also shine a light on the world of supply-chain financing.",
+    "start_Offset": 648,
+    "end_Offset": 661,
+    "start": 267.589999,
+    "end": 271.53000000000003
+  },
+  {
+    "val": "Fans of the practice point out it keeps money flowing even as some cash-strapped businesses keep suppliers waiting for months to be paid.",
+    "start_Offset": 662,
+    "end_Offset": 685,
+    "start": 272.03,
+    "end": 279.46000000000004
+  },
+  {
+    "val": "But its accounting treatment is tricky.",
+    "start_Offset": 686,
+    "end_Offset": 691,
+    "start": 280.07,
+    "end": 282.459999
+  },
+  {
+    "val": "There is evidence that some struggling businesses may seek to hide spiralling debt piles by using supply-chain-finance techniques.",
+    "start_Offset": 692,
+    "end_Offset": 711,
+    "start": 282.91,
+    "end": 290.47
+  },
+  {
+    "val": "Creative forms of financing work best when they rely on conservative accounting.",
+    "start_Offset": 712,
+    "end_Offset": 723,
+    "start": 291.11,
+    "end": 295.05999999999995
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

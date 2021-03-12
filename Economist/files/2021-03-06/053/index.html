@@ -1,0 +1,459 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">053 Britain - Levelling up</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='053';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "BEN HOUCHEN, the Tees Valley Mayor, is a persuasive man.",
+    "start_Offset": 0,
+    "end_Offset": 9,
+    "start": 16.1,
+    "end": 20.24
+  },
+  {
+    "val": "For more than a year he lobbied the chancellor of the exchequer to create a low-tax“freeport”in his bailiwick and move lots of civil servants there.",
+    "start_Offset": 10,
+    "end_Offset": 37,
+    "start": 20.52,
+    "end": 29.18
+  },
+  {
+    "val": "On the eve of Rishi Sunak’s budget speech he ratcheted up the rhetoric.",
+    "start_Offset": 38,
+    "end_Offset": 50,
+    "start": 29.589999999999996,
+    "end": 33.74999999999999
+  },
+  {
+    "val": "“The question is,”he wrote in the Northern Echo, a local newspaper,“does Rishi have the strength to stand up to the Whitehall mandarins that have held our region back for so long?”",
+    "start_Offset": 51,
+    "end_Offset": 83,
+    "start": 34.129999,
+    "end": 44.46
+  },
+  {
+    "val": "The answer is yes.",
+    "start_Offset": 84,
+    "end_Offset": 87,
+    "start": 45.730000000000004,
+    "end": 47.219999
+  },
+  {
+    "val": "On March 3rd Mr Sunak announced that many civil servants from business-oriented departments will move to a new campus in Darlington, west of Teesside.",
+    "start_Offset": 88,
+    "end_Offset": 112,
+    "start": 47.5,
+    "end": 57.199999999999996
+  },
+  {
+    "val": "Mr Houchen will get his freeport—a zone where normal customs rules and tariffs are suspended.",
+    "start_Offset": 113,
+    "end_Offset": 128,
+    "start": 57.78,
+    "end": 63.78
+  },
+  {
+    "val": "The mayor (a Conservative like the chancellor, who faces re-election in May) got everything he asked for.",
+    "start_Offset": 129,
+    "end_Offset": 146,
+    "start": 64.23,
+    "end": 70.04
+  },
+  {
+    "val": "But what is good for Mr Houchen is less good for Britain.",
+    "start_Offset": 147,
+    "end_Offset": 158,
+    "start": 70.039999,
+    "end": 73.67
+  },
+  {
+    "val": "Moving civil servants to an area tends to boost its economy.",
+    "start_Offset": 159,
+    "end_Offset": 169,
+    "start": 74.86,
+    "end": 78.61999999999999
+  },
+  {
+    "val": "Giulia Faggio, an economist at City, University of London, estimates that a dispersal programme under the last Labour government created 11 private-sector jobs for every ten public-sector workers who arrived in an area.",
+    "start_Offset": 170,
+    "end_Offset": 204,
+    "start": 78.96,
+    "end": 93.5
+  },
+  {
+    "val": "But the effect is localised.",
+    "start_Offset": 205,
+    "end_Offset": 209,
+    "start": 93.96,
+    "end": 95.97
+  },
+  {
+    "val": "Private-sector employment swells in a small ring around the relocated civil servants and diminishes slightly a few miles away, as local businesses rush for the honeypot.",
+    "start_Offset": 210,
+    "end_Offset": 236,
+    "start": 96.2,
+    "end": 106.979999
+  },
+  {
+    "val": "Darlington, which is already better-off than nearby towns and cities such as Hartlepool, Middlesbrough and Redcar, seems an odd place to favour.",
+    "start_Offset": 237,
+    "end_Offset": 259,
+    "start": 108.32,
+    "end": 116.66
+  },
+  {
+    "val": "In 2018 its gross value-added per head (a measure of output) was 92% of the British average, compared with 72% for the north-east region as a whole.",
+    "start_Offset": 260,
+    "end_Offset": 288,
+    "start": 117.03,
+    "end": 128.82
+  },
+  {
+    "val": "“It’s thriving already,”says Chris Hunter, the chief operating officer of Darlington Building Society.",
+    "start_Offset": 289,
+    "end_Offset": 302,
+    "start": 129.35,
+    "end": 135.44
+  },
+  {
+    "val": "When not closed by covid, town-centre shops sell Farrow & Ball paint and expensive bicycles.",
+    "start_Offset": 303,
+    "end_Offset": 317,
+    "start": 135.76,
+    "end": 142.48999999999998
+  },
+  {
+    "val": "Tess Wheeler, who used to work in the local steelworks, guesses that a middle-class Londoner posted to the town will find it“quaint”.",
+    "start_Offset": 318,
+    "end_Offset": 341,
+    "start": 143.0,
+    "end": 150.23999999999998
+  },
+  {
+    "val": "It may owe its good fortune in part to its status as a Tory marginal; out of the 56 constituencies that will benefit from the first tranche of money from a“towns fund”, 47 are held by the Conservatives.",
+    "start_Offset": 342,
+    "end_Offset": 380,
+    "start": 150.58,
+    "end": 164.11
+  },
+  {
+    "val": "The civil servants may not want to move.",
+    "start_Offset": 381,
+    "end_Offset": 388,
+    "start": 165.23,
+    "end": 167.59
+  },
+  {
+    "val": "In 2003 the Meteorological Office managed to relocate 82% of its staff from Bracknell in the Thames Valley to Exeter.",
+    "start_Offset": 389,
+    "end_Offset": 408,
+    "start": 167.78,
+    "end": 176.21
+  },
+  {
+    "val": "But a few years later only 10% of the Office for National Statistics’ London-based staff agreed to follow their employer to Newport in Wales.",
+    "start_Offset": 409,
+    "end_Offset": 433,
+    "start": 176.679999,
+    "end": 185.53
+  },
+  {
+    "val": "The difference was probably that the ONS’s economists had plenty of other buyers for their skills, whereas the weather forecasters did not.",
+    "start_Offset": 434,
+    "end_Offset": 455,
+    "start": 185.89,
+    "end": 194.09
+  },
+  {
+    "val": "Ominously for Darlington, Treasury staff look more like the first group.",
+    "start_Offset": 456,
+    "end_Offset": 466,
+    "start": 195.009999,
+    "end": 199.01
+  },
+  {
+    "val": "It is especially hard to winkle senior civil servants out of London.",
+    "start_Offset": 467,
+    "end_Offset": 478,
+    "start": 200.36,
+    "end": 204.35999999999999
+  },
+  {
+    "val": "Two-thirds of them are based there, compared with only a fifth of the civil service overall.",
+    "start_Offset": 479,
+    "end_Offset": 495,
+    "start": 204.69,
+    "end": 209.85
+  },
+  {
+    "val": "Philip Rycroft, who was permanent secretary of the Department for Exiting the EU until 2019, says they are glued to London because the politicians are there, and expect to be able to summon them quickly.",
+    "start_Offset": 496,
+    "end_Offset": 530,
+    "start": 210.179999,
+    "end": 222.13
+  },
+  {
+    "val": "Mr Sunak might occasionally work in Darlington—his constituency is nearby.",
+    "start_Offset": 531,
+    "end_Offset": 541,
+    "start": 222.74,
+    "end": 227.64999899999998
+  },
+  {
+    "val": "But if the next chancellor is from Cornwall, the new campus will feel like a backwater.",
+    "start_Offset": 542,
+    "end_Offset": 557,
+    "start": 227.91,
+    "end": 233.159999
+  },
+  {
+    "val": "The Teesside freeport should fare better, although not for the advertised reasons.",
+    "start_Offset": 558,
+    "end_Offset": 569,
+    "start": 234.749999,
+    "end": 239.75
+  },
+  {
+    "val": "Imports to freeports are tariff-free, so components can be brought in and assembled into something else; tariffs are then paid when the finished goods are brought into the country.",
+    "start_Offset": 570,
+    "end_Offset": 599,
+    "start": 240.04,
+    "end": 250.179999
+  },
+  {
+    "val": "That is a big advantage in high-tariff countries, but in Britain tariffs are generally low.",
+    "start_Offset": 600,
+    "end_Offset": 615,
+    "start": 250.619999,
+    "end": 256.34000000000003
+  },
+  {
+    "val": "Julia Magntorn Garrett and Peter Holmes, economists at the University of Sussex, have looked for tariff structures that might draw a company to a British freeport.",
+    "start_Offset": 616,
+    "end_Offset": 641,
+    "start": 256.65,
+    "end": 265.78999999999996
+  },
+  {
+    "val": "They find only one big opportunity: dog food.",
+    "start_Offset": 642,
+    "end_Offset": 649,
+    "start": 266.23,
+    "end": 269.77000000000004
+  },
+  {
+    "val": "Yet Mr Sunak has thrown many bones to the eight freeports that will be created in England.",
+    "start_Offset": 650,
+    "end_Offset": 666,
+    "start": 270.71999900000003,
+    "end": 275.59
+  },
+  {
+    "val": "They will be given breaks on business rates, property taxes and national insurance contributions.",
+    "start_Offset": 667,
+    "end_Offset": 680,
+    "start": 275.92,
+    "end": 281.279999
+  },
+  {
+    "val": "That should be enough to persuade some businesses to move there—if only from other parts of Britain.",
+    "start_Offset": 681,
+    "end_Offset": 698,
+    "start": 281.62,
+    "end": 286.74
+  },
+  {
+    "val": "“We’ve got investors lined up,”promises Mr Houchen.",
+    "start_Offset": 699,
+    "end_Offset": 706,
+    "start": 287.26,
+    "end": 290.28
+  },
+  {
+    "val": "It is, after all, not his job to worry about the country beyond the Tees Valley.",
+    "start_Offset": 707,
+    "end_Offset": 722,
+    "start": 290.62,
+    "end": 295.18
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

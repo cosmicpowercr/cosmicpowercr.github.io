@@ -1,0 +1,599 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">009 Leaders - Ten years after 311</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='009';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "IT HAS BEEN ten years since a tsunami laid waste the Pacific coast of northern Honshu, Japan’s most populous island.",
+    "start_Offset": 0,
+    "end_Offset": 19,
+    "start": 17.48,
+    "end": 24.24
+  },
+  {
+    "val": "The tsunami and the undersea earthquake which triggered it, the largest ever recorded in the region, killed nearly 20,000 people, destroyed over 100,000 homes and threw the lives of tens of millions into turmoil.",
+    "start_Offset": 20,
+    "end_Offset": 55,
+    "start": 24.96,
+    "end": 38.55
+  },
+  {
+    "val": "The direct economic cost, estimated at over $200bn, was larger than that of any other natural disaster the world has seen.",
+    "start_Offset": 56,
+    "end_Offset": 76,
+    "start": 39.28,
+    "end": 47.89
+  },
+  {
+    "val": "And yet for many around the world the event is remembered for just one thing: the ensuing crisis at the Fuku-shima Dai-ichi nuclear power plant (see article).",
+    "start_Offset": 77,
+    "end_Offset": 105,
+    "start": 48.79,
+    "end": 17.63
+  },
+  {
+    "val": "The earthquake cut the plant off from outside sources of electricity.",
+    "start_Offset": 106,
+    "end_Offset": 116,
+    "start": 60.59,
+    "end": 61.49
+  },
+  {
+    "val": "The tsunami easily topped the plant’s sea walls, flooding the underground bunkers containing its emergency generators—a foreseeable risk Japan’s neutered regulators had failed to foresee.",
+    "start_Offset": 117,
+    "end_Offset": 142,
+    "start": 62.22,
+    "end": 73.41000000000001
+  },
+  {
+    "val": "Because there was no way to cool the reactor cores, the nuclear fuel within them began to melt; amid fire, explosion and alarming amounts of radiation, a puddle from hell began eating into the plant’s concrete foundations.",
+    "start_Offset": 143,
+    "end_Offset": 179,
+    "start": 74.73,
+    "end": 89.299999
+  },
+  {
+    "val": "The world looked on aghast.",
+    "start_Offset": 180,
+    "end_Offset": 184,
+    "start": 90.44999899999999,
+    "end": 91.549999
+  },
+  {
+    "val": "In Shanghai and San Francisco iodine tablets and iodised salt jumped off the shelves as people looked for prophylaxis of which they had no need.",
+    "start_Offset": 185,
+    "end_Offset": 209,
+    "start": 92.84,
+    "end": 101.7
+  },
+  {
+    "val": "In Germany the chancellor, Angela Merkel, who had long stood with business leaders against the country’s powerful anti-nuclear movement, ordered its reactors phased out.",
+    "start_Offset": 210,
+    "end_Offset": 234,
+    "start": 102.59,
+    "end": 111.79
+  },
+  {
+    "val": "In China the world’s largest new nuclear-plant programme was put on hold.",
+    "start_Offset": 235,
+    "end_Offset": 247,
+    "start": 112.69,
+    "end": 117.69999899999999
+  },
+  {
+    "val": "Talk of a“nuclear renaissance”to fight climate change fell silent.",
+    "start_Offset": 248,
+    "end_Offset": 258,
+    "start": 118.65,
+    "end": 123.73
+  },
+  {
+    "val": "The reaction, though understandable, was wrong.",
+    "start_Offset": 259,
+    "end_Offset": 264,
+    "start": 124.75,
+    "end": 127.27
+  },
+  {
+    "val": "Nuclear power has a lot of drawbacks.",
+    "start_Offset": 265,
+    "end_Offset": 271,
+    "start": 127.81,
+    "end": 129.95
+  },
+  {
+    "val": "Its large, slowly built plants are expensive both in absolute terms and in terms of the electricity they produce.",
+    "start_Offset": 272,
+    "end_Offset": 290,
+    "start": 130.14,
+    "end": 136.47999900000002
+  },
+  {
+    "val": "Its very small but real risk of catastrophic failure requires a high level of regulation, and it has a disturbing history of regulatory capture, amply demonstrated in Japan.",
+    "start_Offset": 291,
+    "end_Offset": 318,
+    "start": 137.23,
+    "end": 148.09
+  },
+  {
+    "val": "It produces extremely long-lived and toxic waste.",
+    "start_Offset": 319,
+    "end_Offset": 326,
+    "start": 149.35,
+    "end": 152.559999
+  },
+  {
+    "val": "And it is associated with the proliferation of nuclear weapons.",
+    "start_Offset": 327,
+    "end_Offset": 336,
+    "start": 153.09,
+    "end": 156.20000000000002
+  },
+  {
+    "val": "Most of the countries outside Europe that use nuclear power have some history of attempting to develop a bomb.",
+    "start_Offset": 337,
+    "end_Offset": 355,
+    "start": 157.19,
+    "end": 162.9
+  },
+  {
+    "val": "All these factors contribute to an unease with the technology felt, to greater or lesser extent, by people all around the world.",
+    "start_Offset": 356,
+    "end_Offset": 377,
+    "start": 163.75,
+    "end": 171.01
+  },
+  {
+    "val": "Against all that, though, two things must be remembered.",
+    "start_Offset": 378,
+    "end_Offset": 386,
+    "start": 172.059999,
+    "end": 174.95000000000002
+  },
+  {
+    "val": "One is that well-regulated nuclear power is safe.",
+    "start_Offset": 387,
+    "end_Offset": 395,
+    "start": 175.59,
+    "end": 178.72999900000002
+  },
+  {
+    "val": "With the terrible Soviet-era exception of Chernobyl, nuclear disasters come without large death tolls.",
+    "start_Offset": 396,
+    "end_Offset": 410,
+    "start": 179.619999,
+    "end": 185.17000000000002
+  },
+  {
+    "val": "It was the tsunami, not radiation, that claimed nearly all those lives in Fukushima.",
+    "start_Offset": 411,
+    "end_Offset": 424,
+    "start": 186.31,
+    "end": 191.15
+  },
+  {
+    "val": "The other is that the climate is in crisis, and nuclear plants can supply some of the vast amounts of emissions-free electricity the world needs if it is to cope.",
+    "start_Offset": 425,
+    "end_Offset": 455,
+    "start": 192.7,
+    "end": 202.59
+  },
+  {
+    "val": "Solar and wind power are now much cheaper, but they are intermittent.",
+    "start_Offset": 456,
+    "end_Offset": 467,
+    "start": 203.52,
+    "end": 207.8
+  },
+  {
+    "val": "Providing a reliable grid is a lot easier if some of its generating capacity can be assumed to be available all the time.",
+    "start_Offset": 468,
+    "end_Offset": 490,
+    "start": 208.77,
+    "end": 215.849999
+  },
+  {
+    "val": "Nuclear provides such capacity with no ongoing emissions, and it is doing so safely and at scale around the world.",
+    "start_Offset": 491,
+    "end_Offset": 510,
+    "start": 216.709999,
+    "end": 224.26
+  },
+  {
+    "val": "Despite this, safe and productive nuclear plants are being closed across the rich world.",
+    "start_Offset": 511,
+    "end_Offset": 524,
+    "start": 225.34,
+    "end": 230.33
+  },
+  {
+    "val": "Those closures and the retirement of older sites mean that advanced economies could lose two-thirds of their nuclear capacity by 2040, according to the International Energy Agency.",
+    "start_Offset": 525,
+    "end_Offset": 552,
+    "start": 231.13,
+    "end": 241.82999999999998
+  },
+  {
+    "val": "If new fossil-fuel infrastructure fills the gap, it will last for decades.",
+    "start_Offset": 553,
+    "end_Offset": 565,
+    "start": 242.91,
+    "end": 248.01999999999998
+  },
+  {
+    "val": "If renewables do so, the opportunity cost will be measured in gigatonnes of carbon.",
+    "start_Offset": 566,
+    "end_Offset": 579,
+    "start": 248.849999,
+    "end": 253.95000000000002
+  },
+  {
+    "val": "Renewables replacing nuclear capacity would almost always be better deployed to replace fossil-fuel capacity.",
+    "start_Offset": 580,
+    "end_Offset": 594,
+    "start": 254.97,
+    "end": 261.95
+  },
+  {
+    "val": "Sometimes the closure of nuclear plants is largely a matter of economics.",
+    "start_Offset": 595,
+    "end_Offset": 606,
+    "start": 262.96,
+    "end": 266.49
+  },
+  {
+    "val": "In places where emitting carbon dioxide comes with no price, such as America, the benefits of being emissions-free are hidden from the market.",
+    "start_Offset": 607,
+    "end_Offset": 630,
+    "start": 267.12,
+    "end": 275.37
+  },
+  {
+    "val": "That hurts nuclear, and it should be rectified.",
+    "start_Offset": 631,
+    "end_Offset": 638,
+    "start": 276.29,
+    "end": 279.53999999999996
+  },
+  {
+    "val": "When closure is political, the onus is on Green politicians, in particular, to change their tune.",
+    "start_Offset": 639,
+    "end_Offset": 654,
+    "start": 280.599999,
+    "end": 286.32
+  },
+  {
+    "val": "To hasten the decline of nuclear power is wilfully to hobble the world in the greatest environmental struggle of all.",
+    "start_Offset": 655,
+    "end_Offset": 674,
+    "start": 287.279999,
+    "end": 293.39000000000004
+  },
+  {
+    "val": "The argument for keeping existing nuclear plants open has been strengthened, in some places, by one of the responses to Fukushima: greater independence for nuclear regulators.",
+    "start_Offset": 675,
+    "end_Offset": 700,
+    "start": 294.39,
+    "end": 304.899999
+  },
+  {
+    "val": "Britain granted new freedom to its regulator after 2011.",
+    "start_Offset": 701,
+    "end_Offset": 709,
+    "start": 305.98,
+    "end": 309.25
+  },
+  {
+    "val": "So did Japan.",
+    "start_Offset": 710,
+    "end_Offset": 712,
+    "start": 309.9,
+    "end": 310.83
+  },
+  {
+    "val": "Though grander hopes for reform after the tsunami bore little fruit, Japan did largely take the regulators’ hand from the power companies’ glove.",
+    "start_Offset": 713,
+    "end_Offset": 735,
+    "start": 311.68,
+    "end": 319.979999
+  },
+  {
+    "val": "Its new supervisor has made reopening mothballed nuclear power plants harder than the government would like, but that is as it should be.",
+    "start_Offset": 736,
+    "end_Offset": 758,
+    "start": 320.87,
+    "end": 328.9
+  },
+  {
+    "val": "In Japan more than anywhere, nuclear needs to earn back trust to be useful.",
+    "start_Offset": 759,
+    "end_Offset": 772,
+    "start": 329.51,
+    "end": 334.13
+  },
+  {
+    "val": "This points to nuclear’s greatest weakness.",
+    "start_Offset": 773,
+    "end_Offset": 778,
+    "start": 335.099999,
+    "end": 337.429999
+  },
+  {
+    "val": "In democracies it is expensive, owing to regulation and public antipathy, which makes new nuclear power a hard sell.",
+    "start_Offset": 779,
+    "end_Offset": 797,
+    "start": 338.34,
+    "end": 345.33000000000004
+  },
+  {
+    "val": "The technology is thus increasingly the preserve of autocracies—precisely the systems where good regulation is least likely.",
+    "start_Offset": 798,
+    "end_Offset": 815,
+    "start": 346.16,
+    "end": 354.16999899999996
+  },
+  {
+    "val": "Having paused after Fukushima, China’s nuclear plans accelerated as part of an effort to reduce reliance on coal.",
+    "start_Offset": 816,
+    "end_Offset": 833,
+    "start": 355.389999,
+    "end": 362.18
+  },
+  {
+    "val": "China produced four times as much nuclear energy in 2019 as it did in 2011; it has 16 reactors under construction and another 39 planned.",
+    "start_Offset": 834,
+    "end_Offset": 858,
+    "start": 362.8,
+    "end": 373.709999
+  },
+  {
+    "val": "Countries wanting new nuclear plants now look to China and Russia as suppliers.",
+    "start_Offset": 859,
+    "end_Offset": 871,
+    "start": 374.599999,
+    "end": 379.20000000000005
+  },
+  {
+    "val": "There is a strong case for democracies seeking to replace ageing nuclear plants with non-intermittent equivalents to join the importers.",
+    "start_Offset": 872,
+    "end_Offset": 892,
+    "start": 380.24,
+    "end": 387.53
+  },
+  {
+    "val": "If Chinese reactors are designed in the knowledge that they will have to meet with the approval of independent regulators the world will be a safer place.",
+    "start_Offset": 893,
+    "end_Offset": 919,
+    "start": 388.61,
+    "end": 396.269999
+  },
+  {
+    "val": "At the same time, in boosting energy R&D to tackle the climate crisis, Western governments should be sure to give nuclear its fair share.",
+    "start_Offset": 920,
+    "end_Offset": 944,
+    "start": 397.24,
+    "end": 405.41999899999996
+  },
+  {
+    "val": "There are real attractions to some new approaches, notably smaller reactors with lower unit costs: in platoons they can replace old plants; singly they can add incremental capacity where needed.",
+    "start_Offset": 945,
+    "end_Offset": 974,
+    "start": 406.94,
+    "end": 418.33
+  },
+  {
+    "val": "They might perhaps be used to retrofit old fossil-fuel plants.",
+    "start_Offset": 975,
+    "end_Offset": 985,
+    "start": 418.95,
+    "end": 422.83
+  },
+  {
+    "val": "It’s critical Nuclear power has drawbacks the size of a tsunami.",
+    "start_Offset": 986,
+    "end_Offset": 996,
+    "start": 422.84,
+    "end": 426.96999900000003
+  },
+  {
+    "val": "But with Chinese plants being built today that will not be decommissioned until the 22nd century, it cannot simply be wished away.",
+    "start_Offset": 997,
+    "end_Offset": 1018,
+    "start": 427.71,
+    "end": 436.0
+  },
+  {
+    "val": "What is more, it has a vital role to play in the fight for a stable climate.",
+    "start_Offset": 1019,
+    "end_Offset": 1035,
+    "start": 436.72,
+    "end": 441.29999999999995
+  },
+  {
+    "val": "The lesson of Fukushima is not to eschew nuclear power, it is to use it wisely.",
+    "start_Offset": 1036,
+    "end_Offset": 1051,
+    "start": 442.309999,
+    "end": 448.989999
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

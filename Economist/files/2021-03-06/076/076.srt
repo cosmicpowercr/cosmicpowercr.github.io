@@ -1,0 +1,328 @@
+1
+00:00:18,879 --> 00:00:23,020
+USING A computer used to mean bashing away at a keyboard.
+
+2
+00:00:23,550 --> 00:00:25,840
+Then it meant tapping on a touchscreen.
+
+3
+00:00:26,380 --> 00:00:28,990
+Increasingly, it means simply speaking.
+
+4
+00:00:29,259 --> 00:00:36,769
+Over 100m devices powered by Alexa, Amazon’s voice assistant, rest on the world’s shelves.
+
+5
+00:00:37,410 --> 00:00:42,790
+Apple’s offering, Siri, processes 25bn requests a month.
+
+6
+00:00:43,380 --> 00:00:49,399
+By 2025 the market for such technology could be worth more than $27bn.
+
+7
+00:00:51,770 --> 00:00:54,270
+One group, though, has been left behind.
+
+8
+00:00:54,889 --> 00:01:01,830
+The World Health Organisation counts 430m people as deaf or hard of hearing.
+
+9
+00:01:02,380 --> 00:01:05,030
+Many use sign languages to communicate.
+
+10
+00:01:05,500 --> 00:01:15,290
+If they cannot also use those languages to talk to computers, they risk being excluded from the digitisation that is taking over everyday life.
+
+11
+00:01:16,400 --> 00:01:20,440
+Many have tried to teach computers to understand sign language.
+
+12
+00:01:20,800 --> 00:01:34,620
+There have been plenty of claims of breakthroughs in recent years, accompanied by so-called solutions ranging from haptic gloves that capture the wearer’s finger movements to software that detects distinct hand shapes.
+
+13
+00:01:35,590 --> 00:01:42,289
+Many of these have won acclaim while alienating the very people for whom they are ostensibly designed.
+
+14
+00:01:43,230 --> 00:01:52,810
+“The value for us basically is zero,”says Mark Wheatley, the executive director of the European Union of the Deaf (EUD).
+
+15
+00:01:53,740 --> 00:01:55,400
+It is easy to see why.
+
+16
+00:01:55,970 --> 00:02:02,630
+Gloves are intrusive, as are similar technological solutions such as body-worn cameras.
+
+17
+00:02:03,160 --> 00:02:07,710
+Both require users to adapt to the needs of hearing people.
+
+18
+00:02:08,430 --> 00:02:20,659
+Hand-shape recognition, while useful, cannot by itself handle the full complexity of sign languages, which also rely on facial expressions and body movements.
+
+19
+00:02:21,339 --> 00:02:35,710
+Some projects have been touted as offering cheap alternatives to human interpreters in places like hospitals, police stations or classrooms, where the cost of even small errors can be very high.
+
+20
+00:02:36,730 --> 00:02:38,630
+But things are improving.
+
+21
+00:02:39,150 --> 00:02:48,880
+Research groups, which increasingly include deaf scientists, are asking how technology can best serve deaf people’s interests.
+
+22
+00:02:49,600 --> 00:02:57,769
+Students of sign languages are compiling databases, known as corpora, full of examples of how the languages are used.
+
+23
+00:02:58,199 --> 00:03:01,649
+Programmers are trying to turn them into useful products.
+
+24
+00:03:02,489 --> 00:03:11,900
+As with spoken languages, sign languages—of which the world has several hundred—possess their own grammars, idioms and dialects.
+
+25
+00:03:12,559 --> 00:03:21,120
+Again like spoken languages, the hard-and-fast rules of grammar books do not really capture the subtleties of everyday usage.
+
+26
+00:03:21,790 --> 00:03:25,190
+Single signs can be shorthand for complex ideas.
+
+27
+00:03:25,640 --> 00:03:31,840
+Like speakers, signers often take shortcuts, such as representing two-handed signs with a single hand.
+
+28
+00:03:32,420 --> 00:03:37,560
+They set up reference points within their signing space which can be vital for meaning.
+
+29
+00:03:38,160 --> 00:03:45,550
+Correctly interpreting all this is much harder than recognising spoken syllables or written letters.
+
+30
+00:03:46,560 --> 00:03:49,169
+Generating data is tricky, too.
+
+31
+00:03:49,509 --> 00:04:06,850
+Research led by a team at Microsoft, a big computing firm, and published in 2019, estimated that a typical publicly available corpus of a spoken language consists of around a billion words from as many as 1,000 different speakers.
+
+32
+00:04:07,410 --> 00:04:14,680
+An equivalent data-set in a sign language might have fewer than 100,000 signs from just ten people.
+
+33
+00:04:15,370 --> 00:04:19,320
+Besides large numbers, a good corpus also needs variety.
+
+34
+00:04:19,770 --> 00:04:26,690
+This means conversations between native signers of diverse backgrounds, dialects and levels of fluency.
+
+35
+00:04:27,219 --> 00:04:37,580
+Because deaf people more often have physical disabilities than do those with unaffected hearing, representing those with restricted fluency of movement is important.
+
+36
+00:04:38,720 --> 00:04:54,180
+Thomas Hanke, a researcher at the University of Hamburg, has, along with his colleagues, assembled a sign-language library containing about 560 hours of conversations, and which includes many dialects found in Germany.
+
+37
+00:04:54,870 --> 00:04:59,880
+Originally, Dr Hanke asked participants in the project to travel to Hamburg.
+
+38
+00:05:00,340 --> 00:05:06,999
+But while in the city, many volunteers started incorporating local signs into their communications.
+
+39
+00:05:07,300 --> 00:05:09,060
+That skewed the data.
+
+40
+00:05:09,700 --> 00:05:18,820
+Now, he says, he travels to his participants instead, and has been criss-crossing the country in a mobile studio for the best part of two years.
+
+41
+00:05:19,889 --> 00:05:22,790
+Collecting data, though, is the easy bit.
+
+42
+00:05:23,459 --> 00:05:30,090
+Computers are slow learners, and must be told explicitly what each example means.
+
+43
+00:05:30,760 --> 00:05:37,209
+That requires annotating everything—every movement, facial expression and subtlety of emphasis.
+
+44
+00:05:37,820 --> 00:05:40,900
+This takes time, and lots of it.
+
+45
+00:05:41,660 --> 00:05:49,560
+After eight years, Dr Hanke has only 50 hours of video which he is confident are annotated correctly.
+
+46
+00:05:50,730 --> 00:05:58,030
+Microsoft’s researchers are using crowdsourcing to improve the amount and quality of data available.
+
+47
+00:05:58,699 --> 00:06:13,930
+Danielle Bragg and her colleagues at the firm’s campus in Massachusetts are developing a smartphone version of“Battleship”, a game in which each player tries to sink their opponent’s ships by indicating locations on a grid.
+
+48
+00:06:14,780 --> 00:06:20,980
+In Dr Bragg’s version, each grid square is associated with specific signs.
+
+49
+00:06:21,710 --> 00:06:29,249
+Players not only generate signing data of their own, but also confirm the meaning of signs made by their opponents.
+
+50
+00:06:30,860 --> 00:06:41,380
+Privacy is a particular concern, since collecting sign-language data requires recording participants’ faces rather than just their voices.
+
+51
+00:06:42,040 --> 00:06:52,370
+When Dr Hanke tried to record people’s gestures anonymously, their idiosyncratic signing techniques were so distinctive they could still be identified.
+
+52
+00:06:52,920 --> 00:07:00,750
+Dr Bragg plans to use facial filters, or to replace faces with artificially generated alternatives.
+
+53
+00:07:01,350 --> 00:07:09,419
+That will interfere with the quality of the data, but she hopes that lower quality will be made up for by greater quantity.
+
+54
+00:07:10,660 --> 00:07:20,260
+If enough data can be gathered, researchers with a good understanding of deaf culture and machine learning can achieve impressive results.
+
+55
+00:07:20,880 --> 00:07:30,369
+The 25-person team at SignAll, a Hungarian firm, includes three deaf people and claims to be one of the biggest in the field.
+
+56
+00:07:30,930 --> 00:07:45,390
+The firm’s proprietary database contains 300,000 annotated videos of 100 users using over 3,000 signs from American Sign Language (ASL), one of the most widespread.
+
+57
+00:07:46,160 --> 00:07:54,980
+It was collected with help from Gallaudet University in Washington, DC, the only university which caters specifically for deaf students.
+
+58
+00:07:55,800 --> 00:08:03,100
+SignAll‘s software can recognise ASL, though not yet at the speeds at which native signers communicate.
+
+59
+00:08:03,530 --> 00:08:14,980
+Its current product, SignAll 1,0, can translate signs into written English, allowing a hearing interlocutor to respond with the help of speech-to-text software.
+
+60
+00:08:15,740 --> 00:08:24,380
+But it relies on pointing three cameras at a signer wearing special motion-tracking gloves—a significant burden.
+
+61
+00:08:25,300 --> 00:08:27,000
+That may soon change.
+
+62
+00:08:27,250 --> 00:08:33,019
+Zsolt Robotka, SignAll’s boss, says the firm hopes to offer a glove-free option.
+
+63
+00:08:33,550 --> 00:08:39,410
+It is also putting the finishing touches to a product that works with a single camera on a smartphone.
+
+64
+00:08:40,160 --> 00:08:56,730
+If that technology can be integrated into other apps, it could allow deaf people to use their phones to do things like searching for directions, or looking up the meanings of unknown signs, without needing to resort to the written form of a spoken language.
+
+65
+00:08:57,740 --> 00:09:04,680
+Crossing the valley For the moment, Dr Robotka’s emphasis is on translating sign language into text or speech.
+
+66
+00:09:05,500 --> 00:09:14,420
+Translating in the other direction poses greater difficulties, one being how to generate visual representations of sign language.
+
+67
+00:09:15,030 --> 00:09:18,349
+The standard approach has been to use computer-generated avatars.
+
+68
+00:09:19,540 --> 00:09:34,229
+But many fall into the“uncanny valley”, a concept from computer graphics in which artificial humans fall just short enough of verisimilitude that they instead look eerie and disturbing.
+
+69
+00:09:35,199 --> 00:09:39,930
+Bridging the valley would permit widespread two-way communication.
+
+70
+00:09:40,600 --> 00:10:03,610
+Creating smartphone apps that can recognise a range of European sign languages, and translate back and forth between these and oral speech, is one aim of two new multinational academic consortia: the SignON project, and the Intelligent Automatic Sign Language Translation project, also known as EASIER.
+
+71
+00:10:04,309 --> 00:10:11,270
+Both are working with the EUD, which represents 31 national associations across the continent.
+
+72
+00:10:12,650 --> 00:10:23,309
+SignON is targeting British, Dutch, Flemish, Irish and Spanish sign languages and, with the exception of Flemish, their hearing equivalents.
+
+73
+00:10:23,960 --> 00:10:29,470
+Working with several European universities, it aims to solve three problems.
+
+74
+00:10:30,100 --> 00:10:36,610
+One is to improve the machine-learning algorithms that recognise signs and their meaning.
+
+75
+00:10:37,270 --> 00:10:42,149
+Another is to work out how best to interpret sign languages’ distinctive grammars.
+
+76
+00:10:43,759 --> 00:10:46,019
+Finally, it will try to create better avatars.
+
+77
+00:10:47,709 --> 00:11:00,800
+EASIER, of which Dr Hanke’s team at Hamburg is one of 14 partners, has similar goals: namely sign language recognition, robust two-way translation and avatar development.
+
+78
+00:11:01,630 --> 00:11:04,510
+Money and attention are always welcome.
+
+79
+00:11:05,129 --> 00:11:17,939
+But previous attempts to automate the translation of sign language have too often been directed at making life convenient for those with normal hearing rather than truly trying to help the deaf.
+
+80
+00:11:18,639 --> 00:11:24,579
+This time, observers hope that a more sensitive approach will yield more useful products.
+
+81
+00:11:25,250 --> 00:11:29,630
+“It’s a wonderful opportunity for us,”says Mr Wheatley of the EUD.
+
+82
+00:11:30,020 --> 00:11:32,400
+“We’ve got no time for cynicism.”
+

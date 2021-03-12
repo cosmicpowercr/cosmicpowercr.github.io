@@ -1,0 +1,312 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">042 Europe - Napoleon's bicentenary</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='042';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "TO SOME HE was a military genius, strategic mastermind and visionary leader who bequeathed to France a centralised modern administration and sense of gloire.",
+    "start_Offset": 0,
+    "end_Offset": 23,
+    "start": 18.209999,
+    "end": 28.78
+  },
+  {
+    "val": "To others he was a tyrant and a butcher who squandered French supremacy in Europe on the battlefield of Waterloo.",
+    "start_Offset": 24,
+    "end_Offset": 43,
+    "start": 29.61,
+    "end": 35.86
+  },
+  {
+    "val": "Napoleon Bonaparte, who died in captivity on the British island of Saint Helena at the age of 51, has long inspired both admiration and distaste, even in France.",
+    "start_Offset": 44,
+    "end_Offset": 71,
+    "start": 36.219999,
+    "end": 47.22
+  },
+  {
+    "val": "Now, ahead of the bicentenary of his death on May 5th 1821, those rival passions have been revived.",
+    "start_Offset": 72,
+    "end_Offset": 89,
+    "start": 47.66,
+    "end": 54.709999999999994
+  },
+  {
+    "val": "Alexis Corbière, a deputy from Unsubmissive France, a left-wing party, declared:“It is not for the republic to celebrate its gravedigger.”",
+    "start_Offset": 90,
+    "end_Offset": 111,
+    "start": 55.379999,
+    "end": 63.92
+  },
+  {
+    "val": "On the right Jean-Louis Debré, formerly head of the constitutional council, said that“overdoing it”would be“a provocation”.",
+    "start_Offset": 112,
+    "end_Offset": 131,
+    "start": 65.059999,
+    "end": 72.66
+  },
+  {
+    "val": "The Black Lives Matter movement has emboldened those who reject any celebration of a leader who reintroduced slavery to the French West Indies in 1802.",
+    "start_Offset": 132,
+    "end_Offset": 156,
+    "start": 73.32,
+    "end": 82.669999
+  },
+  {
+    "val": "Nicolas Mayer-Rossignol, the Socialist mayor of Rouen, says he wants to replace the imposing bronze statue of the emperor on horseback that stands outside his Normandy town hall.",
+    "start_Offset": 157,
+    "end_Offset": 185,
+    "start": 84.05,
+    "end": 95.24
+  },
+  {
+    "val": "Yet the French also acknowledge that they owe much of their modern state, and its institutions, not to mention their country’s aspiration to grandeur, to the“little Corsican”.",
+    "start_Offset": 186,
+    "end_Offset": 213,
+    "start": 96.03,
+    "end": 106.08
+  },
+  {
+    "val": "As first consul, Napoleon created the French legal code, the Bank of France, the administrative system of préfets, high-school lycées, the légion d’honneur and much more.",
+    "start_Offset": 214,
+    "end_Offset": 240,
+    "start": 106.609999,
+    "end": 118.55000000000001
+  },
+  {
+    "val": "In a poll in 2016 he was listed as the second-most-important Frenchman in history, after Charles de Gaulle.",
+    "start_Offset": 241,
+    "end_Offset": 260,
+    "start": 119.08,
+    "end": 125.93000099999999
+  },
+  {
+    "val": "His red quartzite tomb in Les Invalides, lying in splendid isolation in a crypt beneath the dome, receives over a million visitors a year.",
+    "start_Offset": 261,
+    "end_Offset": 284,
+    "start": 126.359999,
+    "end": 135.26999999999998
+  },
+  {
+    "val": "This spring scores of new books are promised, says the Fondation Napoléon, as well as conferences and a big exhibition in Paris.",
+    "start_Offset": 285,
+    "end_Offset": 306,
+    "start": 135.929999,
+    "end": 144.209999
+  },
+  {
+    "val": "“We have every reason to be proud of him,”said Patrice Gueniffey, a historian, who considers him a historical figure on a par with Alexander the Great or Julius Caesar (both of whom also killed a lot of people).",
+    "start_Offset": 307,
+    "end_Offset": 345,
+    "start": 144.549999,
+    "end": 157.069999
+  },
+  {
+    "val": "President Emmanuel Macron has not yet shown his hand.",
+    "start_Offset": 346,
+    "end_Offset": 354,
+    "start": 157.799999,
+    "end": 161.29999999999998
+  },
+  {
+    "val": "In 2005 Jacques Chirac, a Gaullist predecessor at the Elysée Palace, refused—amid protests at the time—to commemorate the bicentenary of Napoleon’s victory at Austerlitz.",
+    "start_Offset": 355,
+    "end_Offset": 380,
+    "start": 161.67000000000002,
+    "end": 173.35
+  },
+  {
+    "val": "Talk shows have been debating what to do this year, and whether his legacy is damaging or beneficial for France.",
+    "start_Offset": 381,
+    "end_Offset": 400,
+    "start": 173.88,
+    "end": 180.099999
+  },
+  {
+    "val": "An adept of“en même temps”, or the improbable art of reconciling opposing views, Mr Macron has his work cut out.",
+    "start_Offset": 401,
+    "end_Offset": 421,
+    "start": 180.449999,
+    "end": 188.58
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

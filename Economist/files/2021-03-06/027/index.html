@@ -1,0 +1,409 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">027 Asia - Internet freedom</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='027';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "MUSHTAQ AHMED, a Bangladeshi writer, knew the risk he was taking.",
+    "start_Offset": 0,
+    "end_Offset": 10,
+    "start": 3.12,
+    "end": 23.560000000000002
+  },
+  {
+    "val": "To attack his government’s handling of covid-19, not least by likening the health minister to a cockroach, as he did on Facebook last spring, was to challenge the Digital Security Act.",
+    "start_Offset": 11,
+    "end_Offset": 42,
+    "start": 24.08,
+    "end": 35.61000000000001
+  },
+  {
+    "val": "Passed in 2018 by the thin-skinned regime of Sheikh Hasina Wajed, now in her fourth term as prime minister, the law penalises such vague crimes as“creating confusion”and“tarnishing the image of the country”.",
+    "start_Offset": 43,
+    "end_Offset": 78,
+    "start": 36.25,
+    "end": 50.84
+  },
+  {
+    "val": "Mr Ahmed was one of some 450 people arrested under the law last year.",
+    "start_Offset": 79,
+    "end_Offset": 92,
+    "start": 51.74,
+    "end": 56.440000000000005
+  },
+  {
+    "val": "Even so, the 54-year-old did not, presumably, expect to languish behind bars without trial for nine months, be denied bail six times and ultimately die in a prison hospital, as he did on February 25th.",
+    "start_Offset": 93,
+    "end_Offset": 129,
+    "start": 57.13,
+    "end": 71.389999
+  },
+  {
+    "val": "On the same day, in neighbouring India, the government rolled out new guidelines for social media, video-streaming and digital publishing with reassuring patter about pride in Indian journalism and“soft touch oversight”.",
+    "start_Offset": 130,
+    "end_Offset": 162,
+    "start": 72.459999,
+    "end": 85.8
+  },
+  {
+    "val": "Rather than a draconian law, broad in scope and heavy on punishment, the official government gazette merely recorded the“exercise of the powers conferred by sub-section (1), clauses (z) and (zg) of sub-section (2) of section 87 of the Information Technology Act, 2000”.",
+    "start_Offset": 163,
+    "end_Offset": 207,
+    "start": 86.28999999999999,
+    "end": 107.22999999999999
+  },
+  {
+    "val": "Yet India’s new rules conceal sharp teeth and a long reach.",
+    "start_Offset": 208,
+    "end_Offset": 218,
+    "start": 108.219999,
+    "end": 112.7
+  },
+  {
+    "val": "They make messaging services and social-media firms such as Twitter, WhatsApp and Facebook far more responsible for the material posted by users.",
+    "start_Offset": 219,
+    "end_Offset": 241,
+    "start": 113.11,
+    "end": 121.91
+  },
+  {
+    "val": "And they sharply curtail the relative freedom enjoyed by purveyors of online content, from news sites to Netflix.",
+    "start_Offset": 242,
+    "end_Offset": 259,
+    "start": 122.63,
+    "end": 130.25
+  },
+  {
+    "val": "In January Twitter first complied with and then resisted an official demand to suspend more than 1,000 accounts, mostly of supporters of a long-festering mass protest by farmers.",
+    "start_Offset": 260,
+    "end_Offset": 289,
+    "start": 131.04,
+    "end": 142.719999
+  },
+  {
+    "val": "Now all social-media firms and online publishers will be obliged to remove content promptly at the government’s request, to reveal the source of any post (and so to break the encryption that many chat services rely on to protect users’ privacy), and also to comply with peculiarly cumbersome procedures to respond to public grievances.",
+    "start_Offset": 290,
+    "end_Offset": 344,
+    "start": 143.25,
+    "end": 165.8
+  },
+  {
+    "val": "In an echo of Bangladesh’s law, the government can request the removal of any material it says contravenes Indian law, causes harm to national interests or stirs internal unrest.",
+    "start_Offset": 345,
+    "end_Offset": 373,
+    "start": 166.22,
+    "end": 178.109999
+  },
+  {
+    "val": "Although the guidelines talk of self-regulation, bureaucrats must approve the membership of any industry body formed for this purpose.",
+    "start_Offset": 374,
+    "end_Offset": 393,
+    "start": 178.85,
+    "end": 186.61
+  },
+  {
+    "val": "Any decisions such an outfit makes can be overruled by a government panel, which will also decide whether a media firm has responded adequately to complaints from the public.",
+    "start_Offset": 394,
+    "end_Offset": 422,
+    "start": 187.07,
+    "end": 197.689999
+  },
+  {
+    "val": "Given that the Hindu nationalist supporters of Narendra Modi, the prime minister, often troll his critics, firms fear they will be swamped by spurious complaints and then punished for failing to answer them all politely, in a timely fashion.",
+    "start_Offset": 423,
+    "end_Offset": 461,
+    "start": 198.34,
+    "end": 212.97
+  },
+  {
+    "val": "A government initiative to recruit volunteers to assist the police in patrolling the internet could end up generating still more burdensome complaints.",
+    "start_Offset": 462,
+    "end_Offset": 483,
+    "start": 213.639999,
+    "end": 222.5
+  },
+  {
+    "val": "Many argue that the rules infringe constitutional guarantees of free speech and privacy.",
+    "start_Offset": 484,
+    "end_Offset": 496,
+    "start": 223.05,
+    "end": 228.57999999999998
+  },
+  {
+    "val": "They are also alarmingly broad and vague: it is unclear whether print publications that also post their output online are subject to the guidelines, and whether and how oversight will be extended to foreign firms.",
+    "start_Offset": 497,
+    "end_Offset": 531,
+    "start": 229.099999,
+    "end": 242.04
+  },
+  {
+    "val": "Legal challenges are inevitable.",
+    "start_Offset": 532,
+    "end_Offset": 535,
+    "start": 242.4,
+    "end": 244.56
+  },
+  {
+    "val": "Social-media firms worry that the erosion of privacy could cause an exodus of customers.",
+    "start_Offset": 536,
+    "end_Offset": 550,
+    "start": 245.57,
+    "end": 250.809999
+  },
+  {
+    "val": "When WhatsApp told its 530m Indian users in January that it might share some of their information with its parent company, Facebook, so many dropped the service that it hastily scrapped the change.",
+    "start_Offset": 551,
+    "end_Offset": 583,
+    "start": 251.309999,
+    "end": 263.98
+  },
+  {
+    "val": "Digital news outlets, which include some of the fiercest critics of Mr Modi, worry that they will be saddled with an impossible regulatory burden by a government that has already tamed most media.",
+    "start_Offset": 584,
+    "end_Offset": 616,
+    "start": 264.59,
+    "end": 275.71
+  },
+  {
+    "val": "The government retorts that the internet needs the sort of self-regulating industry groups, codes of conduct and state supervision to which television broadcasters, print media and the film industry are already subject to varying degrees.",
+    "start_Offset": 617,
+    "end_Offset": 652,
+    "start": 276.69,
+    "end": 290.6
+  },
+  {
+    "val": "Nikhil Pahwa, a digital-rights campaigner, doubts it will back down, unless blocked by the courts, even if the new rules drive out big foreign firms.",
+    "start_Offset": 653,
+    "end_Offset": 678,
+    "start": 291.01,
+    "end": 300.34999999999997
+  },
+  {
+    "val": "When the government banned dozens of Chinese apps last year, he notes, Indian entrepreneurs eagerly leapt into the breach.",
+    "start_Offset": 679,
+    "end_Offset": 697,
+    "start": 300.88,
+    "end": 307.45
+  },
+  {
+    "val": "During its dispute with Twitter, many of Mr Modi’s supporters pointedly abandoned the service for a little-known Indian rival.",
+    "start_Offset": 698,
+    "end_Offset": 717,
+    "start": 308.02,
+    "end": 315.39
+  },
+  {
+    "val": "Even if the government does have to retreat, online critics will not relax.",
+    "start_Offset": 718,
+    "end_Offset": 730,
+    "start": 316.219999,
+    "end": 321.02
+  },
+  {
+    "val": "In February police raided the home of Prabir Purkayastha, the owner and editor of NewsClick, a site that often berates Mr Modi.",
+    "start_Offset": 731,
+    "end_Offset": 752,
+    "start": 321.46,
+    "end": 329.93
+  },
+  {
+    "val": "They kept him under house arrest for four-and-a-half days as they rifled through his possessions.",
+    "start_Offset": 753,
+    "end_Offset": 770,
+    "start": 330.55,
+    "end": 335.509999
+  },
+  {
+    "val": "On March 3rd tax authorities raided properties belonging to several Bollywood personalities who, unusually for an industry that typically fawns over the powerful, had criticised Mr Modi.",
+    "start_Offset": 771,
+    "end_Offset": 797,
+    "start": 336.09,
+    "end": 347.53000000000003
+  },
+  {
+    "val": "One was Taapsee Pannu, an actress whose sin may have been a social-media post:“If one tweet rattles your unity, one joke rattles your faith or one show rattles your religious belief, then it’s you who has to work on strengthening your value system.”",
+    "start_Offset": 798,
+    "end_Offset": 842,
+    "start": 348.07,
+    "end": 365.69
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

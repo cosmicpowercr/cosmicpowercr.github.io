@@ -1,0 +1,480 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">060 Business - Bartleby</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='060';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "THE PANDEMIC is throwing up a new set of ethical issues for businesses.",
+    "start_Offset": 0,
+    "end_Offset": 12,
+    "start": 15.7,
+    "end": 20.4
+  },
+  {
+    "val": "The premise of“stakeholder capitalism”is not just that firms should consider the interests of employees and customers, as well as shareholders.",
+    "start_Offset": 13,
+    "end_Offset": 34,
+    "start": 20.81,
+    "end": 29.04
+  },
+  {
+    "val": "It is that, by doing so, everyone gains; shareholders will prosper if workers and customers are treated decently.",
+    "start_Offset": 35,
+    "end_Offset": 52,
+    "start": 29.5,
+    "end": 36.959999
+  },
+  {
+    "val": "But the pandemic may put different groups at odds.",
+    "start_Offset": 53,
+    "end_Offset": 61,
+    "start": 37.42,
+    "end": 40.56
+  },
+  {
+    "val": "For example, customers may want companies to insist that all employees are vaccinated, while not wanting the same rule to apply to themselves.",
+    "start_Offset": 62,
+    "end_Offset": 84,
+    "start": 40.95,
+    "end": 49.2
+  },
+  {
+    "val": "It might seem as if shareholders would want as many employees to return to work as possible, few potential customers to be excluded, and interactions in, say, shops and restaurants to be as free from restrictions as possible.",
+    "start_Offset": 85,
+    "end_Offset": 122,
+    "start": 50.19,
+    "end": 63.730000000000004
+  },
+  {
+    "val": "But if a company gets a reputation for being an unsafe place to work, or for customers to visit, the effect on long-term returns could be significant.",
+    "start_Offset": 123,
+    "end_Offset": 150,
+    "start": 64.86,
+    "end": 73.74
+  },
+  {
+    "val": "The perception of fairness is also essential.",
+    "start_Offset": 151,
+    "end_Offset": 157,
+    "start": 74.4,
+    "end": 77.14
+  },
+  {
+    "val": "Woe betide the executive who jumps the queue, as in the case of Mark Machin, a Canadian pension-fund boss who travelled to the United Arab Emirates to get the jab.",
+    "start_Offset": 158,
+    "end_Offset": 188,
+    "start": 77.36,
+    "end": 86.92
+  },
+  {
+    "val": "(He swiftly resigned.",
+    "start_Offset": 189,
+    "end_Offset": 191,
+    "start": 87.259999,
+    "end": 88.899999
+  },
+  {
+    "val": ")  Companies are not just trading off safety and personal liberty.",
+    "start_Offset": 192,
+    "end_Offset": 201,
+    "start": 89.879999,
+    "end": 92.92
+  },
+  {
+    "val": "They risk discriminating against those who have yet to gain access to the vaccine or who, for religious or medical reasons, are unwilling or unable to be jabbed.",
+    "start_Offset": 202,
+    "end_Offset": 229,
+    "start": 93.28,
+    "end": 103.129999
+  },
+  {
+    "val": "And they do not have complete freedom of action.",
+    "start_Offset": 230,
+    "end_Offset": 238,
+    "start": 103.5,
+    "end": 105.81999900000001
+  },
+  {
+    "val": "The legal situation will vary from country to country but it seems likely that, in many jurisdictions, companies will be able to insist on a vaccine mandate only for new employees.",
+    "start_Offset": 239,
+    "end_Offset": 269,
+    "start": 106.279999,
+    "end": 117.31999900000001
+  },
+  {
+    "val": "The question of vaccination is particularly pressing in health care.",
+    "start_Offset": 270,
+    "end_Offset": 279,
+    "start": 118.309999,
+    "end": 121.949999
+  },
+  {
+    "val": "One might hope that medical workers would appreciate the need for it.",
+    "start_Offset": 280,
+    "end_Offset": 291,
+    "start": 122.349999,
+    "end": 126.299999
+  },
+  {
+    "val": "Yet some health-care personnel may feel that having had covid-19, as many have, negates the obligation.",
+    "start_Offset": 292,
+    "end_Offset": 309,
+    "start": 126.62,
+    "end": 133.69
+  },
+  {
+    "val": "Laura Boudreau of Columbia Business School in New York observes that, in this type of industry,“there is a duty for the employer to try to identify safe roles that the staff can play, and if not, to provide information to customers about whether there are unvaccinated staff in the role.”",
+    "start_Offset": 310,
+    "end_Offset": 360,
+    "start": 134.13,
+    "end": 152.51999899999998
+  },
+  {
+    "val": "In other words, unvaccinated staff may end up being kept away from vulnerable patients.",
+    "start_Offset": 361,
+    "end_Offset": 374,
+    "start": 152.77,
+    "end": 158.45999999999998
+  },
+  {
+    "val": "Rules in other industries often lack consistency.",
+    "start_Offset": 375,
+    "end_Offset": 381,
+    "start": 159.48,
+    "end": 162.48
+  },
+  {
+    "val": "Early in the pandemic, cruise ships helped to spread the disease.",
+    "start_Offset": 382,
+    "end_Offset": 392,
+    "start": 162.789999,
+    "end": 166.58
+  },
+  {
+    "val": "The Saga cruise line, which targets elderly travellers, is now insisting that passengers produce proof of vaccination, but makes no such demand of the crew.",
+    "start_Offset": 393,
+    "end_Offset": 417,
+    "start": 166.64,
+    "end": 175.87
+  },
+  {
+    "val": "That makes sense.",
+    "start_Offset": 418,
+    "end_Offset": 420,
+    "start": 176.32,
+    "end": 177.479999
+  },
+  {
+    "val": "The passengers will largely be drawn from the rich world, where the elderly have been first in the queue for jabs.",
+    "start_Offset": 421,
+    "end_Offset": 441,
+    "start": 177.52,
+    "end": 183.77
+  },
+  {
+    "val": "The crew will be younger and often from poorer countries.",
+    "start_Offset": 442,
+    "end_Offset": 451,
+    "start": 184.13,
+    "end": 187.20000000000002
+  },
+  {
+    "val": "In both cases vaccines will have been harder to obtain.",
+    "start_Offset": 452,
+    "end_Offset": 461,
+    "start": 187.51,
+    "end": 190.5
+  },
+  {
+    "val": "However, the industry is not taking a consistent approach.",
+    "start_Offset": 462,
+    "end_Offset": 470,
+    "start": 191.099999,
+    "end": 194.64
+  },
+  {
+    "val": "Swan Hellenic is insisting on vaccines for crew, not passengers.",
+    "start_Offset": 471,
+    "end_Offset": 480,
+    "start": 194.91,
+    "end": 199.48000000000002
+  },
+  {
+    "val": "Victory Cruise Lines has made a jab mandatory for both groups.",
+    "start_Offset": 481,
+    "end_Offset": 491,
+    "start": 199.74,
+    "end": 203.31
+  },
+  {
+    "val": "No vaccine is 100% effective.",
+    "start_Offset": 492,
+    "end_Offset": 496,
+    "start": 204.27,
+    "end": 207.20999999999998
+  },
+  {
+    "val": "It is not yet clear whether people who have been vaccinated can still transmit the disease to others.",
+    "start_Offset": 497,
+    "end_Offset": 514,
+    "start": 207.5,
+    "end": 212.649999
+  },
+  {
+    "val": "So where staff come into contact with customers, companies may insist on social distancing or mask-wearing until case levels drop substantially.",
+    "start_Offset": 515,
+    "end_Offset": 536,
+    "start": 213.08,
+    "end": 222.32
+  },
+  {
+    "val": "Even then, employees may catch the virus from each other.",
+    "start_Offset": 537,
+    "end_Offset": 546,
+    "start": 222.62,
+    "end": 226.04
+  },
+  {
+    "val": "Later, companies will have to consider what they should do when vaccines become more widely available.",
+    "start_Offset": 547,
+    "end_Offset": 562,
+    "start": 227.03,
+    "end": 232.38
+  },
+  {
+    "val": "Some staff may have been unable to get a vaccine, because they have a medical condition (such as pregnancy) that excludes them.",
+    "start_Offset": 563,
+    "end_Offset": 584,
+    "start": 232.76,
+    "end": 239.15
+  },
+  {
+    "val": "Do companies have a duty of care to protect such employees from colleagues who have refused to take the jab on principle?",
+    "start_Offset": 585,
+    "end_Offset": 606,
+    "start": 239.6,
+    "end": 246.669999
+  },
+  {
+    "val": "In the case of most companies, Ms Boudreau says, it is very much in their interest“to reduce barriers for eligible staff to get vaccines, to have a dialogue with their staff to understand if and why they may be hesitant to get vaccinated, and to provide information and resources that may help those who are reluctant”.",
+    "start_Offset": 607,
+    "end_Offset": 663,
+    "start": 247.66,
+    "end": 266.63
+  },
+  {
+    "val": "But that is probably as far as they can go.",
+    "start_Offset": 664,
+    "end_Offset": 673,
+    "start": 267.219999,
+    "end": 270.049999
+  },
+  {
+    "val": "There may be another phase of the pandemic with new variants resistant to current vaccines.",
+    "start_Offset": 674,
+    "end_Offset": 688,
+    "start": 271.039999,
+    "end": 15.83
+  },
+  {
+    "val": "The type of jab people have received then becomes more significant.",
+    "start_Offset": 689,
+    "end_Offset": 699,
+    "start": 275.81,
+    "end": 279.74
+  },
+  {
+    "val": "In short, managers will face a series of trade-offs.",
+    "start_Offset": 700,
+    "end_Offset": 709,
+    "start": 280.45,
+    "end": 284.039999
+  },
+  {
+    "val": "Their best option may be to accept the uncertainties, remain flexible, ensure the best possible hygiene standards for their staff—and hope that acquired immunity, vaccines and therapies make covid-19 no more life-threatening than seasonal flu.",
+    "start_Offset": 710,
+    "end_Offset": 747,
+    "start": 284.099999,
+    "end": 300.73
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

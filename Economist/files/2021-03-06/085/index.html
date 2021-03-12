@@ -1,0 +1,557 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">085 Books and arts - Artistic licence on screen</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='085';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "TWO TELEVISION shows about Catherine II of Russia recently had their premiere.",
+    "start_Offset": 0,
+    "end_Offset": 11,
+    "start": 20.7,
+    "end": 25.82
+  },
+  {
+    "val": "The first,“Catherine the Great”, a collaboration between Sky in Britain and HBO in America, was released in October 2019.",
+    "start_Offset": 12,
+    "end_Offset": 31,
+    "start": 25.82,
+    "end": 35.92
+  },
+  {
+    "val": "Set in the aftermath of the empress’s overthrow of Peter III, her husband, in 1762 the series was an earnest costume drama starring a grande dame of British acting, Helen Mirren.",
+    "start_Offset": 32,
+    "end_Offset": 62,
+    "start": 36.83,
+    "end": 50.89
+  },
+  {
+    "val": "It focused on Catherine’s consolidation of power and her relationship with Grigory Potemkin, with the occasional speech about the Enlightenment and the solemn nature of statecraft.",
+    "start_Offset": 63,
+    "end_Offset": 88,
+    "start": 51.549999,
+    "end": 62.989999000000005
+  },
+  {
+    "val": "The other show,“The Great”, was first released on Hulu, a streaming service, last year.",
+    "start_Offset": 89,
+    "end_Offset": 103,
+    "start": 64.59,
+    "end": 70.75
+  },
+  {
+    "val": "A riotous comedy adapted by Tony McNamara from his own play,“The Great”begins with a young Catherine (Elle Fanning) leaving Prussia to marry Peter (Nicholas Hoult).",
+    "start_Offset": 104,
+    "end_Offset": 130,
+    "start": 71.41,
+    "end": 85.05
+  },
+  {
+    "val": "Her hopes for a refined romance are dashed when she meets her foolish, barbaric spouse, whose main priorities are smashing things and shagging the women at court.",
+    "start_Offset": 131,
+    "end_Offset": 157,
+    "start": 85.049999,
+    "end": 97.08999999999999
+  },
+  {
+    "val": "Aided by her sharp-tongued maid and a weaselly courtier, Catherine plots a coup.",
+    "start_Offset": 158,
+    "end_Offset": 171,
+    "start": 97.96,
+    "end": 104.05
+  },
+  {
+    "val": "Notionally based on the same material, the two productions diverge drastically in content and tone.",
+    "start_Offset": 172,
+    "end_Offset": 186,
+    "start": 105.24,
+    "end": 112.28
+  },
+  {
+    "val": "The difference captures a trend in historical dramas; more than that, it indicates an evolution in attitudes towards history itself in the world of entertainment, and perhaps beyond.",
+    "start_Offset": 187,
+    "end_Offset": 214,
+    "start": 113.42,
+    "end": 125.80000000000001
+  },
+  {
+    "val": "Beginning with a formal recap of the historical record,“Catherine the Great”treats its subject with reverence.",
+    "start_Offset": 215,
+    "end_Offset": 231,
+    "start": 127.219999,
+    "end": 134.529999
+  },
+  {
+    "val": "By contrast, characters in“The Great”swear and discuss sex obsessively.",
+    "start_Offset": 232,
+    "end_Offset": 242,
+    "start": 134.999999,
+    "end": 140.899999
+  },
+  {
+    "val": "The emperor is a borderline psychopath and uninterested in governing.",
+    "start_Offset": 243,
+    "end_Offset": 252,
+    "start": 141.499999,
+    "end": 146.0
+  },
+  {
+    "val": "The facts are bent wildly.",
+    "start_Offset": 253,
+    "end_Offset": 257,
+    "start": 146.46,
+    "end": 148.63000000000002
+  },
+  {
+    "val": "Peter is on the throne when Catherine arrives, whereas in reality they were married for 17 years before he was crowned.",
+    "start_Offset": 258,
+    "end_Offset": 278,
+    "start": 149.31,
+    "end": 157.32999900000002
+  },
+  {
+    "val": "In the show he is the son of Peter the Great, a paternity that lends him a minor Oedipus complex; the actual Peter III was the German-born grandson of his illustrious namesake.",
+    "start_Offset": 279,
+    "end_Offset": 311,
+    "start": 158.099999,
+    "end": 170.52
+  },
+  {
+    "val": "Yet this fast-and-very-loose approach—advertised in the comedy’s winking introduction as“an occasionally true story”—furthers an irreverent trend that has developed over several years.",
+    "start_Offset": 312,
+    "end_Offset": 339,
+    "start": 171.4,
+    "end": 184.58
+  },
+  {
+    "val": "In 2015“Hamilton”, a hip-hop musical about the Founding Fathers, showed that telling a story from the past in a fresh way could reap rewards.",
+    "start_Offset": 340,
+    "end_Offset": 365,
+    "start": 185.29,
+    "end": 196.04999999999998
+  },
+  {
+    "val": "“The Death of Stalin”(2017) satirised the power struggle after the despot’s demise; the actors spoke in British and American accents rather than affecting Russian ones.",
+    "start_Offset": 366,
+    "end_Offset": 391,
+    "start": 196.57999999999998,
+    "end": 208.39000000000001
+  },
+  {
+    "val": "“The Favourite”(2018), written by Mr McNamara and Deborah Davis, depicted a love-triangle involving Queen Anne and two female courtiers in early 18th-century Britain.",
+    "start_Offset": 392,
+    "end_Offset": 417,
+    "start": 209.08,
+    "end": 221.9
+  },
+  {
+    "val": "(Historians doubt the women were quite so intimate.",
+    "start_Offset": 418,
+    "end_Offset": 425,
+    "start": 222.45,
+    "end": 225.78
+  },
+  {
+    "val": ")“Dickinson”(2019), created by Alena Smith, revisited the life of Emily Dickinson, a poet, in the run-up to America’s civil war.",
+    "start_Offset": 426,
+    "end_Offset": 447,
+    "start": 226.86,
+    "end": 236.93
+  },
+  {
+    "val": "Its characters use modern slang; the soundtrack includes rap and pop.",
+    "start_Offset": 448,
+    "end_Offset": 458,
+    "start": 237.43,
+    "end": 242.31
+  },
+  {
+    "val": "In“The Great”, Catherine evinces the real empress’s intellectual curiosity and belief that she was born to rule.",
+    "start_Offset": 459,
+    "end_Offset": 476,
+    "start": 243.42,
+    "end": 251.74
+  },
+  {
+    "val": "The factionalism and power-broking have a true-life nastiness.",
+    "start_Offset": 477,
+    "end_Offset": 486,
+    "start": 252.32999999999998,
+    "end": 256.40000000000003
+  },
+  {
+    "val": "But unlike, say,“Hamilton”, which explained the constitutional convention of 1787 in rhyme, here history is less a subject than a scaffold, on which the story builds freely.",
+    "start_Offset": 487,
+    "end_Offset": 514,
+    "start": 256.98,
+    "end": 270.12
+  },
+  {
+    "val": "Each of the writers“got asked to pick our favourite eight points from history”, says Gretel Vella, a member of the team.",
+    "start_Offset": 515,
+    "end_Offset": 536,
+    "start": 270.859999,
+    "end": 278.21
+  },
+  {
+    "val": "They would try to include these nuggets, but if it“didn’t work with where the characters in the story were going, then we kicked it out”.",
+    "start_Offset": 537,
+    "end_Offset": 562,
+    "start": 278.78,
+    "end": 286.28000000000003
+  },
+  {
+    "val": "That method has something in common with“Bridgerton”, a breaches-and-bonking drama about the marriage market of Regency England.",
+    "start_Offset": 563,
+    "end_Offset": 582,
+    "start": 287.32,
+    "end": 295.1
+  },
+  {
+    "val": "In Netflix’s smash-hit, Queen Charlotte, the real-life consort of George III, appears as a minor character.",
+    "start_Offset": 583,
+    "end_Offset": 600,
+    "start": 295.66,
+    "end": 303.06
+  },
+  {
+    "val": "In this telling she is mixed-race and uses her position to elevate people of colour to peerages.",
+    "start_Offset": 601,
+    "end_Offset": 618,
+    "start": 303.58,
+    "end": 309.87
+  },
+  {
+    "val": "Julia Quinn, the author of the novels on which the show is based, says this tweak allows 21st-century audiences to“all have a little piece of the fairy-tale”.",
+    "start_Offset": 619,
+    "end_Offset": 648,
+    "start": 310.54,
+    "end": 321.23
+  },
+  {
+    "val": "In“The Great”, too, the past is a playground, not a corset.",
+    "start_Offset": 649,
+    "end_Offset": 660,
+    "start": 321.87,
+    "end": 327.03999999999996
+  },
+  {
+    "val": "Beneath the high jinks is a very 21st-century sense that accurate knowledge of bygone lives is impossible and interpretations always subjective.",
+    "start_Offset": 661,
+    "end_Offset": 682,
+    "start": 328.31,
+    "end": 339.81
+  },
+  {
+    "val": "If what survives for posterity is an incomplete and contested record, all writers must fill in gaps to craft a story.",
+    "start_Offset": 683,
+    "end_Offset": 703,
+    "start": 340.74,
+    "end": 350.09
+  },
+  {
+    "val": "Today’s screenwriters acknowledge their inventions by inserting anachronisms that emphasise their modern perspective.",
+    "start_Offset": 704,
+    "end_Offset": 716,
+    "start": 350.99,
+    "end": 358.47
+  },
+  {
+    "val": "The methods go beyond jarring profanities.",
+    "start_Offset": 717,
+    "end_Offset": 722,
+    "start": 358.879999,
+    "end": 361.52999900000003
+  },
+  {
+    "val": "By using a distorting fish-eye lens, Yorgos Lanthimos, director of“The Favourite”, drew attention to the film’s warped view of the court.",
+    "start_Offset": 723,
+    "end_Offset": 745,
+    "start": 362.48,
+    "end": 371.09
+  },
+  {
+    "val": "Them and us As much as the eras in which they are set, the real subject, or target, of these productions is the costume drama of yore, with its pretence of verisimilitude and the claim to authoritative knowledge of the past that it implied.",
+    "start_Offset": 746,
+    "end_Offset": 789,
+    "start": 371.09,
+    "end": 387.56
+  },
+  {
+    "val": "Think of the authentic Tudor gowns in“Elizabeth R”, starring Glenda Jackson as Elizabeth I.",
+    "start_Offset": 790,
+    "end_Offset": 804,
+    "start": 388.469999,
+    "end": 394.27
+  },
+  {
+    "val": "Maligned as it recently was for its own embellishments, even“The Crown”strives to mimic the texture of mid-20th-century life.",
+    "start_Offset": 805,
+    "end_Offset": 826,
+    "start": 394.27,
+    "end": 404.04
+  },
+  {
+    "val": "“There is a culture in the UK of pretty stodgy classical costume drama,”says Ed Guiney, producer of“The Favourite”.",
+    "start_Offset": 827,
+    "end_Offset": 846,
+    "start": 404.849999,
+    "end": 412.15
+  },
+  {
+    "val": "The genre has typically had“a style that was very polite,”Mr McNamara adds.",
+    "start_Offset": 847,
+    "end_Offset": 860,
+    "start": 412.639999,
+    "end": 417.91
+  },
+  {
+    "val": "“That lends itself to the idea of being rethought and played with.”",
+    "start_Offset": 861,
+    "end_Offset": 872,
+    "start": 418.42,
+    "end": 422.84
+  },
+  {
+    "val": "Apart from the bawdiness and the zippy dialogue, one reason“The Great”and its like have proved compelling is that, like Shakespeare’s history plays, they cleverly use old tales to reflect on contemporary society.",
+    "start_Offset": 873,
+    "end_Offset": 906,
+    "start": 423.889999,
+    "end": 439.01
+  },
+  {
+    "val": "“Dickinson”, for example, devotes a lot of attention to fame and political polarisation.",
+    "start_Offset": 907,
+    "end_Offset": 919,
+    "start": 439.68,
+    "end": 444.72999999999996
+  },
+  {
+    "val": "The poet and her times are meant as“a metaphor for looking at us”, says Ms Smith, the show’s creator.",
+    "start_Offset": 920,
+    "end_Offset": 939,
+    "start": 446.30999999999995,
+    "end": 453.06
+  },
+  {
+    "val": "Mr McNamara considers“The Great”to be“more of a contemporary show than a period one”, in that it is“about a young woman trying to forge her own life, as much now as then”.",
+    "start_Offset": 940,
+    "end_Offset": 974,
+    "start": 453.95,
+    "end": 466.03999999999996
+  },
+  {
+    "val": "It may help that the scourge of covid-19 has seemed to shrink the gap between today’s world and that of previous centuries.",
+    "start_Offset": 975,
+    "end_Offset": 997,
+    "start": 467.27,
+    "end": 476.66
+  },
+  {
+    "val": "“We’re now living in a time of death and plague and pestilence and war and things you associate with the past,”Mr Guiney says.",
+    "start_Offset": 998,
+    "end_Offset": 1021,
+    "start": 477.29,
+    "end": 484.88
+  },
+  {
+    "val": "Ultimately, he thinks, the analogy is encouraging.",
+    "start_Offset": 1022,
+    "end_Offset": 1028,
+    "start": 485.42,
+    "end": 488.77
+  },
+  {
+    "val": "“There’s something kind of comforting and at the same time enlightening about going back to times in history where maybe people felt as vulnerable as we do now, and looking at how they navigated it and got through it.",
+    "start_Offset": 1029,
+    "end_Offset": 1067,
+    "start": 489.25,
+    "end": 502.609999
+  },
+  {
+    "val": "Because they did get through it.”",
+    "start_Offset": 1068,
+    "end_Offset": 1073,
+    "start": 503.1,
+    "end": 505.25
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

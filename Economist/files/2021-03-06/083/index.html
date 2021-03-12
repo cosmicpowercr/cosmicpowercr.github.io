@@ -1,0 +1,417 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">083 Books and arts - Cyber-security</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='083';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "This Is How They Tell Me The World Ends.",
+    "start_Offset": 0,
+    "end_Offset": 8,
+    "start": 13.889999,
+    "end": 16.47
+  },
+  {
+    "val": "By Nicole Perlroth.",
+    "start_Offset": 9,
+    "end_Offset": 11,
+    "start": 16.809999,
+    "end": 14.249998999999999
+  },
+  {
+    "val": "Bloomsbury; 528 pages; $21 and £14,99 IF YOU DISCOVER that a favourite vending-machine dispenses free chocolate when its buttons are pressed just so, what should you do?",
+    "start_Offset": 12,
+    "end_Offset": 40,
+    "start": 26.990000000000002,
+    "end": 27.719999
+  },
+  {
+    "val": "The virtuous option is to tell the manufacturer, so it can fix it.",
+    "start_Offset": 41,
+    "end_Offset": 53,
+    "start": 28.21,
+    "end": 31.829999
+  },
+  {
+    "val": "The temptation is to gorge.",
+    "start_Offset": 54,
+    "end_Offset": 58,
+    "start": 32.34,
+    "end": 34.52
+  },
+  {
+    "val": "More lucrative still might be to sell the trick to others—including those with larger appetites and fewer scruples.",
+    "start_Offset": 59,
+    "end_Offset": 77,
+    "start": 34.869999,
+    "end": 42.76
+  },
+  {
+    "val": "But when the weaknesses of a system can be bought and sold, the results can be calamitous, as“This Is How They Tell Me The World Ends”shows.",
+    "start_Offset": 78,
+    "end_Offset": 105,
+    "start": 43.1,
+    "end": 52.86999900000001
+  },
+  {
+    "val": "Nicole Perlroth, a cyber-security correspondent for the New York Times, has produced an engaging and troubling account of“zero-day exploits”.",
+    "start_Offset": 106,
+    "end_Offset": 127,
+    "start": 53.82,
+    "end": 63.39
+  },
+  {
+    "val": "An exploit is a piece of code that takes advantage of a vulnerability in software, typically to gain access or do harm.",
+    "start_Offset": 128,
+    "end_Offset": 149,
+    "start": 63.61,
+    "end": 71.61
+  },
+  {
+    "val": "A zero-day exploit is rarer: it targets a hitherto undiscovered—and therefore undefended—blind spot.",
+    "start_Offset": 150,
+    "end_Offset": 165,
+    "start": 72.059999,
+    "end": 79.72
+  },
+  {
+    "val": "Twenty years ago, exploits for Windows software yielded“pennies on the dollar”, a former hacker recalls.",
+    "start_Offset": 166,
+    "end_Offset": 181,
+    "start": 80.67,
+    "end": 87.3
+  },
+  {
+    "val": "But as software became ubiquitous—running utilities, nuclear plants and warplanes—it grew more alluring.",
+    "start_Offset": 182,
+    "end_Offset": 196,
+    "start": 87.599999,
+    "end": 94.41
+  },
+  {
+    "val": "Zero-days became the“blood diamonds of the security trade”, says Ms Perlroth, fetching six or seven figures depending on their target and potency.",
+    "start_Offset": 197,
+    "end_Offset": 220,
+    "start": 94.68,
+    "end": 104.3
+  },
+  {
+    "val": "Such price signals worked as you would expect.",
+    "start_Offset": 221,
+    "end_Offset": 228,
+    "start": 105.25,
+    "end": 108.280001
+  },
+  {
+    "val": "Young men—in this story, there are few women—who once unearthed bugs for fun found a rich seam in governments eager to acquire and stockpile zero-days for use against their rivals.",
+    "start_Offset": 229,
+    "end_Offset": 261,
+    "start": 108.690001,
+    "end": 121.66
+  },
+  {
+    "val": "A high-minded hacker could choose to sell the fruits of his labour to defenders rather than attackers, as software companies began offering ever-larger“bug bounties”.",
+    "start_Offset": 262,
+    "end_Offset": 288,
+    "start": 122.08,
+    "end": 132.23
+  },
+  {
+    "val": "Google even matched bounties that hackers donated to charity; one German whizz thus lavished funds on kindergartens in Togo, schools in Ethiopia and solar plants in Tanzania.",
+    "start_Offset": 289,
+    "end_Offset": 315,
+    "start": 132.85,
+    "end": 145.11999899999998
+  },
+  {
+    "val": "The trouble is that spiritual rewards tend to pale beside pecuniary ones.",
+    "start_Offset": 316,
+    "end_Offset": 327,
+    "start": 146.05,
+    "end": 151.08999999999997
+  },
+  {
+    "val": "“If we wanted to volunteer, we’d help the homeless,”sneers Chaouki Bekrar, the French founder of Vupen, one of many brokers that bought exploits from hackers and sold them, at spiralling prices, to intelligence agencies.",
+    "start_Offset": 328,
+    "end_Offset": 362,
+    "start": 151.57,
+    "end": 166.0
+  },
+  {
+    "val": "Many such brokers were veterans of America’s National Security Agency (NSA), who realised they could make far more money selling exploits to their old employers than churning them out in-house for a government wage.",
+    "start_Offset": 363,
+    "end_Offset": 397,
+    "start": 166.4,
+    "end": 179.809999
+  },
+  {
+    "val": "Some of those former spooks insist that they will sell zero-days only to supposedly reputable clients, such as American spy agencies and police forces.",
+    "start_Offset": 398,
+    "end_Offset": 422,
+    "start": 180.75,
+    "end": 190.4
+  },
+  {
+    "val": "But Ms Perlroth paints a picture of a global market in which deep-pocketed autocrats can snap up exploits to use against foes and dissidents with little oversight.",
+    "start_Offset": 423,
+    "end_Offset": 450,
+    "start": 190.809999,
+    "end": 202.21
+  },
+  {
+    "val": "When French regulators revoked Vupen’s export licence, it simply upped sticks—to Washington, DC.",
+    "start_Offset": 451,
+    "end_Offset": 464,
+    "start": 202.56,
+    "end": 209.29
+  },
+  {
+    "val": "This secretive market is difficult to penetrate, but Ms Perlroth has dug deeper than most and chronicles her efforts wittily.",
+    "start_Offset": 465,
+    "end_Offset": 484,
+    "start": 210.259999,
+    "end": 217.69
+  },
+  {
+    "val": "Her focus is on America, the world’s pioneering and pre-eminent cyber-power, which, she persuasively argues, has tilted too far towards cyber-offence.",
+    "start_Offset": 485,
+    "end_Offset": 508,
+    "start": 218.68,
+    "end": 228.909999
+  },
+  {
+    "val": "She describes how the NSA sucked talent away from the defence-minded Department of Homeland Security:“It had always been more fun to be a pirate than to join the Coast Guard.”",
+    "start_Offset": 509,
+    "end_Offset": 540,
+    "start": 229.41,
+    "end": 240.16
+  },
+  {
+    "val": "She is right that American spies, like most others, hoarded zero-days and backdoors in software for longer than is advisable, rather than disclosing them to technology companies, in the mistaken belief that rivals could not worm through the same holes.",
+    "start_Offset": 541,
+    "end_Offset": 581,
+    "start": 240.8,
+    "end": 257.14
+  },
+  {
+    "val": "(Spoiler: they did, as Ben Buchanan described in“The Hacker and the State”, published last year.",
+    "start_Offset": 582,
+    "end_Offset": 597,
+    "start": 257.4,
+    "end": 263.46999900000003
+  },
+  {
+    "val": ") Yet Ms Perlroth lays too much blame at America’s door.",
+    "start_Offset": 598,
+    "end_Offset": 607,
+    "start": 264.41,
+    "end": 267.97999899999996
+  },
+  {
+    "val": "Its willingness to pay top dollar for zero-days inflated their prices, but that does not mean it“spawned and sponsored”today’s market.",
+    "start_Offset": 608,
+    "end_Offset": 630,
+    "start": 268.27,
+    "end": 277.14000000000004
+  },
+  {
+    "val": "The author herself vividly documents a flourishing business in Europe and Latin America, buoyed by customers from Singapore to Tajikistan.",
+    "start_Offset": 631,
+    "end_Offset": 650,
+    "start": 277.71,
+    "end": 286.289999
+  },
+  {
+    "val": "China and Russia buy hacking tools, and use them, not because America showed them how, but because they can.",
+    "start_Offset": 651,
+    "end_Offset": 669,
+    "start": 286.66,
+    "end": 294.2
+  },
+  {
+    "val": "The trade in digital lock-picks has thrived not because America stimulated parts of it in the 1990s and 2000s, but because what is behind the locks has become pivotal to economies and societies everywhere.",
+    "start_Offset": 670,
+    "end_Offset": 704,
+    "start": 294.59,
+    "end": 309.79
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

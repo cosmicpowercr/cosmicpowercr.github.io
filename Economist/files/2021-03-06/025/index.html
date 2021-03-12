@@ -1,0 +1,535 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">025 Asia - Myanmar</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='025';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "GONE IS THE carnival atmosphere that pervaded Yangon, Myanmar’s biggest city, during the first weeks of protests against a military coup on February 1st.",
+    "start_Offset": 0,
+    "end_Offset": 23,
+    "start": 16.99,
+    "end": 26.930000000000003
+  },
+  {
+    "val": "The protesters have exchanged tongue-in-cheek placards for home-made shields and tiaras for hard hats, the better to fend off the increasingly violent security forces.",
+    "start_Offset": 24,
+    "end_Offset": 50,
+    "start": 28.160000000000004,
+    "end": 39.41
+  },
+  {
+    "val": "For most of the past month the army—notorious for violently crushing past democracy movements—had responded with water cannons, rubber bullets and tear gas, but nothing worse.",
+    "start_Offset": 51,
+    "end_Offset": 78,
+    "start": 40.12,
+    "end": 52.31
+  },
+  {
+    "val": "But as the demonstrations have worn on, the junta has grown more vicious.",
+    "start_Offset": 79,
+    "end_Offset": 91,
+    "start": 52.93,
+    "end": 57.32
+  },
+  {
+    "val": "Soldiers have begun firing live ammunition into crowds.",
+    "start_Offset": 92,
+    "end_Offset": 99,
+    "start": 57.82,
+    "end": 61.129999999999995
+  },
+  {
+    "val": "On March 3rd, the bloodiest day so far, at least 38 people were killed, according to a UN official.",
+    "start_Offset": 100,
+    "end_Offset": 118,
+    "start": 61.53,
+    "end": 67.84
+  },
+  {
+    "val": "The army, or Tatmadaw as it is known, clearly hopes the shootings will persuade the protesters to go home.",
+    "start_Offset": 119,
+    "end_Offset": 137,
+    "start": 68.849999,
+    "end": 75.31
+  },
+  {
+    "val": "Some have: the streets are no longer thronged with hundreds of thousands of them, as they were in late February, but they are far from empty.",
+    "start_Offset": 138,
+    "end_Offset": 163,
+    "start": 75.96,
+    "end": 83.7
+  },
+  {
+    "val": "Young protesters are just as likely to be demonstrating as older, hardened activists.",
+    "start_Offset": 164,
+    "end_Offset": 176,
+    "start": 84.099999,
+    "end": 89.41
+  },
+  {
+    "val": "A giggly 17-year-old university student who was consumed by her passion for K-pop until the coup says she became a“little bit afraid”after her friend was tear-gassed.",
+    "start_Offset": 177,
+    "end_Offset": 208,
+    "start": 90.35,
+    "end": 102.24
+  },
+  {
+    "val": "Despite the danger, she insists,“I have to protest.”",
+    "start_Offset": 209,
+    "end_Offset": 217,
+    "start": 102.73,
+    "end": 105.65
+  },
+  {
+    "val": "She is still doing so most days.",
+    "start_Offset": 218,
+    "end_Offset": 224,
+    "start": 106.129999,
+    "end": 108.609999
+  },
+  {
+    "val": "Opponents of the coup are steeling themselves for a long fight.",
+    "start_Offset": 225,
+    "end_Offset": 235,
+    "start": 109.639999,
+    "end": 112.94
+  },
+  {
+    "val": "They hope that, by convincing enough workers to go on strike, they can throw a spanner in the machinery of state.",
+    "start_Offset": 236,
+    "end_Offset": 256,
+    "start": 113.41,
+    "end": 119.77000000000001
+  },
+  {
+    "val": "Teachers, doctors, railway workers, truck drivers, customs agents and other bureaucrats have not been going into work for weeks.",
+    "start_Offset": 257,
+    "end_Offset": 275,
+    "start": 120.32,
+    "end": 127.88
+  },
+  {
+    "val": "Neither have many employees at banks, whether state-owned or private.",
+    "start_Offset": 276,
+    "end_Offset": 286,
+    "start": 128.29,
+    "end": 132.41
+  },
+  {
+    "val": "As a result, most of the country’s 2,000 private bank branches have been shut since February 8th, according to Frontier, a local magazine.",
+    "start_Offset": 287,
+    "end_Offset": 310,
+    "start": 133.08,
+    "end": 141.369999
+  },
+  {
+    "val": "Banks have also placed caps on withdrawals from cash machines or suspended them altogether.",
+    "start_Offset": 311,
+    "end_Offset": 324,
+    "start": 142.52,
+    "end": 148.26
+  },
+  {
+    "val": "There are other signs of economic distress.",
+    "start_Offset": 325,
+    "end_Offset": 331,
+    "start": 149.24999999999997,
+    "end": 151.83
+  },
+  {
+    "val": "Over the past month the kyat has depreciated by at least 6,5% against the dollar.",
+    "start_Offset": 332,
+    "end_Offset": 347,
+    "start": 152.42,
+    "end": 157.849999
+  },
+  {
+    "val": "Imports of fuel, on which Myanmar relies heavily, have stalled.",
+    "start_Offset": 348,
+    "end_Offset": 357,
+    "start": 158.299999,
+    "end": 162.179999
+  },
+  {
+    "val": "The World Bank is no longer disbursing funds for $350m-worth of projects.",
+    "start_Offset": 358,
+    "end_Offset": 370,
+    "start": 162.459999,
+    "end": 168.39999999999998
+  },
+  {
+    "val": "Some foreign investors, especially those in business with conglomerates owned by the army, are packing their bags.",
+    "start_Offset": 371,
+    "end_Offset": 387,
+    "start": 168.71,
+    "end": 176.169999
+  },
+  {
+    "val": "Lim Kaling, a Singaporean businessman, is relinquishing his stake in a tobacco company in which one such conglomerate, Myanmar Economic Holdings Limited (MEHL), is the biggest shareholder.",
+    "start_Offset": 388,
+    "end_Offset": 414,
+    "start": 176.82,
+    "end": 189.71
+  },
+  {
+    "val": "Kirin, a Japanese brewer, has also withdrawn from a joint venture with MEHL.",
+    "start_Offset": 415,
+    "end_Offset": 427,
+    "start": 190.19,
+    "end": 195.29999999999998
+  },
+  {
+    "val": "The civil-disobedience movement“is starting to paralyse the state”, writes Richard Horsey of the International Crisis Group, a think-tank.",
+    "start_Offset": 428,
+    "end_Offset": 448,
+    "start": 196.27,
+    "end": 204.57999999999998
+  },
+  {
+    "val": "There are doubts about how long the generals will be able to pay wages.",
+    "start_Offset": 449,
+    "end_Offset": 462,
+    "start": 205.05,
+    "end": 208.459999
+  },
+  {
+    "val": "This is particularly embarrassing since Min Aung Hlaing, the commander-in-chief, would like to be seen as a better manager of the economy than Aung San Suu Kyi, the civilian leader he overthrew.",
+    "start_Offset": 463,
+    "end_Offset": 496,
+    "start": 209.01,
+    "end": 220.6
+  },
+  {
+    "val": "The longer the strike goes on, the more inept and weak he looks.",
+    "start_Offset": 497,
+    "end_Offset": 509,
+    "start": 221.07,
+    "end": 225.02
+  },
+  {
+    "val": "The rising death toll is not the only sign of the junta’s mounting frustration.",
+    "start_Offset": 510,
+    "end_Offset": 523,
+    "start": 226.07,
+    "end": 230.14000000000001
+  },
+  {
+    "val": "The security services have been trying to force workers back to their jobs.",
+    "start_Offset": 524,
+    "end_Offset": 536,
+    "start": 230.66,
+    "end": 234.45999999999998
+  },
+  {
+    "val": "In mid-February, notes Anthony Davis, a security analyst, the exhausted police were reinforced by light-infantry divisions—battle-hardened troops typically dispatched to fight ethnic militias on the country’s periphery.",
+    "start_Offset": 537,
+    "end_Offset": 567,
+    "start": 235.3,
+    "end": 248.599999
+  },
+  {
+    "val": "One of the units in question was implicated in a pogrom in 2017 against the Rohingya, a persecuted ethnic minority.",
+    "start_Offset": 568,
+    "end_Offset": 587,
+    "start": 249.25,
+    "end": 257.11
+  },
+  {
+    "val": "There have been reports of violent rampages through neighbourhoods with especially persistent demonstrations.",
+    "start_Offset": 588,
+    "end_Offset": 600,
+    "start": 257.57,
+    "end": 263.57
+  },
+  {
+    "val": "The army is also using surveillance drones and shutting off the internet between 1am and 9am.",
+    "start_Offset": 601,
+    "end_Offset": 616,
+    "start": 264.0,
+    "end": 270.099999
+  },
+  {
+    "val": "The top brass may be hoping that the damage to the economy cuts both ways.",
+    "start_Offset": 617,
+    "end_Offset": 631,
+    "start": 271.109999,
+    "end": 275.22999999999996
+  },
+  {
+    "val": "Some participants in the civil-disobedience movement are running out of money.",
+    "start_Offset": 632,
+    "end_Offset": 643,
+    "start": 275.66,
+    "end": 279.91
+  },
+  {
+    "val": "Htay Win, who owns a roadside tea shop in Yangon, has almost no savings left.",
+    "start_Offset": 644,
+    "end_Offset": 658,
+    "start": 280.69,
+    "end": 285.849999
+  },
+  {
+    "val": "His business was closed for seven months last year, owing to covid-19 restrictions.",
+    "start_Offset": 659,
+    "end_Offset": 672,
+    "start": 286.17,
+    "end": 291.29
+  },
+  {
+    "val": "He closed it again in early February so that he could join the protests.",
+    "start_Offset": 673,
+    "end_Offset": 686,
+    "start": 291.62,
+    "end": 295.39
+  },
+  {
+    "val": "Given his parlous finances, he thinks he will have to re-open soon, at least part-time.",
+    "start_Offset": 687,
+    "end_Offset": 703,
+    "start": 295.77,
+    "end": 301.439999
+  },
+  {
+    "val": "Many other demonstrators have no intention of giving up the fight.",
+    "start_Offset": 704,
+    "end_Offset": 714,
+    "start": 302.48,
+    "end": 306.16
+  },
+  {
+    "val": "Almost a month after the start of the civil-disobedience movement, the number of people participating continues to grow, says Moe Thuzar of ISEAS, a think-tank in Singapore.",
+    "start_Offset": 715,
+    "end_Offset": 743,
+    "start": 306.53,
+    "end": 317.32
+  },
+  {
+    "val": "Aye Thidar Oo, a typist at a municipal office in Yangon, declares,“It might be a year, two years, ten years: I will carry on striking until the end.”",
+    "start_Offset": 744,
+    "end_Offset": 772,
+    "start": 317.86,
+    "end": 327.889999
+  },
+  {
+    "val": "Nann Yin Htwe, a worker at a garment factory, says her salary was so low that she has nothing to lose by striking.",
+    "start_Offset": 773,
+    "end_Offset": 795,
+    "start": 328.379999,
+    "end": 335.79999999999995
+  },
+  {
+    "val": "She is receiving food and contributions to her rent from several of the many grassroots aid organisations that have sprung up to help striking workers.",
+    "start_Offset": 796,
+    "end_Offset": 820,
+    "start": 336.42,
+    "end": 344.92
+  },
+  {
+    "val": "She is proud to be out of work, she says.",
+    "start_Offset": 821,
+    "end_Offset": 830,
+    "start": 345.45,
+    "end": 347.7
+  },
+  {
+    "val": "Mr Davis suspects there are hardliners in the army who advocate swifter, harsher repression to stem the erosion of morale.",
+    "start_Offset": 831,
+    "end_Offset": 850,
+    "start": 348.7,
+    "end": 356.48
+  },
+  {
+    "val": "Two previous agitations for democracy, in 1988 and 2007, ended in massacres.",
+    "start_Offset": 851,
+    "end_Offset": 862,
+    "start": 357.19,
+    "end": 363.8
+  },
+  {
+    "val": "In both cases the army hesitated for over a month before crushing the protests.",
+    "start_Offset": 863,
+    "end_Offset": 876,
+    "start": 364.29,
+    "end": 370.34
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

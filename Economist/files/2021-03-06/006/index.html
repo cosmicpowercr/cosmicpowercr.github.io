@@ -1,0 +1,410 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">006 Leaders - Fiscal policy in Britain</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='006';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "BRITAIN HAD a particularly bad bout of covid-19 and took an especially large economic hit as a result.",
+    "start_Offset": 0,
+    "end_Offset": 18,
+    "start": 19.37,
+    "end": 27.53
+  },
+  {
+    "val": "In response the government provided more fiscal stimulus than almost any other in the world, paying millions of people’s wages and bailing out businesses to the tune of 16% of GDP.",
+    "start_Offset": 19,
+    "end_Offset": 49,
+    "start": 28.16,
+    "end": 41.269999999999996
+  },
+  {
+    "val": "As Britain slowly lifts its lockdown the conversation has turned to balancing the books, and ahead of the budget on March 3rd the Treasury briefed that fiscal austerity was in store.",
+    "start_Offset": 50,
+    "end_Offset": 80,
+    "start": 42.05,
+    "end": 54.089999999999996
+  },
+  {
+    "val": "Yet Rishi Sunak, the chancellor of the exchequer, will wait to turn the screws.",
+    "start_Offset": 81,
+    "end_Offset": 94,
+    "start": 54.799999,
+    "end": 59.970000000000006
+  },
+  {
+    "val": "He delivered a surprisingly generous budget, and has postponed tax rises.",
+    "start_Offset": 95,
+    "end_Offset": 105,
+    "start": 60.36,
+    "end": 65.75999999999999
+  },
+  {
+    "val": "Like a fiscal St Augustine, he wants continence—but not yet.",
+    "start_Offset": 106,
+    "end_Offset": 116,
+    "start": 66.25,
+    "end": 71.16000000000001
+  },
+  {
+    "val": "The budget represents the synthesis of two opposing forces.",
+    "start_Offset": 117,
+    "end_Offset": 125,
+    "start": 72.109999,
+    "end": 76.58
+  },
+  {
+    "val": "On the one hand Mr Sunak wants to placate a range of hawkish constituencies, such as Thatcherite backbench Tory MPs who would rather the government keep taxes low and bond traders who in recent weeks have sold their investments in sovereign debt.",
+    "start_Offset": 126,
+    "end_Offset": 167,
+    "start": 77.38,
+    "end": 94.42
+  },
+  {
+    "val": "On the other hand he is rightly concerned not to repeat the mistake of his predecessor-but-two: after the financial crisis in 2007-09 George Osborne cut spending and raised taxes too soon, thereby delaying the recovery.",
+    "start_Offset": 168,
+    "end_Offset": 205,
+    "start": 95.14,
+    "end": 112.74
+  },
+  {
+    "val": "Policies in this budget are designed to help Britain out of its deep economic hole (see article).",
+    "start_Offset": 206,
+    "end_Offset": 222,
+    "start": 113.7,
+    "end": 119.579999
+  },
+  {
+    "val": "The extension of the furlough scheme from April to September will put money in people’s pockets, helping power a recovery in household spending.",
+    "start_Offset": 223,
+    "end_Offset": 245,
+    "start": 120.37,
+    "end": 130.22
+  },
+  {
+    "val": "A highly unusual proposal to allow firms to write off 130% of investment expenses against their tax bills is designed to supercharge Britain’s perennially low rate of business investment.",
+    "start_Offset": 246,
+    "end_Offset": 274,
+    "start": 130.92,
+    "end": 145.15
+  },
+  {
+    "val": "At the same time, the budget has blind spots.",
+    "start_Offset": 275,
+    "end_Offset": 283,
+    "start": 146.12,
+    "end": 149.46
+  },
+  {
+    "val": "Extending the furlough is better than nothing, but it would have been wiser to focus resources on boosting working-age welfare, currently at its least generous level ever.",
+    "start_Offset": 284,
+    "end_Offset": 311,
+    "start": 150.05,
+    "end": 162.439999
+  },
+  {
+    "val": "This would have helped workers move from dying sectors to up-and-coming ones without seeing a sharp drop in their take-home income.",
+    "start_Offset": 312,
+    "end_Offset": 335,
+    "start": 163.279999,
+    "end": 172.41
+  },
+  {
+    "val": "And a government that likes to trumpet its green credentials should not be buying off voters by freezing taxes on fuel.",
+    "start_Offset": 336,
+    "end_Offset": 356,
+    "start": 173.24,
+    "end": 181.23
+  },
+  {
+    "val": "A bigger difficulty is that there is no credible strategy for righting the fiscal ship.",
+    "start_Offset": 357,
+    "end_Offset": 371,
+    "start": 182.17,
+    "end": 187.59
+  },
+  {
+    "val": "True, Mr Sunak promised to raise corporation tax in 2023 from 19% to 25%.",
+    "start_Offset": 372,
+    "end_Offset": 385,
+    "start": 188.389999,
+    "end": 196.039999
+  },
+  {
+    "val": "Politically that is astute.",
+    "start_Offset": 386,
+    "end_Offset": 389,
+    "start": 196.77,
+    "end": 198.74
+  },
+  {
+    "val": "It puts the opposition Labour Party into a tricky position, forcing it to decide whether it wants to support the rise (and thus implicitly back austerity) or oppose it (and thus appear to be taking the side of Britain’s corporate fat cats).",
+    "start_Offset": 390,
+    "end_Offset": 431,
+    "start": 198.99,
+    "end": 215.519999
+  },
+  {
+    "val": "In economic terms, however, Mr Sunak is being evasive.",
+    "start_Offset": 432,
+    "end_Offset": 440,
+    "start": 216.47,
+    "end": 220.27
+  },
+  {
+    "val": "The yield from even large rises in corporation tax is low.",
+    "start_Offset": 441,
+    "end_Offset": 451,
+    "start": 220.89,
+    "end": 224.99
+  },
+  {
+    "val": "Moreover, will he actually impose such a tax rise just when the 130% investment write-off ends and when an election is likely to be just around the corner?",
+    "start_Offset": 452,
+    "end_Offset": 480,
+    "start": 225.49,
+    "end": 236.58
+  },
+  {
+    "val": "It is more probable that the chancellor hopes the coming investment boom is so large that he can cancel most of the tax increase and that he will be able to pass a smaller rise as, in effect, a“cut”.",
+    "start_Offset": 481,
+    "end_Offset": 520,
+    "start": 237.5,
+    "end": 250.29
+  },
+  {
+    "val": "At some point, however, politics will catch up with him.",
+    "start_Offset": 521,
+    "end_Offset": 530,
+    "start": 251.26,
+    "end": 254.88
+  },
+  {
+    "val": "That is in part because of Britain’s rapidly ageing population, and in part because the government has bizarrely made no provision whatsoever for virus-related costs beyond next year.",
+    "start_Offset": 531,
+    "end_Offset": 559,
+    "start": 255.79,
+    "end": 269.15000000000003
+  },
+  {
+    "val": "Britain is on an inexorable trend towards higher budget deficits.",
+    "start_Offset": 560,
+    "end_Offset": 569,
+    "start": 270.09,
+    "end": 274.69
+  },
+  {
+    "val": "It is hard to find much waste in the public sector, which limits the scope to cut spending.",
+    "start_Offset": 570,
+    "end_Offset": 587,
+    "start": 275.23,
+    "end": 280.67
+  },
+  {
+    "val": "The chancellor will have to fall back on higher taxes.",
+    "start_Offset": 588,
+    "end_Offset": 597,
+    "start": 281.219999,
+    "end": 284.59000000000003
+  },
+  {
+    "val": "He will have to consider slaying sacred Tory cows, including a pledge not to increase income tax.",
+    "start_Offset": 598,
+    "end_Offset": 614,
+    "start": 285.099999,
+    "end": 292.21
+  },
+  {
+    "val": "He should consider reform of property and value-added taxes.",
+    "start_Offset": 615,
+    "end_Offset": 624,
+    "start": 292.9,
+    "end": 296.89
+  },
+  {
+    "val": "Hawkish rhetoric is all very well, but eventually Mr Sunak will have to follow St Augustine onto the path of fiscal virtue.",
+    "start_Offset": 625,
+    "end_Offset": 646,
+    "start": 297.41,
+    "end": 306.14
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

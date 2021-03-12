@@ -1,0 +1,543 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">058 Business - Vaccine-making</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='058';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "ON MARCH 5TH 2020 Mumbai’s horseracing season culminated with the Poonawalla Breeders’ Multimillion, a day-long extravaganza dominated by India’s first family of the sport, the Poonawallas.",
+    "start_Offset": 0,
+    "end_Offset": 26,
+    "start": 20.97,
+    "end": 32.26
+  },
+  {
+    "val": "Triumphs at the track were accompanied by news reports on the Bollywood lifestyles of Adar Poonawalla and his wife, Natasha, whom Elle magazine described as“India’s first lady of fabulousness”.",
+    "start_Offset": 27,
+    "end_Offset": 56,
+    "start": 32.41,
+    "end": 44.29
+  },
+  {
+    "val": "Only cursory attention spilled over to the couple’s day job running Serum Institute of India, the press-shy vaccine-maker at the root of the family fortune.",
+    "start_Offset": 57,
+    "end_Offset": 83,
+    "start": 46.269999999999996,
+    "end": 55.28
+  },
+  {
+    "val": "A year on it is the company, not its flamboyant owners, that is making headlines.",
+    "start_Offset": 84,
+    "end_Offset": 98,
+    "start": 56.47,
+    "end": 61.13
+  },
+  {
+    "val": "As the covid-19 vaccination drive encounters production glitches in Europe, hits distribution snags in America and faces a geopolitical scramble for supply everywhere, Serum Institute has emerged as the one firm apparently able to ramp up production fast and export the doses without courting controversy.",
+    "start_Offset": 99,
+    "end_Offset": 144,
+    "start": 62.139999,
+    "end": 80.88999999999999
+  },
+  {
+    "val": "By the end of the year, Mr Poonawalla says, it will add 1,5bn covid-19 shots to 1,3bn-1,5bn doses against diseases from measles to tuberculosis that it already produces annually.",
+    "start_Offset": 145,
+    "end_Offset": 178,
+    "start": 81.25,
+    "end": 95.12
+  },
+  {
+    "val": "On February 23rd it dispatched the first mass shipment, of 70m shots of the Oxford-AstraZeneca vaccine, to India and two dozen other poor countries in the COVAX vaccine-sharing programme.",
+    "start_Offset": 179,
+    "end_Offset": 209,
+    "start": 95.52,
+    "end": 107.549999
+  },
+  {
+    "val": "On March 1st Canada said it will procure 500,000 doses from the company.",
+    "start_Offset": 210,
+    "end_Offset": 223,
+    "start": 107.859999,
+    "end": 112.79
+  },
+  {
+    "val": "The relatively small family concern, which entered last year with annual revenues of $735m and a workforce of 6,000, is becoming mission-critical to the global fight against the coronavirus.",
+    "start_Offset": 224,
+    "end_Offset": 254,
+    "start": 113.69,
+    "end": 125.62
+  },
+  {
+    "val": "Mr Poonawalla’s plans are ambitious, to put it mildly.",
+    "start_Offset": 255,
+    "end_Offset": 263,
+    "start": 126.869999,
+    "end": 130.32
+  },
+  {
+    "val": "He wants to raise monthly production of the Oxford vaccine from the current 60m-70m to 100m by April.",
+    "start_Offset": 264,
+    "end_Offset": 282,
+    "start": 130.73,
+    "end": 137.9
+  },
+  {
+    "val": "That month the company will start churning out 40m-50m of a shot developed by Novavax, an American biotechnology firm, to build up a“large stock”as it undergoes accelerated review by a number of global regulators.",
+    "start_Offset": 283,
+    "end_Offset": 319,
+    "start": 138.509999,
+    "end": 151.82999999999998
+  },
+  {
+    "val": "By late summer Serum Institute expects to be making another vaccine, by SpyBiotech, a British startup.",
+    "start_Offset": 320,
+    "end_Offset": 335,
+    "start": 152.65,
+    "end": 159.19
+  },
+  {
+    "val": "In early 2022 it hopes to be producing a one-dose nasal vaccine being developed by Codagenix, another American biotech firm.",
+    "start_Offset": 336,
+    "end_Offset": 356,
+    "start": 159.74,
+    "end": 168.25
+  },
+  {
+    "val": "Mr Poonawalla estimates that until rivals’ new capacity comes online in the autumn, his company’s output will account for perhaps 40-50% of the world’s supply.",
+    "start_Offset": 357,
+    "end_Offset": 382,
+    "start": 169.52,
+    "end": 180.32999900000002
+  },
+  {
+    "val": "Unlike Pfizer, an American drug giant which recently upped its production goal from 1,3bn to 2bn doses this year, Serum Institute’s shots are cheap and do not need to be stored at ultra-low temperatures.",
+    "start_Offset": 383,
+    "end_Offset": 418,
+    "start": 180.809999,
+    "end": 194.47
+  },
+  {
+    "val": "They will inoculate swathes of the poor world.",
+    "start_Offset": 419,
+    "end_Offset": 426,
+    "start": 194.86,
+    "end": 197.849999
+  },
+  {
+    "val": "Some of the factors behind the company’s rise to prominence, like the pandemic and scientists’ rapid response to it, have been beyond its control.",
+    "start_Offset": 427,
+    "end_Offset": 450,
+    "start": 198.469999,
+    "end": 206.26999999999998
+  },
+  {
+    "val": "But Serum Institute has also placed bold bets that run counter to the traditional process of making vaccines, in which investments in capacity and distribution follow years of research, then more years of clinical trials for safety and efficacy.",
+    "start_Offset": 451,
+    "end_Offset": 489,
+    "start": 207.01,
+    "end": 221.98000000000002
+  },
+  {
+    "val": "A brief conversation last April, between Mr Poonawalla and his father Cyrus, Serum Institute’s founder, resulted in a decision to start producing the Oxford vaccine before any clinical trials had begun.",
+    "start_Offset": 490,
+    "end_Offset": 520,
+    "start": 222.89,
+    "end": 234.75
+  },
+  {
+    "val": "It is the latest daring coup by the Poonawallas.",
+    "start_Offset": 521,
+    "end_Offset": 529,
+    "start": 235.7,
+    "end": 237.95999999999998
+  },
+  {
+    "val": "In the 1960s Cyrus turned his horse-breeding business into one that used retired steeds as living vessels to create antibody serum for treatment of snake bites, tetanus and other scourges.",
+    "start_Offset": 530,
+    "end_Offset": 560,
+    "start": 237.96,
+    "end": 250.95999999999998
+  },
+  {
+    "val": "Forty years later his son, who has been chief executive since 2011, has added 165 countries as customers (often while courting Natasha on holidays).",
+    "start_Offset": 561,
+    "end_Offset": 584,
+    "start": 251.869999,
+    "end": 262.64
+  },
+  {
+    "val": "International sales now account for 70% of the firm’s total.",
+    "start_Offset": 585,
+    "end_Offset": 594,
+    "start": 263.25,
+    "end": 267.04
+  },
+  {
+    "val": "In December Serum Institute released the first vaccine to be fully developed in India, against a variant of pneumonia which kills 68,000 Indian children a year.",
+    "start_Offset": 595,
+    "end_Offset": 621,
+    "start": 267.38,
+    "end": 277.46000000000004
+  },
+  {
+    "val": "The company’s initial investment of $80m in capacity to produce the untested Oxford shot came from its billionaire owners’ own pocket—a tidy sum next to the previous year’s $46m in capital expenditure.",
+    "start_Offset": 622,
+    "end_Offset": 654,
+    "start": 278.59,
+    "end": 291.84
+  },
+  {
+    "val": "Since then Serum Institute has received a further $800m: $270m from the Poonawallas, $300m from the Bill & Melinda Gates Foundation, the world’s biggest charity, and the rest from prepayments by governments, including those of Bangladesh and Morocco.",
+    "start_Offset": 655,
+    "end_Offset": 691,
+    "start": 292.72,
+    "end": 310.75
+  },
+  {
+    "val": "The privately held firm will not say how much of that money has already been deployed.",
+    "start_Offset": 692,
+    "end_Offset": 707,
+    "start": 311.55,
+    "end": 315.46
+  },
+  {
+    "val": "But Mr Poonawalla says it has doubled production capacity.",
+    "start_Offset": 708,
+    "end_Offset": 716,
+    "start": 315.99,
+    "end": 319.41
+  },
+  {
+    "val": "It could do this quickly, he adds, thanks to a strategy of installing“excess capacity ahead of demand”.",
+    "start_Offset": 717,
+    "end_Offset": 734,
+    "start": 319.94,
+    "end": 325.95
+  },
+  {
+    "val": "For decades it had been adding a new building each year; one that was ready to go shortly before the fateful chat between father and son was immediately repurposed for the covid-19 effort.",
+    "start_Offset": 735,
+    "end_Offset": 768,
+    "start": 326.85,
+    "end": 338.03
+  },
+  {
+    "val": "A long-standing collaboration with Oxford and Novavax as part of an effort to create a malaria vaccine allowed Serum Institute to secure their recipes early.",
+    "start_Offset": 769,
+    "end_Offset": 794,
+    "start": 339.37,
+    "end": 348.21
+  },
+  {
+    "val": "Deep relationships with suppliers of everything from glass vials to expensive“bioreactors”for the production of biological substances have helped smooth procurement.",
+    "start_Offset": 795,
+    "end_Offset": 816,
+    "start": 349.05,
+    "end": 358.68
+  },
+  {
+    "val": "Serum Institute has hired 1,000 new employees, increasing its workforce by a sixth.",
+    "start_Offset": 817,
+    "end_Offset": 830,
+    "start": 359.25,
+    "end": 364.79
+  },
+  {
+    "val": "Another 500 construction workers are putting up new buildings with higher production capacity to add to the 30 or so that the company has erected over the years.",
+    "start_Offset": 831,
+    "end_Offset": 858,
+    "start": 365.59,
+    "end": 374.41999999999996
+  },
+  {
+    "val": "At the current pace, Mr Poonawalla thinks, it will take at least two years for the global supply of covid-19 jabs to meet demand.",
+    "start_Offset": 859,
+    "end_Offset": 883,
+    "start": 375.4,
+    "end": 383.02000000000004
+  },
+  {
+    "val": "It could take less if the world’s regulators co-ordinated more closely for the duration of the crisis, he ventures.",
+    "start_Offset": 884,
+    "end_Offset": 903,
+    "start": 383.5,
+    "end": 389.59
+  },
+  {
+    "val": "Until then Serum Institute expects to be selling the jabs more or less at cost, which means about $3-5 a dose for the Oxford vaccine.",
+    "start_Offset": 904,
+    "end_Offset": 929,
+    "start": 390.259999,
+    "end": 398.42999999999995
+  },
+  {
+    "val": "After that, margins will eventually rise.",
+    "start_Offset": 930,
+    "end_Offset": 935,
+    "start": 399.17,
+    "end": 401.62
+  },
+  {
+    "val": "“This situation will last for a long time and there will be future demand,”Mr Poonawalla predicts.",
+    "start_Offset": 936,
+    "end_Offset": 952,
+    "start": 402.45,
+    "end": 407.74
+  },
+  {
+    "val": "Covid-19 looks certain to become endemic in many parts of the world, with annual vaccination drives akin to those for influenza becoming the norm.",
+    "start_Offset": 953,
+    "end_Offset": 977,
+    "start": 408.95,
+    "end": 416.78999999999996
+  },
+  {
+    "val": "His firm’s output will peak at 600m-700m doses a year for each of the four vaccines it is currently eyeing, he says.",
+    "start_Offset": 978,
+    "end_Offset": 1000,
+    "start": 417.69,
+    "end": 425.23
+  },
+  {
+    "val": "The pandemic will leave vaccine-making more prominent than ever before, Mr Poonawalla believes—and much more crowded.",
+    "start_Offset": 1001,
+    "end_Offset": 1018,
+    "start": 426.53,
+    "end": 433.62
+  },
+  {
+    "val": "This will inject competition into what most drugmakers consider a thankless volume business with considerable capital outlays.",
+    "start_Offset": 1019,
+    "end_Offset": 1035,
+    "start": 434.46,
+    "end": 441.63000000000005
+  },
+  {
+    "val": "A fire earlier this year at one new building sent a shudder down the spines of the world’s covid-responders until the company assured them that the accident, which affected a production line for a tuberculosis jab, will not hurt the pandemic effort.",
+    "start_Offset": 1036,
+    "end_Offset": 1078,
+    "start": 442.58,
+    "end": 456.67
+  },
+  {
+    "val": "Although the bet on the Oxford vaccine has paid off, and the one on Novavax looks likely to, Codagenix and SpyBiotech are not yet shoo-ins.",
+    "start_Offset": 1079,
+    "end_Offset": 1104,
+    "start": 457.72,
+    "end": 21.15
+  },
+  {
+    "val": "And vaccine nationalism could stymie exports from India or imports of ingredients and kit.",
+    "start_Offset": 1105,
+    "end_Offset": 1118,
+    "start": 467.01,
+    "end": 472.86
+  },
+  {
+    "val": "Mr Poonawalla nevertheless remains confident that his firm will maintain its leading position.",
+    "start_Offset": 1119,
+    "end_Offset": 1131,
+    "start": 473.83,
+    "end": 478.8
+  },
+  {
+    "val": "In contrast to big pharma, which spends billions on marketing costly medicines, it sells its vaccines chiefly to national health authorities, which prize low prices and reliable supply above all.",
+    "start_Offset": 1132,
+    "end_Offset": 1161,
+    "start": 479.639999,
+    "end": 491.93
+  },
+  {
+    "val": "Those have always been Serum Institute’s strong suits.",
+    "start_Offset": 1162,
+    "end_Offset": 1169,
+    "start": 493.03,
+    "end": 496.40999999999997
+  },
+  {
+    "val": "And the Indian company’s remarkable response to covid-19 has bought it more global goodwill than any advertising campaign could hope to.",
+    "start_Offset": 1170,
+    "end_Offset": 1191,
+    "start": 497.11,
+    "end": 505.09000000000003
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

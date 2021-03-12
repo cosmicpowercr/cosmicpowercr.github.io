@@ -1,0 +1,473 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">023 The Americas - Bello</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='023';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "EACH DAY this week some 100,000 Chileans aged 60 to 64 turned up to get their inoculation against covid-19.",
+    "start_Offset": 0,
+    "end_Offset": 20,
+    "start": 16.99,
+    "end": 24.580000000000002
+  },
+  {
+    "val": "Having vaccinated nearly 20% of its adults, the sixth-best performance in the world, Chile is on track to meet its target of covering 80% of its 19m people by June 30th.",
+    "start_Offset": 21,
+    "end_Offset": 52,
+    "start": 25.54,
+    "end": 37.53
+  },
+  {
+    "val": "After starting with health workers, the jabs are being applied in strict descending order of age, a different year each day, and to teachers, too.",
+    "start_Offset": 53,
+    "end_Offset": 77,
+    "start": 37.53,
+    "end": 45.69
+  },
+  {
+    "val": "This swift and orderly programme contrasts with the rest of Latin America.",
+    "start_Offset": 78,
+    "end_Offset": 89,
+    "start": 46.95,
+    "end": 51.84
+  },
+  {
+    "val": "In vaccination as in other matters, the region displays its divisions, inequalities and problems of governance.",
+    "start_Offset": 90,
+    "end_Offset": 105,
+    "start": 52.459998999999996,
+    "end": 58.87
+  },
+  {
+    "val": "In this case, sadly, they will cost lives.",
+    "start_Offset": 106,
+    "end_Offset": 113,
+    "start": 59.56,
+    "end": 62.27
+  },
+  {
+    "val": "Colombia, Ecuador, Venezuela and several smaller countries have barely started jabbing.",
+    "start_Offset": 114,
+    "end_Offset": 124,
+    "start": 62.72,
+    "end": 67.9
+  },
+  {
+    "val": "Mexico, with 2% of its people vaccinated on March 1st, is below the world average of 3,5%.",
+    "start_Offset": 125,
+    "end_Offset": 142,
+    "start": 68.849999,
+    "end": 75.72999999999999
+  },
+  {
+    "val": "In Brazil (4%) vaccination trails behind the new P,1 variant of the virus, which spreads faster than the original and seems to disregard prior natural immunity.",
+    "start_Offset": 143,
+    "end_Offset": 169,
+    "start": 76.31,
+    "end": 87.53
+  },
+  {
+    "val": "This week the health secretaries of Brazil’s 27 state governments declared that the country is suffering“the worst moment”of the pandemic.",
+    "start_Offset": 170,
+    "end_Offset": 191,
+    "start": 87.99,
+    "end": 95.61
+  },
+  {
+    "val": "The slow roll-out is largely because of the worldwide shortage of vaccines, especially from Western drug firms whose supplies have gone mainly to their home markets.",
+    "start_Offset": 192,
+    "end_Offset": 218,
+    "start": 96.9,
+    "end": 105.869999
+  },
+  {
+    "val": "Argentina, Brazil and Mexico plan to make vaccines but have found it hard to source the active ingredients and vials.",
+    "start_Offset": 219,
+    "end_Offset": 238,
+    "start": 106.65,
+    "end": 113.44999999999999
+  },
+  {
+    "val": "Part of the problem is government fumbling.",
+    "start_Offset": 239,
+    "end_Offset": 245,
+    "start": 114.16,
+    "end": 116.08000000000001
+  },
+  {
+    "val": "Whereas the African Union made bulk pre-purchases, Latin America’s lack of regional co-ordination meant that countries raced against each other, points out Ernesto Ortiz of the Global Health Institute at Duke University.",
+    "start_Offset": 246,
+    "end_Offset": 279,
+    "start": 116.72,
+    "end": 129.82
+  },
+  {
+    "val": "In that race, Chile did two things right: in mid-2020 it agreed with several pharma companies to host vaccine trials to encourage early delivery; and its immunisation programme has an up-to-date digital database.",
+    "start_Offset": 280,
+    "end_Offset": 315,
+    "start": 130.46,
+    "end": 144.179999
+  },
+  {
+    "val": "Many other governments have struggled with complex procurement negotiations.",
+    "start_Offset": 316,
+    "end_Offset": 324,
+    "start": 144.889999,
+    "end": 148.59
+  },
+  {
+    "val": "The result is“patchiness”, according to Clare Wenham, a health expert at the London School of Economics.",
+    "start_Offset": 325,
+    "end_Offset": 341,
+    "start": 149.62,
+    "end": 155.61
+  },
+  {
+    "val": "Different vaccines, different priority groups and different distribution plans could complicate opening up the region’s economies, she thinks.",
+    "start_Offset": 342,
+    "end_Offset": 359,
+    "start": 155.98,
+    "end": 163.73999999999998
+  },
+  {
+    "val": "This patchiness owes much to political manipulation.",
+    "start_Offset": 360,
+    "end_Offset": 366,
+    "start": 164.02,
+    "end": 166.77
+  },
+  {
+    "val": "Vaccine distribution in Brazil has been particularly haphazard, because the federal government of Jair Bolsonaro, a populist who denies the seriousness of the virus, has absented itself from the job.",
+    "start_Offset": 367,
+    "end_Offset": 396,
+    "start": 167.38,
+    "end": 179.059999
+  },
+  {
+    "val": "In Mexico, another federal country, the government of Andrés Manuel López Obrador seized control of the vaccination programme from the states.",
+    "start_Offset": 397,
+    "end_Offset": 417,
+    "start": 180.43,
+    "end": 188.43
+  },
+  {
+    "val": "With an important election due in June, it decided that 333“highly marginalised”municipalities should get the vaccine first.",
+    "start_Offset": 418,
+    "end_Offset": 436,
+    "start": 189.07,
+    "end": 197.92999999999998
+  },
+  {
+    "val": "Many are rural and less hit by the pandemic than the cities.",
+    "start_Offset": 437,
+    "end_Offset": 448,
+    "start": 198.43,
+    "end": 201.85999999999999
+  },
+  {
+    "val": "Teachers have been jabbed before nurses, who are at higher risk.",
+    "start_Offset": 449,
+    "end_Offset": 459,
+    "start": 202.24,
+    "end": 205.64000000000001
+  },
+  {
+    "val": "This is queue-jumping on behalf of a political clientele.",
+    "start_Offset": 460,
+    "end_Offset": 469,
+    "start": 206.71,
+    "end": 210.509999
+  },
+  {
+    "val": "Elsewhere it is the powerful who have jumped queues.",
+    "start_Offset": 470,
+    "end_Offset": 478,
+    "start": 211.309999,
+    "end": 213.93
+  },
+  {
+    "val": "In Peru the health and foreign ministers resigned last month after it emerged that they were among 487 insiders who secretly benefited from sample doses provided by Sinopharm, a Chinese company, as a sweetener; another was Martín Vizcarra, who was ousted as president in November.",
+    "start_Offset": 479,
+    "end_Offset": 523,
+    "start": 214.51,
+    "end": 233.280001
+  },
+  {
+    "val": "Health ministers in Argentina and Ecuador left after similar scandals.",
+    "start_Offset": 524,
+    "end_Offset": 533,
+    "start": 234.07,
+    "end": 238.17
+  },
+  {
+    "val": "These affairs have done no good for the credibility of democracy in their countries.",
+    "start_Offset": 534,
+    "end_Offset": 547,
+    "start": 239.08,
+    "end": 243.08
+  },
+  {
+    "val": "They also“play against trust in vaccination programmes”, says Dr Ortiz.",
+    "start_Offset": 548,
+    "end_Offset": 558,
+    "start": 243.8,
+    "end": 248.56
+  },
+  {
+    "val": "Polls suggest vaccine hesitancy has risen in Peru since last August.",
+    "start_Offset": 559,
+    "end_Offset": 569,
+    "start": 249.57,
+    "end": 254.11
+  },
+  {
+    "val": "Those vaccines currently available in the region come mainly from China and Russia, which have been quicker to deliver than their Western rivals.",
+    "start_Offset": 570,
+    "end_Offset": 592,
+    "start": 255.33,
+    "end": 262.44
+  },
+  {
+    "val": "China trades a lot with and invests a lot in several Latin American countries.",
+    "start_Offset": 593,
+    "end_Offset": 606,
+    "start": 262.719999,
+    "end": 267.54
+  },
+  {
+    "val": "Vaccine diplomacy may give it soft power for the first time.",
+    "start_Offset": 607,
+    "end_Offset": 617,
+    "start": 268.02,
+    "end": 271.35
+  },
+  {
+    "val": "As for Russia, it had almost disappeared from Latin America since the end of the cold war.",
+    "start_Offset": 618,
+    "end_Offset": 634,
+    "start": 272.09,
+    "end": 276.63
+  },
+  {
+    "val": "Now it is back, and in a benign guise.",
+    "start_Offset": 635,
+    "end_Offset": 643,
+    "start": 277.41,
+    "end": 280.53
+  },
+  {
+    "val": "Vaccination is a marathon, not a sprint.",
+    "start_Offset": 644,
+    "end_Offset": 650,
+    "start": 281.65,
+    "end": 284.34999999999997
+  },
+  {
+    "val": "By February 27th Latin American countries had ordered 550m doses of Western vaccines, compared with 213m from China and 72m from Russia, according to Duke University.",
+    "start_Offset": 651,
+    "end_Offset": 676,
+    "start": 285.07,
+    "end": 299.14
+  },
+  {
+    "val": "Later this year, the Western doses should arrive in force.",
+    "start_Offset": 677,
+    "end_Offset": 686,
+    "start": 300.12,
+    "end": 303.27
+  },
+  {
+    "val": "Eventually, both the scandals and the source of the early vaccines may be forgotten if the region acquires immunity and new variants are kept at bay.",
+    "start_Offset": 687,
+    "end_Offset": 712,
+    "start": 303.929999,
+    "end": 312.7
+  },
+  {
+    "val": "But it is more likely that the botched vaccination effort will have lasting political and diplomatic consequences.",
+    "start_Offset": 713,
+    "end_Offset": 729,
+    "start": 313.21,
+    "end": 319.75
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

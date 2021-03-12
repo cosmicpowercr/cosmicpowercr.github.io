@@ -1,0 +1,224 @@
+1
+00:00:14,190 --> 00:00:22,480
+AFTER THE Depression and the second world war, voters and governments in rich countries recast the relationship between the state and its citizens.
+
+2
+00:00:23,010 --> 00:00:27,070
+Now the pandemic has seen the old rules on social spending ripped up.
+
+3
+00:00:27,530 --> 00:00:39,580
+More than three-quarters of Americans support President Joe Biden’s $1,9trn stimulus bill, which is due in the Senate and includes $1,400 cheques for most adults.
+
+4
+00:00:40,010 --> 00:00:51,120
+And in the budget on March 3rd Britain extended a scheme to pay the wages of furloughed workers until September, even as public debt hit its highest level since 1945 (see article).
+
+5
+00:00:51,590 --> 00:01:01,010
+Such boldness brings dangers: governments could stretch the public finances to breaking-point, distort incentives and create sclerotic societies.
+
+6
+00:01:01,410 --> 00:01:11,510
+But they also have a chance to create new social-welfare policies that are affordable and which help workers thrive in an economy facing technological disruption.
+
+7
+00:01:11,940 --> 00:01:13,530
+They must seize it.
+
+8
+00:01:14,520 --> 00:01:17,930
+The past year has seen a wild experiment in social spending.
+
+9
+00:01:18,350 --> 00:01:24,340
+The world launched at least 1,600 new social-protection programmes in 2020 (see article).
+
+10
+00:01:24,759 --> 00:01:31,360
+Rich countries have provided 5,8% of GDP on average to help record numbers of workers.
+
+11
+00:01:31,720 --> 00:01:37,520
+Government debts are piling up, but so far low interest rates mean that they are cheap to service.
+
+12
+00:01:37,920 --> 00:01:40,120
+The public’s mood had already been shifting.
+
+13
+00:01:40,130 --> 00:01:47,740
+Britons used to grumble that layabouts sponged off the welfare state; now they are more likely to say help is too stingy.
+
+14
+00:01:48,359 --> 00:01:58,529
+Last year over two-thirds of Europeans said they supported a universal basic income (UBI), an unconditional recurring payment to all adults.
+
+15
+00:01:58,990 --> 00:02:05,899
+Affluent professionals have had their gaze drawn to the working conditions of those who deliver food and look after the sick.
+
+16
+00:02:06,350 --> 00:02:13,140
+The struggles of women who have dropped out of the workforce to care for children and the elderly have become impossible to ignore.
+
+17
+00:02:14,080 --> 00:02:19,279
+The social safety net in many rich countries was creaking before covid-19 struck.
+
+18
+00:02:19,679 --> 00:02:28,930
+Modelled on the ideas of Otto von Bismarck and William Beveridge, it had often failed to cushion workers from globalisation and technological and social change.
+
+19
+00:02:29,360 --> 00:02:46,390
+In 1999-2019 the number of Americans aged 25-54 outside the labour force grew by 25%, or 4,7m, over six times more than the number who received help from the main assistance programme for displaced workers.
+
+20
+00:02:47,080 --> 00:02:53,410
+As health-care and pension costs soared in recent years, governments cut back support for working-age people.
+
+21
+00:02:53,870 --> 00:03:08,670
+Between 2014 and 2018 Britain’s state-pension bill grew in real terms by £4bn ($5,8bn), even as the rest of its welfare budget shrank by £16,5bn.
+
+22
+00:03:08,670 --> 00:03:18,110
+A dwindling share of middle-income jobs and the growth of the gig economy fuelled fears that labour markets were changing faster than flat-footed governments could.
+
+23
+00:03:19,119 --> 00:03:29,929
+With the public and some economists cheering on, it is tempting for politicians to stoke the economy with more ad hoc spending, or put in place vast schemes such as UBI.
+
+24
+00:03:30,450 --> 00:03:33,779
+Instead they need to take a measured, long-term view.
+
+25
+00:03:34,119 --> 00:03:36,139
+The safety net must be affordable.
+
+26
+00:03:36,510 --> 00:03:40,050
+Tight budgets, not milk and honey, will define the 2020s.
+
+27
+00:03:40,690 --> 00:03:49,840
+The annual deficit of big advanced economies was 4% of their combined GDP even before the pandemic—and much ageing is still to come.
+
+28
+00:03:50,259 --> 00:03:53,019
+Already bond yields are rising again (see article).
+
+29
+00:03:53,059 --> 00:04:03,700
+Social spending must flow quickly and automatically to those who need it—not, as in America, only during crises when a panicked government passes emergency legislation.
+
+30
+00:04:04,120 --> 00:04:15,400
+And governments need to find mechanisms that cushion people more effectively against income shocks and joblessness without discouraging work or crushing economic dynamism.
+
+31
+00:04:16,420 --> 00:04:23,239
+The first step towards satisfying these goals is to use technology to make ancient bureaucracies more efficient.
+
+32
+00:04:23,670 --> 00:04:30,890
+Postal cheques, 1980s mainframe computers and shoddy data need to be relegated to the past.
+
+33
+00:04:31,290 --> 00:04:37,450
+In the pandemic many governments temporarily short-circuited their existing systems because they were too slow.
+
+34
+00:04:37,730 --> 00:04:45,400
+In Estonia and Singapore digital-identification systems and a disdain for form-filling became an asset in the crisis.
+
+35
+00:04:45,780 --> 00:04:52,050
+More countries need to copy them and also to ensure universal access to the internet and bank accounts.
+
+36
+00:04:52,580 --> 00:05:01,930
+The call for efficient administration may sound like tinkering but one in five poor Americans eligible for wage top-ups fails to claim them.
+
+37
+00:05:02,460 --> 00:05:11,930
+Nimbler digital-payment systems will reduce the need for costly universalism as a fail-safe, and allow better targeting and quicker response times.
+
+38
+00:05:12,310 --> 00:05:18,940
+Digital systems also permit the emergency option of making temporary cash payments to all households.
+
+39
+00:05:19,549 --> 00:05:21,059
+That is the easy part.
+
+40
+00:05:21,520 --> 00:05:24,580
+Balancing generosity and dynamism is harder.
+
+41
+00:05:25,210 --> 00:05:29,090
+Part of the solution is to top up the wages of low-paid workers.
+
+42
+00:05:29,460 --> 00:05:34,880
+Anglo-Saxon countries have done this well since reforms in the 1990s and 2000s.
+
+43
+00:05:35,219 --> 00:05:43,820
+But wage top-ups are of little use to the jobless and are often scant compensation for people who lose good jobs to forces beyond their control.
+
+44
+00:05:44,480 --> 00:05:52,060
+Paltry support for the unemployed in Britain and America preserves incentives to work but at high human cost.
+
+45
+00:05:52,370 --> 00:06:00,720
+The sparsity of social insurance has undermined political support for creative destruction, the catalyst for rising living standards.
+
+46
+00:06:01,209 --> 00:06:06,220
+Continental Europe tends to underwrite traditional workers’ incomes more generously.
+
+47
+00:06:06,520 --> 00:06:14,149
+But the distortion of incentives leads to higher unemployment and divisions between coddled insiders and a precariat.
+
+48
+00:06:14,730 --> 00:06:21,550
+Both sides of the Atlantic lack a permanent safety net that insures gig workers and the self-employed.
+
+49
+00:06:22,340 --> 00:06:36,399
+There is one country that combines labour-market flexibility with generosity: Denmark, which spends large sums—1,9% of GDP in 2018—on retraining and on advising the jobless.
+
+50
+00:06:36,779 --> 00:06:40,840
+These interventions stop the unemployed from falling into dependency.
+
+51
+00:06:41,170 --> 00:06:44,790
+The inadequacies of policies elsewhere are often glaring.
+
+52
+00:06:45,220 --> 00:06:46,670
+Britain’s efforts have flopped.
+
+53
+00:06:46,990 --> 00:07:01,040
+America’s comparable spending is less than a 20th as large as Denmark’s, even though the few lucky beneficiaries of its“trade-adjustment assistance”earn $50,000 more in wages, on average, over a decade.
+
+54
+00:07:01,690 --> 00:07:06,639
+Bungee economics For years social spending has favoured the elderly and an outdated safety net.
+
+55
+00:07:07,009 --> 00:07:21,040
+It should be rebuilt around active labour-market policies that use technology to help everyone from shopworkers who are victims of disruption to mothers whose skills have atrophied and those whose jobs are replaced by machines.
+
+56
+00:07:21,410 --> 00:07:29,230
+Governments cannot eliminate risk, but they can help ensure that if calamity strikes, people bounce back.
+

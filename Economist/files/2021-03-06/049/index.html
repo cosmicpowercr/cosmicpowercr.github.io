@@ -1,0 +1,424 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">049 Britain - Aristofascists</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='049';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "IN AUGUST 1936 Henry“Chips”Channon and his wife, Lady Honor Guinness, went on an official visit to the Berlin Olympic games along with a bunch of other British grandees.",
+    "start_Offset": 0,
+    "end_Offset": 29,
+    "start": 3.21,
+    "end": 30.18
+  },
+  {
+    "val": "They had a simply wonderful time.",
+    "start_Offset": 30,
+    "end_Offset": 35,
+    "start": 30.619999999999997,
+    "end": 32.729999
+  },
+  {
+    "val": "They didn’t pull off the ultimate social coup of having dinner with Hitler—the closest they got to the Führer was when he visited the Olympic stadium and“one felt as if one was in the presence of some semi-divine creature”.",
+    "start_Offset": 36,
+    "end_Offset": 77,
+    "start": 33.03,
+    "end": 45.58
+  },
+  {
+    "val": "But the rest of the Nazi elite went out of their way to entertain the visiting Britons.",
+    "start_Offset": 78,
+    "end_Offset": 94,
+    "start": 46.09,
+    "end": 50.68
+  },
+  {
+    "val": "Hermann Göring was“flirtatious”,“gay”and“charming”.",
+    "start_Offset": 95,
+    "end_Offset": 101,
+    "start": 51.12,
+    "end": 54.84
+  },
+  {
+    "val": "Frau Göring was“tall”,“handsome”and“nearly naked”.",
+    "start_Offset": 102,
+    "end_Offset": 109,
+    "start": 58.31,
+    "end": 59.25
+  },
+  {
+    "val": "The Ribbentrops’ party lent“dignity to the new regime”.",
+    "start_Offset": 110,
+    "end_Offset": 118,
+    "start": 59.86,
+    "end": 63.49
+  },
+  {
+    "val": "Just as thrilling was the spectacle of daily life.",
+    "start_Offset": 119,
+    "end_Offset": 127,
+    "start": 63.87,
+    "end": 66.72
+  },
+  {
+    "val": "Everyone kept raising their arms and saying“Heil Hitler!”in a thoroughly captivating manner.",
+    "start_Offset": 128,
+    "end_Offset": 141,
+    "start": 66.95,
+    "end": 72.12
+  },
+  {
+    "val": "And what about the rumours of terrible things going on in labour camps?",
+    "start_Offset": 142,
+    "end_Offset": 154,
+    "start": 72.549999,
+    "end": 76.01
+  },
+  {
+    "val": "Being a responsible MP Chips took a trip to one such camp and was impressed by what he saw.",
+    "start_Offset": 155,
+    "end_Offset": 173,
+    "start": 76.05,
+    "end": 82.019999
+  },
+  {
+    "val": "It looked“tidy, even gay”.",
+    "start_Offset": 174,
+    "end_Offset": 178,
+    "start": 82.42,
+    "end": 84.6
+  },
+  {
+    "val": "The purpose of the camps was to wipe out“class feeling”—not something Chips was normally in favour of getting rid of—and such feeling“has become practically non-existent in Germany”.",
+    "start_Offset": 179,
+    "end_Offset": 210,
+    "start": 85.049999,
+    "end": 95.8
+  },
+  {
+    "val": "Chips concluded that“England could learn many a lesson from Nazi Germany”.",
+    "start_Offset": 211,
+    "end_Offset": 222,
+    "start": 96.18,
+    "end": 100.85
+  },
+  {
+    "val": "These vignettes are all taken from the first of what promises to be three volumes of the diaries of Channon, a rich American who climbed the heights of British society in the 1920s and 1930s and also became a Tory MP.",
+    "start_Offset": 223,
+    "end_Offset": 263,
+    "start": 101.559999,
+    "end": 115.30000000000001
+  },
+  {
+    "val": "The diaries were first published in 1967 in heavily redacted form: many of the subjects of Chips’s indiscretions were still alive and able to sue.",
+    "start_Offset": 264,
+    "end_Offset": 288,
+    "start": 116.46000000000001,
+    "end": 126.71000000000001
+  },
+  {
+    "val": "Simon Heffer, a journalist and historian, has taken advantage of the passage of time to produce an unexpurgated edition.",
+    "start_Offset": 289,
+    "end_Offset": 307,
+    "start": 127.03,
+    "end": 134.4
+  },
+  {
+    "val": "The diaries do more than merely titillate.",
+    "start_Offset": 308,
+    "end_Offset": 314,
+    "start": 134.87,
+    "end": 137.339999
+  },
+  {
+    "val": "They demonstrate just how many members of the British upper classes were either infatuated with Hitler or at least regarded him as a useful bulwark against Bolshevism.",
+    "start_Offset": 315,
+    "end_Offset": 341,
+    "start": 137.389999,
+    "end": 148.05
+  },
+  {
+    "val": "In one entry, Chips described a visit by his uncle-by-marriage, Lord Halifax, a Tory grandee, to Germany to go fox-hunting with the leading Nazis.",
+    "start_Offset": 342,
+    "end_Offset": 368,
+    "start": 148.52,
+    "end": 158.1
+  },
+  {
+    "val": "“He liked all the Nazi leaders, even Goebbels!…He thinks the regime fantastic, perhaps too fantastic to take seriously.",
+    "start_Offset": 369,
+    "end_Offset": 387,
+    "start": 158.27,
+    "end": 165.75
+  },
+  {
+    "val": "But he is v glad that he went and thinks nothing but good can come of it”.",
+    "start_Offset": 388,
+    "end_Offset": 404,
+    "start": 165.75,
+    "end": 170.18
+  },
+  {
+    "val": "(Halifax almost messed up the occasion by mistaking Hitler for a footman.",
+    "start_Offset": 405,
+    "end_Offset": 416,
+    "start": 170.77,
+    "end": 175.05
+  },
+  {
+    "val": ") The diaries also provide yet more evidence of the vital role Winston Churchill played in saving Britain from the pro-Hitler sympathies of the upper classes and the cynical calculations of appeasing politicians.",
+    "start_Offset": 417,
+    "end_Offset": 449,
+    "start": 175.639999,
+    "end": 188.53
+  },
+  {
+    "val": "“That…farceur would stir up trouble anywhere”, Chips wrote,“luckily for England and the peace of Europe he has no following whatsoever in the House [of Commons]”.",
+    "start_Offset": 450,
+    "end_Offset": 476,
+    "start": 188.97,
+    "end": 199.17999999999998
+  },
+  {
+    "val": "It is becoming fashionable on the left to dismiss Churchill as a racist.",
+    "start_Offset": 477,
+    "end_Offset": 489,
+    "start": 199.9,
+    "end": 204.13
+  },
+  {
+    "val": "A vandal spray-painted the word on his statue in Parliament Square.",
+    "start_Offset": 490,
+    "end_Offset": 501,
+    "start": 204.42,
+    "end": 208.57
+  },
+  {
+    "val": "During a recent discussion on“Churchill and race”held in, of all places, Churchill College, Cambridge, panellists competed to denounce him as a racist, white supremacist and eugenicist.",
+    "start_Offset": 502,
+    "end_Offset": 529,
+    "start": 208.889999,
+    "end": 221.09
+  },
+  {
+    "val": "Churchill certainly said some repugnant things about race.",
+    "start_Offset": 530,
+    "end_Offset": 537,
+    "start": 221.55,
+    "end": 225.03
+  },
+  {
+    "val": "But by the standards of his time he was relatively moderate: he was much less enthusiastic about eugenics, for example, than many heroes of the left such as Sidney and Beatrice Webb, H.",
+    "start_Offset": 538,
+    "end_Offset": 570,
+    "start": 225.07,
+    "end": 236.60000000000002
+  },
+  {
+    "val": "G.",
+    "start_Offset": 571,
+    "end_Offset": 571,
+    "start": 236.6,
+    "end": 236.92
+  },
+  {
+    "val": "Wells, George Bernard Shaw and Harold Laski.",
+    "start_Offset": 572,
+    "end_Offset": 578,
+    "start": 236.92,
+    "end": 240.54
+  },
+  {
+    "val": "He was mercifully free of the common vice of anti-Semitism.",
+    "start_Offset": 579,
+    "end_Offset": 589,
+    "start": 240.92,
+    "end": 244.59
+  },
+  {
+    "val": "And as Channon’s diaries make clear he led the battle against the worst racist in history at a time when other members of his party and class thought labour camps wonderful innovations.",
+    "start_Offset": 590,
+    "end_Offset": 621,
+    "start": 245.03,
+    "end": 256.2
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

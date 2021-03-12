@@ -1,0 +1,236 @@
+1
+00:00:29,750 --> 00:00:35,759
+WHAT THE transistor once was to electronics, so CRISPR gene-editing is to biotechnology today.
+
+2
+00:00:36,209 --> 00:00:45,190
+It changes the field from something interesting but clunky, and of restricted application, into a game of infinite possibility that almost anyone can play.
+
+3
+00:00:46,650 --> 00:00:51,809
+Transistors led to computer chips and the youthful entrepreneurs of the Homebrew Computer Club in Silicon Valley.
+
+4
+00:00:52,340 --> 00:01:05,990
+Similarly, CRISPR editing has let a new generation of would-be billionaires explore ideas that range from systematising the search for the proteins targeted by drugs, to breeding pigs that might act as organ donors for transplants.
+
+5
+00:01:07,259 --> 00:01:11,390
+The transistor transformed the world; CRISPR may do that too.
+
+6
+00:01:12,109 --> 00:01:20,410
+But it also offers a potential which transistors never did: that of transforming human beings themselves, by editing their genes.
+
+7
+00:01:21,360 --> 00:01:27,080
+Those genes might be in body cells, in which case the changes would die with the person to whom they were made.
+
+8
+00:01:27,860 --> 00:01:33,400
+Or they might be in germ cells, in which case they could be passed down the generations.
+
+9
+00:01:34,650 --> 00:01:47,969
+Henry Greely’s book is about the first known attempt to perform this more enduring trick, how it spectacularly backfired on the man who did it, and whether, and in what circumstances, anyone should ever try to do it again.
+
+10
+00:01:49,020 --> 00:02:03,280
+Mr Greely is both a bioethicist and a lawyer at Stanford University, qualifications perfectly suited to his subject—the moment when germline editing went from being a topic of philosophical speculation to hard reality.
+
+11
+00:02:04,240 --> 00:02:26,680
+That moment came on November 25th 2018, when He Jiankui, a researcher at the Southern University of Science and Technology, in Shenzhen, China, announced that he had taken it upon himself to edit the genomes of two embryonic human beings (later born as twin girls), and to do so at a point in their development when those changes would affect their germ cells.
+
+12
+00:02:28,070 --> 00:02:37,689
+As depicted in“CRISPR People”, Dr He is less the villain portrayed elsewhere than a naive and tragic character who was completely out of his depth.
+
+13
+00:02:38,309 --> 00:02:41,400
+Certainly, he was driven by a yen for fame and fortune.
+
+14
+00:02:42,129 --> 00:02:45,200
+But he seems also to have had a genuine desire to do good.
+
+15
+00:02:46,010 --> 00:02:56,710
+His stated aim was to protect the girls from the threat of AIDS by tweaking their genes for a protein which the responsible virus, HIV, uses to lock onto cells it is about to infect.
+
+16
+00:02:57,759 --> 00:03:03,450
+Almost up to the time that he went public with his experiment, he seems to have expected a hero’s welcome.
+
+17
+00:03:04,420 --> 00:03:08,540
+Instead, he ended up with a three-year prison sentence.
+
+18
+00:03:10,130 --> 00:03:14,040
+An inauspicious beginning, then, for the idea of human germline editing.
+
+19
+00:03:14,969 --> 00:03:19,740
+But Mr Greely does not dismiss the possibility of future, better-conducted attempts to do it.
+
+20
+00:03:20,440 --> 00:03:28,760
+As forensically as you would expect for an author of his background, he sets out the circumstances in which real need exists and no alternatives are available.
+
+21
+00:03:29,370 --> 00:03:36,020
+Preventing HIV infection is not among them: it is easy to avoid and is treatable if avoidance fails.
+
+22
+00:03:36,840 --> 00:03:45,710
+Mostly, his list consists of couples who carry dangerous mutations in combinations that mean they are bound to be passed on to a child unless its genes are edited.
+
+23
+00:03:46,670 --> 00:03:48,310
+This will not be many couples.
+
+24
+00:03:48,700 --> 00:03:49,809
+But it will be a few.
+
+25
+00:03:51,299 --> 00:03:59,890
+Attitudes to germline editing may change if it proves safe and effective in these edge cases, and as knowledge increases of how human genomes work.
+
+26
+00:04:00,980 --> 00:04:12,650
+At that point the real debate—about whether to allow the technique to be used to end the genetic lottery of reproduction, and maybe even to enhance human capabilities beyond any now currently found—will become live.
+
+27
+00:04:13,309 --> 00:04:18,290
+How scientific knowledge expands in this way is the ultimate subject of“The Code Breaker”.
+
+28
+00:04:19,890 --> 00:04:22,980
+Peering over the edge Mr Greely’s book is a serious and scholarly work.
+
+29
+00:04:23,370 --> 00:04:26,629
+Walter Isaacson’s, by contrast, is a page-turner.
+
+30
+00:04:27,250 --> 00:04:33,910
+It weaves history and contemporary events into a narrative propelled by the career of its protagonist, Jennifer Doudna.
+
+31
+00:04:34,900 --> 00:04:47,970
+In 2020 she was the joint winner with Emmanuelle Charpentier of the Nobel chemistry prize for—as the citation by Sweden’s Royal Academy of Sciences laconically puts it—“the development of a method for genome editing”.
+
+32
+00:04:49,330 --> 00:04:58,909
+Most people agree with the academy in recognising these two as CRISPR editing’s principal inventors—though they were assisted by many others and drew on the work of many more.
+
+33
+00:04:59,880 --> 00:05:06,119
+There are, however, dissenters who want to share the kudos, and particularly the patents.
+
+34
+00:05:06,850 --> 00:05:10,100
+Dr Doudna and Dr Charpentier worked with bacteria.
+
+35
+00:05:10,790 --> 00:05:15,560
+A lot of CRISPR’s applications will be in more complex creatures, such as human beings.
+
+36
+00:05:16,320 --> 00:05:23,360
+And the researcher who first tried the technique on human cells was Feng Zhang of the Broad Institute in Cambridge, Massachusetts.
+
+37
+00:05:24,109 --> 00:05:36,180
+The Broad’s lawyers are thus battling with those of the University of California, Berkeley, where Dr Doudna works, and with Dr Charpentier’s representatives, over whose patent applications give rights to what.
+
+38
+00:05:38,040 --> 00:05:44,030
+“The Code Breaker”casts light on this dispute, as it does on many other inner workings of American science.
+
+39
+00:05:44,760 --> 00:05:57,000
+For Mr Isaacson, previously editor of Time magazine and chairman of CNN, author of acclaimed biographies of Steve Jobs and Leonardo da Vinci and now a history professor at Tulane University, is an insider’s insider.
+
+40
+00:05:57,000 --> 00:06:02,330
+His book glitters with the names of the scientific great and good.
+
+41
+00:06:03,080 --> 00:06:10,180
+Eric Lander, until recently head of the Broad and Joe Biden’s choice for chief scientific adviser, often takes the stage.
+
+42
+00:06:10,780 --> 00:06:18,559
+So does George Church, a brilliant eccentric at Harvard who hopes to revive mammoths and was Dr Zhang’s PhD supervisor.
+
+43
+00:06:20,000 --> 00:06:44,260
+There are guest appearances by (among many others) Francis Collins, who has astutely survived from one presidential administration to another as head of the National Institutes of Health; David Baltimore, a Nobel laureate who in 1975 helped organise the first scientific meeting to look at the ethics of genetic engineering; and Anthony Fauci, adviser on infectious diseases to seven presidents.
+
+44
+00:06:45,370 --> 00:07:03,259
+The book offers a sympathetic assessment of a luminary who has fallen from grace—James Watson, co-discoverer of the structure of DNA and founding head of the Human Genome Project, who is no longer received in polite society after making some disgraceful remarks about race and intelligence.
+
+45
+00:07:04,809 --> 00:07:09,100
+Aside from Dr Doudna, however, the real star of the story is RNA.
+
+46
+00:07:10,160 --> 00:07:16,370
+This is the neglected third member of life’s molecular trinity—the other two being DNA and proteins.
+
+47
+00:07:17,160 --> 00:07:29,730
+Indeed, RNA probably predates those other two molecules and, crucially for current events, it forms the genetic material of many of the viruses that afflict human beings, including the one that causes covid-19.
+
+48
+00:07:30,580 --> 00:07:35,840
+It is also the molecule which guides the CRISPR-editing complex to the right part of the genome to edit.
+
+49
+00:07:37,160 --> 00:07:51,100
+Mr Isaacson traces Dr Doudna’s career from its beginnings as a PhD student of Jack Szostak, another pillar of the scientific establishment and one of the proponents of the idea that the origin of RNA and the origin of life are intimately bound up.
+
+50
+00:07:52,000 --> 00:08:02,510
+He follows the byways of her early studies on RNA enzymes, known as ribozymes, and her first introduction to CRISPR in its natural role as a bacterial defence against viruses.
+
+51
+00:08:03,349 --> 00:08:08,980
+Later comes her fortuitous meeting with Dr Charpentier at a scientific conference in Puerto Rico.
+
+52
+00:08:09,890 --> 00:08:18,019
+Fortune favours the prepared mind, and hers was well prepared to profit from what Dr Charpentier told her about her own work on CRISPR.
+
+53
+00:08:18,820 --> 00:08:21,360
+But the meeting itself was serendipity.
+
+54
+00:08:22,650 --> 00:08:28,490
+Genes out of the bottle In telling her tale, Mr Isaacson captures the scientific process well, including the role of chance.
+
+55
+00:08:29,020 --> 00:08:44,970
+The hard graft at the bench, the flashes of inspiration, the importance of conferences as cauldrons of creativity, the rivalry, sometimes friendly, sometimes less so, and the sense of common purpose are all conveyed in his narrative.
+
+56
+00:08:45,790 --> 00:08:55,760
+“The Code Breaker”describes a dance to the music of time with these things as its steps, which began with Charles Darwin and Gregor Mendel and shows no sign of ending.
+
+57
+00:08:57,160 --> 00:09:02,730
+What CRISPR and its successors will mean for humanity over the next few decades is anybody’s guess.
+
+58
+00:09:03,420 --> 00:09:06,520
+At minimum, better health and more abundant food.
+
+59
+00:09:07,360 --> 00:09:25,660
+At maximum, perhaps, a world where machines now made of metal and plastic are instead made of flesh and bone, pets and garden plants can be designed to order, mammoths once again thunder over the tundra, and human reproduction itself ceases to be a matter of luck.
+

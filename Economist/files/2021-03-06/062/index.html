@@ -1,0 +1,389 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">062 Business - Gambling in China</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='062';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "WHICH ECONOMY contracted most sharply last year?",
+    "start_Offset": 0,
+    "end_Offset": 6,
+    "start": 17.92,
+    "end": 21.42
+  },
+  {
+    "val": "That dubious honour almost certainly belongs to Macau, a former Portuguese colony that is now part of China.",
+    "start_Offset": 7,
+    "end_Offset": 24,
+    "start": 22.04,
+    "end": 28.779999999999998
+  },
+  {
+    "val": "On March 5th the autonomous region’s statistical agency is expected to announce that GDP fell by at least half from 2019.",
+    "start_Offset": 25,
+    "end_Offset": 45,
+    "start": 29.21,
+    "end": 37.95
+  },
+  {
+    "val": "Unsurprising, perhaps, given that the covid-19 pandemic has dealt a blow to Macau’s sole engine of growth: casinos.",
+    "start_Offset": 46,
+    "end_Offset": 64,
+    "start": 38.36,
+    "end": 46.789998999999995
+  },
+  {
+    "val": "Gross gaming revenue in Macau, the only place in China where casinos are legal, plummeted from $36bn in 2019 to $7,5bn last year.",
+    "start_Offset": 65,
+    "end_Offset": 88,
+    "start": 46.86,
+    "end": 58.370000000000005
+  },
+  {
+    "val": "The first two months of 2021 brought little respite.",
+    "start_Offset": 89,
+    "end_Offset": 97,
+    "start": 58.769999999999996,
+    "end": 62.050000000000004
+  },
+  {
+    "val": "Yet despite collapsing revenues and heavy pre-tax losses, share prices of Macau’s six casino operators have held up remarkably well (see chart).",
+    "start_Offset": 98,
+    "end_Offset": 120,
+    "start": 63.15,
+    "end": 72.21000000000001
+  },
+  {
+    "val": "Three of them are worth more than they were before the pandemic.",
+    "start_Offset": 121,
+    "end_Offset": 132,
+    "start": 72.209999,
+    "end": 75.19
+  },
+  {
+    "val": "Recently, after reporting that annual revenues had fallen by three-quarters, the biggest, Galaxy Entertainment, saw its market value swell to $42bn.",
+    "start_Offset": 133,
+    "end_Offset": 154,
+    "start": 75.59,
+    "end": 85.03999999999999
+  },
+  {
+    "val": "Investors also reacted with a collective shrug when MGM China, a listed subsidiary of Las Vegas-based MGM Resorts International, disclosed a similar drop in its top line.",
+    "start_Offset": 155,
+    "end_Offset": 182,
+    "start": 86.559999,
+    "end": 98.32000000000001
+  },
+  {
+    "val": "Why are investors feeling lucky?",
+    "start_Offset": 183,
+    "end_Offset": 187,
+    "start": 99.41,
+    "end": 102.009999
+  },
+  {
+    "val": "First, Macau expects a speedy recovery in visitors from mainland China, who account for seven in ten non-Macanese punters.",
+    "start_Offset": 188,
+    "end_Offset": 207,
+    "start": 102.559999,
+    "end": 110.41
+  },
+  {
+    "val": "For much of 2020 virus-induced travel restrictions stemmed their flow.",
+    "start_Offset": 208,
+    "end_Offset": 218,
+    "start": 110.83,
+    "end": 115.3
+  },
+  {
+    "val": "Last month Macau exempted all mainland visitors from quarantine.",
+    "start_Offset": 219,
+    "end_Offset": 227,
+    "start": 115.66,
+    "end": 119.53999999999999
+  },
+  {
+    "val": "Today the casino hub is the only jurisdiction with which the mainland has a two-way travel bubble.",
+    "start_Offset": 228,
+    "end_Offset": 245,
+    "start": 119.91,
+    "end": 125.459999
+  },
+  {
+    "val": "The second reason for thinking the odds of recovery are good relates to a new directive from the central government in Beijing.",
+    "start_Offset": 246,
+    "end_Offset": 267,
+    "start": 126.75,
+    "end": 133.38
+  },
+  {
+    "val": "Last summer it created a“blacklist”of overseas gambling destinations that were“endangering the personal safety and property of Chinese citizens”.",
+    "start_Offset": 268,
+    "end_Offset": 288,
+    "start": 133.9,
+    "end": 143.11999999999998
+  },
+  {
+    "val": "A second blacklist of prohibited destinations was added in January.",
+    "start_Offset": 289,
+    "end_Offset": 298,
+    "start": 143.68,
+    "end": 147.72
+  },
+  {
+    "val": "Neither list has been made public—perhaps because the government concluded that international leisure travel is still impractical and thus did not feel compelled to say more.",
+    "start_Offset": 299,
+    "end_Offset": 325,
+    "start": 148.15,
+    "end": 157.55999999999997
+  },
+  {
+    "val": "But most gambling-industry watchers assume that Macau has been spared.",
+    "start_Offset": 326,
+    "end_Offset": 336,
+    "start": 157.94,
+    "end": 162.58
+  },
+  {
+    "val": "Indeed, some believe that the blacklist may have been drawn up specifically to shelter the city.",
+    "start_Offset": 337,
+    "end_Offset": 352,
+    "start": 162.639999,
+    "end": 168.10999999999999
+  },
+  {
+    "val": "Either way, one long-term effect could be the repatriation of the demand for gaming.",
+    "start_Offset": 353,
+    "end_Offset": 367,
+    "start": 168.54,
+    "end": 173.72
+  },
+  {
+    "val": "Macau may need to overcome a countervailing force.",
+    "start_Offset": 368,
+    "end_Offset": 375,
+    "start": 174.849999,
+    "end": 177.719999
+  },
+  {
+    "val": "A new law that took effect in mainland China on March 1st prohibits any individual or group from“organising Chinese citizens”to partake in overseas gambling, on pain of imprisonment.",
+    "start_Offset": 376,
+    "end_Offset": 405,
+    "start": 178.07999999999998,
+    "end": 190.19
+  },
+  {
+    "val": "Unlike the blacklist, this regulation appears to apply to all jurisdictions outside the mainland, including Macau.",
+    "start_Offset": 406,
+    "end_Offset": 421,
+    "start": 190.42,
+    "end": 197.809999
+  },
+  {
+    "val": "Casinos there often rely on agents in mainland China to organise such jamborees.",
+    "start_Offset": 422,
+    "end_Offset": 434,
+    "start": 198.219999,
+    "end": 204.03
+  },
+  {
+    "val": "They will now be forced to keep a lower profile.",
+    "start_Offset": 435,
+    "end_Offset": 444,
+    "start": 204.37,
+    "end": 206.88
+  },
+  {
+    "val": "Still, investors appear to be betting that enough individual Chinese like a flutter.",
+    "start_Offset": 445,
+    "end_Offset": 457,
+    "start": 207.3,
+    "end": 211.9
+  },
+  {
+    "val": "They greeted the new law with another shrug.",
+    "start_Offset": 458,
+    "end_Offset": 465,
+    "start": 212.549999,
+    "end": 215.13
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,473 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">041 Europe - France</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='041';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "FOR MUCH of France’s Fifth Republic, the modern state established by Charles de Gaulle in 1958, criminal cases against elected politicians have often failed either to reach court or to end in a conviction, let alone a prison sentence.",
+    "start_Offset": 0,
+    "end_Offset": 38,
+    "start": 14.32,
+    "end": 32.869999
+  },
+  {
+    "val": "On March 1st a Paris court took a step closer to ending an era of impunity.",
+    "start_Offset": 39,
+    "end_Offset": 54,
+    "start": 33.469999,
+    "end": 39.309999999999995
+  },
+  {
+    "val": "It found Nicolas Sarkozy, a centre-right president from 2007 to 2012, guilty of corruption and influence-peddling.",
+    "start_Offset": 55,
+    "end_Offset": 72,
+    "start": 39.97,
+    "end": 50.0
+  },
+  {
+    "val": "He was sentenced to three years in prison, two of them suspended.",
+    "start_Offset": 73,
+    "end_Offset": 84,
+    "start": 50.589999,
+    "end": 54.559999000000005
+  },
+  {
+    "val": "The decision has sent a shockwave through the French political class.",
+    "start_Offset": 85,
+    "end_Offset": 95,
+    "start": 55.6,
+    "end": 59.24
+  },
+  {
+    "val": "This is the first time an ex-president has been handed an irreducible prison sentence.",
+    "start_Offset": 96,
+    "end_Offset": 110,
+    "start": 59.76,
+    "end": 65.59
+  },
+  {
+    "val": "In 2011 Jacques Chirac, another centre-right former president, was handed a two-year suspended sentence for the misuse of public funds, dating to his time as mayor of Paris in the 1990s.",
+    "start_Offset": 111,
+    "end_Offset": 143,
+    "start": 66.19,
+    "end": 79.69999999999999
+  },
+  {
+    "val": "Mr Sarkozy has denied all the allegations, and has appealed.",
+    "start_Offset": 144,
+    "end_Offset": 153,
+    "start": 80.36,
+    "end": 85.009999
+  },
+  {
+    "val": "The case against him dates back to 2013.",
+    "start_Offset": 154,
+    "end_Offset": 161,
+    "start": 86.03999999999999,
+    "end": 89.249999
+  },
+  {
+    "val": "Investigators tapped his mobile phone while looking into allegations that Muammar Qaddafi, the former Libyan leader, had helped finance the French candidate’s campaign in 2007.",
+    "start_Offset": 162,
+    "end_Offset": 186,
+    "start": 89.9,
+    "end": 102.58999999999999
+  },
+  {
+    "val": "They stumbled upon conversations between Mr Sarkozy and Thierry Herzog, then his lawyer.",
+    "start_Offset": 187,
+    "end_Offset": 199,
+    "start": 103.34,
+    "end": 109.82000000000001
+  },
+  {
+    "val": "These exchanges, which the pair thought were protected by lawyer-client privilege, concerned separate illegal party-financing allegations then circulating.",
+    "start_Offset": 200,
+    "end_Offset": 219,
+    "start": 110.57,
+    "end": 120.999999
+  },
+  {
+    "val": "The case against Mr Sarkozy in that affair had been dropped.",
+    "start_Offset": 220,
+    "end_Offset": 230,
+    "start": 121.65,
+    "end": 125.42999999999999
+  },
+  {
+    "val": "But, prosecutors said, he wanted information linked to other inquiries.",
+    "start_Offset": 231,
+    "end_Offset": 240,
+    "start": 125.809999,
+    "end": 130.29
+  },
+  {
+    "val": "During these conversations, ruled the court this week, a“corruption pact”emerged.",
+    "start_Offset": 241,
+    "end_Offset": 252,
+    "start": 131.33,
+    "end": 136.81
+  },
+  {
+    "val": "In return for information, Mr Sarkozy offered to help secure for Gilbert Azibert, an appeals-court magistrate, a plum job in Monaco.",
+    "start_Offset": 253,
+    "end_Offset": 274,
+    "start": 137.41,
+    "end": 147.01999999999998
+  },
+  {
+    "val": "(Mr Azibert never got the job.",
+    "start_Offset": 275,
+    "end_Offset": 280,
+    "start": 147.55,
+    "end": 149.55
+  },
+  {
+    "val": ") The court also gave Mr Herzog and Mr Azibert prison sentences of three years each, two of them suspended.",
+    "start_Offset": 281,
+    "end_Offset": 299,
+    "start": 150.17,
+    "end": 157.439999
+  },
+  {
+    "val": "Both deny the accusations.",
+    "start_Offset": 300,
+    "end_Offset": 303,
+    "start": 157.69,
+    "end": 159.77
+  },
+  {
+    "val": "Mr Sarkozy, the judge said, who was“the guarantor of the independence of the judiciary, used his status as former president to reward a magistrate for having served his personal interest.”",
+    "start_Offset": 304,
+    "end_Offset": 334,
+    "start": 160.65,
+    "end": 173.429999
+  },
+  {
+    "val": "Mr Sarkozy is unlikely to end up behind bars.",
+    "start_Offset": 335,
+    "end_Offset": 343,
+    "start": 174.48,
+    "end": 177.60000000000002
+  },
+  {
+    "val": "The court said he could wear an electronic tag instead.",
+    "start_Offset": 344,
+    "end_Offset": 353,
+    "start": 177.9,
+    "end": 181.08
+  },
+  {
+    "val": "He has in any case appealed, a process that could take many months, if not years.",
+    "start_Offset": 354,
+    "end_Offset": 369,
+    "start": 181.439999,
+    "end": 186.92999999999998
+  },
+  {
+    "val": "Christian Jacob, head of his Republicans party, called the sentencing“absolutely disproportionate”.",
+    "start_Offset": 370,
+    "end_Offset": 381,
+    "start": 187.51999999999998,
+    "end": 193.91000000000003
+  },
+  {
+    "val": "Mr Sarkozy called it a“profound injustice”, and stressed that no money changed hands: even the judge said the ruling was based on a“faisceau d’indices”(a body of indications), not proof.",
+    "start_Offset": 382,
+    "end_Offset": 413,
+    "start": 194.48,
+    "end": 207.17999999999998
+  },
+  {
+    "val": "Friends say that magistrates were out to bring the ex-president down.",
+    "start_Offset": 414,
+    "end_Offset": 425,
+    "start": 207.72,
+    "end": 211.37
+  },
+  {
+    "val": "On March 17th Mr Sarkozy is due in court to face separate charges of exceeding campaign-finance caps.",
+    "start_Offset": 426,
+    "end_Offset": 443,
+    "start": 211.87,
+    "end": 219.70000000000002
+  },
+  {
+    "val": "He denies these accusations too.",
+    "start_Offset": 444,
+    "end_Offset": 448,
+    "start": 220.01,
+    "end": 222.26999999999998
+  },
+  {
+    "val": "In recent years, courts have convicted a string of French politicians.",
+    "start_Offset": 449,
+    "end_Offset": 459,
+    "start": 223.29,
+    "end": 227.62
+  },
+  {
+    "val": "This has begun to erode the sense that they are untouchable.",
+    "start_Offset": 460,
+    "end_Offset": 470,
+    "start": 228.13,
+    "end": 231.26999899999998
+  },
+  {
+    "val": "Last year a court sentenced François Fillon, Mr Sarkozy’s former prime minister and a presidential candidate, to five years in prison, three of them suspended, for embezzlement.",
+    "start_Offset": 471,
+    "end_Offset": 497,
+    "start": 231.74,
+    "end": 243.17000000000002
+  },
+  {
+    "val": "He is awaiting his appeal.",
+    "start_Offset": 498,
+    "end_Offset": 502,
+    "start": 243.32,
+    "end": 245.07999900000002
+  },
+  {
+    "val": "Others include Jérôme Cahuzac, a Socialist ex-budget minister, Claude Guéant, Mr Sarkozy’s former chief of staff, and Patrick Balkany, an ex-deputy from Mr Sarkozy’s party and former mayor of Levallois-Perret, a Paris suburb.",
+    "start_Offset": 503,
+    "end_Offset": 538,
+    "start": 245.78,
+    "end": 262.339999
+  },
+  {
+    "val": "In one of those twists at which the French excel, the once-hyperkinetic Mr Sarkozy has become more popular since he left office than when he was president.",
+    "start_Offset": 539,
+    "end_Offset": 566,
+    "start": 263.4,
+    "end": 273.94
+  },
+  {
+    "val": "Despite the judicial tangles, time and defeat at the ballot box in 2012 appear to have softened opinion towards Mr Sarkozy.",
+    "start_Offset": 567,
+    "end_Offset": 587,
+    "start": 274.63,
+    "end": 282.879999
+  },
+  {
+    "val": "A recent poll, taken before the verdict, found him to be France’s sixth-most-popular politician.",
+    "start_Offset": 588,
+    "end_Offset": 603,
+    "start": 284.29,
+    "end": 290.879999
+  },
+  {
+    "val": "He continues informally to oversee matters relating to the Republicans, ahead of the presidential election in 2022.",
+    "start_Offset": 604,
+    "end_Offset": 620,
+    "start": 291.579999,
+    "end": 299.43
+  },
+  {
+    "val": "Some of those close to him suggest that, before this week, he had not given up hopes of running again.",
+    "start_Offset": 621,
+    "end_Offset": 640,
+    "start": 299.95,
+    "end": 306.29
+  },
+  {
+    "val": "This verdict surely puts paid to those ambitions and could open up the centre-right field, perhaps even to Michel Barnier, a former French foreign minister who ran the EU’s Brexit negotiations.",
+    "start_Offset": 641,
+    "end_Offset": 672,
+    "start": 307.33,
+    "end": 319.98
+  },
+  {
+    "val": "It may serve a broader purpose too.",
+    "start_Offset": 673,
+    "end_Offset": 679,
+    "start": 320.71,
+    "end": 323.249999
+  },
+  {
+    "val": "The second conviction of an ex-president stands as a powerful sign that French politicians are held to the same standards as ordinary citizens—even those at the very top.",
+    "start_Offset": 680,
+    "end_Offset": 709,
+    "start": 323.85,
+    "end": 337.43
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

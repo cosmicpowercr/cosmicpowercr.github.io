@@ -1,0 +1,479 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">029 Asia - Banyan</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='029';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "AUSTRALIANS ARE proud of their country’s impressive if stringent handling of the coronavirus pandemic: just over 900 deaths to date out of a population of 25m, with a mere eight or so new cases each day.",
+    "start_Offset": 0,
+    "end_Offset": 35,
+    "start": 17.91,
+    "end": 31.549999000000003
+  },
+  {
+    "val": "That achievement is one reason why the scene after the men’s final at the Australian Open tennis tournament late last month shocked so many.",
+    "start_Offset": 36,
+    "end_Offset": 59,
+    "start": 32.269999999999996,
+    "end": 39.96
+  },
+  {
+    "val": "In her comments at the presentation of the trophy, before both local spectators and a global television audience, Australia’s tennis chief suggested it was a time for“optimism and hope”, with vaccinations“rolling out in many countries in the world”.",
+    "start_Offset": 60,
+    "end_Offset": 99,
+    "start": 40.42,
+    "end": 54.99
+  },
+  {
+    "val": "Australia’s programme was to begin the following day.",
+    "start_Offset": 100,
+    "end_Offset": 107,
+    "start": 55.81,
+    "end": 58.36
+  },
+  {
+    "val": "Yet instead of cheers, her remarks were drowned out by the boos of anti-vaxxers in the crowd.",
+    "start_Offset": 108,
+    "end_Offset": 125,
+    "start": 58.67,
+    "end": 63.81
+  },
+  {
+    "val": "The deputy prime minister, Michael McCormack, called the behaviour“disgusting”and sought to portray the jeerers as party-poopers.",
+    "start_Offset": 126,
+    "end_Offset": 144,
+    "start": 64.73,
+    "end": 71.309999
+  },
+  {
+    "val": "His boss, Scott Morrison, was injected before the cameras with one of the 60,000 shots in the country’s first shipment of vaccines.",
+    "start_Offset": 145,
+    "end_Offset": 167,
+    "start": 72.16,
+    "end": 79.33999999999999
+  },
+  {
+    "val": "Most of the rest are for front-line health and quarantine workers.",
+    "start_Offset": 168,
+    "end_Offset": 179,
+    "start": 79.82,
+    "end": 83.1
+  },
+  {
+    "val": "The government promises swift progress, after an admittedly slow start.",
+    "start_Offset": 180,
+    "end_Offset": 189,
+    "start": 83.46000000000001,
+    "end": 87.73
+  },
+  {
+    "val": "Yet reluctance to receive vaccines is an issue.",
+    "start_Offset": 190,
+    "end_Offset": 197,
+    "start": 88.75,
+    "end": 91.56
+  },
+  {
+    "val": "Anti-vaxxers have marched in Melbourne and Sydney.",
+    "start_Offset": 198,
+    "end_Offset": 205,
+    "start": 92.1,
+    "end": 94.72
+  },
+  {
+    "val": "In many countries, vaccine acceptance has risen sharply along with the prospects of getting a jab.",
+    "start_Offset": 206,
+    "end_Offset": 221,
+    "start": 95.01,
+    "end": 100.309999
+  },
+  {
+    "val": "But a study by Imperial College London of global attitudes towards covid-19 vaccines found that Australia was one of four out of 15 rich countries in the Americas, Asia and Europe where vaccine acceptance fell between November and January.",
+    "start_Offset": 222,
+    "end_Offset": 261,
+    "start": 100.92,
+    "end": 115.99
+  },
+  {
+    "val": "Strikingly, the other three are also in Asia: Japan, Singapore and South Korea.",
+    "start_Offset": 262,
+    "end_Offset": 274,
+    "start": 116.53999999999999,
+    "end": 121.47
+  },
+  {
+    "val": "They too have impressive records handling the pandemic, with just 7,984, 1,612 and 29 deaths respectively.",
+    "start_Offset": 275,
+    "end_Offset": 292,
+    "start": 121.82,
+    "end": 131.57999999999998
+  },
+  {
+    "val": "These countries’ relatively slow roll-out of vaccines compared with Britain and America, let alone Israel, may soon turn them from laurel-winners to laggards in the fight against covid-19.",
+    "start_Offset": 293,
+    "end_Offset": 323,
+    "start": 132.08,
+    "end": 143.040001
+  },
+  {
+    "val": "Misinformation, conspiracy theories and distrust of Chinese vaccines have contributed to the hesitancy.",
+    "start_Offset": 324,
+    "end_Offset": 336,
+    "start": 144.24,
+    "end": 150.45
+  },
+  {
+    "val": "But so too, argues Tikki Pangestu of the National University of Singapore, has an awareness that new and seemingly improved vaccines keep appearing.",
+    "start_Offset": 337,
+    "end_Offset": 359,
+    "start": 150.87,
+    "end": 159.82
+  },
+  {
+    "val": "Singaporeans of a certain age say that, given the virus’s ongoing mutations and the possibility that antibodies may not work for ever, they would rather hold off until they really need a jab—and then get the very latest and best.",
+    "start_Offset": 360,
+    "end_Offset": 400,
+    "start": 160.389999,
+    "end": 174.039999
+  },
+  {
+    "val": "Others worry about possible side-effects.",
+    "start_Offset": 401,
+    "end_Offset": 406,
+    "start": 174.57,
+    "end": 176.689999
+  },
+  {
+    "val": "In South Korea half of those polled say they would rather see what happens elsewhere before receiving a vaccine.",
+    "start_Offset": 407,
+    "end_Offset": 425,
+    "start": 177.0,
+    "end": 183.38
+  },
+  {
+    "val": "With cases low and normal life resuming, the risks of delay strike many in Singapore and South Korea as negligible.",
+    "start_Offset": 426,
+    "end_Offset": 445,
+    "start": 183.89,
+    "end": 190.85999999999999
+  },
+  {
+    "val": "This foot-dragging is mirrored by governments.",
+    "start_Offset": 446,
+    "end_Offset": 452,
+    "start": 191.849999,
+    "end": 194.069999
+  },
+  {
+    "val": "South Korea pinned early hopes on home-grown vaccines, putting in orders for foreign-made ones only in November.",
+    "start_Offset": 453,
+    "end_Offset": 471,
+    "start": 194.179999,
+    "end": 200.84
+  },
+  {
+    "val": "In Japan the government has a rocky history of lawsuits over possible side-effects from measles and mumps shots.",
+    "start_Offset": 472,
+    "end_Offset": 490,
+    "start": 201.38,
+    "end": 207.57000000000002
+  },
+  {
+    "val": "It does not want to look as if it is rushing things.",
+    "start_Offset": 491,
+    "end_Offset": 502,
+    "start": 208.26,
+    "end": 210.54
+  },
+  {
+    "val": "In fact, rather absurdly, it has demanded extra clinical trials of covid-19 vaccines on Japanese people specifically as a condition of approval.",
+    "start_Offset": 503,
+    "end_Offset": 525,
+    "start": 210.83,
+    "end": 220.64
+  },
+  {
+    "val": "The vaccination of health-care workers began only last month.",
+    "start_Offset": 526,
+    "end_Offset": 535,
+    "start": 221.29,
+    "end": 224.47
+  },
+  {
+    "val": "The elderly will not get jabs before April.",
+    "start_Offset": 536,
+    "end_Offset": 543,
+    "start": 224.809999,
+    "end": 227.17000000000002
+  },
+  {
+    "val": "Most of the rest of the population will not start being vaccinated until midsummer.",
+    "start_Offset": 544,
+    "end_Offset": 557,
+    "start": 227.42,
+    "end": 232.03999900000002
+  },
+  {
+    "val": "That hardly improves the chances of holding a normal Olympics in Tokyo in July.",
+    "start_Offset": 558,
+    "end_Offset": 571,
+    "start": 232.52,
+    "end": 237.32999999999998
+  },
+  {
+    "val": "Shortages of supply, largely beyond governments’ control, will also cause delays.",
+    "start_Offset": 572,
+    "end_Offset": 582,
+    "start": 238.44,
+    "end": 243.14000000000001
+  },
+  {
+    "val": "Singapore’s prime minister, Lee Hsien Loong, warns that there will not be enough vaccines for everyone until the third quarter of the year.",
+    "start_Offset": 583,
+    "end_Offset": 605,
+    "start": 243.59,
+    "end": 250.66
+  },
+  {
+    "val": "It may take until the end of the year to complete the vaccination programme.",
+    "start_Offset": 606,
+    "end_Offset": 619,
+    "start": 251.02,
+    "end": 254.89000000000001
+  },
+  {
+    "val": "Whatever the cause of the sluggish roll-out, it is of greater concern than might at first be obvious considering that the countries concerned have such low infection rates.",
+    "start_Offset": 620,
+    "end_Offset": 648,
+    "start": 255.79,
+    "end": 265.11
+  },
+  {
+    "val": "In contrast to Europe and North America, success in curbing covid-19 means they have virtually no herd immunity.",
+    "start_Offset": 649,
+    "end_Offset": 667,
+    "start": 265.67,
+    "end": 273.07
+  },
+  {
+    "val": "Moreover, Asian governments’ rapid travel bans suggest a high aversion to risk.",
+    "start_Offset": 668,
+    "end_Offset": 679,
+    "start": 273.58,
+    "end": 278.52000000000004
+  },
+  {
+    "val": "That is unlikely to change.",
+    "start_Offset": 680,
+    "end_Offset": 684,
+    "start": 278.9,
+    "end": 280.56
+  },
+  {
+    "val": "Even a mooted travel“bubble”between Singapore and Hong Kong is on hold.",
+    "start_Offset": 685,
+    "end_Offset": 697,
+    "start": 280.9,
+    "end": 285.35
+  },
+  {
+    "val": "Dr Pangestu predicts that Singapore, for one, will remain“obsessive”about not quickly reopening its borders, even for inbound travellers with covid-19“passports”.",
+    "start_Offset": 698,
+    "end_Offset": 721,
+    "start": 285.849999,
+    "end": 295.6499999999999
+  },
+  {
+    "val": "They are no guarantee that you are not infectious, after all.",
+    "start_Offset": 722,
+    "end_Offset": 732,
+    "start": 296.35999999999996,
+    "end": 299.60999999999996
+  },
+  {
+    "val": "If Banyan had to bet on when Asian travel will resume, it will not be this year.",
+    "start_Offset": 733,
+    "end_Offset": 749,
+    "start": 300.16999999999996,
+    "end": 304.82999899999993
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

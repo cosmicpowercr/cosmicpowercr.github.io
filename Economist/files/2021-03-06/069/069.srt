@@ -1,0 +1,216 @@
+1
+00:00:11,570 --> 00:00:12,509
+MOST PEOPLE have little time for quants.
+
+2
+00:00:14,460 --> 00:00:25,209
+They find the language of quantitative finance far from illuminating.
+
+3
+00:00:25,489 --> 00:00:31,310
+Even fairly numerate people struggle to grasp what comes easily to pointy-headed number-crunchers.
+
+4
+00:00:31,750 --> 00:00:37,119
+Take the idea of correlation, the co-movement of two or more variables.
+
+5
+00:00:37,559 --> 00:00:40,990
+Such relationships vary with the period over which they are measured.
+
+6
+00:00:41,250 --> 00:00:42,720
+The direction can shift.
+
+7
+00:00:42,750 --> 00:00:44,640
+Things quickly become confusing.
+
+8
+00:00:45,090 --> 00:00:57,430
+Yet the quant argot is useful when considering perhaps the biggest fear stalking financial markets: a sustained rise in inflation that would be bad for both equities and bonds.
+
+9
+00:00:57,830 --> 00:01:04,219
+A quant might describe this as a flip in the bond-equity correlation from negative to positive.
+
+10
+00:01:04,780 --> 00:01:07,080
+That is none too elegant, though.
+
+11
+00:01:07,360 --> 00:01:13,780
+A better choice is a term used in geopolitics as well as econometrics: regime change.
+
+12
+00:01:14,860 --> 00:01:18,910
+It is helpful in this matter to start with two stylised facts.
+
+13
+00:01:19,150 --> 00:01:26,600
+The first is that in recent years, bond and equity prices have tended to move in opposite directions over the business cycle.
+
+14
+00:01:26,889 --> 00:01:34,760
+When recessions hit, bond prices tend to rise sharply (their yields fall) and equity prices usually crash.
+
+15
+00:01:35,170 --> 00:01:40,219
+When the economy recovers, bonds tend to fall in price and equity prices go up again.
+
+16
+00:01:40,710 --> 00:01:43,640
+You can think of this in terms of risk appetite.
+
+17
+00:01:44,110 --> 00:01:46,239
+Government bonds are safe assets.
+
+18
+00:01:46,289 --> 00:01:48,640
+People rush into them when they fear for the future.
+
+19
+00:01:49,140 --> 00:01:54,380
+Equities, by contrast, are risky assets, so people shun them in troubled times.
+
+20
+00:01:55,370 --> 00:02:01,580
+The second stylised fact concerns a secular relationship rather than a cyclical one.
+
+21
+00:02:02,469 --> 00:02:09,050
+Since the early 1980s bond and equity prices have moved in the same broad direction—upwards.
+
+22
+00:02:09,300 --> 00:02:15,040
+If you look at low-frequency data over a long period, the bond-equity correlation is positive.
+
+23
+00:02:15,580 --> 00:02:19,599
+This is best understood in terms of yields rather than prices.
+
+24
+00:02:20,219 --> 00:02:28,390
+For the past four decades, there has been a secular decline in government-bond yields, reflecting a secular decline in interest rates.
+
+25
+00:02:28,750 --> 00:02:35,879
+The earnings yield on equities has fallen, too, as have yields on other assets, such as corporate bonds and property.
+
+26
+00:02:36,490 --> 00:02:38,480
+This should not be a surprise.
+
+27
+00:02:38,719 --> 00:02:41,289
+Yields are a gauge of expected returns.
+
+28
+00:02:41,469 --> 00:02:44,380
+Bonds and equities compete for investors’ capital.
+
+29
+00:02:44,380 --> 00:02:49,600
+Over the long haul the prices and yields of each will respond to those of the other.
+
+30
+00:02:50,639 --> 00:02:55,110
+These two facts may seem at odds, but a third fact makes them consistent.
+
+31
+00:02:55,559 --> 00:03:04,110
+In each business cycle, interest rates tend to rise as the economy gathers strength (so bonds and equities diverge over short periods).
+
+32
+00:03:04,370 --> 00:03:12,990
+But each business-cycle peak in interest rates is lower than the previous one (so bonds and equity prices converge over the long run).
+
+33
+00:03:13,429 --> 00:03:17,829
+That in turn is a response to the secular decline in inflation.
+
+34
+00:03:19,000 --> 00:03:22,900
+Indeed, inflation is central to the bond-equity relationship.
+
+35
+00:03:23,170 --> 00:03:27,610
+It is here that things become trickier, and the notion of regime change matters.
+
+36
+00:03:27,960 --> 00:03:30,920
+Bonds promise fixed cash payments in the future.
+
+37
+00:03:31,230 --> 00:03:36,250
+Those cashflows are worth less when inflation unexpectedly rises.
+
+38
+00:03:36,630 --> 00:03:41,550
+By contrast, equities have generally outpaced inflation over the long haul.
+
+39
+00:03:41,890 --> 00:03:46,250
+But the relationship between inflation and equity prices is not stable.
+
+40
+00:03:46,790 --> 00:04:00,700
+A study by Sushil Wadhwani, a former member of the Bank of England’s rate-setting committee, in 2013 found that higher inflation generally helped to boost stockmarket returns in Britain in the two centuries before 1914.
+
+41
+00:04:02,040 --> 00:04:06,820
+But by the last half of the 20th century a negative relationship had emerged.
+
+42
+00:04:07,160 --> 00:04:10,889
+You might best explain this finding in terms of monetary regimes.
+
+43
+00:04:11,199 --> 00:04:19,460
+Under the pre-1914 gold standard, inflation was mean-reverting: if it was high one year, it would fall the next.
+
+44
+00:04:20,010 --> 00:04:26,370
+But in the era of fiat money, especially in the 1970s, the checks on inflation were less binding.
+
+45
+00:04:27,580 --> 00:04:33,670
+In the past few decades central banks were given inflation targets, and the monetary regime switched again.
+
+46
+00:04:34,000 --> 00:04:37,070
+Now, yet another regime change may be afoot.
+
+47
+00:04:37,570 --> 00:04:43,760
+Fiscal stimulus is back in favour, which has an unsettling 1970s feel to it.
+
+48
+00:04:44,049 --> 00:04:55,540
+Fiscal policy fell out of fashion because it was not well suited to fine-tuning aggregate demand; politicians are reluctant to cut spending or raise taxes when the economy threatens to overheat.
+
+49
+00:04:55,910 --> 00:05:04,530
+And the old-style central banker—reared in academia, aloof from politics, paranoid about inflation—is now almost extinct.
+
+50
+00:05:05,020 --> 00:05:10,720
+The new breed talks about climate change and inequality and is sanguine about inflation risks.
+
+51
+00:05:11,020 --> 00:05:14,889
+This feeds a general sense of lost policy discipline.
+
+52
+00:05:15,900 --> 00:05:20,270
+Sooner or later, warn the hawks, this will end in tears.
+
+53
+00:05:20,549 --> 00:05:32,800
+Many of the people who predict the return of 1970s-style inflation used to deride the old-school, bookish rate-setter, with his fancy econometrics and lack of market smarts.
+
+54
+00:05:33,179 --> 00:05:39,029
+It is no small irony that they now feel so nostalgic for the pointy-headed central banker.
+

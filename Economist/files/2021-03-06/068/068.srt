@@ -1,0 +1,268 @@
+1
+00:00:16,609 --> 00:00:22,510
+THE WEEK in financial markets got off to a breezy start, belying the turmoil of the previous week.
+
+2
+00:00:22,860 --> 00:00:32,289
+By the time the New York market closed on March 1st, the S&P 500 index of leading shares had risen by a carefree 2,5% on the day.
+
+3
+00:00:32,870 --> 00:00:37,159
+Europe’s stockmarkets had already followed Asia’s lead in closing sharply up.
+
+4
+00:00:37,610 --> 00:00:47,209
+The mood in Asia was helped by Australia’s central bank, which acted to calm bond-market nerves by announcing it would intervene to buy long-dated government paper.
+
+5
+00:00:47,849 --> 00:00:54,869
+Yields on ten-year Aussie bonds, which had risen quickly since New Year’s Day, fell by some 0,25 percentage points.
+
+6
+00:00:56,630 --> 00:00:59,210
+Stockmarkets gave up Monday’s gains on Tuesday and Wednesday.
+
+7
+00:00:59,210 --> 00:01:08,460
+But conditions in America’s government-bond market were somewhat calmer, in stark contrast to the week before, when anxiety about inflation took hold.
+
+8
+00:01:09,309 --> 00:01:16,010
+The steady fall in bond prices since the start of the year had suddenly quickened to a pace that threatened a destabilising rout.
+
+9
+00:01:16,490 --> 00:01:24,980
+During February 25th the benchmark ten-year Treasury yield spiked above 1,6% (bond yields move inversely to prices).
+
+10
+00:01:25,630 --> 00:01:31,530
+That is still low by historical standards, but a lot higher than it started the day, or indeed the year.
+
+11
+00:01:32,150 --> 00:01:38,020
+This prompted a big one-day fall in the S&P 500 and a bigger fall in the tech-heavy NASDAQ.
+
+12
+00:01:38,740 --> 00:01:44,690
+Almost as suddenly, the worst fears about inflation have receded again—but perhaps not for long.
+
+13
+00:01:45,660 --> 00:01:47,829
+Much of what has happened is to be expected.
+
+14
+00:01:47,920 --> 00:01:51,030
+Bond prices ought to fall as the economy recovers.
+
+15
+00:01:51,460 --> 00:01:59,580
+The ten-year Treasury is the benchmark bond and is thus a barometer of risk appetite in markets and of economic confidence more broadly.
+
+16
+00:02:00,219 --> 00:02:02,020
+And it is global benchmark.
+
+17
+00:02:02,210 --> 00:02:10,120
+The sharp rise in Treasury yields from the start of the year until February 25th was matched by yields on bonds in other places (see chart 1).
+
+18
+00:02:11,090 --> 00:02:17,260
+Bond prices move in the opposite direction to confidence; bond yields go in the same direction as confidence.
+
+19
+00:02:17,599 --> 00:02:24,730
+When the outlook for the economy is bleak, as it was in March last year, yields fall sharply as investors rush to the safety of bonds.
+
+20
+00:02:25,340 --> 00:02:29,820
+As the outlook brightens, bond prices start to fall and yields start to rise again.
+
+21
+00:02:30,160 --> 00:02:33,379
+Bond prices are thus countercyclical most of the time.
+
+22
+00:02:45,830 --> 00:02:46,410
+Mild inflation is not to be feared.
+
+23
+00:02:46,480 --> 00:02:55,080
+Indeed it is in part changes in the market’s expectations of inflation that drive bond yields down in recessions and up in recoveries.
+
+24
+00:02:55,410 --> 00:03:00,749
+But hopes for a reflation of the economy can quickly spill over into fear of higher inflation.
+
+25
+00:03:01,340 --> 00:03:04,180
+The case for this seems stronger than it has for many years.
+
+26
+00:03:04,450 --> 00:03:06,870
+The American economy is recovering quickly.
+
+27
+00:03:07,360 --> 00:03:11,380
+Fiscal transfers have left households with lots of extra savings.
+
+28
+00:03:11,700 --> 00:03:14,310
+Lockdowns have given rise to pent-up demand.
+
+29
+00:03:14,520 --> 00:03:19,520
+Already there is plenty of fuel for a spending spree when the economy reopens in earnest.
+
+30
+00:03:20,060 --> 00:03:21,100
+And more is on the way.
+
+31
+00:03:21,440 --> 00:03:26,890
+President Biden’s $1,9trn stimulus package is likely to become law this month.
+
+32
+00:03:27,260 --> 00:03:33,830
+A jump in the annual inflation rate seems assured in the coming months, if only because prices were depressed a year ago.
+
+33
+00:03:34,520 --> 00:03:40,900
+Perhaps, then, the strength of consumer spending, as people start to move around more freely, might further push it up.
+
+34
+00:03:41,830 --> 00:03:45,379
+These latent anxieties form the backdrop to the recent turmoil.
+
+35
+00:03:45,800 --> 00:03:48,420
+Three factors in particular seemed to be at work.
+
+36
+00:03:48,730 --> 00:03:59,210
+First, the market for future short-term rates started to price in interest-rate increases by the Federal Reserve by early 2023, sooner than the Fed had indicated thus far.
+
+37
+00:03:59,760 --> 00:04:09,470
+You can call this the inflation-fear element: if the economy seemingly has this much momentum behind it, can the Fed really hold off from raising rates for very long?
+
+38
+00:04:10,139 --> 00:04:13,960
+And if it tightens sooner, might the peak in interest rates be higher?
+
+39
+00:04:14,550 --> 00:04:26,589
+That would be a big concern for America’s stockmarkets, where high prices relative to future earnings are largely justified by the expectation that interest rates will remain very low for a long time.
+
+40
+00:04:27,549 --> 00:04:37,180
+Second, just as the market was having a rethink about Fed policy, the Treasury held auctions for two-year, five-year and seven-year bond issues on February 25th.
+
+41
+00:04:37,800 --> 00:04:44,839
+These are maturities that are sensitive to shifts in expectations about Fed policy in 2023-24.
+
+42
+00:04:45,380 --> 00:04:49,550
+Indeed the one-day rise in the five-year-bond yield was notable (see chart 2).
+
+43
+00:04:49,550 --> 00:04:50,700
+The auctions went poorly.
+
+44
+00:04:50,720 --> 00:04:58,609
+The seven-year bond had the lowest bid-to-cover ratio (a gauge of excess demand) for an issue of its kind for more than a decade.
+
+45
+00:04:58,719 --> 00:05:02,569
+This further spooked the market about the underlying demand for bonds.
+
+46
+00:05:03,759 --> 00:05:08,310
+Third, the volatility in the bond market seems to have caused liquidity to dry up.
+
+47
+00:05:08,830 --> 00:05:13,530
+So for a given volume of selling, prices fell further than they otherwise might have.
+
+48
+00:05:13,960 --> 00:05:17,800
+Each of these three factors reinforced the other—hence the drama.
+
+49
+00:05:18,759 --> 00:05:24,059
+Given the anxieties about inflation, you may wonder why the bond market recovered its poise.
+
+50
+00:05:24,410 --> 00:05:30,040
+There are probably limits to how far an inflation scare can run this early in the economic recovery.
+
+51
+00:05:30,560 --> 00:05:39,420
+The message from the Fed’s rate-setters has generally been that they are not even thinking about thinking about raising rates or cutting back on bond purchases.
+
+52
+00:05:39,540 --> 00:05:44,480
+In a speech on March 2nd Lael Brainard, a Fed governor, stuck to that script.
+
+53
+00:05:44,560 --> 00:05:54,260
+“Today the economy remains far from our goals in terms of both employment and inflation, and it will take some time to achieve substantial further progress,”she said.
+
+54
+00:05:55,110 --> 00:06:03,920
+The intervention by the Reserve Bank of Australia is a reminder that central banks have the firepower to cap bond yields, if they are determined to do so.
+
+55
+00:06:04,020 --> 00:06:08,350
+And some private-sector investors will see value in Treasuries at these yields.
+
+56
+00:06:08,639 --> 00:06:13,770
+Foreign buyers from Europe and Japan, for instance, where yields are lower, may find them attractive.
+
+57
+00:06:14,710 --> 00:06:18,080
+All this has restored a measure of calm to the bond market.
+
+58
+00:06:18,490 --> 00:06:23,840
+Ten-year Treasury yields are inching upwards again, having fallen back to 1,4%.
+
+59
+00:06:24,210 --> 00:06:29,169
+The equity market is choppy, but that might be expected after such a long run-up in prices.
+
+60
+00:06:29,670 --> 00:06:36,710
+You could put the events of last week down to“technical issues”, the catch-all explanation for many a financial-market scare.
+
+61
+00:06:37,250 --> 00:06:39,420
+But that would be a little too sanguine.
+
+62
+00:06:39,700 --> 00:06:46,210
+Episodes in which trading liquidity suddenly dries up seem to be becoming more frequent in the Treasury market.
+
+63
+00:06:46,780 --> 00:06:48,649
+These sorts of scares will recur.
+
+64
+00:06:48,809 --> 00:06:51,700
+Inflation is the bogeyman of financial markets.
+
+65
+00:06:52,070 --> 00:06:56,180
+A whole constellation of expensive assets depends on its quiescence.
+
+66
+00:06:56,850 --> 00:06:59,960
+No one can yet be confident that it will stay subdued.
+
+67
+00:07:00,280 --> 00:07:04,320
+Further bouts of bond-market jitters are likely before the year is out.
+

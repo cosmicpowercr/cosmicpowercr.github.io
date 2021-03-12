@@ -1,0 +1,535 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">036 Middle East and Africa - Lebanon</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='036';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "AT FIRST GLANCE one might have thought the cardboard box was a visiting head of state.",
+    "start_Offset": 0,
+    "end_Offset": 15,
+    "start": 16.719999,
+    "end": 21.08
+  },
+  {
+    "val": "On February 13th Lebanon’s first batch of covid-19 vaccines emerged from a jet at Beirut’s international airport.",
+    "start_Offset": 16,
+    "end_Offset": 33,
+    "start": 21.52,
+    "end": 29.73
+  },
+  {
+    "val": "A delegation of officials drove out to meet it; local media broadcast the event live.",
+    "start_Offset": 34,
+    "end_Offset": 48,
+    "start": 30.25,
+    "end": 35.39
+  },
+  {
+    "val": "Never mind that the shipment contained a meagre 28,500 jabs.",
+    "start_Offset": 49,
+    "end_Offset": 59,
+    "start": 35.719999,
+    "end": 40.18
+  },
+  {
+    "val": "After a miserable year of pandemic, economic collapse and a catastrophic explosion in Beirut, the vaccines offered a dose of hope.",
+    "start_Offset": 60,
+    "end_Offset": 80,
+    "start": 40.65,
+    "end": 48.849999000000004
+  },
+  {
+    "val": "Scepticism, a pre-existing condition in a country notorious for corruption, prevailed too.",
+    "start_Offset": 81,
+    "end_Offset": 93,
+    "start": 49.889999,
+    "end": 55.05
+  },
+  {
+    "val": "Many Lebanese expected the rich and powerful to jump the queue to get their shots.",
+    "start_Offset": 94,
+    "end_Offset": 108,
+    "start": 59.2,
+    "end": 59.910000000000004
+  },
+  {
+    "val": "They drew some comfort from the involvement of the World Bank, which in January allocated $34m to fund vaccine imports, enough to cover doses for more than 2m people (a third of the population).",
+    "start_Offset": 109,
+    "end_Offset": 142,
+    "start": 60.33,
+    "end": 73.08
+  },
+  {
+    "val": "Lebanon was the first country to strike such an agreement with the bank.",
+    "start_Offset": 143,
+    "end_Offset": 155,
+    "start": 74.02,
+    "end": 77.56
+  },
+  {
+    "val": "It came, however, with conditions.",
+    "start_Offset": 156,
+    "end_Offset": 160,
+    "start": 77.83,
+    "end": 79.86
+  },
+  {
+    "val": "The bank demanded transparency.",
+    "start_Offset": 161,
+    "end_Offset": 164,
+    "start": 80.16,
+    "end": 82.11
+  },
+  {
+    "val": "Lebanon would have to set up a system for distributing vaccines.",
+    "start_Offset": 165,
+    "end_Offset": 175,
+    "start": 82.38,
+    "end": 85.879999
+  },
+  {
+    "val": "Everyone would have to wait their turn.",
+    "start_Offset": 176,
+    "end_Offset": 182,
+    "start": 86.309999,
+    "end": 88.08999899999999
+  },
+  {
+    "val": "“There will be no wasta,”said Ferid Belhaj, the bank’s top official for the Middle East, using an Arabic word that connotes nepotism.",
+    "start_Offset": 183,
+    "end_Offset": 205,
+    "start": 88.379999,
+    "end": 96.24
+  },
+  {
+    "val": "The health ministry published a plan that allocated the first doses for medical workers and over-75s.",
+    "start_Offset": 206,
+    "end_Offset": 222,
+    "start": 96.72,
+    "end": 102.58
+  },
+  {
+    "val": "Elie Ferzli is neither.",
+    "start_Offset": 223,
+    "end_Offset": 226,
+    "start": 104.42,
+    "end": 105.12
+  },
+  {
+    "val": "That did not stop the 71-year-old MP and 15 of his colleagues from getting a dose on February 23rd.",
+    "start_Offset": 227,
+    "end_Offset": 247,
+    "start": 105.5,
+    "end": 111.94000000000001
+  },
+  {
+    "val": "About half were under 75, and they took their jabs at the parliament building rather than a designated hospital.",
+    "start_Offset": 248,
+    "end_Offset": 266,
+    "start": 112.51,
+    "end": 119.33999899999999
+  },
+  {
+    "val": "The World Bank raged.",
+    "start_Offset": 267,
+    "end_Offset": 270,
+    "start": 119.87,
+    "end": 121.66
+  },
+  {
+    "val": "Saroj Kumar Jha, a regional director, said the bank could halt its funds.",
+    "start_Offset": 271,
+    "end_Offset": 283,
+    "start": 122.469999,
+    "end": 127.46
+  },
+  {
+    "val": "A few MPs apologised.",
+    "start_Offset": 284,
+    "end_Offset": 287,
+    "start": 128.0,
+    "end": 129.55
+  },
+  {
+    "val": "Others claimed they were front-line workers in need of protection.",
+    "start_Offset": 288,
+    "end_Offset": 298,
+    "start": 129.62,
+    "end": 132.84
+  },
+  {
+    "val": "Mr Ferzli embarked on a series of televised diatribes, called Mr Jha a liar and urged his bosses to“send a replacement”.",
+    "start_Offset": 299,
+    "end_Offset": 320,
+    "start": 133.4,
+    "end": 141.87
+  },
+  {
+    "val": "He took a further jab at him by mispronouncing his first name as“Farouj”, Arabic for a roast chicken.",
+    "start_Offset": 321,
+    "end_Offset": 339,
+    "start": 142.129999,
+    "end": 148.58
+  },
+  {
+    "val": "The World Bank faced a dilemma familiar to Lebanon’s donors.",
+    "start_Offset": 340,
+    "end_Offset": 349,
+    "start": 149.18,
+    "end": 152.47
+  },
+  {
+    "val": "To do nothing would set a bad precedent, in Lebanon and other countries with similar agreements.",
+    "start_Offset": 350,
+    "end_Offset": 365,
+    "start": 152.72,
+    "end": 157.89999999999998
+  },
+  {
+    "val": "But to halt funding would delay an already sluggish vaccine roll-out.",
+    "start_Offset": 366,
+    "end_Offset": 377,
+    "start": 158.259999,
+    "end": 162.429999
+  },
+  {
+    "val": "So far it has demanded only that the health ministry publish weekly data on vaccine distribution.",
+    "start_Offset": 378,
+    "end_Offset": 393,
+    "start": 162.889999,
+    "end": 168.98999999999998
+  },
+  {
+    "val": "Most of Lebanon’s friends have tired of such scandals.",
+    "start_Offset": 394,
+    "end_Offset": 402,
+    "start": 169.67,
+    "end": 173.20999999999998
+  },
+  {
+    "val": "The country desperately needs help.",
+    "start_Offset": 403,
+    "end_Offset": 407,
+    "start": 173.41,
+    "end": 175.27
+  },
+  {
+    "val": "Its currency has lost 85% of its value since October 2019.",
+    "start_Offset": 408,
+    "end_Offset": 418,
+    "start": 175.61,
+    "end": 180.569999
+  },
+  {
+    "val": "Hyperinflation has pushed more than half the population into poverty, with food prices up fourfold last year.",
+    "start_Offset": 419,
+    "end_Offset": 435,
+    "start": 181.01,
+    "end": 187.92000000000002
+  },
+  {
+    "val": "Daily blackouts are growing longer as power plants run short of fuel.",
+    "start_Offset": 436,
+    "end_Offset": 447,
+    "start": 188.55,
+    "end": 192.42000000000002
+  },
+  {
+    "val": "Despite a restrictive lockdown imposed in mid-January, Lebanon still has some of the world’s highest rates of new covid-19 infections and deaths.",
+    "start_Offset": 448,
+    "end_Offset": 471,
+    "start": 192.74,
+    "end": 201.64000000000001
+  },
+  {
+    "val": "Almost no one is queuing up to help.",
+    "start_Offset": 472,
+    "end_Offset": 479,
+    "start": 202.42,
+    "end": 204.31
+  },
+  {
+    "val": "The Gulf states have closed their purses, judging Lebanon too friendly with Iran, their arch-rival.",
+    "start_Offset": 480,
+    "end_Offset": 495,
+    "start": 204.56,
+    "end": 209.91
+  },
+  {
+    "val": "Western donors are tired of funding corruption and dysfunction.",
+    "start_Offset": 496,
+    "end_Offset": 504,
+    "start": 210.309999,
+    "end": 213.94
+  },
+  {
+    "val": "A pot of $11bn in aid pledged at a donors’ conference in 2018 remains undisbursed because the Lebanese government failed to approve minimal reforms.",
+    "start_Offset": 505,
+    "end_Offset": 528,
+    "start": 214.34,
+    "end": 224.75
+  },
+  {
+    "val": "Talks with the IMF last year went nowhere.",
+    "start_Offset": 529,
+    "end_Offset": 536,
+    "start": 225.21,
+    "end": 227.61
+  },
+  {
+    "val": "The World Bank has been among Lebanon’s few remaining friends.",
+    "start_Offset": 537,
+    "end_Offset": 546,
+    "start": 228.21,
+    "end": 231.35999999999999
+  },
+  {
+    "val": "In January it pledged a $204m loan to provide cash transfers to 147,000 poor Lebanese families for the next year.",
+    "start_Offset": 547,
+    "end_Offset": 567,
+    "start": 231.67,
+    "end": 241.22
+  },
+  {
+    "val": "Even there, though, Lebanon’s leaders found a way to twist the scheme to their advantage.",
+    "start_Offset": 568,
+    "end_Offset": 582,
+    "start": 241.91,
+    "end": 246.44
+  },
+  {
+    "val": "The money will be transferred to Lebanon in dollars but distributed to recipients in local currency at a below-market rate.",
+    "start_Offset": 583,
+    "end_Offset": 603,
+    "start": 246.88,
+    "end": 254.15
+  },
+  {
+    "val": "The Lebanese central bank, in other words, spotted an arbitrage opportunity in humanitarian aid.",
+    "start_Offset": 604,
+    "end_Offset": 617,
+    "start": 254.54,
+    "end": 259.76
+  },
+  {
+    "val": "Last month gunmen assassinated Lokman Slim, a prominent critic of Hizbullah, the Shia militant group-cum-political party.",
+    "start_Offset": 618,
+    "end_Offset": 635,
+    "start": 260.41,
+    "end": 268.3
+  },
+  {
+    "val": "(The murder, like most such killings in Lebanon, has not been solved and probably never will be.",
+    "start_Offset": 636,
+    "end_Offset": 652,
+    "start": 268.65,
+    "end": 273.78999999999996
+  },
+  {
+    "val": ") On March 2nd the pound hit 10,000 to the dollar, its weakest rate ever, which led to angry protests across the country.",
+    "start_Offset": 653,
+    "end_Offset": 675,
+    "start": 274.42,
+    "end": 282.51000000000005
+  },
+  {
+    "val": "Gone was the hopeful atmosphere of October 2019, when hundreds of thousands of people turned out for anti-government rallies.",
+    "start_Offset": 676,
+    "end_Offset": 695,
+    "start": 283.03,
+    "end": 290.38
+  },
+  {
+    "val": "The mood has turned dark.",
+    "start_Offset": 696,
+    "end_Offset": 700,
+    "start": 290.9,
+    "end": 292.14
+  },
+  {
+    "val": "Lebanon’s avaricious leaders may need protection against more than covid-19 in the months to come.",
+    "start_Offset": 701,
+    "end_Offset": 716,
+    "start": 292.24,
+    "end": 298.02
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

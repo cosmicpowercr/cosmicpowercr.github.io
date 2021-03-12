@@ -1,0 +1,1374 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">028 Asia - The Fukushima disaster</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='028';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "IN THE HILLY village of Iitate, in Fukushima prefecture, stands a new community centre built with parts pulled from abandoned buildings.",
+    "start_Offset": 0,
+    "end_Offset": 20,
+    "start": 6.82,
+    "end": 27.96
+  },
+  {
+    "val": "Windows from one, doors from another.",
+    "start_Offset": 21,
+    "end_Offset": 26,
+    "start": 28.240000000000002,
+    "end": 30.93
+  },
+  {
+    "val": "A chalkboard from a beloved school with no children to attend it.",
+    "start_Offset": 27,
+    "end_Offset": 38,
+    "start": 31.33,
+    "end": 35.099999000000004
+  },
+  {
+    "val": "One cloudy day last autumn, a crowd gathered to celebrate its opening.",
+    "start_Offset": 39,
+    "end_Offset": 50,
+    "start": 35.480000000000004,
+    "end": 40.06
+  },
+  {
+    "val": "As an elderly woman in a green kimono sang folk tunes, her voice riding a beat or two behind the music, the audience, a mix of locals and Tokyo-ites involved in the centre’s design, feasted on chestnut-filled rice balls.",
+    "start_Offset": 51,
+    "end_Offset": 91,
+    "start": 40.53,
+    "end": 55.539999
+  },
+  {
+    "val": "Iitate is a farming district once known for its fine beef and dried radish.",
+    "start_Offset": 92,
+    "end_Offset": 105,
+    "start": 56.4,
+    "end": 61.349999999999994
+  },
+  {
+    "val": "In 2010 it qualified for membership of a club called“Most beautiful villages of Japan”.",
+    "start_Offset": 106,
+    "end_Offset": 120,
+    "start": 61.769999999999996,
+    "end": 67.36
+  },
+  {
+    "val": "Yet its recent history has been far from bucolic.",
+    "start_Offset": 121,
+    "end_Offset": 129,
+    "start": 67.809999,
+    "end": 71.39
+  },
+  {
+    "val": "Some 35km to the south-east, across the verdant Abukuma mountains, stands the Fukushima Dai-ichi nuclear plant.",
+    "start_Offset": 130,
+    "end_Offset": 147,
+    "start": 71.869999,
+    "end": 79.89
+  },
+  {
+    "val": "Opened in 1971, it was one of dozens built around Japan to power the post-war economy.",
+    "start_Offset": 148,
+    "end_Offset": 164,
+    "start": 80.3,
+    "end": 86.979999
+  },
+  {
+    "val": "The government offered municipalities generous subsidies for hosting the plants, and promised people that they posed no risks.",
+    "start_Offset": 165,
+    "end_Offset": 182,
+    "start": 87.49,
+    "end": 95.78
+  },
+  {
+    "val": "By 2011 Japan had 54 working reactors, providing a third of the country’s electricity.",
+    "start_Offset": 183,
+    "end_Offset": 196,
+    "start": 95.84,
+    "end": 101.75
+  },
+  {
+    "val": "At 2:46pm on March 11th of that year, an earthquake shook Japan’s north-eastern coast.",
+    "start_Offset": 197,
+    "end_Offset": 212,
+    "start": 102.759999,
+    "end": 109.489999
+  },
+  {
+    "val": "The quake triggered a tsunami, sending waves as high as 40 metres crashing along 500km of coastline.",
+    "start_Offset": 213,
+    "end_Offset": 229,
+    "start": 109.79,
+    "end": 117.49
+  },
+  {
+    "val": "Homes and roads were obliterated.",
+    "start_Offset": 230,
+    "end_Offset": 234,
+    "start": 117.88,
+    "end": 120.38999899999999
+  },
+  {
+    "val": "Though the plant withstood the waves, its back-up generators were flooded, halting the essential flow of cooling water around its six reactors.",
+    "start_Offset": 235,
+    "end_Offset": 257,
+    "start": 120.759999,
+    "end": 129.39
+  },
+  {
+    "val": "Within days, three of them had melted down, spreading radiation across the region and panic around the world.",
+    "start_Offset": 258,
+    "end_Offset": 275,
+    "start": 129.99,
+    "end": 136.74
+  },
+  {
+    "val": "Thousands fled their homes.",
+    "start_Offset": 276,
+    "end_Offset": 279,
+    "start": 137.41,
+    "end": 139.069999
+  },
+  {
+    "val": "A few of them went first to Iitate, but the wind carried radioactive particles in its direction.",
+    "start_Offset": 280,
+    "end_Offset": 296,
+    "start": 139.07,
+    "end": 145.029999
+  },
+  {
+    "val": "Eventually the authorities ordered the evacuation of Iitate, too.",
+    "start_Offset": 297,
+    "end_Offset": 305,
+    "start": 145.469999,
+    "end": 149.07999999999998
+  },
+  {
+    "val": "Residents were allowed to return six years later, but only 1,500 have done so—a fraction of the 6,200 who called it home before the disaster.",
+    "start_Offset": 306,
+    "end_Offset": 333,
+    "start": 149.52,
+    "end": 159.89000000000001
+  },
+  {
+    "val": "“The radiation effects are not visible, but I hope you can see how deeply it is felt,”says Tao Yoichi of Resurrection of Fukushima, the NGO that organised the construction of the community centre.",
+    "start_Offset": 334,
+    "end_Offset": 367,
+    "start": 160.26,
+    "end": 172.63
+  },
+  {
+    "val": "The earthquake literally reshaped the country: Japan’s biggest island moved 2,4 metres to the east.",
+    "start_Offset": 368,
+    "end_Offset": 383,
+    "start": 173.45,
+    "end": 180.89000000000001
+  },
+  {
+    "val": "At the time, a similarly seismic shift in Japanese society was predicted.",
+    "start_Offset": 384,
+    "end_Offset": 395,
+    "start": 181.26,
+    "end": 185.73000000000002
+  },
+  {
+    "val": "Politicians painted efforts to rehabilitate Fukushima as an emblem of a broader revival after a period of economic stagnation and demographic decline.",
+    "start_Offset": 396,
+    "end_Offset": 417,
+    "start": 186.15,
+    "end": 195.569999
+  },
+  {
+    "val": "Commentators spoke of 3/11, as the disaster came to be known, as a historical turning point, a shared experience that would shape a generation, a shock that would reinvigorate sclerotic institutions and open closed minds.",
+    "start_Offset": 418,
+    "end_Offset": 453,
+    "start": 195.929999,
+    "end": 211.66
+  },
+  {
+    "val": "Japan’s“post-war”period had given way to a new,“post-disaster”era, went one popular coinage.",
+    "start_Offset": 454,
+    "end_Offset": 470,
+    "start": 212.04,
+    "end": 218.8
+  },
+  {
+    "val": "Kurokawa Kiyoshi, chairman of the parliamentary committee that investigated the disaster, spoke of 3/11 as a possible“third opening”, akin to the abolition of the shogunate in 1868 and Japan’s defeat in the second world war.",
+    "start_Offset": 471,
+    "end_Offset": 507,
+    "start": 218.8,
+    "end": 234.5
+  },
+  {
+    "val": "Ten years after 3/11, the third opening has yet to materialise.",
+    "start_Offset": 508,
+    "end_Offset": 519,
+    "start": 235.359999,
+    "end": 239.6
+  },
+  {
+    "val": "“I expected that Japan would finally start to change and I pinned hope on that prospect—but I’m afraid I was proven to be wrong,”says Funabashi Yoichi, chairman of an independent investigation into the accident.",
+    "start_Offset": 520,
+    "end_Offset": 555,
+    "start": 239.93,
+    "end": 252.53
+  },
+  {
+    "val": "“The first instinct was just to restore, not to reform.”",
+    "start_Offset": 556,
+    "end_Offset": 565,
+    "start": 253.28,
+    "end": 256.88
+  },
+  {
+    "val": "Mr Kurokawa agrees:“No, the crisis did not change Japan”.",
+    "start_Offset": 566,
+    "end_Offset": 575,
+    "start": 256.9,
+    "end": 261.909999
+  },
+  {
+    "val": "It was, perhaps, too much to expect a revolution.",
+    "start_Offset": 576,
+    "end_Offset": 584,
+    "start": 262.74,
+    "end": 265.63
+  },
+  {
+    "val": "The 3/11 disaster revealed internal failings, mostly of an intractable, structural sort, but also resilience.",
+    "start_Offset": 585,
+    "end_Offset": 600,
+    "start": 265.99,
+    "end": 273.6
+  },
+  {
+    "val": "And though it battered Japan, it did not amount to complete defeat, as in the second world war.",
+    "start_Offset": 601,
+    "end_Offset": 618,
+    "start": 274.1,
+    "end": 279.7
+  },
+  {
+    "val": "By chance, it occurred during only the second brief period in Japan’s post-war history when the Liberal Democratic Party (LDP) was not in power.",
+    "start_Offset": 619,
+    "end_Offset": 643,
+    "start": 280.059999,
+    "end": 289.35
+  },
+  {
+    "val": "The association of the Democratic Party of Japan (DPJ), in office from 2009 to 2012, with the disaster helped to discredit the idea of reform and political alternation.",
+    "start_Offset": 644,
+    "end_Offset": 671,
+    "start": 289.68,
+    "end": 301.94
+  },
+  {
+    "val": "“Nuclear policy was implemented for many years by the LDP, but the DPJ had to take responsibility [for the disaster],”says Nakabayashi Mieko, a former MP with the DPJ.",
+    "start_Offset": 672,
+    "end_Offset": 700,
+    "start": 302.44,
+    "end": 313.53999999999996
+  },
+  {
+    "val": "“Afterwards, people thought that while democracy in Japan was important, stability should have priority.”",
+    "start_Offset": 701,
+    "end_Offset": 714,
+    "start": 314.93999999999994,
+    "end": 320.67
+  },
+  {
+    "val": "“There’s been some change, but nothing at the pace commensurate with the promise,”argues Richard Samuels, author of“3,11: Disaster and Change in Japan”.",
+    "start_Offset": 715,
+    "end_Offset": 739,
+    "start": 321.16,
+    "end": 331.98
+  },
+  {
+    "val": "A new regulator brought stricter oversight to the nuclear industry.",
+    "start_Offset": 740,
+    "end_Offset": 749,
+    "start": 332.45,
+    "end": 335.96999999999997
+  },
+  {
+    "val": "But the LDP remains wedded to nuclear power despite public scepticism.",
+    "start_Offset": 750,
+    "end_Offset": 760,
+    "start": 335.969999,
+    "end": 340.929999
+  },
+  {
+    "val": "Disaster preparedness has improved.",
+    "start_Offset": 761,
+    "end_Offset": 764,
+    "start": 341.440001,
+    "end": 343.60999999999996
+  },
+  {
+    "val": "But the same flaws that handicapped the response to the disaster—weak central authority, lack of co-ordination among ministries, poor communication, bureaucratic inflexibility—persist.",
+    "start_Offset": 765,
+    "end_Offset": 789,
+    "start": 343.63,
+    "end": 355.21
+  },
+  {
+    "val": "And the political impetus for reform has dissipated, as the LDP has regained power, the DPJ has disintegrated and apathy has set in.",
+    "start_Offset": 790,
+    "end_Offset": 812,
+    "start": 355.53,
+    "end": 365.09000000000003
+  },
+  {
+    "val": "Miyagi and Iwate, the two other prefectures that suffered most from the earthquake and tsunami, have largely recovered.",
+    "start_Offset": 813,
+    "end_Offset": 830,
+    "start": 366.05,
+    "end": 373.16999999999996
+  },
+  {
+    "val": "Fukushima itself has struggled.",
+    "start_Offset": 831,
+    "end_Offset": 834,
+    "start": 373.48,
+    "end": 375.81
+  },
+  {
+    "val": "A small area is still uninhabitable.",
+    "start_Offset": 835,
+    "end_Offset": 840,
+    "start": 376.15,
+    "end": 378.64
+  },
+  {
+    "val": "Kowata Masumi’s husband’s family had lived for more than 200 years in the same house in Okuma, one of the two towns next to the plant, growing persimmons, weaving silk and brewing sake.",
+    "start_Offset": 841,
+    "end_Offset": 873,
+    "start": 378.32,
+    "end": 390.76
+  },
+  {
+    "val": "It is now in the“difficult-to-return”zone (see map), subject to 50 times more radiation than is typically considered safe.",
+    "start_Offset": 874,
+    "end_Offset": 895,
+    "start": 390.759999,
+    "end": 399.54999999999995
+  },
+  {
+    "val": "Former residents are allowed to make short visits in protective gear, but not to stay overnight.",
+    "start_Offset": 896,
+    "end_Offset": 911,
+    "start": 400.25,
+    "end": 405.289999
+  },
+  {
+    "val": "Ms Kowata, one of Okuma’s town councillors, found a monkey in her living room on one such trip,“wearing our clothes like the king of the house”.",
+    "start_Offset": 912,
+    "end_Offset": 938,
+    "start": 405.63,
+    "end": 414.439999
+  },
+  {
+    "val": "For the most part, however, the problem is no longer contamination.",
+    "start_Offset": 939,
+    "end_Offset": 949,
+    "start": 415.13,
+    "end": 418.46000000000004
+  },
+  {
+    "val": "Only 2,4% of the land area of the prefecture remains off-limits to residents.",
+    "start_Offset": 950,
+    "end_Offset": 964,
+    "start": 418.72,
+    "end": 423.46
+  },
+  {
+    "val": "Only 36,811 people, or 2,1% of the population, are still unable to return home.",
+    "start_Offset": 965,
+    "end_Offset": 980,
+    "start": 423.82,
+    "end": 431.3
+  },
+  {
+    "val": "Just one worker has died from direct radiation exposure.",
+    "start_Offset": 981,
+    "end_Offset": 989,
+    "start": 431.73,
+    "end": 435.8
+  },
+  {
+    "val": "Cancer rates in the region have not spiked.",
+    "start_Offset": 990,
+    "end_Offset": 997,
+    "start": 436.17,
+    "end": 438.83
+  },
+  {
+    "val": "Ambient radiation in most of the prefecture is comparable with other cities in Japan and around the world.",
+    "start_Offset": 998,
+    "end_Offset": 1015,
+    "start": 438.84,
+    "end": 445.34
+  },
+  {
+    "val": "The health risks are much less acute than what was feared in the disaster’s aftermath.",
+    "start_Offset": 1016,
+    "end_Offset": 1030,
+    "start": 445.7,
+    "end": 451.53999999999996
+  },
+  {
+    "val": "In retrospect, it was the chaotic evacuation that probably harmed public health most.",
+    "start_Offset": 1031,
+    "end_Offset": 1043,
+    "start": 452.59,
+    "end": 458.40999999999997
+  },
+  {
+    "val": "In Fukushima prefecture 2,317 people died as a result of it, mostly because of disruption to medical care or suicide.",
+    "start_Offset": 1044,
+    "end_Offset": 1064,
+    "start": 458.78,
+    "end": 468.329999
+  },
+  {
+    "val": "That is more than the 1,606 who perished during the earthquake, tsunami and nuclear meltdown themselves.",
+    "start_Offset": 1065,
+    "end_Offset": 1081,
+    "start": 468.65,
+    "end": 476.33000000000004
+  },
+  {
+    "val": "Some researchers argue the government should not have ordered a large-scale evacuation at all, or should have limited it to weeks rather than years.",
+    "start_Offset": 1082,
+    "end_Offset": 1106,
+    "start": 476.72,
+    "end": 484.65000000000003
+  },
+  {
+    "val": "Yet it would have been hard to tell a fearful population, faced with the invisible threat of radiation, to stay put or return quickly.",
+    "start_Offset": 1107,
+    "end_Offset": 1130,
+    "start": 485.869999,
+    "end": 494.09000000000003
+  },
+  {
+    "val": "The meltdown destroyed confidence in experts.",
+    "start_Offset": 1131,
+    "end_Offset": 1136,
+    "start": 494.69,
+    "end": 497.729999
+  },
+  {
+    "val": "The lack of candour from officials in the early weeks and months after the disaster sapped trust in the authorities, pushing citizens to fill the gaps themselves.",
+    "start_Offset": 1137,
+    "end_Offset": 1163,
+    "start": 497.99,
+    "end": 507.69
+  },
+  {
+    "val": "“There were so many things that weren’t convincing, so we decided to get our own data,”says Kobayashi Tomoko, an inn-owner and radiation monitor from Minamisoma, a city north of the plant.",
+    "start_Offset": 1164,
+    "end_Offset": 1196,
+    "start": 508.14,
+    "end": 520.4599999999999
+  },
+  {
+    "val": "Even when the government lifted evacuation orders years later, putting an end to compensation payments for residents of those areas, some protested against what they saw as a ploy to force people to return under unsafe conditions.",
+    "start_Offset": 1197,
+    "end_Offset": 1233,
+    "start": 520.889999,
+    "end": 534.0799999999999
+  },
+  {
+    "val": "“Sensitivity to radioactivity depends on mindset, it’s difficult to treat as matter of policy,”says Iio Jun of the Reconstruction Design Council, a government advisory panel set up after the disaster.",
+    "start_Offset": 1234,
+    "end_Offset": 1264,
+    "start": 534.59,
+    "end": 546.8
+  },
+  {
+    "val": "“There are more emotional elements.”",
+    "start_Offset": 1265,
+    "end_Offset": 1269,
+    "start": 547.09,
+    "end": 549.4399999999999
+  },
+  {
+    "val": "In the past decade the government’s efforts at reconstruction have focused on infrastructure and decontaminating land.",
+    "start_Offset": 1270,
+    "end_Offset": 1285,
+    "start": 550.389999,
+    "end": 557.1800000000001
+  },
+  {
+    "val": "Official presentations teem with graphics showing rebuilt roads and railways.",
+    "start_Offset": 1286,
+    "end_Offset": 1295,
+    "start": 557.529999,
+    "end": 562.74
+  },
+  {
+    "val": "Fully 96% of the planned public works have been completed.",
+    "start_Offset": 1296,
+    "end_Offset": 1305,
+    "start": 563.02,
+    "end": 567.17
+  },
+  {
+    "val": "Millions of tonnes of waste from the disaster have been removed, including millions of cubic metres of radioactive topsoil.",
+    "start_Offset": 1306,
+    "end_Offset": 1324,
+    "start": 567.599999,
+    "end": 574.48
+  },
+  {
+    "val": "Recovery, by these measures, is progressing well.",
+    "start_Offset": 1325,
+    "end_Offset": 1331,
+    "start": 574.93,
+    "end": 577.81
+  },
+  {
+    "val": "The Olympic Games (originally scheduled for 2020, but delayed until this summer owing to covid-19) are meant to be the culmination of the area’s rehabilitation.",
+    "start_Offset": 1332,
+    "end_Offset": 1357,
+    "start": 578.25,
+    "end": 587.48
+  },
+  {
+    "val": "The government has promoted them as the“Recovery Olympics”and plans to begin the torch relay in Fukushima at a stadium that became a base for disaster relief in 2011.",
+    "start_Offset": 1358,
+    "end_Offset": 1387,
+    "start": 588.12,
+    "end": 598.14
+  },
+  {
+    "val": "The flame will pass through Okuma, Iitate and Minamisoma on its way to Tokyo.",
+    "start_Offset": 1388,
+    "end_Offset": 1401,
+    "start": 598.14,
+    "end": 604.6999989999999
+  },
+  {
+    "val": "Yet the emphasis on physical reconstruction misses the point.",
+    "start_Offset": 1402,
+    "end_Offset": 1410,
+    "start": 605.73,
+    "end": 609.7799990000001
+  },
+  {
+    "val": "“People’s hearts and spirits are not only not recovering, they’re being lost even more,”laments Sakurai Katsunobu, who was mayor of Minamisoma during 3/11.",
+    "start_Offset": 1411,
+    "end_Offset": 1435,
+    "start": 610.109999,
+    "end": 621.41
+  },
+  {
+    "val": "Rates of depression and anxiety among residents of Fukushima are more than double the national average.",
+    "start_Offset": 1436,
+    "end_Offset": 1451,
+    "start": 621.88,
+    "end": 627.73
+  },
+  {
+    "val": "Diseases such as diabetes and hypertension have become more common, presumably because of continuing anxiety and disruption.",
+    "start_Offset": 1452,
+    "end_Offset": 1468,
+    "start": 628.09,
+    "end": 635.5
+  },
+  {
+    "val": "Families have been separated, livelihoods lost.",
+    "start_Offset": 1469,
+    "end_Offset": 1474,
+    "start": 636.2,
+    "end": 638.959999
+  },
+  {
+    "val": "“Real recovery is not about making buildings, not about physical things,”says Ms Kowata.",
+    "start_Offset": 1475,
+    "end_Offset": 1488,
+    "start": 639.28,
+    "end": 645.05
+  },
+  {
+    "val": "“Who is this infrastructure actually being built for?”",
+    "start_Offset": 1489,
+    "end_Offset": 1496,
+    "start": 645.79,
+    "end": 648.77
+  },
+  {
+    "val": "asks Mr Sakurai.",
+    "start_Offset": 1497,
+    "end_Offset": 1499,
+    "start": 648.83,
+    "end": 650.63
+  },
+  {
+    "val": "Many of those ordered to evacuate in the aftermath of the disaster, as well as others who fled the region of their own accord, have stayed away.",
+    "start_Offset": 1500,
+    "end_Offset": 1526,
+    "start": 651.06,
+    "end": 658.67
+  },
+  {
+    "val": "In the areas where evacuation was ordered, only a quarter or so of the population has returned, mostly the elderly.",
+    "start_Offset": 1527,
+    "end_Offset": 1546,
+    "start": 659.12,
+    "end": 665.86
+  },
+  {
+    "val": "As elsewhere in rural Japan, the prefecture’s population had been falling anyway, dipping by an average of 100,000 people in the nine years preceding the disaster.",
+    "start_Offset": 1547,
+    "end_Offset": 1573,
+    "start": 666.559999,
+    "end": 676.61
+  },
+  {
+    "val": "But 3/11 has accelerated the decline: in the nine years since, the population has fallen by an average of 180,000 a year (see chart 1).",
+    "start_Offset": 1574,
+    "end_Offset": 1600,
+    "start": 677.03,
+    "end": 686.22
+  },
+  {
+    "val": "Rebuilding communities has proved far trickier than repaving roads.",
+    "start_Offset": 1601,
+    "end_Offset": 1609,
+    "start": 686.23,
+    "end": 691.11
+  },
+  {
+    "val": "“Ten years is just the starting point,”says Mr Tao of Resurrection of Fukushima.",
+    "start_Offset": 1610,
+    "end_Offset": 1623,
+    "start": 691.46,
+    "end": 696.52
+  },
+  {
+    "val": "“Only now are villages beginning to be able to think about the future.”",
+    "start_Offset": 1624,
+    "end_Offset": 1636,
+    "start": 696.95,
+    "end": 701.249999
+  },
+  {
+    "val": "Many have shifted from trying to get former residents to return towards attracting new arrivals.",
+    "start_Offset": 1637,
+    "end_Offset": 1651,
+    "start": 701.74,
+    "end": 707.54
+  },
+  {
+    "val": "There have been successes.",
+    "start_Offset": 1652,
+    "end_Offset": 1655,
+    "start": 707.73,
+    "end": 709.35
+  },
+  {
+    "val": "Near the community centre in Iitate, a group of young artists has converted a former school into studios.",
+    "start_Offset": 1656,
+    "end_Offset": 1673,
+    "start": 709.35,
+    "end": 715.579999
+  },
+  {
+    "val": "In Minamisoma, Wada Tomoyuki, an entrepreneur, runs a co-working space and small-business incubator where most of his partners are newcomers who wanted to escape office-bound city life.",
+    "start_Offset": 1674,
+    "end_Offset": 1703,
+    "start": 716.139999,
+    "end": 728.38
+  },
+  {
+    "val": "Yet progress is slow.",
+    "start_Offset": 1704,
+    "end_Offset": 1707,
+    "start": 729.24,
+    "end": 731.079999
+  },
+  {
+    "val": "Mr Wada launched Odaka Worker’s Base in 2014, hoping to assist 100 new businesses to help tackle local problems; so far, 15 have set up shop.",
+    "start_Offset": 1708,
+    "end_Offset": 1733,
+    "start": 731.34,
+    "end": 742.85
+  },
+  {
+    "val": "The government touts a higher-tech future along the Fukushima“innovation coast”, a cluster of research and development centres.",
+    "start_Offset": 1734,
+    "end_Offset": 1752,
+    "start": 743.3,
+    "end": 750.52
+  },
+  {
+    "val": "But most are engaged in projects connected to disaster relief or the nuclear plant’s decommissioning.",
+    "start_Offset": 1753,
+    "end_Offset": 1767,
+    "start": 750.73,
+    "end": 755.8199999999999
+  },
+  {
+    "val": "The decommissioning itself“casts a heavy, dark shadow over the future”, says Uchibori Masao, Fukushima’s governor.",
+    "start_Offset": 1768,
+    "end_Offset": 1783,
+    "start": 755.83,
+    "end": 765.149999
+  },
+  {
+    "val": "The removal of 900 tonnes of melted fuel from the three reactors that failed—the most radioactive part of the wreckage—has yet to begin.",
+    "start_Offset": 1784,
+    "end_Offset": 1808,
+    "start": 765.61,
+    "end": 774.37
+  },
+  {
+    "val": "TEPCO, the utility that owns the plant, thinks it will take 30-40 years, but even that may be optimistic.",
+    "start_Offset": 1809,
+    "end_Offset": 1828,
+    "start": 774.9,
+    "end": 782.4300000000001
+  },
+  {
+    "val": "Last year, the Nuclear Regulation Authority (NRA), the new regulator set up after the accident, reported higher than expected levels of radiation on the temporary caps placed over two of the reactors.",
+    "start_Offset": 1829,
+    "end_Offset": 1860,
+    "start": 782.889999,
+    "end": 794.76
+  },
+  {
+    "val": "Such findings complicate plans for decommissioning.",
+    "start_Offset": 1861,
+    "end_Offset": 1866,
+    "start": 795.15,
+    "end": 797.9200000000001
+  },
+  {
+    "val": "The fate of the decontaminated soil, which has been piled in black bags around the region, remains unresolved too.",
+    "start_Offset": 1867,
+    "end_Offset": 1885,
+    "start": 798.33,
+    "end": 805.44
+  },
+  {
+    "val": "This year the bags are being taken to“interim storage facilities”in the“difficult to return”zone, meaning dumps in uninhabitable areas.",
+    "start_Offset": 1886,
+    "end_Offset": 1907,
+    "start": 805.9,
+    "end": 813.69
+  },
+  {
+    "val": "By law, the soil must be sent outside the prefecture by 2045, but the government has yet to work out where to take it.",
+    "start_Offset": 1908,
+    "end_Offset": 1931,
+    "start": 814.1,
+    "end": 821.699999
+  },
+  {
+    "val": "The most pressing problem is the contaminated water that has seeped into the plant or has been used to cool spent fuel.",
+    "start_Offset": 1932,
+    "end_Offset": 1953,
+    "start": 822.52,
+    "end": 829.76
+  },
+  {
+    "val": "There is already more than 1m tonnes of it, and storage space will run out next year.",
+    "start_Offset": 1954,
+    "end_Offset": 1970,
+    "start": 830.2,
+    "end": 835.86
+  },
+  {
+    "val": "TEPCO filters it to remove all radioactive particles bar one isotope, tritium.",
+    "start_Offset": 1971,
+    "end_Offset": 1982,
+    "start": 836.42,
+    "end": 842.6600000000001
+  },
+  {
+    "val": "The government wants to tip the filtered water into the ocean—standard practice at nuclear plants around the world.",
+    "start_Offset": 1983,
+    "end_Offset": 2001,
+    "start": 843.17,
+    "end": 849.43
+  },
+  {
+    "val": "Yet fishermen and farmers fear this will make people loth to buy their wares.",
+    "start_Offset": 2002,
+    "end_Offset": 2015,
+    "start": 849.76,
+    "end": 854.63
+  },
+  {
+    "val": "Activists worry that the tanks hold nasty surprises.",
+    "start_Offset": 2016,
+    "end_Offset": 2023,
+    "start": 855.0799999999999,
+    "end": 858.4499989999999
+  },
+  {
+    "val": "After years of insisting the water contained only tritium, TEPCO revealed in 2018 that it would have to re-filter most of it, since it had not been treated properly and was more dangerous than had been admitted.",
+    "start_Offset": 2024,
+    "end_Offset": 2061,
+    "start": 858.77,
+    "end": 871.47
+  },
+  {
+    "val": "Such episodes have fed mistrust of the government’s assurances about public health in Fukushima.",
+    "start_Offset": 2062,
+    "end_Offset": 2075,
+    "start": 872.66,
+    "end": 878.319999
+  },
+  {
+    "val": "The screening of food from the prefecture is thorough and safety standards are high.",
+    "start_Offset": 2076,
+    "end_Offset": 2089,
+    "start": 878.719999,
+    "end": 883.46
+  },
+  {
+    "val": "The Fukushima Agricultural Technology Centre, a government body, tests 100-200 samples a day.",
+    "start_Offset": 2090,
+    "end_Offset": 2103,
+    "start": 883.91,
+    "end": 890.44
+  },
+  {
+    "val": "Workers in rubber gloves chop up peaches, mushrooms and rice and feed them into devices that detect radiation.",
+    "start_Offset": 2104,
+    "end_Offset": 2121,
+    "start": 890.83,
+    "end": 897.899999
+  },
+  {
+    "val": "The last elevated result was six years ago.",
+    "start_Offset": 2122,
+    "end_Offset": 2129,
+    "start": 898.33,
+    "end": 901.3399999999999
+  },
+  {
+    "val": "Independent monitors also judge local food to be safe.",
+    "start_Offset": 2130,
+    "end_Offset": 2138,
+    "start": 901.71,
+    "end": 905.3
+  },
+  {
+    "val": "Yet products from Fukushima are still generally cheaper than those from elsewhere.",
+    "start_Offset": 2139,
+    "end_Offset": 2150,
+    "start": 905.66,
+    "end": 910.86
+  },
+  {
+    "val": "The enduring mistrust extends to nuclear power in general.",
+    "start_Offset": 2151,
+    "end_Offset": 2159,
+    "start": 911.889999,
+    "end": 915.899999
+  },
+  {
+    "val": "Before 3/11 more than two-thirds of Japanese wanted to preserve or even expand it.",
+    "start_Offset": 2160,
+    "end_Offset": 2175,
+    "start": 916.25,
+    "end": 921.67
+  },
+  {
+    "val": "The government wanted nuclear plants to generate half of Japan’s power by the middle of the century.",
+    "start_Offset": 2176,
+    "end_Offset": 2192,
+    "start": 922.06,
+    "end": 927.1
+  },
+  {
+    "val": "A majority is now against it, including bigwigs such as Koizumi Junichiro, a former prime minister from the LDP, and Kan Naoto, who was prime minister at the time of the disaster.",
+    "start_Offset": 2193,
+    "end_Offset": 2224,
+    "start": 927.44,
+    "end": 938.69
+  },
+  {
+    "val": "“I had supposed Japanese engineers were very high quality.",
+    "start_Offset": 2225,
+    "end_Offset": 2233,
+    "start": 938.99,
+    "end": 942.8
+  },
+  {
+    "val": "I thought it was unlikely that human error could cause an accident in Japan,”says Mr Kan.",
+    "start_Offset": 2234,
+    "end_Offset": 2250,
+    "start": 942.8,
+    "end": 948.75
+  },
+  {
+    "val": "“My thinking changed 180 degrees.”",
+    "start_Offset": 2251,
+    "end_Offset": 2255,
+    "start": 949.11,
+    "end": 952.11
+  },
+  {
+    "val": "The current government has not, however, given up on nuclear power.",
+    "start_Offset": 2256,
+    "end_Offset": 2266,
+    "start": 953.1,
+    "end": 956.64
+  },
+  {
+    "val": "Abe Shinzo, prime minister from 2012 to 2020, was keen on it, but during his tenure, since most reactors were mothballed for stricter safety inspections, Japan grew notably more dependent on fossil fuels (see chart 2).",
+    "start_Offset": 2267,
+    "end_Offset": 2302,
+    "start": 956.64,
+    "end": 6.91
+  },
+  {
+    "val": "To this day only nine of Japan’s 54 reactors have been allowed to restart.",
+    "start_Offset": 2303,
+    "end_Offset": 2316,
+    "start": 975.62,
+    "end": 976.44
+  },
+  {
+    "val": "They provided just 6% of the country’s electricity last year.",
+    "start_Offset": 2317,
+    "end_Offset": 2326,
+    "start": 976.82,
+    "end": 980.86
+  },
+  {
+    "val": "Nearly half of the rest are to be shut down; the others are in various forms of administrative limbo.",
+    "start_Offset": 2327,
+    "end_Offset": 2345,
+    "start": 981.139999,
+    "end": 987.45
+  },
+  {
+    "val": "The current prime minister, Suga Yoshihide, has promised to make Japan carbon neutral by 2050.",
+    "start_Offset": 2346,
+    "end_Offset": 2360,
+    "start": 988.08,
+    "end": 993.4699999999999
+  },
+  {
+    "val": "So he wants to build more wind farms and solar plants—but also to restart more of the idled nuclear reactors.",
+    "start_Offset": 2361,
+    "end_Offset": 2381,
+    "start": 994.37,
+    "end": 1001.44
+  },
+  {
+    "val": "“Zero carbon by 2050 means we need nuclear,”argues Toyoda Masakazu, who chairs the Institute of Energy Economics, a think-tank in Tokyo.",
+    "start_Offset": 2382,
+    "end_Offset": 2404,
+    "start": 1002.059999,
+    "end": 1012.33
+  },
+  {
+    "val": "Some towns are eager to go nuclear again.",
+    "start_Offset": 2405,
+    "end_Offset": 2412,
+    "start": 1012.71,
+    "end": 1016.0600000000001
+  },
+  {
+    "val": "“After five or six years, people started thinking about how much risk we can bear in terms of economic growth,”says Nose Yutaka, mayor of Takahama, which recently became the first town to approve the restart of a nuclear plant that is more than 40 years old, the standard regulatory lifetime in Japan.",
+    "start_Offset": 2413,
+    "end_Offset": 2465,
+    "start": 1016.41,
+    "end": 1034.5400000000002
+  },
+  {
+    "val": "The nuclear industry insists it has learned the lessons of 3/11.",
+    "start_Offset": 2466,
+    "end_Offset": 2477,
+    "start": 1035.429999,
+    "end": 1040.1499999999999
+  },
+  {
+    "val": "TEPCO says that the expectation of perfection, which stifled the reporting of problems, has been swept away.",
+    "start_Offset": 2478,
+    "end_Offset": 2494,
+    "start": 1040.29,
+    "end": 1046.79
+  },
+  {
+    "val": "It and other power companies have poured billions of dollars into new seawalls, filter systems and other safety features.",
+    "start_Offset": 2495,
+    "end_Offset": 2513,
+    "start": 1047.21,
+    "end": 1053.78
+  },
+  {
+    "val": "Local governments have drawn up proper evacuation plans.",
+    "start_Offset": 2514,
+    "end_Offset": 2521,
+    "start": 1054.219999,
+    "end": 1057.33
+  },
+  {
+    "val": "“Before Fukushima, it was assumed that if government officials are creating plans, accidents are bound to happen, so no one made plans,”Mr Nose says.",
+    "start_Offset": 2522,
+    "end_Offset": 2546,
+    "start": 1057.77,
+    "end": 1066.3600000000001
+  },
+  {
+    "val": "“Now we have one.”",
+    "start_Offset": 2547,
+    "end_Offset": 2550,
+    "start": 1067.14,
+    "end": 1068.33
+  },
+  {
+    "val": "The existence of risk is not a reason to abandon a technology, argues TEPCO’s Anegawa Takefumi:“In ancient times, Prometheus gave us fire, and many people die from fires, but we accept that.”",
+    "start_Offset": 2551,
+    "end_Offset": 2583,
+    "start": 1068.85,
+    "end": 1081.43
+  },
+  {
+    "val": "Anti-nuclear activists hold that the risks of using nuclear power in Japan, one of the world’s most seismically active countries, are prohibitive.",
+    "start_Offset": 2584,
+    "end_Offset": 2606,
+    "start": 1082.4,
+    "end": 1091.48
+  },
+  {
+    "val": "“Using technology that has potential to destroy your society is insane—that’s the risk we’re talking about,”says Shaun Burnie of Greenpeace, a pressure group.",
+    "start_Offset": 2607,
+    "end_Offset": 2631,
+    "start": 1091.849999,
+    "end": 1102.34
+  },
+  {
+    "val": "The sudden promotion of nuclear power as climate-friendly strikes many in Fukushima as cynical.",
+    "start_Offset": 2632,
+    "end_Offset": 2646,
+    "start": 1103.19,
+    "end": 1109.1799999999998
+  },
+  {
+    "val": "“We shouldn’t have to choose between climate disaster and nuclear disaster,”says Muto Ruiko, a local anti-nuclear campaigner.",
+    "start_Offset": 2647,
+    "end_Offset": 2665,
+    "start": 1109.63,
+    "end": 1117.5300000000002
+  },
+  {
+    "val": "There is plenty of scope, anti-nuclear campaigners point out, to generate more renewable energy.",
+    "start_Offset": 2666,
+    "end_Offset": 2680,
+    "start": 1118.27,
+    "end": 1124.3600000000001
+  },
+  {
+    "val": "After 3/11 the government introduced incentives for renewables and liberalised the electricity market.",
+    "start_Offset": 2681,
+    "end_Offset": 2694,
+    "start": 1124.71,
+    "end": 1130.079999
+  },
+  {
+    "val": "Though renewables now provide more than 20% of Japan’s power, their share would be higher still, argues Iida Tetsunari of the Institute for Sustainable Energy Policies, if the regional retail monopolies’ grip on the grid was loosened further and connections between regions expanded.",
+    "start_Offset": 2695,
+    "end_Offset": 2737,
+    "start": 1130.509999,
+    "end": 1149.529999
+  },
+  {
+    "val": "He says a reform that came into force last year, obliging the big utilities to manage generation and transmission as separate units, has had little effect.",
+    "start_Offset": 2738,
+    "end_Offset": 2763,
+    "start": 1150.18,
+    "end": 1159.1899999999998
+  },
+  {
+    "val": "“Local utilities people still use the same name-card, the same email address,”says Mr Iida.",
+    "start_Offset": 2764,
+    "end_Offset": 2779,
+    "start": 1159.68,
+    "end": 1165.659999
+  },
+  {
+    "val": "“The grid must become more independent.”",
+    "start_Offset": 2780,
+    "end_Offset": 2785,
+    "start": 1166.309999,
+    "end": 1168.979999
+  },
+  {
+    "val": "Plans released late last year foresee 50-60% of generation coming from renewables in 2050, with nuclear or fossil-fuel plants with carbon-capture technology providing the remainder.",
+    "start_Offset": 2786,
+    "end_Offset": 2813,
+    "start": 1169.690001,
+    "end": 1182.1599999999999
+  },
+  {
+    "val": "A clearer picture is expected this summer, when the Ministry of Economy, Trade and Industry releases a new triennial strategy for power generation.",
+    "start_Offset": 2814,
+    "end_Offset": 2836,
+    "start": 1182.63,
+    "end": 1190.92
+  },
+  {
+    "val": "The minister, Kajiyama Hiroshi, has expressed support for more nuclear power.",
+    "start_Offset": 2837,
+    "end_Offset": 2847,
+    "start": 1191.42,
+    "end": 1196.02
+  },
+  {
+    "val": "Even those who favour a renewable-powered Japan in the long term may accept a handful of restarts now, if that means closing coal-fired plants more quickly.",
+    "start_Offset": 2848,
+    "end_Offset": 2875,
+    "start": 1196.389999,
+    "end": 1206.8400000000001
+  },
+  {
+    "val": "Getting new reactors built would be much trickier, however, seeing that most Japanese people are against nuclear power.",
+    "start_Offset": 2876,
+    "end_Offset": 2893,
+    "start": 1207.41,
+    "end": 1215.429999
+  },
+  {
+    "val": "In either case, oversight will fall to the NRA, which was set up specifically to prevent the sort of chumminess with utilities that allowed the failings at Fukushima Dai-ichi to go undetected or uncorrected.",
+    "start_Offset": 2894,
+    "end_Offset": 2928,
+    "start": 1216.04,
+    "end": 1228.69
+  },
+  {
+    "val": "Fuketa Toyoshi, the NRA’s chairman, is careful not to get embroiled in politics:“We believe we have to be independent of discussions in energy policy.”",
+    "start_Offset": 2929,
+    "end_Offset": 2953,
+    "start": 1231.23,
+    "end": 1239.3999999999999
+  },
+  {
+    "val": "Unfortunately for the NRA and for policymakers, one seismic change that has endured since 3/11 is a loss of faith in institutions in general.",
+    "start_Offset": 2954,
+    "end_Offset": 2978,
+    "start": 1240.129999,
+    "end": 1249.9499999999998
+  },
+  {
+    "val": "A yearly survey by Edelman, a public-relations firm, found that the share of Japanese expressing trust in their government plunged from 51% before the disaster to 25% after.",
+    "start_Offset": 2979,
+    "end_Offset": 3007,
+    "start": 1250.38,
+    "end": 1262.8700000000001
+  },
+  {
+    "val": "It now stands at 37%.",
+    "start_Offset": 3008,
+    "end_Offset": 3012,
+    "start": 1263.32,
+    "end": 1265.56
+  },
+  {
+    "val": "“This is the key problem: the loss of trust,”says Azby Brown of Safecast, an NGO in Tokyo that spearheaded independent efforts to monitor radiation after the disaster.",
+    "start_Offset": 3013,
+    "end_Offset": 3040,
+    "start": 1266.11,
+    "end": 1277.039999
+  },
+  {
+    "val": "“Trust is not a renewable resource.",
+    "start_Offset": 3041,
+    "end_Offset": 3046,
+    "start": 1277.779999,
+    "end": 1280.48
+  },
+  {
+    "val": "Once you lose it, that’s it.”",
+    "start_Offset": 3047,
+    "end_Offset": 3052,
+    "start": 1280.72,
+    "end": 1282.78
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

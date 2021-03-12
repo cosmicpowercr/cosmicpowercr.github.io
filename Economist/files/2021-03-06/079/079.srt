@@ -1,0 +1,140 @@
+1
+00:00:19,750 --> 00:00:26,570
+WHEN IT comes to using artificial intelligence (AI), intelligence agencies have been at it longer than most.
+
+2
+00:00:27,349 --> 00:00:44,610
+In the cold war America’s National Security Agency (NSA) and Britain’s Government Communications Headquarters (GCHQ) explored early AI to help transcribe and translate the enormous volumes of Soviet phone-intercepts they began hoovering up in the 1960s and 1970s.
+
+3
+00:00:45,710 --> 00:00:47,730
+Yet the technology was immature.
+
+4
+00:00:48,130 --> 00:00:58,890
+One former European intelligence officer says his service did not use automatic transcription or translation in Afghanistan in the 2000s, relying on native speakers instead.
+
+5
+00:01:00,040 --> 00:01:02,170
+Now the spooks are hoping to do better.
+
+6
+00:01:03,020 --> 00:01:14,019
+The trends that have made AI attractive for business in recent years—more data, better algorithms, and more processing power to make it all hum—are giving spy agencies big ideas, too.
+
+7
+00:01:15,250 --> 00:01:20,760
+On February 24th GCHQ published a paper on how AI might change its work.
+
+8
+00:01:21,280 --> 00:01:30,770
+“Machine-assisted fact-checking”could help spot faked images, check disinformation against trusted sources and identify social-media bots that spread it.
+
+9
+00:01:31,700 --> 00:01:43,449
+AI might block cyber-attacks by“analysing patterns of activity on networks and devices”, and fight organised crime by spotting suspicious chains of financial transactions.
+
+10
+00:01:44,509 --> 00:01:48,419
+Other, less well-resourced organisations have already shown what is possible.
+
+11
+00:01:49,240 --> 00:02:04,580
+The Nuclear Threat Initiative, an American NGO, recently showed that applying machine learning to publicly available trade data could spot previously unknown companies and organisations suspected of involvement in the illicit trade in materials for nuclear weapons.
+
+12
+00:02:05,400 --> 00:02:08,820
+But spy agencies are not restricted to publicly available data.
+
+13
+00:02:09,970 --> 00:02:18,890
+Some hope that, aided by their ability to snoop on private information, such modest applications could pave the way to an AI-fuelled juggernaut.
+
+14
+00:02:18,900 --> 00:02:38,930
+“AI will revolutionise the practice of intelligence,”gushed a report published on March 1st by America’s National Security Commission on Artificial Intelligence, a high-powered study group co-chaired by Eric Schmidt, a former executive chairman of Alphabet, Google’s parent company, and Bob Work, a former deputy defence secretary.
+
+15
+00:02:40,029 --> 00:02:41,970
+The report does not lack ambition.
+
+16
+00:02:42,279 --> 00:02:59,150
+It says that by 2030 America’s 17 or so spy agencies ought to have built a "federated architecture of continually learning analytic engines" capable of crunching everything from human intelligence to satellite imagery in order to to foresee looming threats.
+
+17
+00:03:00,070 --> 00:03:10,659
+The commission points approvingly to the Pentagon’s response to covid-19, which integrated dozens of data sets to identify covid-19 hotspots and manage demand for supplies.
+
+18
+00:03:11,719 --> 00:03:16,810
+Yet what is possible in public health is not always so easy in national security.
+
+19
+00:03:17,670 --> 00:03:23,230
+Western intelligence agencies must contend with laws governing how private data may be gathered and used.
+
+20
+00:03:23,910 --> 00:03:38,350
+In its paper, GCHQ says that it will be mindful of systemic bias, such as whether voice-recognition software is more effective with some groups than others, and transparent about margins of error and uncertainty in its algorithms.
+
+21
+00:03:39,510 --> 00:03:45,870
+American spies say, more vaguely, that they will respect“human dignity, rights, and freedoms”.
+
+22
+00:03:46,840 --> 00:03:49,419
+These differences may need to be ironed out.
+
+23
+00:03:50,250 --> 00:04:10,240
+One suggestion made by a recent task-force of former American spooks in a report published by the Centre for Strategic and International Studies (CSIS) in Washington was that the“Five Eyes”intelligence alliance—America, Australia, Britain, Canada and New Zealand—create a shared cloud server on which to store data.
+
+24
+00:04:11,240 --> 00:04:16,880
+In any case, the constraints facing AI in intelligence are as much practical as ethical.
+
+25
+00:04:17,480 --> 00:04:25,570
+Machine learning is good at spotting patterns—such as distinctive patterns of mobile-phone use—but poor at predicting individual behaviour.
+
+26
+00:04:26,179 --> 00:04:30,039
+That is especially true when data are scarce, as in counter-terrorism.
+
+27
+00:04:30,680 --> 00:04:35,020
+Predictive-policing models can crunch data from thousands of burglaries each year.
+
+28
+00:04:35,680 --> 00:04:40,150
+Terrorist attacks are much rarer, and therefore harder to learn from.
+
+29
+00:04:41,210 --> 00:04:47,640
+That rarity creates another problem, familiar to medics pondering mass-screening programmes for rare diseases.
+
+30
+00:04:48,360 --> 00:04:54,030
+Any predictive model will generate false positives, in which innocent people are flagged for investigation.
+
+31
+00:04:55,030 --> 00:04:57,990
+Careful design can drive the false-positive rate down.
+
+32
+00:05:14,040 --> 00:05:14,810
+And those data that do exist may not be suitable.
+
+33
+00:05:15,510 --> 00:05:24,580
+Data from drone cameras, reconnaissance satellite and intercepted phone calls, for instance, are not currently formatted or labelled in ways that are useful for machine learning.
+
+34
+00:05:25,439 --> 00:05:37,820
+Fixing that is a“tedious, time-consuming, and still primarily human task exacerbated by differing labelling standards across and even within agencies”, notes the CSIS report.
+
+35
+00:05:38,880 --> 00:05:43,169
+That may not be quite the sort of work that would-be spies signed up for.
+

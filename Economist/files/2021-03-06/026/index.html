@@ -1,0 +1,326 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">026 Asia - Price controls in the Philippines</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='026';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "LAST MONTH retailers in Manila went on a two-week“pork holiday”.",
+    "start_Offset": 0,
+    "end_Offset": 11,
+    "start": 17.690001,
+    "end": 21.669999999999998
+  },
+  {
+    "val": "That was not a fad diet, nor even a few days off scarfing sausage and bacon.",
+    "start_Offset": 12,
+    "end_Offset": 27,
+    "start": 22.03,
+    "end": 26.72
+  },
+  {
+    "val": "They simply refused to sell the stuff, in protest at a price cap imposed by presidential decree.",
+    "start_Offset": 28,
+    "end_Offset": 44,
+    "start": 27.099999,
+    "end": 33.07
+  },
+  {
+    "val": "Pork is a staple in the Philippines.",
+    "start_Offset": 45,
+    "end_Offset": 51,
+    "start": 33.92,
+    "end": 35.809999999999995
+  },
+  {
+    "val": "Prices have recently soared, to over 400 pesos ($8,25) for a kilo of pork belly, more than double the norm.",
+    "start_Offset": 52,
+    "end_Offset": 72,
+    "start": 36.199999,
+    "end": 44.26
+  },
+  {
+    "val": "The rise has spurred inflation, which hit a two-year high in January of 4,2%.",
+    "start_Offset": 73,
+    "end_Offset": 88,
+    "start": 44.79,
+    "end": 49.909999
+  },
+  {
+    "val": "Both houses of Congress have held hearings on rising food prices.",
+    "start_Offset": 89,
+    "end_Offset": 99,
+    "start": 50.429999,
+    "end": 54.39
+  },
+  {
+    "val": "On February 1st the harried government instituted a 60-day price cap on pork of 300 pesos a kilo in Manila.",
+    "start_Offset": 100,
+    "end_Offset": 120,
+    "start": 54.690000999999995,
+    "end": 62.96
+  },
+  {
+    "val": "It swiftly vanished from shops’ shelves, and a pricey black market emerged.",
+    "start_Offset": 121,
+    "end_Offset": 132,
+    "start": 63.28,
+    "end": 67.829999
+  },
+  {
+    "val": "The fiasco stems from an outbreak of African swine fever, a contagious disease that is deadly to pigs, which arrived in the archipelago in 2019.",
+    "start_Offset": 133,
+    "end_Offset": 157,
+    "start": 68.049999,
+    "end": 77.55
+  },
+  {
+    "val": "It has devastated the backyard farms where most pigs in the Philippines are raised.",
+    "start_Offset": 158,
+    "end_Offset": 171,
+    "start": 78.04,
+    "end": 82.58999999999999
+  },
+  {
+    "val": "Last year the government launched the Integrated National Swine Production Initiatives for Recovery and Expansion, or INSPIRE, to replace the animals that had expired.",
+    "start_Offset": 172,
+    "end_Offset": 195,
+    "start": 83.03,
+    "end": 93.55
+  },
+  {
+    "val": "It will provide piglets and feed to farmers—but it will be some time before those little piggies get to market.",
+    "start_Offset": 196,
+    "end_Offset": 216,
+    "start": 93.99,
+    "end": 100.33
+  },
+  {
+    "val": "In the meantime, the authorities have promised to“go after”smugglers and profiteers.",
+    "start_Offset": 217,
+    "end_Offset": 229,
+    "start": 100.95,
+    "end": 104.809999
+  },
+  {
+    "val": "They have shipped trucks of live hogs to the capital from islands to the south, notes Fermin Diaz, the editor of Livestock and Meat Business, or LaMB, magazine.",
+    "start_Offset": 230,
+    "end_Offset": 257,
+    "start": 105.5,
+    "end": 115.10000000000001
+  },
+  {
+    "val": "And they have increased quotas for certain categories of imports.",
+    "start_Offset": 258,
+    "end_Offset": 267,
+    "start": 115.79,
+    "end": 119.14
+  },
+  {
+    "val": "What the government has not yet done is reduce tariffs on imported pork.",
+    "start_Offset": 268,
+    "end_Offset": 280,
+    "start": 119.73,
+    "end": 123.739999
+  },
+  {
+    "val": "The lowest rate is 30%, which works against the expansion of the quota, says Ramon Clarete of Building Safe Agricultural Food Enterprises, or B-SAFE.",
+    "start_Offset": 281,
+    "end_Offset": 305,
+    "start": 124.08,
+    "end": 134.22
+  },
+  {
+    "val": "He suggests a uniform 5% rate—something the government is said to be considering, but that farmers oppose.",
+    "start_Offset": 306,
+    "end_Offset": 323,
+    "start": 134.47,
+    "end": 141.23
+  },
+  {
+    "val": "If pork adobo (slathered in a sweet, vinegary sauce), is to remain the national dish, the taxman will need to go the whole hog.",
+    "start_Offset": 324,
+    "end_Offset": 347,
+    "start": 141.969999,
+    "end": 149.94
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

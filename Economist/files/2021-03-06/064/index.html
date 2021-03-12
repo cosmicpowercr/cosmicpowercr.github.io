@@ -1,0 +1,360 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">064 Business - Socially distant shopping</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='064';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "FROM DRIVE-IN cinemas to drive-through restaurants, Americans love doing things without getting out of their cars.",
+    "start_Offset": 0,
+    "end_Offset": 17,
+    "start": 8.26,
+    "end": 21.650000000000002
+  },
+  {
+    "val": "During the covid-19 pandemic they have taken to shopping in a similar fashion, too.",
+    "start_Offset": 18,
+    "end_Offset": 32,
+    "start": 22.14,
+    "end": 26.87
+  },
+  {
+    "val": "Kerbside pickup, where buyers’ vehicles pull up to retail outlets and dedicated staff help load online orders into the boot, helped supermarket chains notch up a banner year.",
+    "start_Offset": 33,
+    "end_Offset": 60,
+    "start": 27.380000000000003,
+    "end": 38.02
+  },
+  {
+    "val": "One in two American shoppers used kerbside or in-store collection last year, according to a survey by ShipStation, a maker of shipping software.",
+    "start_Offset": 61,
+    "end_Offset": 84,
+    "start": 38.59,
+    "end": 47.57
+  },
+  {
+    "val": "No big retailer in America can do without kerbside pickup.",
+    "start_Offset": 85,
+    "end_Offset": 94,
+    "start": 48.519999999999996,
+    "end": 52.009999
+  },
+  {
+    "val": "Those that had it before the pandemic, including Target, Walmart and Kohl’s, have expanded their offerings.",
+    "start_Offset": 95,
+    "end_Offset": 110,
+    "start": 52.359999,
+    "end": 58.51
+  },
+  {
+    "val": "On March 2nd Target reported record digital sales, which accounted for two-thirds of revenue growth last year.",
+    "start_Offset": 111,
+    "end_Offset": 128,
+    "start": 58.87,
+    "end": 66.25
+  },
+  {
+    "val": "These were powered by such“drive-up”purchases, which ballooned more than six-fold in the final quarter of 2020.",
+    "start_Offset": 129,
+    "end_Offset": 148,
+    "start": 66.78,
+    "end": 73.84
+  },
+  {
+    "val": "Shops that lacked kerbside operations hurriedly created them from scratch.",
+    "start_Offset": 149,
+    "end_Offset": 158,
+    "start": 74.39,
+    "end": 78.64
+  },
+  {
+    "val": "Some analyses have found that around 60% of American retailers now have the service, twice the share 12 months ago.",
+    "start_Offset": 159,
+    "end_Offset": 178,
+    "start": 79.05,
+    "end": 86.87
+  },
+  {
+    "val": "Even malls, which were struggling before the pandemic added to their woes as self-isolating consumers moved en masse to online purchases, are giving it a whirl.",
+    "start_Offset": 179,
+    "end_Offset": 205,
+    "start": 87.83,
+    "end": 97.46000000000001
+  },
+  {
+    "val": "Sarah Fossen, head of marketing at Rosedale Centre, a mall near Minneapolis with 150 retail tenants, recalls starting a service with parking space set aside for kerbside pickup at two entrances, only to discover that there was sufficient demand to add such space at all five main entrances.",
+    "start_Offset": 206,
+    "end_Offset": 253,
+    "start": 97.8,
+    "end": 117.31
+  },
+  {
+    "val": "Successful efforts get a number of things right, says Tom Enright of Gartner, a research firm.",
+    "start_Offset": 254,
+    "end_Offset": 269,
+    "start": 118.3,
+    "end": 124.02
+  },
+  {
+    "val": "Some of the imperatives are straightforward (install clear signs, offer sufficient parking space).",
+    "start_Offset": 270,
+    "end_Offset": 282,
+    "start": 124.559999,
+    "end": 129.79999999999998
+  },
+  {
+    "val": "Others require retailers to make bigger changes; since they do not have to lug stuff to their car themselves, for example, kerbside shoppers often buy bulkier crates of bottled water or bigger bags of pet food.",
+    "start_Offset": 283,
+    "end_Offset": 318,
+    "start": 130.25,
+    "end": 142.48
+  },
+  {
+    "val": "A bit of technological nous comes in handy.",
+    "start_Offset": 319,
+    "end_Offset": 326,
+    "start": 143.039999,
+    "end": 145.51
+  },
+  {
+    "val": "Some retailers are, for instance, using location tracking in their apps to know when exactly customers might arrive, so as to minimise waiting times, says Jean Chick of Deloitte, a consultancy.",
+    "start_Offset": 327,
+    "end_Offset": 357,
+    "start": 145.81,
+    "end": 156.99
+  },
+  {
+    "val": "Some waiting will be inevitable.",
+    "start_Offset": 358,
+    "end_Offset": 362,
+    "start": 157.98,
+    "end": 159.819999
+  },
+  {
+    "val": "But, says Mike Robinson, who used to run digital operations at Macy’s, a big department-store chain, the period in line need not be wasted.",
+    "start_Offset": 363,
+    "end_Offset": 387,
+    "start": 159.88,
+    "end": 168.68
+  },
+  {
+    "val": "Lingering customers could be enticed with other offerings, from promotions to new products, in the same way that you might grab a chocolate bar while waiting at the cashier.",
+    "start_Offset": 388,
+    "end_Offset": 416,
+    "start": 169.33,
+    "end": 178.76
+  },
+  {
+    "val": "It is“the perfect time”to engage shoppers, Mr Robinson says.",
+    "start_Offset": 417,
+    "end_Offset": 427,
+    "start": 179.25,
+    "end": 183.4
+  },
+  {
+    "val": "Many shops still have to crack important aspects of this transition.",
+    "start_Offset": 428,
+    "end_Offset": 438,
+    "start": 184.4,
+    "end": 188.28
+  },
+  {
+    "val": "Most are not equipped for returns or exchanges and lack a seamless way for customers to add and pay for last-minute items.",
+    "start_Offset": 439,
+    "end_Offset": 461,
+    "start": 188.7,
+    "end": 196.44999900000002
+  },
+  {
+    "val": "Retailers could improve the experience with pop-up tables in the parking lot stocked with popular items.",
+    "start_Offset": 462,
+    "end_Offset": 478,
+    "start": 196.99,
+    "end": 202.76
+  },
+  {
+    "val": "As Mr Enright notes,“If kerbside is going to replace an in-store experience, it has to bring a lot of those in-store experiences out into the parking lot.”",
+    "start_Offset": 479,
+    "end_Offset": 508,
+    "start": 203.11,
+    "end": 212.33999999999997
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

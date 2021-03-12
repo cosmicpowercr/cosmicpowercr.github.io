@@ -1,0 +1,599 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">088 Obituary - Cicely Tyson</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='088';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "SLOWLY, WITH infinite effort, the elderly black woman got out of the car.",
+    "start_Offset": 0,
+    "end_Offset": 12,
+    "start": 18.779999,
+    "end": 23.11
+  },
+  {
+    "val": "Helped by a friendly arm, she laboured up the steps to the terrace.",
+    "start_Offset": 13,
+    "end_Offset": 25,
+    "start": 23.54,
+    "end": 27.47
+  },
+  {
+    "val": "But there, squaring her shoulders, lifting her chin, she shrugged her helpers off.",
+    "start_Offset": 26,
+    "end_Offset": 38,
+    "start": 27.79,
+    "end": 32.68
+  },
+  {
+    "val": "She knew how to walk, and she could walk from here.",
+    "start_Offset": 39,
+    "end_Offset": 49,
+    "start": 33.009999,
+    "end": 36.049999
+  },
+  {
+    "val": "Her aim was to get to the water fountain by the sheriff’s office, the one that said“White Only”.",
+    "start_Offset": 50,
+    "end_Offset": 68,
+    "start": 36.6,
+    "end": 42.18
+  },
+  {
+    "val": "Step by dragging step, leaning on her cane, she pressed on.",
+    "start_Offset": 69,
+    "end_Offset": 79,
+    "start": 42.65,
+    "end": 46.74
+  },
+  {
+    "val": "The white officers by the door let her pass; they could hardly obstruct an old woman.",
+    "start_Offset": 80,
+    "end_Offset": 95,
+    "start": 47.219999,
+    "end": 52.379999999999995
+  },
+  {
+    "val": "At the fountain she turned on the water, took a smallish sip, let it flow round her mouth to savour it.",
+    "start_Offset": 96,
+    "end_Offset": 116,
+    "start": 53.0,
+    "end": 58.86
+  },
+  {
+    "val": "Then, with a cursory glance at the officers, she went slowly back.",
+    "start_Offset": 117,
+    "end_Offset": 128,
+    "start": 59.24,
+    "end": 63.479999
+  },
+  {
+    "val": "To play this lead role in“The Autobiography of Miss Jane Pittman”, in 1974, Cicely Tyson spent months preparing.",
+    "start_Offset": 129,
+    "end_Offset": 147,
+    "start": 64.42,
+    "end": 71.75
+  },
+  {
+    "val": "The film required her to age from 19 to 110, when the fountain incident occurred.",
+    "start_Offset": 148,
+    "end_Offset": 162,
+    "start": 72.14,
+    "end": 78.81
+  },
+  {
+    "val": "She herself was somewhere midway, 49, though her elfin body and taut skin might have made her half that.",
+    "start_Offset": 163,
+    "end_Offset": 181,
+    "start": 79.18,
+    "end": 86.32
+  },
+  {
+    "val": "To delve inside the being of this ancient woman, once a slave, she put on blurring contact lenses and studied residents in nursing homes, noticing how their hands shook and their memories came and went.",
+    "start_Offset": 182,
+    "end_Offset": 216,
+    "start": 86.889999,
+    "end": 100.58999999999999
+  },
+  {
+    "val": "What she did not need to study was Miss Pittman’s defiance.",
+    "start_Offset": 217,
+    "end_Offset": 227,
+    "start": 101.01,
+    "end": 104.79
+  },
+  {
+    "val": "Of that she already had plenty.",
+    "start_Offset": 228,
+    "end_Offset": 233,
+    "start": 105.77,
+    "end": 108.47999899999999
+  },
+  {
+    "val": "She showed it most memorably on the day in 1963 when she went into Shalimar’s barber shop in Harlem and asked to have her sleek bob cut away.",
+    "start_Offset": 234,
+    "end_Offset": 261,
+    "start": 108.95,
+    "end": 118.35
+  },
+  {
+    "val": "For a while she had practised hairdressing herself, wielding her hot comb and pressing irons to straighten out those unkempt curls, as white people saw them.",
+    "start_Offset": 262,
+    "end_Offset": 287,
+    "start": 118.719999,
+    "end": 128.02
+  },
+  {
+    "val": "Now she would wear her hair natural.",
+    "start_Offset": 288,
+    "end_Offset": 294,
+    "start": 128.48,
+    "end": 130.44
+  },
+  {
+    "val": "It happened to suit the latest part she was playing; but more than that, it showed her real self, and she felt beautiful.",
+    "start_Offset": 295,
+    "end_Offset": 317,
+    "start": 130.88,
+    "end": 137.66
+  },
+  {
+    "val": "She kept that half-inch Afro for her TV role in“East Side/West Side”, the first main role for a black actress in a series, astonishing Americans because her character had a serious career, as a secretary, and was comfortable in her skin.",
+    "start_Offset": 318,
+    "end_Offset": 361,
+    "start": 138.24,
+    "end": 154.07
+  },
+  {
+    "val": "She then retained that lean, proud look for years.",
+    "start_Offset": 362,
+    "end_Offset": 370,
+    "start": 154.51,
+    "end": 158.11
+  },
+  {
+    "val": "Many activists marched, but her civil-rights statement was her face on stage and screen.",
+    "start_Offset": 371,
+    "end_Offset": 385,
+    "start": 158.599999,
+    "end": 164.66000000000003
+  },
+  {
+    "val": "Each time she chalked up a first—the first black woman to win an Emmy as a lead actress, for“Jane Pittman”, and the first to receive an honorary Oscar, in 2018—she considered it not just a chance to be dazzling in ruffles, silk or lace, but a victory for humankind.",
+    "start_Offset": 386,
+    "end_Offset": 437,
+    "start": 165.02,
+    "end": 181.87
+  },
+  {
+    "val": "Defiance came naturally, as a black woman in a world where black misery was largely ignored and black beauty dismissed.",
+    "start_Offset": 438,
+    "end_Offset": 457,
+    "start": 182.8,
+    "end": 190.539999
+  },
+  {
+    "val": "Consigned to a typing pool when she left school, she walked out, declaring that God did not intend her to bang on a typewriter for the rest of her life.",
+    "start_Offset": 458,
+    "end_Offset": 487,
+    "start": 190.98,
+    "end": 199.51
+  },
+  {
+    "val": "In search of a modelling agency, a path that saw her face in Vogue as well as Ebony and Jet, she sent her photos all over New York, and did not care when her mother threw her out for it.",
+    "start_Offset": 488,
+    "end_Offset": 527,
+    "start": 200.13,
+    "end": 211.10999999999999
+  },
+  {
+    "val": "Hired in a small way in the late 1950s for feature films and off-Broadway, she soon put her foot down.",
+    "start_Offset": 528,
+    "end_Offset": 548,
+    "start": 211.679999,
+    "end": 218.25
+  },
+  {
+    "val": "There were roles she approved of, and roles she would rather starve than take.",
+    "start_Offset": 549,
+    "end_Offset": 562,
+    "start": 218.53,
+    "end": 222.95999999999998
+  },
+  {
+    "val": "Those included all the parts, and they were few enough, customarily assigned to black actors.",
+    "start_Offset": 563,
+    "end_Offset": 577,
+    "start": 223.9,
+    "end": 229.27
+  },
+  {
+    "val": "While the men were con-men, hustlers or drug addicts, the women were plump maids or prostitutes, Jezebels or Aunt Jemimas.",
+    "start_Offset": 578,
+    "end_Offset": 598,
+    "start": 229.57,
+    "end": 238.23
+  },
+  {
+    "val": "Characters like these had no dimension, no complexities or professions or family life, as white characters did.",
+    "start_Offset": 599,
+    "end_Offset": 615,
+    "start": 238.65,
+    "end": 245.669999
+  },
+  {
+    "val": "They were cartoons, the insulting half-wit faces on tins of chewing tobacco or laundry bleach, when they should have been teachers and lawyers, doctors and politicians, mothers and fathers.",
+    "start_Offset": 616,
+    "end_Offset": 645,
+    "start": 246.099999,
+    "end": 258.23999999999995
+  },
+  {
+    "val": "They were never given their full, true humanity.",
+    "start_Offset": 646,
+    "end_Offset": 653,
+    "start": 258.42,
+    "end": 261.14000000000004
+  },
+  {
+    "val": "She especially longed to see black sisters portrayed as they really were: the strength of their race, the ones who held their families together when the men went off, for whatever reason.",
+    "start_Offset": 654,
+    "end_Offset": 685,
+    "start": 262.059999,
+    "end": 273.29
+  },
+  {
+    "val": "(She knew all about that, saving Miles Davis time after time when the jazzman broke up their relationship with the stench of his philandering and the horrors of his cocaine.",
+    "start_Offset": 686,
+    "end_Offset": 715,
+    "start": 273.71,
+    "end": 284.399999
+  },
+  {
+    "val": ") The role she treasured most came in“Sounder”in 1972, where she played the wife of a Louisianan sharecropper who, when her husband was imprisoned for stealing food, had to run the farm and raise the children alone.",
+    "start_Offset": 716,
+    "end_Offset": 753,
+    "start": 285.099999,
+    "end": 298.92
+  },
+  {
+    "val": "It won her a best-actress Oscar nomination.",
+    "start_Offset": 754,
+    "end_Offset": 761,
+    "start": 299.309999,
+    "end": 302.059999
+  },
+  {
+    "val": "As Rebecca, wearing cornrows as she hoed the dry soil and pinned up washing, she thought of her own mother, her fierce mentor, who had also brought up her children largely single-handed.",
+    "start_Offset": 762,
+    "end_Offset": 794,
+    "start": 302.48,
+    "end": 314.37
+  },
+  {
+    "val": "They were poor, moving from tenement to tenement in Harlem, but her mother always managed to whip up potatoes and salt pork for their meals, and to sew the wonderful organza dresses her daughters wore in church.",
+    "start_Offset": 795,
+    "end_Offset": 831,
+    "start": 314.75,
+    "end": 327.44
+  },
+  {
+    "val": "From her she had inherited, as well as her“blessed assurance”of God’s guidance, her stiff, straight back.",
+    "start_Offset": 832,
+    "end_Offset": 849,
+    "start": 327.71,
+    "end": 334.34000000000003
+  },
+  {
+    "val": "One day, however, she had seen her mother in a line of black women waiting to be hired as maids.",
+    "start_Offset": 850,
+    "end_Offset": 869,
+    "start": 335.259999,
+    "end": 341.049999
+  },
+  {
+    "val": "White people in cars drove slowly past, looking them over.",
+    "start_Offset": 870,
+    "end_Offset": 879,
+    "start": 341.379999,
+    "end": 346.01
+  },
+  {
+    "val": "America’s original sin of slavery seemed as sharp as ever.",
+    "start_Offset": 880,
+    "end_Offset": 889,
+    "start": 346.56,
+    "end": 350.439999
+  },
+  {
+    "val": "Even decades later racism still ran deep in the film and TV industries, despite the progress on the surface.",
+    "start_Offset": 890,
+    "end_Offset": 908,
+    "start": 350.67,
+    "end": 357.89
+  },
+  {
+    "val": "In 1977 she appeared as the hero’s mother in“Roots”, a TV series that told the story of an African boy, Kunta Kinte, sold into slavery in the South.",
+    "start_Offset": 909,
+    "end_Offset": 937,
+    "start": 358.46999900000003,
+    "end": 369.26999900000004
+  },
+  {
+    "val": "It made a huge splash for a time.",
+    "start_Offset": 938,
+    "end_Offset": 945,
+    "start": 369.77,
+    "end": 371.86
+  },
+  {
+    "val": "But there were still few parts for black actors unless these were“written black”, shoehorned into some white cliché of what her people were.",
+    "start_Offset": 946,
+    "end_Offset": 969,
+    "start": 372.15,
+    "end": 380.9
+  },
+  {
+    "val": "And they were still not considered automatically as leads, capable of carrying a film, or as actors of classic parts.",
+    "start_Offset": 970,
+    "end_Offset": 989,
+    "start": 381.29,
+    "end": 388.87
+  },
+  {
+    "val": "She would have loved, herself, to play Ophelia.",
+    "start_Offset": 990,
+    "end_Offset": 997,
+    "start": 389.27,
+    "end": 391.75
+  },
+  {
+    "val": "The role seemed closed to her.",
+    "start_Offset": 998,
+    "end_Offset": 1003,
+    "start": 391.95,
+    "end": 393.68
+  },
+  {
+    "val": "But where did anyone say Ophelia was white?",
+    "start_Offset": 1004,
+    "end_Offset": 1011,
+    "start": 394.02,
+    "end": 396.73
+  },
+  {
+    "val": "In 2013, fulfilling a long-standing dream, she played an originally white role, Mrs Carrie Watts, in“The Trip to Bountiful”on Broadway.",
+    "start_Offset": 1012,
+    "end_Offset": 1034,
+    "start": 397.68,
+    "end": 406.14
+  },
+  {
+    "val": "It won her a Tony award.",
+    "start_Offset": 1035,
+    "end_Offset": 1040,
+    "start": 406.53,
+    "end": 408.179999
+  },
+  {
+    "val": "The story was of an old woman who insisted on seeing her childhood home before she died.",
+    "start_Offset": 1041,
+    "end_Offset": 1057,
+    "start": 408.7,
+    "end": 414.089999
+  },
+  {
+    "val": "As usual she steeped herself in the character, even going to“Mrs Carrie’s”part of Texas to scratch up the earth and smell it.",
+    "start_Offset": 1058,
+    "end_Offset": 1081,
+    "start": 414.559999,
+    "end": 421.81
+  },
+  {
+    "val": "Being ancient herself now, it was not hard to get the moves right.",
+    "start_Offset": 1082,
+    "end_Offset": 1094,
+    "start": 422.29,
+    "end": 426.51
+  },
+  {
+    "val": "And in any case, for all her care with nuances, her characters had one trait they shared.",
+    "start_Offset": 1095,
+    "end_Offset": 1111,
+    "start": 426.88,
+    "end": 432.64
+  },
+  {
+    "val": "Whatever their age, they stood tall, squared their shoulders, pressed onward.",
+    "start_Offset": 1112,
+    "end_Offset": 1122,
+    "start": 433.04,
+    "end": 438.35999999999996
+  },
+  {
+    "val": "They kept their chins high.",
+    "start_Offset": 1123,
+    "end_Offset": 1127,
+    "start": 438.7,
+    "end": 441.09999999999997
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

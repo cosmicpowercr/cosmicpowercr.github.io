@@ -1,0 +1,438 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">079 Science and technology - Spies and technology</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='079';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "WHEN IT comes to using artificial intelligence (AI), intelligence agencies have been at it longer than most.",
+    "start_Offset": 0,
+    "end_Offset": 16,
+    "start": 19.75,
+    "end": 26.57
+  },
+  {
+    "val": "In the cold war America’s National Security Agency (NSA) and Britain’s Government Communications Headquarters (GCHQ) explored early AI to help transcribe and translate the enormous volumes of Soviet phone-intercepts they began hoovering up in the 1960s and 1970s.",
+    "start_Offset": 17,
+    "end_Offset": 55,
+    "start": 27.349999,
+    "end": 44.61
+  },
+  {
+    "val": "Yet the technology was immature.",
+    "start_Offset": 56,
+    "end_Offset": 60,
+    "start": 45.71,
+    "end": 47.73
+  },
+  {
+    "val": "One former European intelligence officer says his service did not use automatic transcription or translation in Afghanistan in the 2000s, relying on native speakers instead.",
+    "start_Offset": 61,
+    "end_Offset": 85,
+    "start": 48.13,
+    "end": 58.89
+  },
+  {
+    "val": "Now the spooks are hoping to do better.",
+    "start_Offset": 86,
+    "end_Offset": 93,
+    "start": 60.04,
+    "end": 62.17
+  },
+  {
+    "val": "The trends that have made AI attractive for business in recent years—more data, better algorithms, and more processing power to make it all hum—are giving spy agencies big ideas, too.",
+    "start_Offset": 94,
+    "end_Offset": 125,
+    "start": 63.019999999999996,
+    "end": 74.019999
+  },
+  {
+    "val": "On February 24th GCHQ published a paper on how AI might change its work.",
+    "start_Offset": 126,
+    "end_Offset": 139,
+    "start": 75.25,
+    "end": 80.76
+  },
+  {
+    "val": "“Machine-assisted fact-checking”could help spot faked images, check disinformation against trusted sources and identify social-media bots that spread it.",
+    "start_Offset": 140,
+    "end_Offset": 161,
+    "start": 81.28,
+    "end": 90.77
+  },
+  {
+    "val": "AI might block cyber-attacks by“analysing patterns of activity on networks and devices”, and fight organised crime by spotting suspicious chains of financial transactions.",
+    "start_Offset": 162,
+    "end_Offset": 186,
+    "start": 91.7,
+    "end": 103.44999899999999
+  },
+  {
+    "val": "Other, less well-resourced organisations have already shown what is possible.",
+    "start_Offset": 187,
+    "end_Offset": 197,
+    "start": 104.509999,
+    "end": 108.419999
+  },
+  {
+    "val": "The Nuclear Threat Initiative, an American NGO, recently showed that applying machine learning to publicly available trade data could spot previously unknown companies and organisations suspected of involvement in the illicit trade in materials for nuclear weapons.",
+    "start_Offset": 198,
+    "end_Offset": 234,
+    "start": 109.24,
+    "end": 124.58
+  },
+  {
+    "val": "But spy agencies are not restricted to publicly available data.",
+    "start_Offset": 235,
+    "end_Offset": 244,
+    "start": 125.4,
+    "end": 128.82
+  },
+  {
+    "val": "Some hope that, aided by their ability to snoop on private information, such modest applications could pave the way to an AI-fuelled juggernaut.",
+    "start_Offset": 245,
+    "end_Offset": 268,
+    "start": 129.97,
+    "end": 138.89
+  },
+  {
+    "val": "“AI will revolutionise the practice of intelligence,”gushed a report published on March 1st by America’s National Security Commission on Artificial Intelligence, a high-powered study group co-chaired by Eric Schmidt, a former executive chairman of Alphabet, Google’s parent company, and Bob Work, a former deputy defence secretary.",
+    "start_Offset": 269,
+    "end_Offset": 317,
+    "start": 138.89999999999998,
+    "end": 158.92999999999998
+  },
+  {
+    "val": "The report does not lack ambition.",
+    "start_Offset": 318,
+    "end_Offset": 323,
+    "start": 160.029999,
+    "end": 161.97
+  },
+  {
+    "val": "It says that by 2030 America’s 17 or so spy agencies ought to have built a \"federated architecture of continually learning analytic engines\" capable of crunching everything from human intelligence to satellite imagery in order to to foresee looming threats.",
+    "start_Offset": 324,
+    "end_Offset": 363,
+    "start": 162.279999,
+    "end": 179.150001
+  },
+  {
+    "val": "The commission points approvingly to the Pentagon’s response to covid-19, which integrated dozens of data sets to identify covid-19 hotspots and manage demand for supplies.",
+    "start_Offset": 364,
+    "end_Offset": 390,
+    "start": 180.07,
+    "end": 190.659999
+  },
+  {
+    "val": "Yet what is possible in public health is not always so easy in national security.",
+    "start_Offset": 391,
+    "end_Offset": 405,
+    "start": 191.719999,
+    "end": 196.81
+  },
+  {
+    "val": "Western intelligence agencies must contend with laws governing how private data may be gathered and used.",
+    "start_Offset": 406,
+    "end_Offset": 421,
+    "start": 197.67000000000002,
+    "end": 203.23
+  },
+  {
+    "val": "In its paper, GCHQ says that it will be mindful of systemic bias, such as whether voice-recognition software is more effective with some groups than others, and transparent about margins of error and uncertainty in its algorithms.",
+    "start_Offset": 422,
+    "end_Offset": 459,
+    "start": 203.91,
+    "end": 218.35000000000002
+  },
+  {
+    "val": "American spies say, more vaguely, that they will respect“human dignity, rights, and freedoms”.",
+    "start_Offset": 460,
+    "end_Offset": 473,
+    "start": 219.51,
+    "end": 225.86999999999998
+  },
+  {
+    "val": "These differences may need to be ironed out.",
+    "start_Offset": 474,
+    "end_Offset": 481,
+    "start": 226.84,
+    "end": 229.419999
+  },
+  {
+    "val": "One suggestion made by a recent task-force of former American spooks in a report published by the Centre for Strategic and International Studies (CSIS) in Washington was that the“Five Eyes”intelligence alliance—America, Australia, Britain, Canada and New Zealand—create a shared cloud server on which to store data.",
+    "start_Offset": 482,
+    "end_Offset": 532,
+    "start": 230.25,
+    "end": 250.24
+  },
+  {
+    "val": "In any case, the constraints facing AI in intelligence are as much practical as ethical.",
+    "start_Offset": 533,
+    "end_Offset": 547,
+    "start": 251.24,
+    "end": 256.88
+  },
+  {
+    "val": "Machine learning is good at spotting patterns—such as distinctive patterns of mobile-phone use—but poor at predicting individual behaviour.",
+    "start_Offset": 548,
+    "end_Offset": 568,
+    "start": 257.48,
+    "end": 265.57
+  },
+  {
+    "val": "That is especially true when data are scarce, as in counter-terrorism.",
+    "start_Offset": 569,
+    "end_Offset": 580,
+    "start": 266.179999,
+    "end": 270.039999
+  },
+  {
+    "val": "Predictive-policing models can crunch data from thousands of burglaries each year.",
+    "start_Offset": 581,
+    "end_Offset": 592,
+    "start": 270.68,
+    "end": 275.02
+  },
+  {
+    "val": "Terrorist attacks are much rarer, and therefore harder to learn from.",
+    "start_Offset": 593,
+    "end_Offset": 603,
+    "start": 275.68,
+    "end": 280.15
+  },
+  {
+    "val": "That rarity creates another problem, familiar to medics pondering mass-screening programmes for rare diseases.",
+    "start_Offset": 604,
+    "end_Offset": 618,
+    "start": 281.21,
+    "end": 287.64
+  },
+  {
+    "val": "Any predictive model will generate false positives, in which innocent people are flagged for investigation.",
+    "start_Offset": 619,
+    "end_Offset": 633,
+    "start": 288.36,
+    "end": 294.03
+  },
+  {
+    "val": "Careful design can drive the false-positive rate down.",
+    "start_Offset": 634,
+    "end_Offset": 642,
+    "start": 295.03,
+    "end": 297.99
+  },
+  {
+    "val": "But because the \"base rate\" is lower still—there are, mercifully, very few terrorists—even a well-designed system risks sending large numbers of spies off on wild-goose chases.",
+    "start_Offset": 643,
+    "end_Offset": 672,
+    "start": 298.77,
+    "end": 19.93
+  },
+  {
+    "val": "And those data that do exist may not be suitable.",
+    "start_Offset": 673,
+    "end_Offset": 682,
+    "start": 314.04,
+    "end": 314.81
+  },
+  {
+    "val": "Data from drone cameras, reconnaissance satellite and intercepted phone calls, for instance, are not currently formatted or labelled in ways that are useful for machine learning.",
+    "start_Offset": 683,
+    "end_Offset": 708,
+    "start": 315.51,
+    "end": 324.58
+  },
+  {
+    "val": "Fixing that is a“tedious, time-consuming, and still primarily human task exacerbated by differing labelling standards across and even within agencies”, notes the CSIS report.",
+    "start_Offset": 709,
+    "end_Offset": 734,
+    "start": 325.439999,
+    "end": 337.82
+  },
+  {
+    "val": "That may not be quite the sort of work that would-be spies signed up for.",
+    "start_Offset": 735,
+    "end_Offset": 750,
+    "start": 338.88,
+    "end": 343.16999899999996
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

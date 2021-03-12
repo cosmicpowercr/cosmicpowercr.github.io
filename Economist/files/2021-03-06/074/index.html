@@ -1,0 +1,557 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">074 Finance and economics - Free exchange</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='074';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "THERE ARE few greater honours than becoming finance minister of your country.",
+    "start_Offset": 0,
+    "end_Offset": 11,
+    "start": 18.389999,
+    "end": 22.22
+  },
+  {
+    "val": "But there are better and worse days to start the job.",
+    "start_Offset": 12,
+    "end_Offset": 22,
+    "start": 22.63,
+    "end": 25.5
+  },
+  {
+    "val": "Chatib Basri became finance minister of Indonesia, the fourth-most-populous country in the world, on May 21st 2013.",
+    "start_Offset": 23,
+    "end_Offset": 41,
+    "start": 25.95,
+    "end": 34.410000000000004
+  },
+  {
+    "val": "That was only a day before the start of a financial sell-off known as the“taper tantrum”.",
+    "start_Offset": 42,
+    "end_Offset": 59,
+    "start": 34.85,
+    "end": 39.9
+  },
+  {
+    "val": "Yields on American Treasuries rose abruptly after Ben Bernanke, then chairman of the Federal Reserve, spoke about reducing (or tapering) the Fed’s bond purchases.",
+    "start_Offset": 60,
+    "end_Offset": 83,
+    "start": 40.84,
+    "end": 50.579999
+  },
+  {
+    "val": "Higher American yields shattered the appeal of emerging markets, undermining their currencies, bonds and shares.",
+    "start_Offset": 84,
+    "end_Offset": 98,
+    "start": 50.91,
+    "end": 58.19
+  },
+  {
+    "val": "“I had very little time to adjust,”Mr Basri noted in 2016.",
+    "start_Offset": 99,
+    "end_Offset": 110,
+    "start": 58.54,
+    "end": 62.48
+  },
+  {
+    "val": "Policymakers in emerging markets now fear a second such tantrum.",
+    "start_Offset": 111,
+    "end_Offset": 120,
+    "start": 63.38,
+    "end": 67.219999
+  },
+  {
+    "val": "As Treasury yields jumped at the end of last month, a broad index of emerging-market shares fell by over 7% in little more than a week.",
+    "start_Offset": 121,
+    "end_Offset": 147,
+    "start": 67.66,
+    "end": 76.09
+  },
+  {
+    "val": "This is“shaping up to be a bruiser”, wrote Robin Brooks of the Institute of International Finance, a bankers’ group, on Twitter.",
+    "start_Offset": 148,
+    "end_Offset": 169,
+    "start": 76.54,
+    "end": 83.97
+  },
+  {
+    "val": "Markets have calmed down in recent days.",
+    "start_Offset": 170,
+    "end_Offset": 176,
+    "start": 84.389999,
+    "end": 86.63999899999999
+  },
+  {
+    "val": "But if they again lose their composure, which emerging economies will be worst hit and why?",
+    "start_Offset": 177,
+    "end_Offset": 192,
+    "start": 86.88,
+    "end": 92.27
+  },
+  {
+    "val": "One way to identify future casualties is to look at the characteristics of past victims.",
+    "start_Offset": 193,
+    "end_Offset": 207,
+    "start": 93.12,
+    "end": 98.72
+  },
+  {
+    "val": "Back in 2013 Indonesia was one of an unfortunate group of emerging markets dubbed the“fragile five”by James Lord of Morgan Stanley, a bank.",
+    "start_Offset": 208,
+    "end_Offset": 232,
+    "start": 99.099999,
+    "end": 108.72000000000001
+  },
+  {
+    "val": "The group, which also included Brazil, India, South Africa and Turkey, were all struggling with inflationary pressure, an overvalued exchange rate and a conspicuous current-account deficit (which measures a country’s trade deficit among other things).",
+    "start_Offset": 233,
+    "end_Offset": 268,
+    "start": 109.37,
+    "end": 123.59
+  },
+  {
+    "val": "A few months into the tantrum Indonesia reported that its deficit had increased to 4,4% of GDP.",
+    "start_Offset": 269,
+    "end_Offset": 286,
+    "start": 124.18,
+    "end": 131.48999999999998
+  },
+  {
+    "val": "The“market went into shock”, Mr Basri recalls.",
+    "start_Offset": 287,
+    "end_Offset": 294,
+    "start": 131.93,
+    "end": 135.51000000000002
+  },
+  {
+    "val": "Similar factors were combined into a“vulnerability index”by the Fed’s own economists in 2014.",
+    "start_Offset": 295,
+    "end_Offset": 309,
+    "start": 136.15,
+    "end": 142.57999999999998
+  },
+  {
+    "val": "For the most part, the worse a country scored on the index, the more its currency fell in the taper tantrum.",
+    "start_Offset": 310,
+    "end_Offset": 330,
+    "start": 143.02,
+    "end": 149.67
+  },
+  {
+    "val": "This kind of evidence has prompted Fed officials ever since to argue that the sensitivity of emerging markets to the Fed’s words and deeds depends a lot on economic fundamentals in the emerging markets themselves.",
+    "start_Offset": 331,
+    "end_Offset": 365,
+    "start": 150.08,
+    "end": 163.79
+  },
+  {
+    "val": "To the Fed’s critics, that can sound like blaming the victim.",
+    "start_Offset": 366,
+    "end_Offset": 376,
+    "start": 164.35,
+    "end": 167.5
+  },
+  {
+    "val": "But it is also a hopeful message.",
+    "start_Offset": 377,
+    "end_Offset": 383,
+    "start": 167.96,
+    "end": 170.04999999999998
+  },
+  {
+    "val": "It implies that emerging markets have some control of their own fates.",
+    "start_Offset": 384,
+    "end_Offset": 395,
+    "start": 170.37,
+    "end": 174.97999900000002
+  },
+  {
+    "val": "They are not“purely passive objects of the effects of Fed policy decisions”, as Mr Bernanke put it in 2015.",
+    "start_Offset": 396,
+    "end_Offset": 415,
+    "start": 175.28,
+    "end": 182.66
+  },
+  {
+    "val": "Mr Basri has recounted the numerous measures he and other policymakers introduced to make Indonesia less fragile.",
+    "start_Offset": 416,
+    "end_Offset": 432,
+    "start": 183.14,
+    "end": 189.959999
+  },
+  {
+    "val": "They narrowed the country’s current-account deficit by raising interest rates, tightening credit regulations and cutting fuel subsidies, despite the political damage that would ensue.",
+    "start_Offset": 433,
+    "end_Offset": 457,
+    "start": 190.27,
+    "end": 200.93
+  },
+  {
+    "val": "Cabinet discussions were very“dynamic”, Mr Basri writes.",
+    "start_Offset": 458,
+    "end_Offset": 465,
+    "start": 201.24,
+    "end": 204.82000000000002
+  },
+  {
+    "val": "Indeed, judged by the criteria of 2013, emerging markets today look far less fragile than they once were.",
+    "start_Offset": 466,
+    "end_Offset": 483,
+    "start": 205.33,
+    "end": 212.28
+  },
+  {
+    "val": "Inflation is lower (only 1,4% in Indonesia) and“exchange-rate valuations have cheapened up considerably”, says Mr Lord.",
+    "start_Offset": 484,
+    "end_Offset": 502,
+    "start": 212.61,
+    "end": 221.35999999999999
+  },
+  {
+    "val": "Their current accounts are also“much improved”.",
+    "start_Offset": 503,
+    "end_Offset": 509,
+    "start": 221.69,
+    "end": 224.36
+  },
+  {
+    "val": "Indonesia’s is now in surplus, as are India’s and South Africa’s.",
+    "start_Offset": 510,
+    "end_Offset": 520,
+    "start": 224.63,
+    "end": 228.839999
+  },
+  {
+    "val": "These past indicators of fragility, however, may not be appropriate for 2021.",
+    "start_Offset": 521,
+    "end_Offset": 532,
+    "start": 229.53,
+    "end": 234.38000000000002
+  },
+  {
+    "val": "The pandemic has depressed demand and curtailed imports, which has temporarily narrowed current-account deficits around the world.",
+    "start_Offset": 533,
+    "end_Offset": 550,
+    "start": 235.27,
+    "end": 243.0
+  },
+  {
+    "val": "But the fight against covid-19 has also dramatically widened another kind of deficit: the gap between government spending and revenues.",
+    "start_Offset": 551,
+    "end_Offset": 571,
+    "start": 243.51,
+    "end": 252.159999
+  },
+  {
+    "val": "Budget deficits averaged over 10% of GDP across the fragile five last year, according to the IMF.",
+    "start_Offset": 572,
+    "end_Offset": 588,
+    "start": 252.51,
+    "end": 259.94
+  },
+  {
+    "val": "Fiscal sustainability“has become the key macro area of concern for some emerging markets”, Mr Lord says.",
+    "start_Offset": 589,
+    "end_Offset": 605,
+    "start": 260.179999,
+    "end": 268.309999
+  },
+  {
+    "val": "Bond strategists at HSBC, a bank, published an alternative ranking of vulnerable emerging economies on March 2nd.",
+    "start_Offset": 606,
+    "end_Offset": 622,
+    "start": 269.25,
+    "end": 277.19
+  },
+  {
+    "val": "The least resilient, according to their scorecard, are Brazil, Indonesia, Mexico and South Africa.",
+    "start_Offset": 623,
+    "end_Offset": 636,
+    "start": 277.56,
+    "end": 283.92999999999995
+  },
+  {
+    "val": "These economies have all been prone to current-account deficits in recent years, even if the pandemic has flattered the latest figures.",
+    "start_Offset": 637,
+    "end_Offset": 658,
+    "start": 284.34,
+    "end": 291.45000000000005
+  },
+  {
+    "val": "And sizeable government debt in South Africa and especially Brazil leaves them exposed to any jump in interest rates, which are now unusually low.",
+    "start_Offset": 659,
+    "end_Offset": 682,
+    "start": 291.82,
+    "end": 301.06
+  },
+  {
+    "val": "The fairweather four These are not the only potential sources of vulnerability.",
+    "start_Offset": 683,
+    "end_Offset": 694,
+    "start": 301.679999,
+    "end": 304.55
+  },
+  {
+    "val": "When American yields rise and the dollar strengthens, countries that have borrowed heavily in hard currencies find their debts harder to bear.",
+    "start_Offset": 695,
+    "end_Offset": 716,
+    "start": 304.789999,
+    "end": 312.47
+  },
+  {
+    "val": "But the trouble need not end there, according to Valentina Bruno of the American University in Washington, DC, and Hyun Song Shin of the Bank for International Settlements (BIS).",
+    "start_Offset": 717,
+    "end_Offset": 745,
+    "start": 313.21,
+    "end": 324.52999900000003
+  },
+  {
+    "val": "Any deterioration in the creditworthiness of one borrower in an international lender’s portfolio can limit the risks it is willing to take on other emerging markets, even those that mostly borrow in their own currency.",
+    "start_Offset": 746,
+    "end_Offset": 780,
+    "start": 325.039999,
+    "end": 337.78999999999996
+  },
+  {
+    "val": "Boris Hofmann and Taejin Park of the BIS have shown that a rising dollar is a particular danger to emerging markets that have sold a large share of their bonds to foreigners.",
+    "start_Offset": 781,
+    "end_Offset": 812,
+    "start": 338.37,
+    "end": 348.89000000000004
+  },
+  {
+    "val": "One reason why Mexico is on HSBC’s worry list and Turkey is not is that foreigners hold 46% of Mexico’s local-currency government bonds and less than 7% of Turkey’s.",
+    "start_Offset": 813,
+    "end_Offset": 842,
+    "start": 349.2,
+    "end": 362.51
+  },
+  {
+    "val": "These findings create a headache for conscientious finance ministers in emerging markets.",
+    "start_Offset": 843,
+    "end_Offset": 854,
+    "start": 363.36,
+    "end": 368.559999
+  },
+  {
+    "val": "If they strive to reform their economies to make them less fragile, they will become more attractive to foreign investors, who will then snap up a greater share of their bonds.",
+    "start_Offset": 855,
+    "end_Offset": 885,
+    "start": 368.9,
+    "end": 378.66999899999996
+  },
+  {
+    "val": "But that could make them more vulnerable to a sell-off whenever global financial conditions darken.",
+    "start_Offset": 886,
+    "end_Offset": 901,
+    "start": 379.0,
+    "end": 383.96999999999997
+  },
+  {
+    "val": "Indonesia’s reforms after the taper tantrum soon won praise from the IMF and attracted foreign buyers back to its bond market.",
+    "start_Offset": 902,
+    "end_Offset": 922,
+    "start": 384.92,
+    "end": 393.279999
+  },
+  {
+    "val": "But, Mr Basri admits, these inflows increased the vulnerability of Indonesia’s economy to a reversal when global markets wobbled again in 2015.",
+    "start_Offset": 923,
+    "end_Offset": 944,
+    "start": 393.679999,
+    "end": 404.04
+  },
+  {
+    "val": "Emerging economies are not powerless victims of the Fed.",
+    "start_Offset": 945,
+    "end_Offset": 953,
+    "start": 404.58,
+    "end": 407.53
+  },
+  {
+    "val": "But they can be hapless victims of their own success.",
+    "start_Offset": 954,
+    "end_Offset": 963,
+    "start": 407.84,
+    "end": 411.81
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

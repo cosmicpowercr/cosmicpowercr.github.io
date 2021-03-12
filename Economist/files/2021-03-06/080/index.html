@@ -1,0 +1,319 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">080 Science and technology - Hacking history</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='080';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "A MODERN CORRESPONDENT wanting to communicate privately can use computerised encryption.",
+    "start_Offset": 0,
+    "end_Offset": 10,
+    "start": 9.66,
+    "end": 25.22
+  },
+  {
+    "val": "Three hundred years ago, origami would have been a better bet.",
+    "start_Offset": 11,
+    "end_Offset": 21,
+    "start": 25.81,
+    "end": 30.02
+  },
+  {
+    "val": "Before gummed envelopes became common in the 1800s, letters were posted with no security wrapper.",
+    "start_Offset": 22,
+    "end_Offset": 36,
+    "start": 31.099999,
+    "end": 38.01
+  },
+  {
+    "val": "Privacy-minded writers relied instead on cunning combinations of folds, tucks, slits and seals, a practice Jana Dambrogio at the Massachusetts Institute of Technology has dubbed“letterlocking”.",
+    "start_Offset": 37,
+    "end_Offset": 63,
+    "start": 38.82,
+    "end": 52.559999
+  },
+  {
+    "val": "Some, like the“chapel fold”, in which the letter is turned into its own envelope and sealed, were the equivalent of simple padlocks.",
+    "start_Offset": 64,
+    "end_Offset": 86,
+    "start": 54.709998999999996,
+    "end": 63.230000000000004
+  },
+  {
+    "val": "Others were subtler.",
+    "start_Offset": 87,
+    "end_Offset": 89,
+    "start": 63.849999,
+    "end": 65.089999
+  },
+  {
+    "val": "The“dagger trap”relied on a concealed wax seal that would leave a telltale rip once a letter had been opened.",
+    "start_Offset": 90,
+    "end_Offset": 110,
+    "start": 65.719999,
+    "end": 73.80999999999999
+  },
+  {
+    "val": "But information about the practice is scarce.",
+    "start_Offset": 111,
+    "end_Offset": 117,
+    "start": 74.94999999999999,
+    "end": 77.60000000000001
+  },
+  {
+    "val": "Most historical letters survive in their opened form, leaving aficionados like Ms Dambrogio with little to go on but crease-marks and tears.",
+    "start_Offset": 118,
+    "end_Offset": 140,
+    "start": 78.18,
+    "end": 88.03999900000001
+  },
+  {
+    "val": "The few that remain unopened present a different problem: how to read them without permanently damaging the letterlock.",
+    "start_Offset": 141,
+    "end_Offset": 158,
+    "start": 89.279999,
+    "end": 97.66
+  },
+  {
+    "val": "Now, in research published in Nature Communications, Ms Dambrogio and her colleagues have come up with a solution.",
+    "start_Offset": 159,
+    "end_Offset": 176,
+    "start": 98.52,
+    "end": 105.819999
+  },
+  {
+    "val": "The letters in question are part of the Brienne Collection, a trove of thousands of undelivered 17th-century letters bequeathed to posterity by Dutch postmasters.",
+    "start_Offset": 177,
+    "end_Offset": 201,
+    "start": 106.879999,
+    "end": 118.74
+  },
+  {
+    "val": "The collection includes 577 unopened, letterlocked missives.",
+    "start_Offset": 202,
+    "end_Offset": 208,
+    "start": 119.33,
+    "end": 125.049999
+  },
+  {
+    "val": "To get at their letters’ contents while preserving the integrity of the locks, the team turned to X-rays and computers.",
+    "start_Offset": 209,
+    "end_Offset": 229,
+    "start": 125.709999,
+    "end": 133.79999999999998
+  },
+  {
+    "val": "The key lay in knowing that the inks used at the time often contained iron.",
+    "start_Offset": 230,
+    "end_Offset": 244,
+    "start": 134.86,
+    "end": 140.42
+  },
+  {
+    "val": "This meant that an X-ray microtomography scanner, of the kind usually reserved for distinguishing teeth or bone from soft tissue, could reliably distinguish the metallic letters from the paper background.",
+    "start_Offset": 245,
+    "end_Offset": 275,
+    "start": 141.099999,
+    "end": 154.16000000000003
+  },
+  {
+    "val": "Once the scan had also revealed the topography of the sheet, with the location of folds and creases mapped, the resulting model could be virtually unfolded by a computer to reveal the hidden text.",
+    "start_Offset": 276,
+    "end_Offset": 309,
+    "start": 155.01,
+    "end": 168.25
+  },
+  {
+    "val": "Though some imperfections remain—a hole left by a burrowing worm, for example, or the dry scratch of an ink-free nib—the legibility of the scans rivalled anything one would find in a research library, says Dr Starza Smith, a researcher at King’s College London.",
+    "start_Offset": 310,
+    "end_Offset": 355,
+    "start": 169.26,
+    "end": 187.79
+  },
+  {
+    "val": "And although no spectacular secrets have yet emerged from the Brienne Collection, the technique seems to hold plenty of promise for future research into a fascinating historical practice.",
+    "start_Offset": 356,
+    "end_Offset": 383,
+    "start": 188.57,
+    "end": 201.15
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

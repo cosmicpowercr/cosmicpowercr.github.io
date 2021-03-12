@@ -1,0 +1,668 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">035 Middle East and Africa - Christians in Iraq</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='035';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "THINGS ARE moving quickly in Qaraqosh, a sleepy Christian town just outside Mosul in northern Iraq.",
+    "start_Offset": 0,
+    "end_Offset": 15,
+    "start": 18.219999,
+    "end": 25.07
+  },
+  {
+    "val": "Pope Francis arrives on March 7th, four years after Islamic State (IS) was chased out.",
+    "start_Offset": 16,
+    "end_Offset": 30,
+    "start": 25.42,
+    "end": 31.689999
+  },
+  {
+    "val": "So local priests have been hurriedly cleaning up al-Tahira, their cathedral and one of Iraq’s largest churches.",
+    "start_Offset": 31,
+    "end_Offset": 48,
+    "start": 32.230000000000004,
+    "end": 39.13
+  },
+  {
+    "val": "They have refurbished its burnt interior and repaired most of the masonry that the jihadists used for target practice.",
+    "start_Offset": 49,
+    "end_Offset": 67,
+    "start": 39.58,
+    "end": 46.72
+  },
+  {
+    "val": "When your correspondent visited, five days before the pope, smashed chandeliers and a golden crucifix torn down by IS still littered the forecourt.",
+    "start_Offset": 68,
+    "end_Offset": 90,
+    "start": 47.2,
+    "end": 56.42
+  },
+  {
+    "val": "Father Ammar Yako, the priest overseeing the project, says he has received no support from the Iraqi government; the funding has come from Catholic groups in the West.",
+    "start_Offset": 91,
+    "end_Offset": 118,
+    "start": 56.82,
+    "end": 66.24
+  },
+  {
+    "val": "He says he will finish just in time for the Holy Father.",
+    "start_Offset": 119,
+    "end_Offset": 130,
+    "start": 66.469999,
+    "end": 69.77999999999999
+  },
+  {
+    "val": "Pope Francis is the first-ever pontiff to visit Iraq, where over 95% of the population is thought to be Muslim.",
+    "start_Offset": 131,
+    "end_Offset": 151,
+    "start": 70.34,
+    "end": 77.78
+  },
+  {
+    "val": "He arrives at a difficult time for its Christians, whose forebears have been in the country since the first century.",
+    "start_Offset": 152,
+    "end_Offset": 171,
+    "start": 78.22,
+    "end": 84.549999
+  },
+  {
+    "val": "Churches are being rebuilt, but there are fewer believers to fill the pews.",
+    "start_Offset": 172,
+    "end_Offset": 184,
+    "start": 85.03999999999999,
+    "end": 89.42999999999999
+  },
+  {
+    "val": "Around 1,2m Christians lived in Iraq in 2003.",
+    "start_Offset": 185,
+    "end_Offset": 193,
+    "start": 89.99,
+    "end": 93.27000000000001
+  },
+  {
+    "val": "War and misery have pushed that number down to around 250,000, or less than 1% of the population (see chart).",
+    "start_Offset": 194,
+    "end_Offset": 214,
+    "start": 94.73,
+    "end": 102.66000000000001
+  },
+  {
+    "val": "Many of those who left will never come back.",
+    "start_Offset": 215,
+    "end_Offset": 223,
+    "start": 102.66,
+    "end": 104.87
+  },
+  {
+    "val": "But Iraq’s leaders hope that Christians displaced within the country will soon feel safe enough to go home.",
+    "start_Offset": 224,
+    "end_Offset": 241,
+    "start": 105.099999,
+    "end": 111.64
+  },
+  {
+    "val": "President Barham Salih says the pope’s visit will help Iraq to“heal”.",
+    "start_Offset": 242,
+    "end_Offset": 253,
+    "start": 112.12,
+    "end": 116.86
+  },
+  {
+    "val": "The trouble for Christians began after the removal of Saddam Hussein, Iraq’s dictator, in 2003.",
+    "start_Offset": 254,
+    "end_Offset": 268,
+    "start": 117.7,
+    "end": 124.58999899999999
+  },
+  {
+    "val": "He had largely protected the group—even making a Christian, Tariq Aziz, his deputy prime minister.",
+    "start_Offset": 269,
+    "end_Offset": 284,
+    "start": 124.59,
+    "end": 129.87
+  },
+  {
+    "val": "But some Muslims view Christianity, despite its long history in the region, as a Western import.",
+    "start_Offset": 285,
+    "end_Offset": 300,
+    "start": 130.2,
+    "end": 136.22
+  },
+  {
+    "val": "Anti-Christian violence increased during the American occupation and turned into an existential threat when IS captured swathes of the country in 2014.",
+    "start_Offset": 301,
+    "end_Offset": 323,
+    "start": 136.65,
+    "end": 146.47
+  },
+  {
+    "val": "The jihadists told Christians that they could leave, convert to Islam or be killed.",
+    "start_Offset": 324,
+    "end_Offset": 337,
+    "start": 147.46,
+    "end": 153.25
+  },
+  {
+    "val": "In August that year, around 100,000 of them fled from the Nineveh Plains, the heartland of Iraqi Christianity, which IS conquered.",
+    "start_Offset": 338,
+    "end_Offset": 359,
+    "start": 153.69,
+    "end": 162.29
+  },
+  {
+    "val": "Some went to Baghdad or to Erbil, capital of the autonomous Kurdish region, but many left the country.",
+    "start_Offset": 360,
+    "end_Offset": 377,
+    "start": 162.74,
+    "end": 169.60000000000002
+  },
+  {
+    "val": "An enduring source of resentment towards Christians in Iraq comes from the notion that they can easily claim asylum in the West, says Pascale Warda of the Hammurabi Human Rights Organisation, an NGO in Baghdad.",
+    "start_Offset": 378,
+    "end_Offset": 412,
+    "start": 170.309999,
+    "end": 184.55
+  },
+  {
+    "val": "Aid to Church in Need, a Catholic charity based in Germany, estimates that the war against IS destroyed or damaged 14,936 homes and 363 church properties in the Nineveh Plains.",
+    "start_Offset": 413,
+    "end_Offset": 443,
+    "start": 185.75,
+    "end": 200.88
+  },
+  {
+    "val": "Around 57% of the homes and 11% of the church properties had been repaired by January.",
+    "start_Offset": 444,
+    "end_Offset": 459,
+    "start": 201.27,
+    "end": 207.22
+  },
+  {
+    "val": "Christians have trickled back.",
+    "start_Offset": 460,
+    "end_Offset": 463,
+    "start": 207.559999,
+    "end": 209.41
+  },
+  {
+    "val": "But many sold their homes to Muslim families.",
+    "start_Offset": 464,
+    "end_Offset": 471,
+    "start": 209.44,
+    "end": 212.41
+  },
+  {
+    "val": "Others stay away because of a lack of security and jobs.",
+    "start_Offset": 472,
+    "end_Offset": 482,
+    "start": 212.719999,
+    "end": 216.69
+  },
+  {
+    "val": "Reconstruction has happened separately from efforts to stabilise the region, says Reine Hanna of the Assyrian Policy Institute, a think-tank in Washington.",
+    "start_Offset": 483,
+    "end_Offset": 505,
+    "start": 217.65,
+    "end": 227.20000000000002
+  },
+  {
+    "val": "It reckons that across the Nineveh Plains, 53% of Assyrians, a predominantly Christian ethnic minority, have returned to their villages.",
+    "start_Offset": 506,
+    "end_Offset": 525,
+    "start": 227.67,
+    "end": 236.07
+  },
+  {
+    "val": "But in some areas that number is less than 10%.",
+    "start_Offset": 526,
+    "end_Offset": 535,
+    "start": 236.32,
+    "end": 239.20999999999998
+  },
+  {
+    "val": "“When people don’t feel safe, it doesn’t matter if they have reconstructed churches or houses,”says Ms Hanna.",
+    "start_Offset": 536,
+    "end_Offset": 553,
+    "start": 239.67,
+    "end": 245.37
+  },
+  {
+    "val": "The calculations of Christian families often depend on which group controls their home town.",
+    "start_Offset": 554,
+    "end_Offset": 567,
+    "start": 246.42,
+    "end": 252.189999
+  },
+  {
+    "val": "At least six groups claim authority in different parts of the Nineveh Plains.",
+    "start_Offset": 568,
+    "end_Offset": 580,
+    "start": 252.52,
+    "end": 257.22
+  },
+  {
+    "val": "They include Iranian-backed and predominantly Shia militias (known as the Popular Mobilisation Forces), Kurdish forces (known as the Peshmerga) and the Iraqi government.",
+    "start_Offset": 581,
+    "end_Offset": 604,
+    "start": 257.55,
+    "end": 268.08
+  },
+  {
+    "val": "In many places portraits of Qassem Suleimani, the late commander of Iran’s Revolutionary Guard Corps, are common.",
+    "start_Offset": 605,
+    "end_Offset": 621,
+    "start": 268.549999,
+    "end": 276.06
+  },
+  {
+    "val": "But in towns controlled by the Nineveh Plain Protection Units, a Christian militia, Pope Francis smiles down from billboards.",
+    "start_Offset": 622,
+    "end_Offset": 640,
+    "start": 276.4,
+    "end": 283.78999999999996
+  },
+  {
+    "val": "Unsurprisingly, these towns have higher rates of return.",
+    "start_Offset": 641,
+    "end_Offset": 648,
+    "start": 284.13,
+    "end": 287.66999999999996
+  },
+  {
+    "val": "The Iraqi government has made at least some effort to reach out to Christians.",
+    "start_Offset": 649,
+    "end_Offset": 662,
+    "start": 288.5,
+    "end": 292.79
+  },
+  {
+    "val": "It declared Christmas an official holiday last year.",
+    "start_Offset": 663,
+    "end_Offset": 670,
+    "start": 293.04,
+    "end": 295.92
+  },
+  {
+    "val": "But many Christians say it treats them as second-class citizens.",
+    "start_Offset": 671,
+    "end_Offset": 681,
+    "start": 295.96,
+    "end": 300.33
+  },
+  {
+    "val": "They have a tougher time getting government jobs than Muslims.",
+    "start_Offset": 682,
+    "end_Offset": 691,
+    "start": 300.69,
+    "end": 304.0
+  },
+  {
+    "val": "The constitution dating from 2005 is based on Islam.",
+    "start_Offset": 692,
+    "end_Offset": 700,
+    "start": 304.09,
+    "end": 308.17
+  },
+  {
+    "val": "Marriages between Muslims and Christians are frowned upon.",
+    "start_Offset": 701,
+    "end_Offset": 708,
+    "start": 308.5,
+    "end": 312.04
+  },
+  {
+    "val": "Children born of mixed parentage are automatically classed as Muslim, even if the child is a product of rape.",
+    "start_Offset": 709,
+    "end_Offset": 727,
+    "start": 312.38,
+    "end": 319.589999
+  },
+  {
+    "val": "In Baghdad, the capital, Christian businesses are often attacked, says Ms Warda.",
+    "start_Offset": 728,
+    "end_Offset": 739,
+    "start": 320.13,
+    "end": 325.13
+  },
+  {
+    "val": "Christian leaders were vocal supporters of big anti-government protests in 2019.",
+    "start_Offset": 740,
+    "end_Offset": 751,
+    "start": 325.52,
+    "end": 331.12
+  },
+  {
+    "val": "Iraqi Kurdistan, in the north-east, is more hospitable to Christians.",
+    "start_Offset": 752,
+    "end_Offset": 762,
+    "start": 332.0,
+    "end": 336.72
+  },
+  {
+    "val": "The Kurdish national project is based on ethnicity, not religion, and the Kurdistan Regional Government (KRG) has more provisions for religious pluralism than the Iraqi government has.",
+    "start_Offset": 763,
+    "end_Offset": 789,
+    "start": 337.09,
+    "end": 348.98
+  },
+  {
+    "val": "But the KRG does not always adhere to its own laws, says Ms Hanna, and ethnic tensions can be as febrile as religious ones.",
+    "start_Offset": 790,
+    "end_Offset": 813,
+    "start": 349.33,
+    "end": 358.539999
+  },
+  {
+    "val": "Under Kurdish rule“you can be Christian, but you can’t be Assyrian,”she says.",
+    "start_Offset": 814,
+    "end_Offset": 827,
+    "start": 359.029999,
+    "end": 363.98
+  },
+  {
+    "val": "Assyrians and Yazidis, another religious minority, felt abandoned when the Peshmerga withdrew from the Nineveh Plains in 2014, leaving the area to IS.",
+    "start_Offset": 828,
+    "end_Offset": 850,
+    "start": 364.34,
+    "end": 374.26000000000005
+  },
+  {
+    "val": "Some of that distrust still lingers.",
+    "start_Offset": 851,
+    "end_Offset": 856,
+    "start": 374.58,
+    "end": 376.96999999999997
+  },
+  {
+    "val": "Western aid groups have singled out Iraq’s Christians (and Yazidis).",
+    "start_Offset": 857,
+    "end_Offset": 866,
+    "start": 378.06,
+    "end": 382.61
+  },
+  {
+    "val": "USAID, America’s development agency, committed $27,5m (or 2,5% of its total development spending in Iraq) to help people returning to the Nineveh Plains in 2018 and 2019.",
+    "start_Offset": 867,
+    "end_Offset": 895,
+    "start": 384.26,
+    "end": 397.96
+  },
+  {
+    "val": "It was the only district to receive a dedicated stream of funding for resettlement from America.",
+    "start_Offset": 896,
+    "end_Offset": 911,
+    "start": 398.37,
+    "end": 403.78
+  },
+  {
+    "val": "USAID also renegotiated the terms of a $75m contribution to the UN in 2018 that was slated for a stabilisation project in Iraq.",
+    "start_Offset": 912,
+    "end_Offset": 934,
+    "start": 404.26,
+    "end": 415.71999999999997
+  },
+  {
+    "val": "The agency made sure that $55m would be spent supporting religious minorities in the Nineveh Plains.",
+    "start_Offset": 935,
+    "end_Offset": 950,
+    "start": 416.19,
+    "end": 422.78999999999996
+  },
+  {
+    "val": "When Donald Trump was America’s president, USAID was reportedly pressed to direct more support towards Christians.",
+    "start_Offset": 951,
+    "end_Offset": 966,
+    "start": 424.13,
+    "end": 430.639999
+  },
+  {
+    "val": "Most Western countries do not want to be seen favouring one religion over another.",
+    "start_Offset": 967,
+    "end_Offset": 980,
+    "start": 431.059999,
+    "end": 435.33
+  },
+  {
+    "val": "But some do not mind.",
+    "start_Offset": 981,
+    "end_Offset": 985,
+    "start": 435.57,
+    "end": 436.90999999999997
+  },
+  {
+    "val": "In 2017 Hungary launched“Hungary Helps”, a project aimed at Christians around the world.",
+    "start_Offset": 986,
+    "end_Offset": 999,
+    "start": 437.23,
+    "end": 443.039999
+  },
+  {
+    "val": "Tristan Azbej, the Hungarian minister for the aid of persecuted Christians, said in 2018 that the programme’s“flagship project”was the reconstruction of Tesqopa, a predominantly Assyrian town in the Nineveh Plains.",
+    "start_Offset": 1000,
+    "end_Offset": 1031,
+    "start": 443.54,
+    "end": 458.16
+  },
+  {
+    "val": "For Christians, as for so many Iraqis, painful memories of fleeing their homes are still fresh.",
+    "start_Offset": 1032,
+    "end_Offset": 1047,
+    "start": 458.58,
+    "end": 464.72999899999996
+  },
+  {
+    "val": "Tempting them away from stable and relatively prosperous places such as Erbil will be difficult.",
+    "start_Offset": 1048,
+    "end_Offset": 1062,
+    "start": 465.139999,
+    "end": 470.88
+  },
+  {
+    "val": "Convincing them to forgo Western visas will be tougher still.",
+    "start_Offset": 1063,
+    "end_Offset": 1072,
+    "start": 471.27,
+    "end": 475.05
+  },
+  {
+    "val": "Some Iraqis think the pope’s visit will raise awareness of Christianity’s long history in the country and, perhaps, lead to greater understanding between faiths.",
+    "start_Offset": 1073,
+    "end_Offset": 1096,
+    "start": 475.54,
+    "end": 484.59999999999997
+  },
+  {
+    "val": "But Father Yako thinks it will take a bigger effort.",
+    "start_Offset": 1097,
+    "end_Offset": 1106,
+    "start": 484.92,
+    "end": 487.93
+  },
+  {
+    "val": "“Other communities, especially Muslims, need to do more to make us feel comfortable,”he says.",
+    "start_Offset": 1107,
+    "end_Offset": 1121,
+    "start": 488.31,
+    "end": 494.01
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

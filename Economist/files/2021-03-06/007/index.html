@@ -1,0 +1,473 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">007 Leaders - The Middle East</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='007';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "JOE BIDEN has made no secret of his frustration with Saudi Arabia.",
+    "start_Offset": 0,
+    "end_Offset": 11,
+    "start": 14.69,
+    "end": 18.88
+  },
+  {
+    "val": "A“pariah”with“very little social redeeming value”, he called its government in 2019.",
+    "start_Offset": 12,
+    "end_Offset": 25,
+    "start": 19.3,
+    "end": 25.22
+  },
+  {
+    "val": "One of his first acts as president was to end American support for the Saudi-led war in Yemen.",
+    "start_Offset": 26,
+    "end_Offset": 44,
+    "start": 25.78,
+    "end": 31.509999999999998
+  },
+  {
+    "val": "Last week he released an intelligence report that blamed the kingdom’s crown prince, Muhammad bin Salman, for the murder of a journalist in 2018.",
+    "start_Offset": 45,
+    "end_Offset": 68,
+    "start": 31.889999,
+    "end": 40.86
+  },
+  {
+    "val": "But at that point Mr Biden’s ideals collided with America’s national interest.",
+    "start_Offset": 69,
+    "end_Offset": 80,
+    "start": 41.38,
+    "end": 46.23
+  },
+  {
+    "val": "The prince may be a brute, but he is also in charge of an important American ally.",
+    "start_Offset": 81,
+    "end_Offset": 97,
+    "start": 46.53,
+    "end": 51.519999999999996
+  },
+  {
+    "val": "In the end Mr Biden decided that the cost of punishing him would have been too high.",
+    "start_Offset": 98,
+    "end_Offset": 114,
+    "start": 51.87,
+    "end": 56.959999999999994
+  },
+  {
+    "val": "This is all part of a larger cost-benefit analysis taking place in the White House.",
+    "start_Offset": 115,
+    "end_Offset": 130,
+    "start": 57.73,
+    "end": 62.22
+  },
+  {
+    "val": "Mr Biden has signalled that he wants to make the Middle East less of a priority.",
+    "start_Offset": 131,
+    "end_Offset": 146,
+    "start": 62.679999,
+    "end": 66.59
+  },
+  {
+    "val": "He has good reason to pull back.",
+    "start_Offset": 147,
+    "end_Offset": 153,
+    "start": 66.86,
+    "end": 68.689999
+  },
+  {
+    "val": "America has thousands of soldiers spread across Arab countries, yet its interventions have produced dismal results.",
+    "start_Offset": 154,
+    "end_Offset": 169,
+    "start": 69.059999,
+    "end": 75.75
+  },
+  {
+    "val": "Many Americans argue that their country should instead focus on countering China’s growing global influence.",
+    "start_Offset": 170,
+    "end_Offset": 184,
+    "start": 76.12,
+    "end": 82.59
+  },
+  {
+    "val": "The question facing the Biden administration is how to lighten America’s burden in the Middle East while still protecting its vital interests there.",
+    "start_Offset": 185,
+    "end_Offset": 207,
+    "start": 83.099999,
+    "end": 90.95
+  },
+  {
+    "val": "That will not be easy.",
+    "start_Offset": 208,
+    "end_Offset": 212,
+    "start": 90.96,
+    "end": 93.25
+  },
+  {
+    "val": "It helps that those interests are not what they were.",
+    "start_Offset": 213,
+    "end_Offset": 222,
+    "start": 94.25,
+    "end": 96.88
+  },
+  {
+    "val": "For decades America focused on the flow of Gulf oil and the survival of Israel.",
+    "start_Offset": 223,
+    "end_Offset": 237,
+    "start": 97.25,
+    "end": 101.919999
+  },
+  {
+    "val": "Last year America was a net exporter of both oil and natural gas.",
+    "start_Offset": 238,
+    "end_Offset": 250,
+    "start": 102.309999,
+    "end": 106.64
+  },
+  {
+    "val": "And Israel, the best-armed country in the region, now has formal ties with many of its Arab neighbours.",
+    "start_Offset": 251,
+    "end_Offset": 269,
+    "start": 106.93,
+    "end": 113.13
+  },
+  {
+    "val": "Yet vital interests remain.",
+    "start_Offset": 270,
+    "end_Offset": 273,
+    "start": 114.04,
+    "end": 116.0
+  },
+  {
+    "val": "Terrorist groups that find havens in Iraq, Syria or Yemen may end up striking the West.",
+    "start_Offset": 274,
+    "end_Offset": 289,
+    "start": 116.33,
+    "end": 121.96
+  },
+  {
+    "val": "If the government in Iran seeks a bomb it risks setting off an arms race that would blow apart the global non-proliferation regime and permanently put the Middle East on a nuclear knife-edge.",
+    "start_Offset": 290,
+    "end_Offset": 324,
+    "start": 122.23,
+    "end": 134.76000000000002
+  },
+  {
+    "val": "In the past America has sought to impose magical solutions.",
+    "start_Offset": 325,
+    "end_Offset": 334,
+    "start": 135.52,
+    "end": 139.04
+  },
+  {
+    "val": "George W Bush attempted to decree a democracy in Iraq.",
+    "start_Offset": 335,
+    "end_Offset": 344,
+    "start": 139.059999,
+    "end": 143.18
+  },
+  {
+    "val": "Donald Trump wielded sanctions to force capitulation or a change in regime in Iran.",
+    "start_Offset": 345,
+    "end_Offset": 358,
+    "start": 143.469999,
+    "end": 148.99
+  },
+  {
+    "val": "As these approaches failed, American policy swung between interest and apathy, and war and retreat.",
+    "start_Offset": 359,
+    "end_Offset": 373,
+    "start": 149.45,
+    "end": 156.4
+  },
+  {
+    "val": "Mr Biden should instead try to bring stability by getting the region to take responsibility for itself and discouraging leaders from being so dependent on armed force.",
+    "start_Offset": 374,
+    "end_Offset": 400,
+    "start": 157.0,
+    "end": 167.79000000000002
+  },
+  {
+    "val": "America’s big arms sales to the region’s despots are a source of trouble.",
+    "start_Offset": 401,
+    "end_Offset": 413,
+    "start": 168.25,
+    "end": 172.52
+  },
+  {
+    "val": "And they do little to help the region’s people, who suffer from poor government and abusive regimes, which in turn foster extremism.",
+    "start_Offset": 414,
+    "end_Offset": 435,
+    "start": 172.76,
+    "end": 180.57999999999998
+  },
+  {
+    "val": "RAND, a think-tank, recently noted that America spends roughly as much on Egypt’s armed forces as it does on aid to the entire region.",
+    "start_Offset": 436,
+    "end_Offset": 460,
+    "start": 181.219999,
+    "end": 189.5
+  },
+  {
+    "val": "Mr Biden should cancel the blank cheque for mischief-making and repression.",
+    "start_Offset": 461,
+    "end_Offset": 472,
+    "start": 189.849999,
+    "end": 194.689999
+  },
+  {
+    "val": "The second leg to this strategy is to enhance the Middle East’s capacity for diplomacy.",
+    "start_Offset": 473,
+    "end_Offset": 487,
+    "start": 195.63,
+    "end": 200.79
+  },
+  {
+    "val": "The deals known as the Abraham Accords, which the Trump administration helped broker between Israel and several Arab states, are a tentative start towards upgrading the region’s diplomatic machinery.",
+    "start_Offset": 488,
+    "end_Offset": 516,
+    "start": 201.31,
+    "end": 213.01999999999998
+  },
+  {
+    "val": "Mr Biden should encourage more such talking.",
+    "start_Offset": 517,
+    "end_Offset": 523,
+    "start": 213.469999,
+    "end": 216.04
+  },
+  {
+    "val": "Saudi Arabia and the United Arab Emirates were shocked when Mr Trump failed to come to their defence after attacks by Iran and its proxies.",
+    "start_Offset": 524,
+    "end_Offset": 548,
+    "start": 216.440001,
+    "end": 224.33
+  },
+  {
+    "val": "Iran is suffering under American sanctions.",
+    "start_Offset": 549,
+    "end_Offset": 554,
+    "start": 224.8,
+    "end": 227.42000000000002
+  },
+  {
+    "val": "Their anxiety gives Mr Biden leverage in asserting that lowering tensions is in everyone’s interest.",
+    "start_Offset": 555,
+    "end_Offset": 569,
+    "start": 227.679999,
+    "end": 234.27999899999998
+  },
+  {
+    "val": "Encouraging diplomacy does not mean withdrawing all American troops.",
+    "start_Offset": 570,
+    "end_Offset": 578,
+    "start": 235.07,
+    "end": 238.76
+  },
+  {
+    "val": "They have helped suppress Islamic State and al-Qaeda, which are still active.",
+    "start_Offset": 579,
+    "end_Offset": 591,
+    "start": 239.07,
+    "end": 243.8
+  },
+  {
+    "val": "And soft power tends to be more effective when hard power lurks in the background.",
+    "start_Offset": 592,
+    "end_Offset": 606,
+    "start": 244.15,
+    "end": 249.15
+  },
+  {
+    "val": "For example, the air strike on an Iranian-backed militia in Syria last month was retaliation for an attack on Americans in Iraq—and a signal to the government in Tehran that Mr Biden would not roll over in negotiations to revive the Iran nuclear deal.",
+    "start_Offset": 607,
+    "end_Offset": 652,
+    "start": 249.61,
+    "end": 265.60999999999996
+  },
+  {
+    "val": "Talking is not easy but, if America wants to focus less on a troubled part of the world, it is the only way ahead.",
+    "start_Offset": 653,
+    "end_Offset": 676,
+    "start": 266.259999,
+    "end": 274.46999999999997
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

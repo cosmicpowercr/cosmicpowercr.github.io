@@ -1,0 +1,795 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">054 Britain - Bagehot</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='054';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "THE LIST of great prime ministers Britain never had includes Joseph Chamberlain, Rab Butler and Michael Heseltine.",
+    "start_Offset": 0,
+    "end_Offset": 16,
+    "start": 16.48,
+    "end": 23.360000000000003
+  },
+  {
+    "val": "It does not include Ed Miliband.",
+    "start_Offset": 17,
+    "end_Offset": 22,
+    "start": 23.77,
+    "end": 25.77
+  },
+  {
+    "val": "He flunked the big test that the British traditionally impose on anyone who aspires to the highest office in the land—retaining your dignity while eating a bacon sandwich.",
+    "start_Offset": 23,
+    "end_Offset": 51,
+    "start": 26.08,
+    "end": 35.159999
+  },
+  {
+    "val": "The one election campaign he fought as leader, in 2015, was a double disaster for his party: David Cameron won with a solid majority and a dejected Labour Party turned to Jeremy Corbyn for solace.",
+    "start_Offset": 52,
+    "end_Offset": 86,
+    "start": 35.789999,
+    "end": 48.219999
+  },
+  {
+    "val": "Yet when it comes to public policy Mr Miliband continues to exercise considerable influence.",
+    "start_Offset": 87,
+    "end_Offset": 100,
+    "start": 48.83,
+    "end": 54.189999
+  },
+  {
+    "val": "We live in the age of Miliband more than we live in the age of Cameron or Corbyn.",
+    "start_Offset": 101,
+    "end_Offset": 118,
+    "start": 54.789999,
+    "end": 58.57
+  },
+  {
+    "val": "In the budget on March 3rd Rishi Sunak, the chancellor, stole three of Mr Miliband’s ideas: gradually raising the corporation tax rate from 19% of profits to 25%, opening a national infrastructure bank in the provinces and encouraging corporate investment using tax incentives.",
+    "start_Offset": 119,
+    "end_Offset": 161,
+    "start": 59.59,
+    "end": 78.3
+  },
+  {
+    "val": "This is not the first time Mr Sunak has followed Mr Miliband’s advice.",
+    "start_Offset": 162,
+    "end_Offset": 174,
+    "start": 78.99,
+    "end": 82.68
+  },
+  {
+    "val": "He has already rewritten Treasury rules on the grounds that their narrow definition of costs and benefits favours investment in London.",
+    "start_Offset": 175,
+    "end_Offset": 195,
+    "start": 82.83,
+    "end": 91.00999900000001
+  },
+  {
+    "val": "The chancellor is only the latest in a succession of Tory smash-and-grab artists.",
+    "start_Offset": 196,
+    "end_Offset": 210,
+    "start": 92.06,
+    "end": 96.92
+  },
+  {
+    "val": "Theresa May capped energy prices, clamped down on high-interest loans, tightened labour regulations and even flirted with the idea of putting workers on boards.",
+    "start_Offset": 211,
+    "end_Offset": 235,
+    "start": 97.3,
+    "end": 107.36999899999999
+  },
+  {
+    "val": "Boris Johnson raised taxes on and restricted advertising of unhealthy food and drink, and renationalised Northern Rail; all policies that, as a right-wing newspaper columnist, he would have derided.",
+    "start_Offset": 236,
+    "end_Offset": 265,
+    "start": 107.91,
+    "end": 120.09
+  },
+  {
+    "val": "There is nothing unusual about politicians lifting ideas from other parties.",
+    "start_Offset": 266,
+    "end_Offset": 276,
+    "start": 121.099999,
+    "end": 125.02000000000001
+  },
+  {
+    "val": "Benjamin Disraeli’s winning formula was to find where the liberals were bathing and steal their clothes.",
+    "start_Offset": 277,
+    "end_Offset": 292,
+    "start": 125.34,
+    "end": 130.64000000000001
+  },
+  {
+    "val": "He defined the ideal government as“Tory men and Whig measures”.",
+    "start_Offset": 293,
+    "end_Offset": 303,
+    "start": 130.83,
+    "end": 134.639999
+  },
+  {
+    "val": "Winston Churchill and Harold Macmillan repeated the trick by consolidating Labour’s welfare state; Tony Blair and Gordon Brown did the same with Margaret Thatcher’s free-market reforms.",
+    "start_Offset": 304,
+    "end_Offset": 330,
+    "start": 135.0,
+    "end": 145.73999899999998
+  },
+  {
+    "val": "It is not the stealing that is interesting, but the choice of ideas and the dexterity with which the trick is performed.",
+    "start_Offset": 331,
+    "end_Offset": 352,
+    "start": 146.22,
+    "end": 152.37
+  },
+  {
+    "val": "The theft of Mr Miliband’s ideas is evidence of a leftward turn in British politics.",
+    "start_Offset": 353,
+    "end_Offset": 367,
+    "start": 153.41,
+    "end": 158.159999
+  },
+  {
+    "val": "Tory newspapers vilified Mr Miliband as“Red Ed”who wanted to turn Britain into the sort of left-wing utopia his Marxist father favoured.",
+    "start_Offset": 368,
+    "end_Offset": 391,
+    "start": 158.599999,
+    "end": 166.66
+  },
+  {
+    "val": "The Economist advised voting against him on the ground that he was too much of a risk.",
+    "start_Offset": 392,
+    "end_Offset": 408,
+    "start": 167.4,
+    "end": 171.95
+  },
+  {
+    "val": "Mr Cameron saw his enthusiasm for capping energy prices as proof that he was living in a“Marxist universe”.",
+    "start_Offset": 409,
+    "end_Offset": 427,
+    "start": 172.41,
+    "end": 178.78
+  },
+  {
+    "val": "Today Red Ed’s Marxist deviations have magically transformed into Boris’s common sense.",
+    "start_Offset": 428,
+    "end_Offset": 439,
+    "start": 179.26,
+    "end": 184.94
+  },
+  {
+    "val": "Mr Corbyn likes to take credit for this by insisting that he won the battle of ideas even if he lost the general election.",
+    "start_Offset": 440,
+    "end_Offset": 463,
+    "start": 186.2,
+    "end": 192.65
+  },
+  {
+    "val": "But almost without exception the ideas that have survived from that era were generated by Mr Miliband and his leadership team.",
+    "start_Offset": 464,
+    "end_Offset": 484,
+    "start": 193.09,
+    "end": 200.51
+  },
+  {
+    "val": "Mr Miliband is a policy wonk who, in the wake of the financial crisis, came to the conclusion that Labour needed to be bold.",
+    "start_Offset": 485,
+    "end_Offset": 508,
+    "start": 201.12,
+    "end": 208.32999999999998
+  },
+  {
+    "val": "He surrounded himself with other wonks, notably Stewart Wood (who now sits in the House of Lords) and Torsten Bell (who now runs the Resolution Foundation, a think-tank).",
+    "start_Offset": 509,
+    "end_Offset": 537,
+    "start": 208.75,
+    "end": 218.6
+  },
+  {
+    "val": "Their ideas initially found little purchase because the Conservatives did such a good job of blaming the financial crisis on Labour’s management of the public finances.",
+    "start_Offset": 538,
+    "end_Offset": 563,
+    "start": 219.19,
+    "end": 228.72
+  },
+  {
+    "val": "A combination of austerity fatigue and covid-19 has created an appetite for state activism.",
+    "start_Offset": 564,
+    "end_Offset": 578,
+    "start": 229.219999,
+    "end": 235.64999999999998
+  },
+  {
+    "val": "The great theft is also proof of something that is less comforting to the soft left: the Tories are the world’s most accomplished political thieves.",
+    "start_Offset": 579,
+    "end_Offset": 603,
+    "start": 236.68,
+    "end": 244.44
+  },
+  {
+    "val": "They have not only merrily stolen economic policies from a man they dubbed a deranged Marxist but also stolen nationalist ideas from a man they vilified as a“swivel-eyed loon”, Nigel Farage.",
+    "start_Offset": 604,
+    "end_Offset": 636,
+    "start": 244.98,
+    "end": 256.8
+  },
+  {
+    "val": "They have killed off his UK Independence Party (UKIP) by embracing a Brexit that leaves Britain outside the customs union and the internal market; something Mr Farage once regarded as too extreme.",
+    "start_Offset": 637,
+    "end_Offset": 668,
+    "start": 257.27,
+    "end": 269.58999900000003
+  },
+  {
+    "val": "And they have kept ex-UKIP voters happy by giving prominent positions to hardliners such as Priti Patel, the home secretary, and Suella Braverman, the attorney-general.",
+    "start_Offset": 669,
+    "end_Offset": 695,
+    "start": 270.09,
+    "end": 279.80999999999995
+  },
+  {
+    "val": "Stealing ideas from both the left and the right has allowed the Tories to adjust to a new world in which the liberal verities that were at the heart of Mr Cameron’s premiership have lost their popularity.",
+    "start_Offset": 696,
+    "end_Offset": 732,
+    "start": 280.849999,
+    "end": 291.68
+  },
+  {
+    "val": "It has also allowed them to change their political coalition, losing some voters from the professional classes, but more than making up for their loss by increasing their support among the working classes, particularly in the north.",
+    "start_Offset": 733,
+    "end_Offset": 769,
+    "start": 292.33,
+    "end": 304.95999900000004
+  },
+  {
+    "val": "The biggest worry for the Tories is whether they have drifted too far in each direction.",
+    "start_Offset": 770,
+    "end_Offset": 785,
+    "start": 305.98,
+    "end": 310.14000000000004
+  },
+  {
+    "val": "They are confronted with potential quarrels between the party’s core voters in the prosperous south and its new recruits in the north: will stockbrokers really pay higher taxes to improve rail transport to Grimsby?",
+    "start_Offset": 786,
+    "end_Offset": 819,
+    "start": 310.64,
+    "end": 322.45
+  },
+  {
+    "val": "They are also plagued by contradictions between, say, spending more money on infrastructure and balancing the books, which Mr Sunak suggests he regards as a sacred Tory duty.",
+    "start_Offset": 820,
+    "end_Offset": 847,
+    "start": 323.26,
+    "end": 334.0
+  },
+  {
+    "val": "The trouble with a melange of ideas—something old, something new, something borrowed, something red—is that they pull in opposite directions.",
+    "start_Offset": 848,
+    "end_Offset": 869,
+    "start": 334.809999,
+    "end": 342.869999
+  },
+  {
+    "val": "Appropriate appropriating But you can have worse problems in a country that is recovering from a pandemic and heading towards a period of growth.",
+    "start_Offset": 870,
+    "end_Offset": 893,
+    "start": 348.97,
+    "end": 349.5
+  },
+  {
+    "val": "Mr Johnson does not seem to worry much about logical contradictions: he would happily build a blue-red-green coalition so long as it kept him in power.",
+    "start_Offset": 894,
+    "end_Offset": 921,
+    "start": 349.96,
+    "end": 358.83000000000004
+  },
+  {
+    "val": "And Mr Sunak is less concerned than he pretends to be: though he hints that he would love to return to the Conservative low-tax, small-state orthodoxy, he is happy to cast aside ideology for the time being.",
+    "start_Offset": 922,
+    "end_Offset": 960,
+    "start": 359.43,
+    "end": 371.23
+  },
+  {
+    "val": "The party that really suffers from the Tories’ theft is Labour.",
+    "start_Offset": 961,
+    "end_Offset": 971,
+    "start": 371.929999,
+    "end": 375.05
+  },
+  {
+    "val": "It’s hard to decry everything a government does when it is implementing your ideas.",
+    "start_Offset": 972,
+    "end_Offset": 985,
+    "start": 375.299999,
+    "end": 379.7
+  },
+  {
+    "val": "The brilliance of the trick the TTHE LIST of great prime ministers Britain never had includes Joseph Chamberlain, Rab Butler and Michael Heseltine.",
+    "start_Offset": 986,
+    "end_Offset": 1008,
+    "start": 380.09,
+    "end": 16.59
+  },
+  {
+    "val": "It does not include Ed Miliband.",
+    "start_Offset": 1009,
+    "end_Offset": 1014,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "He flunked the big test that the British traditionally impose on anyone who aspires to the highest office in the land—retaining your dignity while eating a bacon sandwich.",
+    "start_Offset": 1015,
+    "end_Offset": 1043,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The one election campaign he fought as leader, in 2015, was a double disaster for his party: David Cameron won with a solid majority and a dejected Labour Party turned to Jeremy Corbyn for solace.",
+    "start_Offset": 1044,
+    "end_Offset": 1078,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Yet when it comes to public policy Mr Miliband continues to exercise considerable influence.",
+    "start_Offset": 1079,
+    "end_Offset": 1092,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "We live in the age of Miliband more than we live in the age of Cameron or Corbyn.",
+    "start_Offset": 1093,
+    "end_Offset": 1110,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "In the budget on March 3rd Rishi Sunak, the chancellor, stole three of Mr Miliband’s ideas: gradually raising the corporation tax rate from 19% of profits to 25%, opening a national infrastructure bank in the provinces and encouraging corporate investment using tax incentives.",
+    "start_Offset": 1111,
+    "end_Offset": 1153,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "This is not the first time Mr Sunak has followed Mr Miliband’s advice.",
+    "start_Offset": 1154,
+    "end_Offset": 1166,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "He has already rewritten Treasury rules on the grounds that their narrow definition of costs and benefits favours investment in London.",
+    "start_Offset": 1167,
+    "end_Offset": 1187,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The chancellor is only the latest in a succession of Tory smash-and-grab artists.",
+    "start_Offset": 1188,
+    "end_Offset": 1202,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Theresa May capped energy prices, clamped down on high-interest loans, tightened labour regulations and even flirted with the idea of putting workers on boards.",
+    "start_Offset": 1203,
+    "end_Offset": 1227,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Boris Johnson raised taxes on and restricted advertising of unhealthy food and drink, and renationalised Northern Rail; all policies that, as a right-wing newspaper columnist, he would have derided.",
+    "start_Offset": 1228,
+    "end_Offset": 1257,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "There is nothing unusual about politicians lifting ideas from other parties.",
+    "start_Offset": 1258,
+    "end_Offset": 1268,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Benjamin Disraeli’s winning formula was to find where the liberals were bathing and steal their clothes.",
+    "start_Offset": 1269,
+    "end_Offset": 1284,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "He defined the ideal government as“Tory men and Whig measures”.",
+    "start_Offset": 1285,
+    "end_Offset": 1295,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Winston Churchill and Harold Macmillan repeated the trick by consolidating Labour’s welfare state; Tony Blair and Gordon Brown did the same with Margaret Thatcher’s free-market reforms.",
+    "start_Offset": 1296,
+    "end_Offset": 1322,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "It is not the stealing that is interesting, but the choice of ideas and the dexterity with which the trick is performed.",
+    "start_Offset": 1323,
+    "end_Offset": 1344,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The theft of Mr Miliband’s ideas is evidence of a leftward turn in British politics.",
+    "start_Offset": 1345,
+    "end_Offset": 1359,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Tory newspapers vilified Mr Miliband as“Red Ed”who wanted to turn Britain into the sort of left-wing utopia his Marxist father favoured.",
+    "start_Offset": 1360,
+    "end_Offset": 1383,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The Economist advised voting against him on the ground that he was too much of a risk.",
+    "start_Offset": 1384,
+    "end_Offset": 1400,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Mr Cameron saw his enthusiasm for capping energy prices as proof that he was living in a“Marxist universe”.",
+    "start_Offset": 1401,
+    "end_Offset": 1419,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Today Red Ed’s Marxist deviations have magically transformed into Boris’s common sense.",
+    "start_Offset": 1420,
+    "end_Offset": 1431,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Mr Corbyn likes to take credit for this by insisting that he won the battle of ideas even if he lost the general election.",
+    "start_Offset": 1432,
+    "end_Offset": 1455,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "But almost without exception the ideas that have survived from that era were generated by Mr Miliband and his leadership team.",
+    "start_Offset": 1456,
+    "end_Offset": 1476,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Mr Miliband is a policy wonk who, in the wake of the financial crisis, came to the conclusion that Labour needed to be bold.",
+    "start_Offset": 1477,
+    "end_Offset": 1500,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "He surrounded himself with other wonks, notably Stewart Wood (who now sits in the House of Lords) and Torsten Bell (who now runs the Resolution Foundation, a think-tank).",
+    "start_Offset": 1501,
+    "end_Offset": 1529,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Their ideas initially found little purchase because the Conservatives did such a good job of blaming the financial crisis on Labour’s management of the public finances.",
+    "start_Offset": 1530,
+    "end_Offset": 1555,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "A combination of austerity fatigue and covid-19 has created an appetite for state activism.",
+    "start_Offset": 1556,
+    "end_Offset": 1570,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The great theft is also proof of something that is less comforting to the soft left: the Tories are the world’s most accomplished political thieves.",
+    "start_Offset": 1571,
+    "end_Offset": 1595,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "They have not only merrily stolen economic policies from a man they dubbed a deranged Marxist but also stolen nationalist ideas from a man they vilified as a“swivel-eyed loon”, Nigel Farage.",
+    "start_Offset": 1596,
+    "end_Offset": 1628,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "They have killed off his UK Independence Party (UKIP) by embracing a Brexit that leaves Britain outside the customs union and the internal market; something Mr Farage once regarded as too extreme.",
+    "start_Offset": 1629,
+    "end_Offset": 1660,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "And they have kept ex-UKIP voters happy by giving prominent positions to hardliners such as Priti Patel, the home secretary, and Suella Braverman, the attorney-general.",
+    "start_Offset": 1661,
+    "end_Offset": 1687,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Stealing ideas from both the left and the right has allowed the Tories to adjust to a new world in which the liberal verities that were at the heart of Mr Cameron’s premiership have lost their popularity.",
+    "start_Offset": 1688,
+    "end_Offset": 1724,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "It has also allowed them to change their political coalition, losing some voters from the professional classes, but more than making up for their loss by increasing their support among the working classes, particularly in the north.",
+    "start_Offset": 1725,
+    "end_Offset": 1761,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The biggest worry for the Tories is whether they have drifted too far in each direction.",
+    "start_Offset": 1762,
+    "end_Offset": 1777,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "They are confronted with potential quarrels between the party’s core voters in the prosperous south and its new recruits in the north: will stockbrokers really pay higher taxes to improve rail transport to Grimsby?",
+    "start_Offset": 1778,
+    "end_Offset": 1811,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "They are also plagued by contradictions between, say, spending more money on infrastructure and balancing the books, which Mr Sunak suggests he regards as a sacred Tory duty.",
+    "start_Offset": 1812,
+    "end_Offset": 1839,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The trouble with a melange of ideas—something old, something new, something borrowed, something red—is that they pull in opposite directions.",
+    "start_Offset": 1840,
+    "end_Offset": 1861,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Appropriate appropriating But you can have worse problems in a country that is recovering from a pandemic and heading towards a period of growth.",
+    "start_Offset": 1862,
+    "end_Offset": 1885,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "Mr Johnson does not seem to worry much about logical contradictions: he would happily build a blue-red-green coalition so long as it kept him in power.",
+    "start_Offset": 1886,
+    "end_Offset": 1913,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "And Mr Sunak is less concerned than he pretends to be: though he hints that he would love to return to the Conservative low-tax, small-state orthodoxy, he is happy to cast aside ideology for the time being.",
+    "start_Offset": 1914,
+    "end_Offset": 1952,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The party that really suffers from the Tories’ theft is Labour.",
+    "start_Offset": 1953,
+    "end_Offset": 1963,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "It’s hard to decry everything a government does when it is implementing your ideas.",
+    "start_Offset": 1964,
+    "end_Offset": 1977,
+    "start": 380.87,
+    "end": 16.59
+  },
+  {
+    "val": "The brilliance of the trick the Tories have pulled off is that it leaves Labour with nowhere to go.",
+    "start_Offset": 1978,
+    "end_Offset": 1996,
+    "start": 384.83,
+    "end": 385.29999999999995
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

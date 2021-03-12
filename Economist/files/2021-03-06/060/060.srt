@@ -1,0 +1,164 @@
+1
+00:00:15,700 --> 00:00:20,400
+THE PANDEMIC is throwing up a new set of ethical issues for businesses.
+
+2
+00:00:20,810 --> 00:00:29,040
+The premise of“stakeholder capitalism”is not just that firms should consider the interests of employees and customers, as well as shareholders.
+
+3
+00:00:29,500 --> 00:00:36,959
+It is that, by doing so, everyone gains; shareholders will prosper if workers and customers are treated decently.
+
+4
+00:00:37,420 --> 00:00:40,560
+But the pandemic may put different groups at odds.
+
+5
+00:00:40,950 --> 00:00:49,200
+For example, customers may want companies to insist that all employees are vaccinated, while not wanting the same rule to apply to themselves.
+
+6
+00:00:50,190 --> 00:01:03,730
+It might seem as if shareholders would want as many employees to return to work as possible, few potential customers to be excluded, and interactions in, say, shops and restaurants to be as free from restrictions as possible.
+
+7
+00:01:04,860 --> 00:01:13,740
+But if a company gets a reputation for being an unsafe place to work, or for customers to visit, the effect on long-term returns could be significant.
+
+8
+00:01:14,400 --> 00:01:17,140
+The perception of fairness is also essential.
+
+9
+00:01:17,360 --> 00:01:26,920
+Woe betide the executive who jumps the queue, as in the case of Mark Machin, a Canadian pension-fund boss who travelled to the United Arab Emirates to get the jab.
+
+10
+00:01:27,259 --> 00:01:28,899
+(He swiftly resigned.
+
+11
+00:01:29,879 --> 00:01:32,920
+)  Companies are not just trading off safety and personal liberty.
+
+12
+00:01:33,280 --> 00:01:43,129
+They risk discriminating against those who have yet to gain access to the vaccine or who, for religious or medical reasons, are unwilling or unable to be jabbed.
+
+13
+00:01:43,500 --> 00:01:45,819
+And they do not have complete freedom of action.
+
+14
+00:01:46,279 --> 00:01:57,319
+The legal situation will vary from country to country but it seems likely that, in many jurisdictions, companies will be able to insist on a vaccine mandate only for new employees.
+
+15
+00:01:58,309 --> 00:02:01,949
+The question of vaccination is particularly pressing in health care.
+
+16
+00:02:02,349 --> 00:02:06,299
+One might hope that medical workers would appreciate the need for it.
+
+17
+00:02:06,620 --> 00:02:13,690
+Yet some health-care personnel may feel that having had covid-19, as many have, negates the obligation.
+
+18
+00:02:14,130 --> 00:02:32,519
+Laura Boudreau of Columbia Business School in New York observes that, in this type of industry,“there is a duty for the employer to try to identify safe roles that the staff can play, and if not, to provide information to customers about whether there are unvaccinated staff in the role.”
+
+19
+00:02:32,770 --> 00:02:38,460
+In other words, unvaccinated staff may end up being kept away from vulnerable patients.
+
+20
+00:02:39,480 --> 00:02:42,480
+Rules in other industries often lack consistency.
+
+21
+00:02:42,789 --> 00:02:46,580
+Early in the pandemic, cruise ships helped to spread the disease.
+
+22
+00:02:46,640 --> 00:02:55,870
+The Saga cruise line, which targets elderly travellers, is now insisting that passengers produce proof of vaccination, but makes no such demand of the crew.
+
+23
+00:02:56,320 --> 00:02:57,479
+That makes sense.
+
+24
+00:02:57,520 --> 00:03:03,770
+The passengers will largely be drawn from the rich world, where the elderly have been first in the queue for jabs.
+
+25
+00:03:04,130 --> 00:03:07,200
+The crew will be younger and often from poorer countries.
+
+26
+00:03:07,510 --> 00:03:10,500
+In both cases vaccines will have been harder to obtain.
+
+27
+00:03:11,099 --> 00:03:14,640
+However, the industry is not taking a consistent approach.
+
+28
+00:03:14,910 --> 00:03:19,480
+Swan Hellenic is insisting on vaccines for crew, not passengers.
+
+29
+00:03:19,740 --> 00:03:23,310
+Victory Cruise Lines has made a jab mandatory for both groups.
+
+30
+00:03:24,270 --> 00:03:27,210
+No vaccine is 100% effective.
+
+31
+00:03:27,500 --> 00:03:32,649
+It is not yet clear whether people who have been vaccinated can still transmit the disease to others.
+
+32
+00:03:33,080 --> 00:03:42,320
+So where staff come into contact with customers, companies may insist on social distancing or mask-wearing until case levels drop substantially.
+
+33
+00:03:42,620 --> 00:03:46,040
+Even then, employees may catch the virus from each other.
+
+34
+00:03:47,030 --> 00:03:52,380
+Later, companies will have to consider what they should do when vaccines become more widely available.
+
+35
+00:03:52,760 --> 00:03:59,150
+Some staff may have been unable to get a vaccine, because they have a medical condition (such as pregnancy) that excludes them.
+
+36
+00:03:59,600 --> 00:04:06,669
+Do companies have a duty of care to protect such employees from colleagues who have refused to take the jab on principle?
+
+37
+00:04:07,660 --> 00:04:26,630
+In the case of most companies, Ms Boudreau says, it is very much in their interest“to reduce barriers for eligible staff to get vaccines, to have a dialogue with their staff to understand if and why they may be hesitant to get vaccinated, and to provide information and resources that may help those who are reluctant”.
+
+38
+00:04:27,219 --> 00:04:30,049
+But that is probably as far as they can go.
+
+39
+00:04:35,810 --> 00:04:39,740
+The type of jab people have received then becomes more significant.
+
+40
+00:04:40,450 --> 00:04:44,039
+In short, managers will face a series of trade-offs.
+
+41
+00:04:44,099 --> 00:05:00,730
+Their best option may be to accept the uncertainties, remain flexible, ensure the best possible hygiene standards for their staff—and hope that acquired immunity, vaccines and therapies make covid-19 no more life-threatening than seasonal flu.
+

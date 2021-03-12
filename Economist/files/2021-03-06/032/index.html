@@ -1,0 +1,368 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">032 China - Dissent in Hong Kong</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='032';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "SINCE CHINA imposed a draconian security law on Hong Kong last year, protests in the city—already dampened by pandemic-related controls—have been rare.",
+    "start_Offset": 0,
+    "end_Offset": 24,
+    "start": 18.84,
+    "end": 28.06
+  },
+  {
+    "val": "But on March 1st hundreds of people gathered outside a court to demonstrate against the largest case so far related to the security bill.",
+    "start_Offset": 25,
+    "end_Offset": 48,
+    "start": 29.08,
+    "end": 36.979999
+  },
+  {
+    "val": "They held banners calling for the release of“political prisoners”and chanted slogans that were popular during the unrest that engulfed the territory in 2019.",
+    "start_Offset": 49,
+    "end_Offset": 73,
+    "start": 37.54,
+    "end": 46.29
+  },
+  {
+    "val": "Students at a primary school nearby stood outside their classrooms, shouting in solidarity.",
+    "start_Offset": 74,
+    "end_Offset": 86,
+    "start": 47.0,
+    "end": 52.510000000000005
+  },
+  {
+    "val": "It was a rare act of defiance in a city that, to many residents, feels crushed.",
+    "start_Offset": 87,
+    "end_Offset": 102,
+    "start": 53.519999999999996,
+    "end": 58.76
+  },
+  {
+    "val": "A day earlier, 47 people had been charged for alleged misdeeds as part of the case.",
+    "start_Offset": 103,
+    "end_Offset": 118,
+    "start": 59.81,
+    "end": 65.03
+  },
+  {
+    "val": "They included some of Hong Kong’s best-known pro-democracy activists, such as Leung Kwok-hung, a veteran campaigner commonly known as“Long Hair”; Lester Shum, a politician; Benny Tai, an academic, and Joshua Wong, whose then-teenage face became emblematic of the“Umbrella Movement”of 2014 (he is already in prison for a protest-related offence).",
+    "start_Offset": 119,
+    "end_Offset": 175,
+    "start": 65.8,
+    "end": 88.59
+  },
+  {
+    "val": "They have been accused of crimes such as conspiracy to commit subversion by plotting to overthrow Hong Kong’s government.",
+    "start_Offset": 176,
+    "end_Offset": 194,
+    "start": 90.25,
+    "end": 96.89
+  },
+  {
+    "val": "The case relates to an informal primary ballot that was held last year to select pro-democracy candidates for elections to the Legislative Council.",
+    "start_Offset": 195,
+    "end_Offset": 218,
+    "start": 97.92,
+    "end": 105.50999999999999
+  },
+  {
+    "val": "This sensible-sounding effort was seen by the government as an attempt to gain control of the council and paralyse its work.",
+    "start_Offset": 219,
+    "end_Offset": 240,
+    "start": 106.34,
+    "end": 113.35000000000001
+  },
+  {
+    "val": "(The elections were due to be held in September but were postponed for a year, purportedly because of the pandemic.",
+    "start_Offset": 241,
+    "end_Offset": 260,
+    "start": 114.09,
+    "end": 119.45
+  },
+  {
+    "val": ") If convicted, the defendants face sentences of up to life in prison.",
+    "start_Offset": 261,
+    "end_Offset": 272,
+    "start": 120.309999,
+    "end": 124.779999
+  },
+  {
+    "val": "The proceedings that began on March 1st relate to applications for bail—the trial itself may not begin for several more weeks.",
+    "start_Offset": 273,
+    "end_Offset": 294,
+    "start": 125.77,
+    "end": 132.86
+  },
+  {
+    "val": "Under the security law, there is a presumption that bail will be denied, so even this stage has involved protracted debate in court and a gruelling ordeal for the defendants.",
+    "start_Offset": 295,
+    "end_Offset": 324,
+    "start": 134.059999,
+    "end": 144.48
+  },
+  {
+    "val": "They have had to endure sessions lasting many hours that have eaten into normal times for meals and sleep.",
+    "start_Offset": 325,
+    "end_Offset": 343,
+    "start": 145.43,
+    "end": 151.51999999999998
+  },
+  {
+    "val": "The physical toll has been evident—several of them have received hospital treatment.",
+    "start_Offset": 344,
+    "end_Offset": 356,
+    "start": 152.44,
+    "end": 156.92000000000002
+  },
+  {
+    "val": "On March 4th 15 members of the group were granted bail.",
+    "start_Offset": 357,
+    "end_Offset": 367,
+    "start": 158.02,
+    "end": 19.14
+  },
+  {
+    "val": "They will remain in custody pending an appeal by the prosecution, which argues that they could pose a threat to national security if released.",
+    "start_Offset": 368,
+    "end_Offset": 391,
+    "start": 161.98,
+    "end": 168.54
+  },
+  {
+    "val": "No national-security trial has yet been concluded.",
+    "start_Offset": 392,
+    "end_Offset": 399,
+    "start": 170.32999999999998,
+    "end": 173.18
+  },
+  {
+    "val": "So this one will be watched for signs of how the new law—which has the hallmarks of Chinese mainland-style legislation, with its vaguely defined political terms—works in a judicial system steeped in British legal tradition.",
+    "start_Offset": 400,
+    "end_Offset": 437,
+    "start": 173.84,
+    "end": 186.85
+  },
+  {
+    "val": "Dominic Raab, Britain’s foreign minister, has described the case as“deeply disturbing”.",
+    "start_Offset": 438,
+    "end_Offset": 449,
+    "start": 187.92,
+    "end": 192.889999
+  },
+  {
+    "val": "America and the European Union have called for the release of the 47 activists.",
+    "start_Offset": 450,
+    "end_Offset": 463,
+    "start": 193.73,
+    "end": 197.76999999999998
+  },
+  {
+    "val": "On March 2nd Hong Kong’s Department of Justice said that prosecutors’ decisions had been made“without political considerations”and no one should interfere in them.",
+    "start_Offset": 464,
+    "end_Offset": 488,
+    "start": 199.109999,
+    "end": 208.42
+  },
+  {
+    "val": "But a few days before the 47 were charged, Xia Baolong, a central-government official who oversees Hong Kong affairs, had said that“anti-China elements”should be“severely punished under the law”.",
+    "start_Offset": 489,
+    "end_Offset": 521,
+    "start": 209.3,
+    "end": 221.27
+  },
+  {
+    "val": "He had named two members of the group: Mr Wong and Mr Tai.",
+    "start_Offset": 522,
+    "end_Offset": 534,
+    "start": 222.1,
+    "end": 226.369999
+  },
+  {
+    "val": "The Communist Party may be an exception to Hong Kong’s rule.",
+    "start_Offset": 535,
+    "end_Offset": 545,
+    "start": 227.3,
+    "end": 230.51
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

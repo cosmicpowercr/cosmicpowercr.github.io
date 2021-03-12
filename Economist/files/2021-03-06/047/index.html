@@ -1,0 +1,522 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">047 Britain - The budget</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='047';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "RARELY HAS supposedly bitter medicine tasted so sweet.",
+    "start_Offset": 0,
+    "end_Offset": 7,
+    "start": 17.51,
+    "end": 21.68
+  },
+  {
+    "val": "For weeks, the Treasury has been briefing journalists that Rishi Sunak, the chancellor, was set to“level with the people”and embark on a programme of tax rises to repair the public finances.",
+    "start_Offset": 8,
+    "end_Offset": 40,
+    "start": 22.44,
+    "end": 34.189999
+  },
+  {
+    "val": "This, it turned out, was expectations management: the budget, delivered on March 3rd, was loaded with sugar.",
+    "start_Offset": 41,
+    "end_Offset": 57,
+    "start": 34.719999,
+    "end": 42.15
+  },
+  {
+    "val": "The nastier stuff has been pushed back by at least two years.",
+    "start_Offset": 58,
+    "end_Offset": 69,
+    "start": 42.68,
+    "end": 46.51
+  },
+  {
+    "val": "The explanation lay in the forecasts which the Office for Budget Responsibility (OBR), the government’s fiscal watchdog, publishes with the budget.",
+    "start_Offset": 70,
+    "end_Offset": 90,
+    "start": 47.32,
+    "end": 56.44
+  },
+  {
+    "val": "A lot has changed since it released its previous set in November.",
+    "start_Offset": 91,
+    "end_Offset": 102,
+    "start": 57.07,
+    "end": 60.910000000000004
+  },
+  {
+    "val": "A spike in covid-19 cases in December and January prompted a stringent third lockdown, which depressed expected growth further in 2021.",
+    "start_Offset": 103,
+    "end_Offset": 124,
+    "start": 61.68,
+    "end": 70.85999899999999
+  },
+  {
+    "val": "Lower growth this year means an even larger bounce-back in 2022.",
+    "start_Offset": 125,
+    "end_Offset": 136,
+    "start": 71.97999899999999,
+    "end": 75.85000000000001
+  },
+  {
+    "val": "The OBR now reckons that the economy will grow by 4% in 2021, down from 5,5% in the previous forecast, but then motor forward by 7,3% in 2022, the fastest rise in eight decades.",
+    "start_Offset": 137,
+    "end_Offset": 172,
+    "start": 77.12,
+    "end": 94.02000000000001
+  },
+  {
+    "val": "This year’s difficult start means that government schemes to keep people solvent are being extended.",
+    "start_Offset": 173,
+    "end_Offset": 187,
+    "start": 94.72,
+    "end": 100.31
+  },
+  {
+    "val": "The Coronavirus Job Retention Scheme, under which the government pays 80% of the wages of furloughed employees, was due to end in April.",
+    "start_Offset": 188,
+    "end_Offset": 210,
+    "start": 100.87,
+    "end": 109.47999999999999
+  },
+  {
+    "val": "It will now stay until September.",
+    "start_Offset": 211,
+    "end_Offset": 216,
+    "start": 109.88,
+    "end": 111.85
+  },
+  {
+    "val": "Grants and cheap loans to firms have been rolled forward too, as have lower levels of value-added tax for hospitality businesses.",
+    "start_Offset": 217,
+    "end_Offset": 238,
+    "start": 112.33,
+    "end": 120.23
+  },
+  {
+    "val": "Spending has been increased by almost £35bn ($49bn) and taxes cut by £24bn in the coming financial year.",
+    "start_Offset": 239,
+    "end_Offset": 256,
+    "start": 120.929999,
+    "end": 131.22
+  },
+  {
+    "val": "Taken together, these measures represent a giveaway worth some 3% of GDP.",
+    "start_Offset": 257,
+    "end_Offset": 268,
+    "start": 132.07,
+    "end": 137.79
+  },
+  {
+    "val": "Every budget must contain a surprise for the chancellor to unveil.",
+    "start_Offset": 269,
+    "end_Offset": 279,
+    "start": 137.79,
+    "end": 141.67
+  },
+  {
+    "val": "The uncertainty after the Brexit referendum in 2016, followed by the pandemic, has depressed business investment.",
+    "start_Offset": 280,
+    "end_Offset": 295,
+    "start": 142.17000000000002,
+    "end": 149.47
+  },
+  {
+    "val": "So the centrepiece of Mr Sunak’s stimulus was the“super-deduction”, which will allow companies to set 130% of the value of new investment in plant and equipment against their taxable income for two years from April.",
+    "start_Offset": 296,
+    "end_Offset": 332,
+    "start": 150.17,
+    "end": 164.54999999999998
+  },
+  {
+    "val": "The government is hoping that this generous tax-break will spur firms to use some of the record-high cash piles on which they are sitting to bring forward capital spending.",
+    "start_Offset": 333,
+    "end_Offset": 363,
+    "start": 165.2,
+    "end": 175.06
+  },
+  {
+    "val": "An IMF study of such incentive schemes last year found that they tend to produce a strong response from firms by increasing the rate of return on investment.",
+    "start_Offset": 364,
+    "end_Offset": 391,
+    "start": 175.53,
+    "end": 184.8
+  },
+  {
+    "val": "With the economy buoyed by more fiscal support, the OBR thinks the output gap (the difference between the current level of GDP and its potential) will close more rapidly over the next couple of years than it previously believed.",
+    "start_Offset": 392,
+    "end_Offset": 430,
+    "start": 185.55,
+    "end": 199.17000000000002
+  },
+  {
+    "val": "In other words, the cyclical recovery in the economy should proceed at a faster clip than expected.",
+    "start_Offset": 431,
+    "end_Offset": 447,
+    "start": 199.78,
+    "end": 205.81
+  },
+  {
+    "val": "A speedier cyclical pickup, though, will not eradicate the structural damage wrought by the pandemic.",
+    "start_Offset": 448,
+    "end_Offset": 462,
+    "start": 206.51,
+    "end": 212.71
+  },
+  {
+    "val": "The OBR reckons that the economy will be 3% smaller in five years’ time than it would have been in a universe without a pandemic.",
+    "start_Offset": 463,
+    "end_Offset": 487,
+    "start": 213.25,
+    "end": 221.13
+  },
+  {
+    "val": "That is bleaker than the Bank of England’s 1,75% estimate but broadly in line with Britain’s peers.",
+    "start_Offset": 488,
+    "end_Offset": 505,
+    "start": 221.82,
+    "end": 228.689999
+  },
+  {
+    "val": "The German budgetary authorities, for example, reckon their country will take a similar hit.",
+    "start_Offset": 506,
+    "end_Offset": 519,
+    "start": 229.179999,
+    "end": 234.01
+  },
+  {
+    "val": "Lasting economic damage will have an impact on the public finances.",
+    "start_Offset": 520,
+    "end_Offset": 530,
+    "start": 234.82999999999998,
+    "end": 238.95000000000002
+  },
+  {
+    "val": "Although Britain is currently operating without a formal set of fiscal rules, Mr Sunak has indicated that he wants to balance the current budget while borrowing for long-term investment.",
+    "start_Offset": 531,
+    "end_Offset": 560,
+    "start": 239.41,
+    "end": 249.61999999999998
+  },
+  {
+    "val": "Given the blow to growth, achieving that aim means adopting some combination of spending cuts and tax rises once the immediate crisis has passed.",
+    "start_Offset": 561,
+    "end_Offset": 584,
+    "start": 250.199999,
+    "end": 259.11
+  },
+  {
+    "val": "Mr Sunak has chosen to lean heavily on taxes, undoing the reductions in both personal and business tax that George Osborne introduced a decade ago.",
+    "start_Offset": 585,
+    "end_Offset": 609,
+    "start": 259.83,
+    "end": 268.99
+  },
+  {
+    "val": "The tax take, as a share of the overall economy, is now forecast to rise to its highest level since the late 1960s (see chart).",
+    "start_Offset": 610,
+    "end_Offset": 634,
+    "start": 269.279999,
+    "end": 276.93
+  },
+  {
+    "val": "Some of the extra revenue will come directly from workers.",
+    "start_Offset": 635,
+    "end_Offset": 644,
+    "start": 277.51,
+    "end": 280.84000000000003
+  },
+  {
+    "val": "From 2023 income-tax thresholds will be frozen in cash terms, increasing the tax burden as incomes grow.",
+    "start_Offset": 645,
+    "end_Offset": 662,
+    "start": 281.11,
+    "end": 288.639999
+  },
+  {
+    "val": "But most of the cash will come from a striking rise in the headline rate of corporation tax, which is set to jump from 19% to 25% by 2023.",
+    "start_Offset": 663,
+    "end_Offset": 691,
+    "start": 289.07,
+    "end": 300.18
+  },
+  {
+    "val": "According to the OBR, corporation-tax receipts will rise to their highest share of GDP since 1990 by 2024, though Mr Sunak was keen to emphasise that only around three in ten firms are likely to face the full increase.",
+    "start_Offset": 692,
+    "end_Offset": 731,
+    "start": 300.19,
+    "end": 315.35
+  },
+  {
+    "val": "The small companies’ exemption will rise while firms will be able to carry forward up to three years of losses to reduce their bills.",
+    "start_Offset": 732,
+    "end_Offset": 755,
+    "start": 316.059999,
+    "end": 323.919999
+  },
+  {
+    "val": "In effect, Mr Sunak is signalling a windfall tax on the companies that have done well during the pandemic, without calling it such.",
+    "start_Offset": 756,
+    "end_Offset": 778,
+    "start": 324.449999,
+    "end": 332.11
+  },
+  {
+    "val": "Announcing the largest increases in corporation tax in a generation might have been expected to elicit more than a few groans from Britain’s boardrooms.",
+    "start_Offset": 779,
+    "end_Offset": 802,
+    "start": 332.679999,
+    "end": 341.34000000000003
+  },
+  {
+    "val": "Business trade bodies have, however, been quick to welcome the overall budget package.",
+    "start_Offset": 803,
+    "end_Offset": 815,
+    "start": 341.869999,
+    "end": 346.54
+  },
+  {
+    "val": "No doubt that is in part because of the large giveaways over the coming two years; but it is probably also because they suspect the tax rises will never fully materialise.",
+    "start_Offset": 816,
+    "end_Offset": 846,
+    "start": 347.13,
+    "end": 357.729999
+  },
+  {
+    "val": "One reason to doubt that corporation tax will actually shoot up after 2023 is the cliff-edge that would create.",
+    "start_Offset": 847,
+    "end_Offset": 866,
+    "start": 358.639999,
+    "end": 366.08
+  },
+  {
+    "val": "The end of the super-deduction followed by an immediate and steep hike in headline rates would lead the effective rate, inclusive of allowances, to increase by more than five percentage points between 2023 and 2025 (see chart).",
+    "start_Offset": 867,
+    "end_Offset": 904,
+    "start": 366.63,
+    "end": 379.69000000000005
+  },
+  {
+    "val": "That would be historically unusual.",
+    "start_Offset": 905,
+    "end_Offset": 909,
+    "start": 379.69000000000005,
+    "end": 383.59999999999997
+  },
+  {
+    "val": "Mr Sunak will be hoping that as economic activity rebounds the OBR will revise down its view of the lasting hit from covid-19, and as the fiscal targets become easier to meet the mooted tax rises can then be scaled back.",
+    "start_Offset": 910,
+    "end_Offset": 951,
+    "start": 384.28,
+    "end": 399.77000000000004
+  },
+  {
+    "val": "“It’s smart politics,”says a business leader.",
+    "start_Offset": 952,
+    "end_Offset": 958,
+    "start": 400.49,
+    "end": 403.25
+  },
+  {
+    "val": "“If you say you are putting up tax by 6% and then only put it up by 3% everyone is grateful instead of horrified.”",
+    "start_Offset": 959,
+    "end_Offset": 982,
+    "start": 403.83,
+    "end": 411.33
+  },
+  {
+    "val": "Mr Sunak has announced a plan to balance the budget because that’s what Conservatives do.",
+    "start_Offset": 983,
+    "end_Offset": 997,
+    "start": 412.09,
+    "end": 417.28999999999996
+  },
+  {
+    "val": "But it is far enough away that he has plenty of space for more giveaways in the future if the economy performs better than expected.",
+    "start_Offset": 998,
+    "end_Offset": 1022,
+    "start": 417.71,
+    "end": 426.13999900000005
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,389 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">065 Business - Packaged food</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='065';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "PEOPLE HAVE to eat, so food firms the world over give reassuringly consistent profits, even in lean times.",
+    "start_Offset": 0,
+    "end_Offset": 17,
+    "start": 13.27,
+    "end": 21.630000000000003
+  },
+  {
+    "val": "Mexico is no different.",
+    "start_Offset": 18,
+    "end_Offset": 21,
+    "start": 22.16,
+    "end": 23.63
+  },
+  {
+    "val": "The country’s 126m people buy $55bn-worth of packaged food annually.",
+    "start_Offset": 22,
+    "end_Offset": 32,
+    "start": 23.94,
+    "end": 30.509999
+  },
+  {
+    "val": "Sales of such fare have been growing quickly, notes Euromonitor, a research firm.",
+    "start_Offset": 33,
+    "end_Offset": 45,
+    "start": 31.139999,
+    "end": 36.289998999999995
+  },
+  {
+    "val": "Between 2015 and 2020 they expanded by 6,9% a year, compared with 4% in America.",
+    "start_Offset": 46,
+    "end_Offset": 61,
+    "start": 36.969999,
+    "end": 44.43
+  },
+  {
+    "val": "This trend should have lifted the likes of Bimbo, the world’s largest baker, and Gruma, its biggest maker of tortillas.",
+    "start_Offset": 62,
+    "end_Offset": 81,
+    "start": 45.12,
+    "end": 52.47
+  },
+  {
+    "val": "Instead, like many Mexican businesses in recent years of sluggish economic growth, they have fallen out of favour with investors.",
+    "start_Offset": 82,
+    "end_Offset": 101,
+    "start": 53.0,
+    "end": 60.33
+  },
+  {
+    "val": "Stable profits notwithstanding, their market capitalisations are well below their peaks in the mid-2010s.",
+    "start_Offset": 102,
+    "end_Offset": 116,
+    "start": 61.07,
+    "end": 68.05
+  },
+  {
+    "val": "To whet the stockmarket’s appetite for their shares, both firms are doubling down on foreign markets.",
+    "start_Offset": 117,
+    "end_Offset": 132,
+    "start": 68.719999,
+    "end": 74.82000000000001
+  },
+  {
+    "val": "America’s packaged-food market alone is nearly ten times the size of Mexico’s.",
+    "start_Offset": 133,
+    "end_Offset": 145,
+    "start": 75.27,
+    "end": 80.58
+  },
+  {
+    "val": "A loaf of Bimbo bread that costs $1,76 in Mexico sells for $2,77 north of the border.",
+    "start_Offset": 146,
+    "end_Offset": 164,
+    "start": 80.96000000000001,
+    "end": 89.21
+  },
+  {
+    "val": "Bimbo has also acquired several big American brands, most notably Sara Lee, a maker of poundcakes and cream pies, in 2010.",
+    "start_Offset": 165,
+    "end_Offset": 185,
+    "start": 89.959999,
+    "end": 13.85
+  },
+  {
+    "val": "These investments may at last be paying off, partly thanks to the pandemicinspired rush to comfort food.",
+    "start_Offset": 186,
+    "end_Offset": 202,
+    "start": 107.14999999999999,
+    "end": 107.27999999999999
+  },
+  {
+    "val": "In 2020 Bimbo’s sales in America and Canada rose by 22%; operating profits in the region shot up by 84%.",
+    "start_Offset": 203,
+    "end_Offset": 222,
+    "start": 107.28999999999999,
+    "end": 115.74000000000001
+  },
+  {
+    "val": "IRI, a data firm, puts it among the fastest-growing big consumer-goods companies in the United States.",
+    "start_Offset": 223,
+    "end_Offset": 240,
+    "start": 116.34,
+    "end": 122.85
+  },
+  {
+    "val": "Revenues north of the Rio Grande helped push Bimbo’s total sales to a record $16bn.",
+    "start_Offset": 241,
+    "end_Offset": 255,
+    "start": 123.44,
+    "end": 130.17
+  },
+  {
+    "val": "Operating profit hit $1,2bn.",
+    "start_Offset": 256,
+    "end_Offset": 260,
+    "start": 130.73,
+    "end": 133.84
+  },
+  {
+    "val": "Gruma attributed its own strong results last year to a growing fondness for tortillas among Hispanic and non-Hispanic Americans alike.",
+    "start_Offset": 261,
+    "end_Offset": 281,
+    "start": 134.91,
+    "end": 142.84
+  },
+  {
+    "val": "Further expansion will not be a cakewalk.",
+    "start_Offset": 282,
+    "end_Offset": 288,
+    "start": 144.029999,
+    "end": 145.439999
+  },
+  {
+    "val": "Bimbo’s bread and butter is simple fare that legions of poor Mexicans can afford.",
+    "start_Offset": 289,
+    "end_Offset": 302,
+    "start": 146.83,
+    "end": 151.62
+  },
+  {
+    "val": "To succeed in richer places like America the company will have to cater to more upper-crust consumers with varied tastes.",
+    "start_Offset": 303,
+    "end_Offset": 323,
+    "start": 152.139999,
+    "end": 159.73
+  },
+  {
+    "val": "It is now experimenting with niche and premium products.",
+    "start_Offset": 324,
+    "end_Offset": 332,
+    "start": 160.16,
+    "end": 163.54
+  },
+  {
+    "val": "Last year the Bimbo-owned New York Bakery launched gluten-free breads.",
+    "start_Offset": 333,
+    "end_Offset": 344,
+    "start": 164.17,
+    "end": 168.95000000000002
+  },
+  {
+    "val": "Gruma has introduced naan and pita breads in some markets.",
+    "start_Offset": 345,
+    "end_Offset": 354,
+    "start": 169.38,
+    "end": 173.10999999999999
+  },
+  {
+    "val": "Lala, a dairy company that is Mexico’s third-biggest food firm, has got into organic milks.",
+    "start_Offset": 355,
+    "end_Offset": 370,
+    "start": 173.63,
+    "end": 179.969999
+  },
+  {
+    "val": "Some of those innovations may come in handy at home, too.",
+    "start_Offset": 371,
+    "end_Offset": 381,
+    "start": 180.62,
+    "end": 183.85999999999999
+  },
+  {
+    "val": "As the share of Mexican who are obese has hit one-third, up from one-fifth in 1996, Mexico’s government has developed a growing distaste for unhealthy food.",
+    "start_Offset": 382,
+    "end_Offset": 409,
+    "start": 184.4,
+    "end": 195.279999
+  },
+  {
+    "val": "In October it introduced a law forcing firms to label foods high in calories, sugars, salt or bad fats.",
+    "start_Offset": 410,
+    "end_Offset": 428,
+    "start": 195.74,
+    "end": 203.7
+  },
+  {
+    "val": "Both bread and tortillas qualify.",
+    "start_Offset": 429,
+    "end_Offset": 433,
+    "start": 204.33,
+    "end": 207.60000000000002
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+1
+00:00:09,660 --> 00:00:25,220
+A MODERN CORRESPONDENT wanting to communicate privately can use computerised encryption.
+
+2
+00:00:25,810 --> 00:00:30,020
+Three hundred years ago, origami would have been a better bet.
+
+3
+00:00:31,099 --> 00:00:38,010
+Before gummed envelopes became common in the 1800s, letters were posted with no security wrapper.
+
+4
+00:00:38,820 --> 00:00:52,559
+Privacy-minded writers relied instead on cunning combinations of folds, tucks, slits and seals, a practice Jana Dambrogio at the Massachusetts Institute of Technology has dubbed“letterlocking”.
+
+5
+00:00:54,709 --> 00:01:03,230
+Some, like the“chapel fold”, in which the letter is turned into its own envelope and sealed, were the equivalent of simple padlocks.
+
+6
+00:01:03,849 --> 00:01:05,089
+Others were subtler.
+
+7
+00:01:05,719 --> 00:01:13,810
+The“dagger trap”relied on a concealed wax seal that would leave a telltale rip once a letter had been opened.
+
+8
+00:01:14,950 --> 00:01:17,600
+But information about the practice is scarce.
+
+9
+00:01:18,180 --> 00:01:28,039
+Most historical letters survive in their opened form, leaving aficionados like Ms Dambrogio with little to go on but crease-marks and tears.
+
+10
+00:01:29,279 --> 00:01:37,660
+The few that remain unopened present a different problem: how to read them without permanently damaging the letterlock.
+
+11
+00:01:38,520 --> 00:01:45,819
+Now, in research published in Nature Communications, Ms Dambrogio and her colleagues have come up with a solution.
+
+12
+00:01:46,879 --> 00:01:58,740
+The letters in question are part of the Brienne Collection, a trove of thousands of undelivered 17th-century letters bequeathed to posterity by Dutch postmasters.
+
+13
+00:01:59,330 --> 00:02:05,049
+The collection includes 577 unopened, letterlocked missives.
+
+14
+00:02:05,709 --> 00:02:13,800
+To get at their letters’ contents while preserving the integrity of the locks, the team turned to X-rays and computers.
+
+15
+00:02:14,860 --> 00:02:20,420
+The key lay in knowing that the inks used at the time often contained iron.
+
+16
+00:02:21,099 --> 00:02:34,160
+This meant that an X-ray microtomography scanner, of the kind usually reserved for distinguishing teeth or bone from soft tissue, could reliably distinguish the metallic letters from the paper background.
+
+17
+00:02:35,010 --> 00:02:48,250
+Once the scan had also revealed the topography of the sheet, with the location of folds and creases mapped, the resulting model could be virtually unfolded by a computer to reveal the hidden text.
+
+18
+00:02:49,260 --> 00:03:07,790
+Though some imperfections remain—a hole left by a burrowing worm, for example, or the dry scratch of an ink-free nib—the legibility of the scans rivalled anything one would find in a research library, says Dr Starza Smith, a researcher at King’s College London.
+
+19
+00:03:08,570 --> 00:03:21,150
+And although no spectacular secrets have yet emerged from the Brienne Collection, the technique seems to hold plenty of promise for future research into a fascinating historical practice.
+

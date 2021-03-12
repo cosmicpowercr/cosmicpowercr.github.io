@@ -1,0 +1,403 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">038 Middle East and Africa - Nigeria</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='038';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "IT STARTED WITH a squashed tomato that led to a killing.",
+    "start_Offset": 0,
+    "end_Offset": 10,
+    "start": 16.16,
+    "end": 20.33
+  },
+  {
+    "val": "It has since escalated into clashes that have taken at least 20 lives and a standoff between northerners and southerners that has paralysed Nigeria, Africa’s most populous nation.",
+    "start_Offset": 11,
+    "end_Offset": 38,
+    "start": 20.7,
+    "end": 32.67
+  },
+  {
+    "val": "Last month a porter carrying a basket of tomatoes in the crowded Shasha market in Ibadan, a city in south-western Nigeria, accidentally spilled his cargo, leaving a pulpy mess.",
+    "start_Offset": 39,
+    "end_Offset": 68,
+    "start": 33.67,
+    "end": 46.44
+  },
+  {
+    "val": "An argument with a nearby shopkeeper over the clean-up soon took an ethnic turn.",
+    "start_Offset": 69,
+    "end_Offset": 83,
+    "start": 46.67,
+    "end": 51.98
+  },
+  {
+    "val": "The porter, who spoke Hausa (a language that identifies him as coming from Nigeria’s north), took a blow from a Yoruba man.",
+    "start_Offset": 84,
+    "end_Offset": 105,
+    "start": 52.34,
+    "end": 60.14
+  },
+  {
+    "val": "As the porter fought back, his assailant slumped, mortally stricken.",
+    "start_Offset": 106,
+    "end_Offset": 115,
+    "start": 60.62,
+    "end": 65.19
+  },
+  {
+    "val": "Word soon spread on social media that a Yoruba man had been killed in the heart of Yoruba land, inflaming long-smouldering tensions in a country divided between its mostly Muslim north and predominantly Christian south.",
+    "start_Offset": 116,
+    "end_Offset": 151,
+    "start": 66.219999,
+    "end": 81.28
+  },
+  {
+    "val": "For hours afterwards Hausa and Yoruba traders hacked at one another or burned down market stalls.",
+    "start_Offset": 152,
+    "end_Offset": 167,
+    "start": 81.77,
+    "end": 88.03
+  },
+  {
+    "val": "At least 20 people are thought to have been killed.",
+    "start_Offset": 168,
+    "end_Offset": 177,
+    "start": 88.389999,
+    "end": 90.69000000000001
+  },
+  {
+    "val": "Thousands, most of them northerners, were forced to flee.",
+    "start_Offset": 178,
+    "end_Offset": 186,
+    "start": 91.049999,
+    "end": 94.44
+  },
+  {
+    "val": "The clash erupted after years of mounting tensions along religious and ethnic lines as well as between (mostly Christian) farmers and (mostly Muslim) herders.",
+    "start_Offset": 187,
+    "end_Offset": 210,
+    "start": 95.42,
+    "end": 105.99999899999999
+  },
+  {
+    "val": "The International Crisis Group, an NGO, estimates that fighting between farmers and cattle herders over access to land claimed more than 1,300 lives in just the first six months of 2018.",
+    "start_Offset": 211,
+    "end_Offset": 242,
+    "start": 106.369999,
+    "end": 119.80999999999999
+  },
+  {
+    "val": "More recent data are sparse, but many Nigerians believe the conflict has intensified and taken new forms.",
+    "start_Offset": 243,
+    "end_Offset": 259,
+    "start": 120.259999,
+    "end": 127.0
+  },
+  {
+    "val": "Since December gangs of kidnappers have struck three schools, snatching hundreds of children and holding them for ransom.",
+    "start_Offset": 260,
+    "end_Offset": 277,
+    "start": 127.35,
+    "end": 135.1
+  },
+  {
+    "val": "Although the kidnappers have not been identified or arrested, many Nigerians believe—rightly or wrongly—that they are Hausa-speaking herders.",
+    "start_Offset": 278,
+    "end_Offset": 298,
+    "start": 135.54,
+    "end": 143.789999
+  },
+  {
+    "val": "Instead of dousing ethnic hatred, politicians have fuelled it.",
+    "start_Offset": 299,
+    "end_Offset": 307,
+    "start": 144.809999,
+    "end": 148.73
+  },
+  {
+    "val": "Last year the governors of six south-western states hired local militias to form a regional security outfit known as Operation Amotekun (“leopard”in Yoruba).",
+    "start_Offset": 308,
+    "end_Offset": 332,
+    "start": 149.17,
+    "end": 159.90999900000003
+  },
+  {
+    "val": "These vigilantes have been accused of brutality and even murder.",
+    "start_Offset": 333,
+    "end_Offset": 342,
+    "start": 160.32999999999998,
+    "end": 164.4
+  },
+  {
+    "val": "In December and January they reportedly killed 11 people.",
+    "start_Offset": 343,
+    "end_Offset": 351,
+    "start": 164.79,
+    "end": 168.21
+  },
+  {
+    "val": "Also in January, the governor of Ondo ordered thousands of herders to leave land reserves in his state, blaming them for a rise in kidnapping and banditry.",
+    "start_Offset": 352,
+    "end_Offset": 378,
+    "start": 168.47,
+    "end": 178.20000000000002
+  },
+  {
+    "val": "After the one-week deadline expired, Yoruba mobs attacked herders, killing some and destroying their property.",
+    "start_Offset": 379,
+    "end_Offset": 394,
+    "start": 178.779999,
+    "end": 185.70999999999998
+  },
+  {
+    "val": "In protest northern traders and cattle dealers blocked the flow of food and livestock to the south.",
+    "start_Offset": 395,
+    "end_Offset": 411,
+    "start": 186.68,
+    "end": 192.31
+  },
+  {
+    "val": "The blockade is starting to bite.",
+    "start_Offset": 412,
+    "end_Offset": 417,
+    "start": 192.639999,
+    "end": 194.38
+  },
+  {
+    "val": "Almost no meat is on sale in the usually bustling Mile 12 market in Lagos, Nigeria’s biggest city and commercial capital.",
+    "start_Offset": 418,
+    "end_Offset": 438,
+    "start": 194.61,
+    "end": 202.71
+  },
+  {
+    "val": "The price of tomatoes (essential for making spicy jollof rice, Nigeria’s unofficial national dish) has shot up.",
+    "start_Offset": 439,
+    "end_Offset": 455,
+    "start": 203.1,
+    "end": 210.64000000000001
+  },
+  {
+    "val": "Baskets that once sold for about 5,000 naira ($13) now go for 35,000 naira.",
+    "start_Offset": 456,
+    "end_Offset": 471,
+    "start": 215.27,
+    "end": 218.29000000000002
+  },
+  {
+    "val": "In the north, which grows most of the country’s fresh produce, the price of onions and tomatoes has slumped so sharply that many farmers are leaving crops to rot in the fields.",
+    "start_Offset": 472,
+    "end_Offset": 503,
+    "start": 218.75,
+    "end": 228.52999899999998
+  },
+  {
+    "val": "The government has since called in the army to clear corridors along which trucks can travel.",
+    "start_Offset": 504,
+    "end_Offset": 519,
+    "start": 229.509999,
+    "end": 234.409999
+  },
+  {
+    "val": "And after the main spy agency“invited”leaders of the blockade to discuss their grievances—before promptly detaining their president—the traders agreed to call off their protest and allow food to flow south again.",
+    "start_Offset": 520,
+    "end_Offset": 554,
+    "start": 234.75,
+    "end": 246.70000000000002
+  },
+  {
+    "val": "It is not clear whether the government agreed to the protesters’ demands, which included compensation for those who were killed and police protection for northerners in southern states.",
+    "start_Offset": 555,
+    "end_Offset": 582,
+    "start": 247.66,
+    "end": 257.65
+  },
+  {
+    "val": "What is clear, however, is that Nigeria needs better ways to stop its festering grievances from bursting open like rotten tomatoes.",
+    "start_Offset": 583,
+    "end_Offset": 603,
+    "start": 257.95,
+    "end": 266.68
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

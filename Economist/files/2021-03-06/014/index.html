@@ -1,0 +1,676 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">014 United States - America and the Middle East</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='014';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "BARACK OBAMA tried to pivot to Asia, but the Arab Spring, Syrian civil war, Islamic State and Iran’s nuclear programme kept dragging him back.",
+    "start_Offset": 0,
+    "end_Offset": 23,
+    "start": 2.8,
+    "end": 32.419999999999995
+  },
+  {
+    "val": "For all the noise Donald Trump made about ending the“forever wars”, he edged towards war with Iran.",
+    "start_Offset": 24,
+    "end_Offset": 41,
+    "start": 32.88,
+    "end": 39.050000000000004
+  },
+  {
+    "val": "He dispatched 14,000 troops to the region and, in the end, did not much change the sprawling American military commitment there.",
+    "start_Offset": 42,
+    "end_Offset": 63,
+    "start": 39.53,
+    "end": 47.330000000000005
+  },
+  {
+    "val": "Now, even more than his predecessors, President Joe Biden is signalling an intention to downgrade the Middle East among America’s priorities.",
+    "start_Offset": 64,
+    "end_Offset": 84,
+    "start": 47.92,
+    "end": 56.71
+  },
+  {
+    "val": "He took so long to make his first phone call to the Israeli prime minister, Binyamin Netanyahu, that his spokeswoman, Jen Psaki, felt compelled, in response to a reporter, to declare the president meant no“intentional diss”(as though an unintended oversight might not be even more humiliating).",
+    "start_Offset": 85,
+    "end_Offset": 132,
+    "start": 57.68,
+    "end": 75.86
+  },
+  {
+    "val": "Mr Biden finally placed the call on February 17th, almost a month after his inauguration.",
+    "start_Offset": 133,
+    "end_Offset": 147,
+    "start": 76.48,
+    "end": 82.25999999999999
+  },
+  {
+    "val": "He waited another week to call King Salman of Saudi Arabia, just before his administration declassified a report accusing the king’s son, Crown Prince Muhammad bin Salman, of approving the operation that resulted in the dismemberment of a journalist, Jamal Khashoggi.",
+    "start_Offset": 148,
+    "end_Offset": 188,
+    "start": 82.719999,
+    "end": 99.66
+  },
+  {
+    "val": "Mr Biden, who promised during the campaign to make Saudi Arabia“the pariah that they are”, disappointed many of his supporters by not punishing the crown prince.",
+    "start_Offset": 189,
+    "end_Offset": 215,
+    "start": 100.61,
+    "end": 110.30999999999999
+  },
+  {
+    "val": "But he is not looking to further roil the Middle East by threatening America’s long-standing alliances.",
+    "start_Offset": 216,
+    "end_Offset": 232,
+    "start": 110.68,
+    "end": 116.28
+  },
+  {
+    "val": "Instead, he wants the allies to learn to expect a new detachment from the Americans.",
+    "start_Offset": 233,
+    "end_Offset": 247,
+    "start": 116.71000000000001,
+    "end": 121.84
+  },
+  {
+    "val": "Mr Biden has frozen a shipment of offensive weapons to Saudi Arabia and has also ordered a review of weapons sales to the United Arab Emirates.",
+    "start_Offset": 248,
+    "end_Offset": 273,
+    "start": 122.839999,
+    "end": 131.28
+  },
+  {
+    "val": "He has shown little interest in chasing peace between Israelis and Palestinians, a grail pursued by the past five presidents.",
+    "start_Offset": 274,
+    "end_Offset": 293,
+    "start": 131.63,
+    "end": 138.97
+  },
+  {
+    "val": "His defence secretary, Lloyd Austin, has begun a review of American deployments that is expected to consider a shift from the Gulf.",
+    "start_Offset": 294,
+    "end_Offset": 315,
+    "start": 139.41,
+    "end": 146.96
+  },
+  {
+    "val": "“That’s a lot for leaders in the region to digest,”said Martin Indyk of the Council on Foreign Relations, who was Mr Obama’s special envoy to Israeli-Palestinian negotiations.",
+    "start_Offset": 316,
+    "end_Offset": 344,
+    "start": 147.34,
+    "end": 157.26999999999998
+  },
+  {
+    "val": "And yet it comes as little surprise, given the shift in thinking of left-leaning Middle East experts.",
+    "start_Offset": 345,
+    "end_Offset": 362,
+    "start": 158.28,
+    "end": 164.12
+  },
+  {
+    "val": "Mr Indyk, a former ambassador to Israel who devoted much of his career to seeking peace, published an opinion article in the Wall Street Journal last year on which the jaded headline summarised an emerging consensus:“The Middle East Isn’t Worth It Anymore”.",
+    "start_Offset": 363,
+    "end_Offset": 405,
+    "start": 164.46,
+    "end": 179.78
+  },
+  {
+    "val": "This view holds that America’s core interests in the region—protecting Saudi oil and the state of Israel—are diminishing as concerns.",
+    "start_Offset": 406,
+    "end_Offset": 427,
+    "start": 180.76,
+    "end": 189.32999900000002
+  },
+  {
+    "val": "America still has an interest in the stability of the global oil market, but it imports more oil from Mexico than from Saudi Arabia and fracks plenty of its own.",
+    "start_Offset": 428,
+    "end_Offset": 457,
+    "start": 189.67,
+    "end": 199.26000000000002
+  },
+  {
+    "val": "Israel, the only nuclear power in the region, is not in existential peril.",
+    "start_Offset": 458,
+    "end_Offset": 470,
+    "start": 199.83,
+    "end": 204.5
+  },
+  {
+    "val": "Further, the Middle East is now riven less by an Israeli-Arab divide than a Sunni-Shia one, with Israel lined up alongside Sunni Arab states, including Saudi Arabia, against Iran.",
+    "start_Offset": 471,
+    "end_Offset": 501,
+    "start": 205.04,
+    "end": 215.769999
+  },
+  {
+    "val": "In the magazine Foreign Affairs last year, Jake Sullivan, now Mr Biden’s national security adviser, and Daniel Benaim, now the deputy assistant secretary of state for Arabian Peninsula Affairs, wrote that the shift in interests did not mean America“should leave the region outright”.",
+    "start_Offset": 502,
+    "end_Offset": 545,
+    "start": 216.75,
+    "end": 234.32999900000002
+  },
+  {
+    "val": "But skilful diplomacy, they concluded,“will ultimately allow for sustained military reductions”.",
+    "start_Offset": 546,
+    "end_Offset": 557,
+    "start": 234.76,
+    "end": 241.28
+  },
+  {
+    "val": "Yet a familiar obstacle is blocking the exit: Iran.",
+    "start_Offset": 558,
+    "end_Offset": 566,
+    "start": 242.2,
+    "end": 245.779999
+  },
+  {
+    "val": "Among Mr Biden’s first orders of business—unfinished business, for many members of his foreign-policy team—is to curb Iran’s nuclear programme and contend with its proxies, starting in Yemen.",
+    "start_Offset": 567,
+    "end_Offset": 597,
+    "start": 246.179999,
+    "end": 257.53
+  },
+  {
+    "val": "The agreement to constrain Iran’s programme, the Joint Comprehensive Plan of Action, was among the proudest foreign-policy achievements of the Obama administration.",
+    "start_Offset": 598,
+    "end_Offset": 620,
+    "start": 258.52,
+    "end": 267.45
+  },
+  {
+    "val": "Mr Trump called the deal“horrible and laughable”and in 2018 he pulled out of it, reimposing sanctions which had been dropped or waived.",
+    "start_Offset": 621,
+    "end_Offset": 644,
+    "start": 267.929999,
+    "end": 276.51
+  },
+  {
+    "val": "He went on to impose further sanctions, in what he called a campaign of maximum pressure.",
+    "start_Offset": 645,
+    "end_Offset": 660,
+    "start": 276.78,
+    "end": 281.94
+  },
+  {
+    "val": "Even as Iran’s currency collapsed and covid-19 raged, the country responded with“maximum resistance”.",
+    "start_Offset": 661,
+    "end_Offset": 675,
+    "start": 282.95,
+    "end": 289.87
+  },
+  {
+    "val": "It began enriching more uranium, and to greater purity, than allowed by the deal.",
+    "start_Offset": 676,
+    "end_Offset": 689,
+    "start": 290.3,
+    "end": 295.18
+  },
+  {
+    "val": "It has also violated the agreed terms on its use of centrifuges.",
+    "start_Offset": 690,
+    "end_Offset": 701,
+    "start": 295.47,
+    "end": 299.36
+  },
+  {
+    "val": "Today Iran stands closer to being able to build a nuclear bomb than it did when Mr Trump left the agreement, though it continues to insist it wants to use nuclear power only for civilian purposes.",
+    "start_Offset": 702,
+    "end_Offset": 737,
+    "start": 299.88,
+    "end": 311.95
+  },
+  {
+    "val": "The Biden administration has said it is willing to restart negotiations alongside the same allies.",
+    "start_Offset": 738,
+    "end_Offset": 752,
+    "start": 312.89,
+    "end": 319.09
+  },
+  {
+    "val": "But at the end of February Iran rejected the idea of face-to-face talks with the Americans unless they commit themselves in advance to lifting some sanctions.",
+    "start_Offset": 753,
+    "end_Offset": 780,
+    "start": 319.44,
+    "end": 328.68
+  },
+  {
+    "val": "Administration officials say Iran must comply with the agreement before they will relieve any sanctions.",
+    "start_Offset": 781,
+    "end_Offset": 795,
+    "start": 329.02,
+    "end": 334.87
+  },
+  {
+    "val": "Each side believes the other wants to restore the deal, and both are manoeuvring to discover which wants it more.",
+    "start_Offset": 796,
+    "end_Offset": 815,
+    "start": 335.889999,
+    "end": 342.25
+  },
+  {
+    "val": "Presidential elections in Iran in June may create some deadline pressure, since at a minimum installing a new government, which is expected to be more hard-line, would interrupt and delay any negotiations.",
+    "start_Offset": 816,
+    "end_Offset": 848,
+    "start": 342.68,
+    "end": 354.95
+  },
+  {
+    "val": "This argues for a busy period of diplomacy in the spring.",
+    "start_Offset": 849,
+    "end_Offset": 859,
+    "start": 355.91,
+    "end": 359.059999
+  },
+  {
+    "val": "“I’ve seen this movie before,”said Ali Vaez, director of the Iran Project at the International Crisis Group (ICG), an NGO based in Brussels.",
+    "start_Offset": 860,
+    "end_Offset": 883,
+    "start": 359.459999,
+    "end": 368.44
+  },
+  {
+    "val": "He recalled that before the original deal each side also insisted that the other must move first.",
+    "start_Offset": 884,
+    "end_Offset": 900,
+    "start": 368.77,
+    "end": 374.69
+  },
+  {
+    "val": "He added,“When I look at the cast of characters in this administration, I can’t imagine they’d let the agreement collapse on their watch.”",
+    "start_Offset": 901,
+    "end_Offset": 924,
+    "start": 374.86,
+    "end": 382.0
+  },
+  {
+    "val": "Until recently, Mr Vaez’s boss at the ICG was Rob Malley, a veteran of Middle East negotiations under Bill Clinton and Mr Obama.",
+    "start_Offset": 925,
+    "end_Offset": 947,
+    "start": 382.59,
+    "end": 391.159999
+  },
+  {
+    "val": "Mr Malley, who also helped achieve the original agreement, is now Mr Biden’s special envoy for Iran.",
+    "start_Offset": 948,
+    "end_Offset": 964,
+    "start": 391.549999,
+    "end": 397.13
+  },
+  {
+    "val": "Shortly before Mr Malley left the ICG, it issued an unsigned report describing steps America should take to return to the deal.",
+    "start_Offset": 965,
+    "end_Offset": 986,
+    "start": 398.09,
+    "end": 406.099999
+  },
+  {
+    "val": "These include a commitment from the Biden administration to support an emergency loan from the IMF sought by Iran to cope with the pandemic, followed by a negotiated timetable for Iran to reverse its breaches of the accord.",
+    "start_Offset": 987,
+    "end_Offset": 1024,
+    "start": 406.49,
+    "end": 420.1
+  },
+  {
+    "val": "America would provide some sanctions relief each time the International Atomic Energy Agency certified that Iran had rolled back a violation, in a process that might take two to three months.",
+    "start_Offset": 1025,
+    "end_Offset": 1055,
+    "start": 420.6,
+    "end": 432.38
+  },
+  {
+    "val": "Centrifudge Then, after a new Iranian president has taken office, America and its allies could pursue what the administration calls a“longer and stronger”follow-on agreement.",
+    "start_Offset": 1056,
+    "end_Offset": 1082,
+    "start": 442.219999,
+    "end": 442.939999
+  },
+  {
+    "val": "Such a deal might exchange economic normalisation for long-term guarantees of the peaceful nature of Iran’s nuclear programme and limits on its ballistic missiles.",
+    "start_Offset": 1083,
+    "end_Offset": 1107,
+    "start": 443.36,
+    "end": 453.2
+  },
+  {
+    "val": "Though some Biden officials had argued for attempting first to strike the fuller deal, that debate appears to have been resolved in favour of the incremental approach.",
+    "start_Offset": 1108,
+    "end_Offset": 1134,
+    "start": 453.69,
+    "end": 462.88
+  },
+  {
+    "val": "Renewing nuclear diplomacy with Iran, Mr Biden’s advisers believe, would create a basis for America to press for talks among regional powers to end their proxy conflicts.",
+    "start_Offset": 1135,
+    "end_Offset": 1161,
+    "start": 463.87,
+    "end": 474.39
+  },
+  {
+    "val": "The Americans want to begin with Yemen, where Houthi rebels, backed by Iran, have been fighting the Saudi-backed government for seven years.",
+    "start_Offset": 1162,
+    "end_Offset": 1184,
+    "start": 474.78,
+    "end": 482.2
+  },
+  {
+    "val": "Yemen weighs on the consciences of many Biden officials because of support the Obama administration gave to the Saudi-led effort.",
+    "start_Offset": 1185,
+    "end_Offset": 1205,
+    "start": 482.559999,
+    "end": 490.10999999999996
+  },
+  {
+    "val": "The Trump administration intensified that support, and today the United Nations regards Yemen as the world’s worst humanitarian crisis.",
+    "start_Offset": 1206,
+    "end_Offset": 1224,
+    "start": 490.49,
+    "end": 498.13
+  },
+  {
+    "val": "Mr Biden has appointed an envoy to push for peace in Yemen, and there are hints of progress, at least among the outside powers.",
+    "start_Offset": 1225,
+    "end_Offset": 1248,
+    "start": 499.4,
+    "end": 506.52
+  },
+  {
+    "val": "The combatants themselves, however, have yet to show much interest in halting the fighting.",
+    "start_Offset": 1249,
+    "end_Offset": 1262,
+    "start": 506.84,
+    "end": 511.58000000000004
+  },
+  {
+    "val": "According to the vision of Mr Sullivan, the national security adviser, a new framework for regional powers to address their differences, together with nuclear diplomacy, would allow America to begin to pull back.",
+    "start_Offset": 1263,
+    "end_Offset": 1295,
+    "start": 512.57,
+    "end": 524.74
+  },
+  {
+    "val": "The Middle East, he and Mr Benaim wrote in Foreign Affairs, is“the world’s most dangerously under-institutionalised region”, with nothing like the African Union or the Organisation of American States to police norms.",
+    "start_Offset": 1296,
+    "end_Offset": 1329,
+    "start": 525.12,
+    "end": 538.19
+  },
+  {
+    "val": "Any effective regional organisation is a long way off.",
+    "start_Offset": 1330,
+    "end_Offset": 1338,
+    "start": 539.17,
+    "end": 542.68
+  },
+  {
+    "val": "If anything, would-be members seem more inclined than ever to go their own ways.",
+    "start_Offset": 1339,
+    "end_Offset": 1353,
+    "start": 542.89,
+    "end": 547.37
+  },
+  {
+    "val": "The UAE last year normalised relations with Israel and last month put a spacecraft into orbit around Mars, while Egypt, preoccupied with its economic woes, has vanished from its historic leadership role.",
+    "start_Offset": 1354,
+    "end_Offset": 1385,
+    "start": 547.73,
+    "end": 560.5699999999999
+  },
+  {
+    "val": "Saudi Arabia and Iran retain strong interests in preserving enmity between the United States and Iran, since the former—like the UAE and Israel—benefits from the costly protection of American forces, while the Iranian regime derives legitimacy from its standoff with the Great Satan.",
+    "start_Offset": 1386,
+    "end_Offset": 1430,
+    "start": 561.26,
+    "end": 579.5799999999999
+  },
+  {
+    "val": "Add on the crisis in Yemen, the suppurating wound that is Syria, the precarity of Iraq, the assertiveness of Turkey and a building humanitarian and human-rights disaster in Ethiopia: Mr.",
+    "start_Offset": 1431,
+    "end_Offset": 1461,
+    "start": 580.29,
+    "end": 592.98
+  },
+  {
+    "val": "Biden will have to pay more attention than he would like to the neighborhood if America has any hope, however thin, of someday paying it less.",
+    "start_Offset": 1462,
+    "end_Offset": 1487,
+    "start": 593.41,
+    "end": 601.09
+  },
+  {
+    "val": "Or else he will have to embrace the role of ruthless realist, and walk away.",
+    "start_Offset": 1488,
+    "end_Offset": 1502,
+    "start": 602.09,
+    "end": 607.1999989999999
+  },
+  {
+    "val": "His treatment of the Saudi crown prince—shaming him but not punishing him, respecting the regime but urging reform—looks like an attempt to split the difference.",
+    "start_Offset": 1503,
+    "end_Offset": 1529,
+    "start": 607.679999,
+    "end": 616.82
+  },
+  {
+    "val": "And already a familiar, violent pattern is asserting itself: last week America dispatched F-15 fighters to drop bombs in eastern Syria on facilities used by Iraqi militias linked to Iran, in response to rocket attacks by Iran-backed groups against Americans in Iraq.",
+    "start_Offset": 1530,
+    "end_Offset": 1573,
+    "start": 617.1,
+    "end": 634.89
+  },
+  {
+    "val": "Mr Biden said he meant to warn Iran to“be careful”.",
+    "start_Offset": 1574,
+    "end_Offset": 1584,
+    "start": 635.22,
+    "end": 638.71
+  },
+  {
+    "val": "American administrations find it easier to talk about shifting their attention from the Middle East than to do so in practice, says Senator Chris Murphy, a Democratic member of the Senate Foreign Relations Committee.",
+    "start_Offset": 1585,
+    "end_Offset": 1618,
+    "start": 639.69,
+    "end": 651.14
+  },
+  {
+    "val": "“There’s always a crisis,”says Mr Murphy.",
+    "start_Offset": 1619,
+    "end_Offset": 1625,
+    "start": 651.46,
+    "end": 653.68
+  },
+  {
+    "val": "“There’s always something new and exciting happening in the Middle East.",
+    "start_Offset": 1626,
+    "end_Offset": 1636,
+    "start": 653.95,
+    "end": 657.29
+  },
+  {
+    "val": "Whereas China’s trajectory is slow and quiet and steady.”",
+    "start_Offset": 1637,
+    "end_Offset": 1645,
+    "start": 657.58,
+    "end": 661.65
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

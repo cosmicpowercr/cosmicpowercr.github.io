@@ -1,0 +1,402 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">022 The Americas - The Chango people</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='022';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+        var INLINE_JSON=[
+  {
+    "val": "BRENDA GUTIéRREZ, a 50-year-old shellfish gatherer, knew she was a Chango for as long as she can remember.",
+    "start_Offset": 0,
+    "end_Offset": 19,
+    "start": 17.57,
+    "end": 24.26
+  },
+  {
+    "val": "When she was growing up in a fishing village in northern Chile, her parents always called her Changuita (little Chango girl).",
+    "start_Offset": 20,
+    "end_Offset": 40,
+    "start": 24.9,
+    "end": 32.319998999999996
+  },
+  {
+    "val": "Her schoolmates, alas, called her“smelly”and“dirty”because of her indigenous roots.",
+    "start_Offset": 41,
+    "end_Offset": 53,
+    "start": 32.799999,
+    "end": 38.03
+  },
+  {
+    "val": "Such discrimination turned her into an activist.",
+    "start_Offset": 54,
+    "end_Offset": 60,
+    "start": 39.37,
+    "end": 42.74
+  },
+  {
+    "val": "She lobbied for the Chilean state to recognise her people, an indigenous group whose culture is supposedly extinct.",
+    "start_Offset": 61,
+    "end_Offset": 78,
+    "start": 43.17,
+    "end": 50.690000000000005
+  },
+  {
+    "val": "“We exist and are alive,”she says.",
+    "start_Offset": 79,
+    "end_Offset": 85,
+    "start": 51.25,
+    "end": 54.09
+  },
+  {
+    "val": "In October last year, the Changos won recognition.",
+    "start_Offset": 86,
+    "end_Offset": 93,
+    "start": 54.779999000000004,
+    "end": 58.09
+  },
+  {
+    "val": "And an election next month for a convention to change Chile’s old constitution could boost them further.",
+    "start_Offset": 94,
+    "end_Offset": 110,
+    "start": 58.28,
+    "end": 64.67
+  },
+  {
+    "val": "The Chango—a colonial-era term which has stuck—are descended from nomads who inhabited South America’s west coast over 10,000 years ago.",
+    "start_Offset": 111,
+    "end_Offset": 134,
+    "start": 64.67,
+    "end": 76.39
+  },
+  {
+    "val": "Despite their culture having supposedly vanished, 4,725 Chileans defined themselves as Chango in a 2017 census, in the“other”category.",
+    "start_Offset": 135,
+    "end_Offset": 155,
+    "start": 77.06,
+    "end": 90.019999
+  },
+  {
+    "val": "Many still work as hardscrabble nautical types, as their ancestors did (they were known for sea-lion skin rafts).",
+    "start_Offset": 156,
+    "end_Offset": 174,
+    "start": 90.75,
+    "end": 99.12
+  },
+  {
+    "val": "Some still use ancient tools such as the chinguillo, a net fibre bag to carry fish, and the chope, an iron file to scrape molluscs off rocks.",
+    "start_Offset": 175,
+    "end_Offset": 201,
+    "start": 99.62,
+    "end": 110.05
+  },
+  {
+    "val": "One reason why people mistakenly thought they no longer existed is that the Chango people, who are thought to have come from a number of different tribes in coastal areas of northern Chile, tended to assimilate.",
+    "start_Offset": 202,
+    "end_Offset": 237,
+    "start": 111.08,
+    "end": 123.309999
+  },
+  {
+    "val": "(By, for example, abandoning their native languages for Spanish.",
+    "start_Offset": 238,
+    "end_Offset": 246,
+    "start": 124.1,
+    "end": 128.18
+  },
+  {
+    "val": ") And unlike other groups, such as the Diaguitas (recognised in 2006), most of them did not see any need to be officially acknowledged.",
+    "start_Offset": 247,
+    "end_Offset": 269,
+    "start": 128.61,
+    "end": 138.32999900000002
+  },
+  {
+    "val": "According to Luis Campos, an anthropologist, many were politicised only after a fishing law in 1991 and its amendments in the 2000s limited fishing to certain areas.",
+    "start_Offset": 270,
+    "end_Offset": 296,
+    "start": 138.92,
+    "end": 152.15
+  },
+  {
+    "val": "Chileans are growing more aware of their indigenous compatriots.",
+    "start_Offset": 297,
+    "end_Offset": 305,
+    "start": 153.37,
+    "end": 157.13000000000002
+  },
+  {
+    "val": "Over the past two decades more have appeared in official statistics.",
+    "start_Offset": 306,
+    "end_Offset": 316,
+    "start": 157.62,
+    "end": 161.969999
+  },
+  {
+    "val": "Some 13% of Chileans are now recorded as indigenous, up from around 5% in the census of 2002.",
+    "start_Offset": 317,
+    "end_Offset": 334,
+    "start": 162.389999,
+    "end": 171.609999
+  },
+  {
+    "val": "In October last year the Chango were added to the list of peoples entitled to benefits under the Indigenous Peoples Law of 1993.",
+    "start_Offset": 335,
+    "end_Offset": 357,
+    "start": 172.87,
+    "end": 182.23000000000002
+  },
+  {
+    "val": "This law offers scholarships and economic development grants.",
+    "start_Offset": 358,
+    "end_Offset": 365,
+    "start": 182.87,
+    "end": 186.92
+  },
+  {
+    "val": "It also provides a chance to reclaim ancestral land.",
+    "start_Offset": 366,
+    "end_Offset": 374,
+    "start": 187.51,
+    "end": 191.29
+  },
+  {
+    "val": "More recognition is coming, too.",
+    "start_Offset": 375,
+    "end_Offset": 379,
+    "start": 192.0,
+    "end": 193.87
+  },
+  {
+    "val": "Elections for the body to draft a new constitution will take place on April 11th.",
+    "start_Offset": 380,
+    "end_Offset": 394,
+    "start": 194.179999,
+    "end": 199.45999899999998
+  },
+  {
+    "val": "The constitutional convention will have 155 members.",
+    "start_Offset": 395,
+    "end_Offset": 401,
+    "start": 201.16,
+    "end": 205.99
+  },
+  {
+    "val": "Seventeen seats have been reserved for indigenous groups.",
+    "start_Offset": 402,
+    "end_Offset": 409,
+    "start": 206.52,
+    "end": 210.27
+  },
+  {
+    "val": "Their votes could be crucial to achieve the two-thirds majority required to approve each clause of the new constitution, thinks Antonia Rivas of the Centre for Intercultural and Indigenous Research.",
+    "start_Offset": 410,
+    "end_Offset": 440,
+    "start": 210.86,
+    "end": 223.96999999999997
+  },
+  {
+    "val": "For activists such as Ms Gutiérrez, who is standing as a potential candidate at the convention, such influence could transform Chile.",
+    "start_Offset": 441,
+    "end_Offset": 461,
+    "start": 225.09,
+    "end": 233.77
+  },
+  {
+    "val": "The country is still recovering from huge protests against inequality in late 2019.",
+    "start_Offset": 462,
+    "end_Offset": 474,
+    "start": 234.48,
+    "end": 240.53
+  },
+  {
+    "val": "The various indigenous groups (such as the Mapuche, who are 10% of indigenous people in the country) were not mentioned in Chile’s constitution, drawn up in 1980.",
+    "start_Offset": 475,
+    "end_Offset": 501,
+    "start": 241.24,
+    "end": 252.19
+  },
+  {
+    "val": "Now they will have a seat at the table to draft the new one.",
+    "start_Offset": 502,
+    "end_Offset": 515,
+    "start": 252.64,
+    "end": 256.53
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

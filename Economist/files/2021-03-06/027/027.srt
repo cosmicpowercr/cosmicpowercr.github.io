@@ -1,0 +1,128 @@
+1
+00:00:03,120 --> 00:00:23,560
+MUSHTAQ AHMED, a Bangladeshi writer, knew the risk he was taking.
+
+2
+00:00:24,080 --> 00:00:35,610
+To attack his government’s handling of covid-19, not least by likening the health minister to a cockroach, as he did on Facebook last spring, was to challenge the Digital Security Act.
+
+3
+00:00:36,250 --> 00:00:50,840
+Passed in 2018 by the thin-skinned regime of Sheikh Hasina Wajed, now in her fourth term as prime minister, the law penalises such vague crimes as“creating confusion”and“tarnishing the image of the country”.
+
+4
+00:00:51,740 --> 00:00:56,440
+Mr Ahmed was one of some 450 people arrested under the law last year.
+
+5
+00:00:57,130 --> 00:01:11,389
+Even so, the 54-year-old did not, presumably, expect to languish behind bars without trial for nine months, be denied bail six times and ultimately die in a prison hospital, as he did on February 25th.
+
+6
+00:01:12,459 --> 00:01:25,800
+On the same day, in neighbouring India, the government rolled out new guidelines for social media, video-streaming and digital publishing with reassuring patter about pride in Indian journalism and“soft touch oversight”.
+
+7
+00:01:26,290 --> 00:01:47,230
+Rather than a draconian law, broad in scope and heavy on punishment, the official government gazette merely recorded the“exercise of the powers conferred by sub-section (1), clauses (z) and (zg) of sub-section (2) of section 87 of the Information Technology Act, 2000”.
+
+8
+00:01:48,219 --> 00:01:52,700
+Yet India’s new rules conceal sharp teeth and a long reach.
+
+9
+00:01:53,110 --> 00:02:01,910
+They make messaging services and social-media firms such as Twitter, WhatsApp and Facebook far more responsible for the material posted by users.
+
+10
+00:02:02,630 --> 00:02:10,250
+And they sharply curtail the relative freedom enjoyed by purveyors of online content, from news sites to Netflix.
+
+11
+00:02:11,040 --> 00:02:22,719
+In January Twitter first complied with and then resisted an official demand to suspend more than 1,000 accounts, mostly of supporters of a long-festering mass protest by farmers.
+
+12
+00:02:23,250 --> 00:02:45,800
+Now all social-media firms and online publishers will be obliged to remove content promptly at the government’s request, to reveal the source of any post (and so to break the encryption that many chat services rely on to protect users’ privacy), and also to comply with peculiarly cumbersome procedures to respond to public grievances.
+
+13
+00:02:46,220 --> 00:02:58,109
+In an echo of Bangladesh’s law, the government can request the removal of any material it says contravenes Indian law, causes harm to national interests or stirs internal unrest.
+
+14
+00:02:58,850 --> 00:03:06,610
+Although the guidelines talk of self-regulation, bureaucrats must approve the membership of any industry body formed for this purpose.
+
+15
+00:03:07,070 --> 00:03:17,689
+Any decisions such an outfit makes can be overruled by a government panel, which will also decide whether a media firm has responded adequately to complaints from the public.
+
+16
+00:03:18,340 --> 00:03:32,970
+Given that the Hindu nationalist supporters of Narendra Modi, the prime minister, often troll his critics, firms fear they will be swamped by spurious complaints and then punished for failing to answer them all politely, in a timely fashion.
+
+17
+00:03:33,639 --> 00:03:42,500
+A government initiative to recruit volunteers to assist the police in patrolling the internet could end up generating still more burdensome complaints.
+
+18
+00:03:43,050 --> 00:03:48,580
+Many argue that the rules infringe constitutional guarantees of free speech and privacy.
+
+19
+00:03:49,099 --> 00:04:02,040
+They are also alarmingly broad and vague: it is unclear whether print publications that also post their output online are subject to the guidelines, and whether and how oversight will be extended to foreign firms.
+
+20
+00:04:02,400 --> 00:04:04,560
+Legal challenges are inevitable.
+
+21
+00:04:05,570 --> 00:04:10,809
+Social-media firms worry that the erosion of privacy could cause an exodus of customers.
+
+22
+00:04:11,309 --> 00:04:23,980
+When WhatsApp told its 530m Indian users in January that it might share some of their information with its parent company, Facebook, so many dropped the service that it hastily scrapped the change.
+
+23
+00:04:24,590 --> 00:04:35,710
+Digital news outlets, which include some of the fiercest critics of Mr Modi, worry that they will be saddled with an impossible regulatory burden by a government that has already tamed most media.
+
+24
+00:04:36,690 --> 00:04:50,600
+The government retorts that the internet needs the sort of self-regulating industry groups, codes of conduct and state supervision to which television broadcasters, print media and the film industry are already subject to varying degrees.
+
+25
+00:04:51,010 --> 00:05:00,350
+Nikhil Pahwa, a digital-rights campaigner, doubts it will back down, unless blocked by the courts, even if the new rules drive out big foreign firms.
+
+26
+00:05:00,880 --> 00:05:07,450
+When the government banned dozens of Chinese apps last year, he notes, Indian entrepreneurs eagerly leapt into the breach.
+
+27
+00:05:08,020 --> 00:05:15,390
+During its dispute with Twitter, many of Mr Modi’s supporters pointedly abandoned the service for a little-known Indian rival.
+
+28
+00:05:16,219 --> 00:05:21,020
+Even if the government does have to retreat, online critics will not relax.
+
+29
+00:05:21,460 --> 00:05:29,930
+In February police raided the home of Prabir Purkayastha, the owner and editor of NewsClick, a site that often berates Mr Modi.
+
+30
+00:05:30,550 --> 00:05:35,509
+They kept him under house arrest for four-and-a-half days as they rifled through his possessions.
+
+31
+00:05:36,090 --> 00:05:47,530
+On March 3rd tax authorities raided properties belonging to several Bollywood personalities who, unusually for an industry that typically fawns over the powerful, had criticised Mr Modi.
+
+32
+00:05:48,070 --> 00:06:05,690
+One was Taapsee Pannu, an actress whose sin may have been a social-media post:“If one tweet rattles your unity, one joke rattles your faith or one show rattles your religious belief, then it’s you who has to work on strengthening your value system.”
+

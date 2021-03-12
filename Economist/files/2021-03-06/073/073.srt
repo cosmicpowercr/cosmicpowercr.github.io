@@ -1,0 +1,328 @@
+1
+00:00:22,790 --> 00:00:38,630
+WHEN ANDREW YANG began his campaign for the Democratic presidential nomination, his proposal for a“Freedom Dividend”—monthly cash payments of $1,000 to be paid to all Americans—distinguished him among a crowded field as an outsider and an unorthodox thinker.
+
+2
+00:00:39,570 --> 00:00:55,520
+Nearly two years later, as Mr Yang leads the race for mayor of New York City, his plan to provide cash to half a million New Yorkers feels far less radical, and not just because it is much more modest than his idea for a national universal basic income (UBI).
+
+3
+00:00:58,110 --> 00:01:10,590
+Though UBI still meets with scepticism in many quarters, the experience of the pandemic, and the accompanying explosion in social spending, have changed the tone of discussions about radical reforms to welfare states (see article).
+
+4
+00:01:11,539 --> 00:01:20,110
+Cash transfers—like those deployed by many governments during the pandemic—have come to look like an efficient, effective way to meet any number of social needs.
+
+5
+00:01:20,740 --> 00:01:24,250
+Few schemes during the pandemic offered recurring payments to all.
+
+6
+00:01:24,790 --> 00:01:31,650
+Yet, though the age of the UBI has not dawned, the ordeal of covid-19 could have brought it closer.
+
+7
+00:01:33,150 --> 00:01:37,210
+Arguments for universal-income payments have flourished for centuries.
+
+8
+00:01:37,650 --> 00:01:50,310
+Thomas Paine argued that the Earth is common property, and everyone who makes use of its land and resources owes society a“ground rent”, which should fund the payment of a“natural inheritance”to all adults.
+
+9
+00:01:51,370 --> 00:02:00,489
+Plans for universal payments, and the subtly different idea of a guaranteed minimum income, were a recurring feature of welfare debates in the 20th century.
+
+10
+00:02:01,179 --> 00:02:13,210
+Yet by the end of the century concerns about freeloading and persistently high rates of joblessness across much of Europe led to reforms that made benefits stingier or more contingent on work.
+
+11
+00:02:14,250 --> 00:02:25,910
+Worries about inequality and the belief—especially among tech types—that robots and artificial intelligence might soon make many workers redundant led to renewed interest in basic incomes in the 2010s.
+
+12
+00:02:26,740 --> 00:02:32,160
+But realistic proposals were scant, Mr Yang’s plucky presidential bid notwithstanding.
+
+13
+00:02:32,840 --> 00:02:44,420
+In 2016 a Swiss referendum on a plan to pay all adults an income of about $2,500 per month was soundly rejected, with nearly 80% of voters opposed.
+
+14
+00:02:45,610 --> 00:02:48,060
+Then came covid-19.
+
+15
+00:02:48,070 --> 00:02:54,000
+Restrictions on activity placed huge swathes of society in a position of dire, urgent economic need.
+
+16
+00:02:54,509 --> 00:02:58,280
+Governments around the world responded with a fire hose of cash.
+
+17
+00:02:58,789 --> 00:03:07,190
+From mid-March to mid-June more than 1,1bn people received cash payments, much of which were approved with little political opposition.
+
+18
+00:03:08,010 --> 00:03:14,630
+Cash transfers accounted for about a third of all pandemic-related social policies, according to the World Bank.
+
+19
+00:03:15,240 --> 00:03:30,279
+America’s Congress passed a covid-relief act in March 2020 containing a provision to send no-strings-attached cheques of up to $1,200 to most adults by near-unanimous margins (another round of cheques followed at the end of the year).
+
+20
+00:03:31,490 --> 00:03:43,230
+Residents of Hong Kong received payments worth nearly $1,300; those in Japan about $930; most Singaporean adults roughly $425.
+
+21
+00:03:43,980 --> 00:03:53,750
+Some governments experimented with payments that could be used only locally, through vouchers (as in Malta) or pre-loaded debit cards (as in parts of South Korea).
+
+22
+00:03:54,449 --> 00:03:56,570
+But most simply sent cash.
+
+23
+00:03:57,780 --> 00:04:01,200
+Few if any of these schemes offered a true UBI, though.
+
+24
+00:04:01,880 --> 00:04:09,740
+In the rich world, most cash-relief programmes were one-off transfers, aimed at stimulating consumption and cushioning against income shocks.
+
+25
+00:04:10,809 --> 00:04:16,330
+In poor countries transfers more closely resembled a basic income, in that they were often recurrent.
+
+26
+00:04:16,750 --> 00:04:18,970
+But most were aimed at the poor and vulnerable.
+
+27
+00:04:19,860 --> 00:04:27,960
+In its biggest-ever welfare programme, the Brazilian government provided monthly payments to the poorest third of the population until December 2020.
+
+28
+00:04:29,270 --> 00:04:35,740
+Togo’s scheme sends fortnightly transfers to the mobile wallets of informal workers where lockdowns are in place.
+
+29
+00:04:37,240 --> 00:04:46,330
+But as the end of the acute phase of the pandemic draws near, and normal economic activity slowly resumes, the number of programmes still in place is dwindling.
+
+30
+00:04:47,180 --> 00:04:54,490
+Only 7% of policies have been extended; the average scheme lasted just three months, according to the World Bank.
+
+31
+00:04:55,240 --> 00:05:06,040
+In America, President Joe Biden’s stimulus bill, which is working its way through Congress, makes provision for a third round of cheques, though fewer people will receive them than in 2020.
+
+32
+00:05:07,620 --> 00:05:11,650
+Pandemic assistance itself will not evolve into sustained basic-income schemes.
+
+33
+00:05:12,400 --> 00:05:17,240
+But the world’s experience with covid-19 could still make their eventual adoption more likely.
+
+34
+00:05:18,000 --> 00:05:22,369
+Polling suggests that young people in both America and Europe support UBI.
+
+35
+00:05:23,139 --> 00:05:33,510
+Both Democrats and some Republicans have expressed support for an expanded child tax credit in America, which would provide cash with no strings attached to families on low incomes.
+
+36
+00:05:34,780 --> 00:05:44,410
+Though benefits phase out for those on high incomes, the plan (which is part of Mr Biden’s relief bill) comes close to providing a basic income to families with children.
+
+37
+00:05:45,700 --> 00:05:52,430
+In South Korea, a presidential election contest scheduled for next year is shaping up to be a referendum of sorts on UBI.
+
+38
+00:05:54,410 --> 00:06:12,550
+Lee Jae-myung, a potential candidate who as governor of the province of Gyeonggi oversaw a regional basic-income programme, suggests that South Korea should adopt a national-level UBI of 500,000 won ($430) per year, rising eventually to that same amount per month.
+
+39
+00:06:13,270 --> 00:06:19,450
+(A possible rival for the presidency, Chung Sye-kyun, the current prime minister, opposes the plan.
+
+40
+00:06:20,730 --> 00:06:26,050
+) Pandemic experience also adds to a growing body of evidence on the effects of cash-transfer programmes.
+
+41
+00:06:26,860 --> 00:06:38,680
+In response to the surge in interest in UBI, researchers and governments around the world launched a variety of experiments, at least some of which had begun to yield results before the arrival of covid-19.
+
+42
+00:06:38,690 --> 00:06:53,620
+Finland, for example, conducted a trial in 2017-18 in which 2,000 randomly selected unemployed people were paid a modest income each month, roughly equivalent in size to unemployment benefits, which was guaranteed for the term of the trial.
+
+43
+00:06:54,960 --> 00:07:03,110
+Evidence from the experiment was muddied by a change to a law in 2018, which tightened conditionality for receiving unemployment benefits.
+
+44
+00:07:04,210 --> 00:07:06,799
+Even so, the results are intriguing.
+
+45
+00:07:07,660 --> 00:07:14,370
+Among the biggest worries relating to UBI is the possibility that it might discourage recipients from seeking paid work.
+
+46
+00:07:15,360 --> 00:07:21,270
+Yet participants who received unconditional payments actually worked more than those on the dole.
+
+47
+00:07:22,230 --> 00:07:35,940
+Reported well-being was substantially higher; recipients also registered less depression and stress, a higher degree of confidence in their abilities, and more social trust than did those in the control group.
+
+48
+00:07:37,580 --> 00:07:41,769
+The Finnish results are broadly consistent with findings from other experiments.
+
+49
+00:07:42,679 --> 00:07:54,960
+Rebecca Hasdell, then of the Basic Income Lab at Stanford University, conducted a review of 16 basic-income studies published between 2009 and 2019 that covered rich and poor countries.
+
+50
+00:07:56,139 --> 00:08:04,789
+The research provides consistent evidence of a positive effect on educational attainment and on measures of physical and mental health, and reduced poverty.
+
+51
+00:08:05,740 --> 00:08:14,180
+Effects on labour-market participation are generally small; half of the studies that assess its impact do not find a statistically significant effect.
+
+52
+00:08:14,570 --> 00:08:17,690
+Most of the rest find a positive effect, she writes.
+
+53
+00:08:19,110 --> 00:08:27,120
+Where participation does decline, though, it is often associated with an increase in caregiving, which could worsen gender inequality in the labour market.
+
+54
+00:08:27,890 --> 00:08:34,050
+In low- and middle-income countries increased caregiving is often linked to lower workforce participation by women.
+
+55
+00:08:34,690 --> 00:08:39,690
+In some studies, a basic income also seems to reduce participation by older workers.
+
+56
+00:08:40,949 --> 00:08:45,920
+In some cases the beneficial effects of UBI seem to have persisted through the pandemic.
+
+57
+00:08:46,690 --> 00:08:56,080
+A team of economists that had begun a large-scale UBI experiment in Kenya before the outbreak of covid-19 was able to monitor its performance during the crisis.
+
+58
+00:08:56,780 --> 00:09:03,270
+Recipients reported levels of well-being that were modestly but meaningfully higher than those of the control group.
+
+59
+00:09:04,020 --> 00:09:06,390
+Effects on health outcomes were ambiguous.
+
+60
+00:09:07,210 --> 00:09:17,450
+But people receiving payments were more likely to engage in risk-taking commercial activities: perhaps, the authors suggest, because of the insurance provided by the transfers.
+
+61
+00:09:18,199 --> 00:09:27,100
+That suggests that even if basic incomes discourage some sorts of work, they may encourage other desirable activities, such as entrepreneurship.
+
+62
+00:09:28,520 --> 00:09:31,670
+Extrapolating from these findings is a fraught business.
+
+63
+00:09:32,410 --> 00:09:48,219
+Studies of long-established systems with UBI-like features, such as Alaska’s Permanent Fund, which invests oil revenues and distributes dividends to the public, also indicate that the employment effects of a universal payment seem to be small (and may well be positive).
+
+64
+00:09:49,170 --> 00:09:59,350
+But conclusions drawn from programmes that are limited in geographical or temporal scope may not fully capture the ways in which a large-scale, permanent UBI could affect society.
+
+65
+00:10:00,120 --> 00:10:06,710
+Norms regarding work and leisure might adjust in ways that alter the response to payments—for good or ill.
+
+66
+00:10:06,710 --> 00:10:21,510
+Reality cheque Behaviour could shift as more members of society receive generous income payments: perhaps because of a“social multiplier effect”which reflects the fact that some activities become more enjoyable as more people engage in them.
+
+67
+00:10:22,250 --> 00:10:40,410
+That is, UBI recipients in, say, the Finnish experiment might have been more inclined to seek work because being in work is more attractive (and not being in work less so) when most people are employed—a dynamic that could potentially change were income payments to become universal.
+
+68
+00:10:41,860 --> 00:10:47,169
+Still, encouraging results from UBI trials are likely to encourage more experimentation.
+
+69
+00:10:47,730 --> 00:11:04,200
+They may also provide support to principles and policies that share features with a UBI without going the whole hog, such as: universality; a relaxed approach to the question of work incentives; or a guaranteed income to some groups, as Mr Yang now proposes.
+
+70
+00:11:05,449 --> 00:11:13,060
+That is because the most daunting obstacle to fully fledged UBI programmes remains: the little matter of funding.
+
+71
+00:11:14,050 --> 00:11:25,200
+Mr Yang’s original proposal for a UBI, for instance, would have cost about 14% of GDP a year, though the price tag could be partly reduced by rationalising other welfare schemes.
+
+72
+00:11:25,940 --> 00:11:32,660
+(For comparison, overall federal spending amounted to 21% of GDP in 2019.
+
+73
+00:11:32,670 --> 00:11:44,410
+) Neither short-term UBI trials nor mass cash transfers in response to covid-19 required governments to take on the difficult task of financing enormous new expansions to the welfare state.
+
+74
+00:11:45,880 --> 00:11:54,000
+Much of the aid provided to households over the past year has been financed with new government borrowing, up to and including Mr Biden’s proposals.
+
+75
+00:11:55,030 --> 00:12:07,080
+As accommodating as markets have been of government borrowing over the past year, it seems unlikely that UBI dreams can be made real without the question of financing eventually being asked and answered.
+
+76
+00:12:08,550 --> 00:12:10,939
+Some politicians are beginning to grapple with the issue.
+
+77
+00:12:11,679 --> 00:12:23,360
+Mr Lee reckons that a small UBI in South Korea could be paid for by adjusting the existing budget, but he allows that increasing the generosity of payments would require additional money.
+
+78
+00:12:24,140 --> 00:12:29,680
+Taxes on land, carbon emissions and digital services are his preferred funding mechanisms.
+
+79
+00:12:30,520 --> 00:12:41,730
+Mr Yang, for his part, argues that a combination of curbs to spending inefficiencies and philanthropic donations could pay for his proposed cash transfers (which would cover only the poorest New Yorkers).
+
+80
+00:12:43,090 --> 00:13:04,250
+But where the great welfare-state expansions of the mid-20th century were enabled by a spirit of solidarity and self-sacrifice, forged in depression and war, which made tax-financing of new benefits politically possible, the new enthusiasm for cash transfers owes more to a broad-based relaxation in concern about government borrowing.
+
+81
+00:13:05,309 --> 00:13:12,720
+As the pandemic ends, that relaxed attitude may change as well, among some segments of the political spectrum at least.
+
+82
+00:13:13,590 --> 00:13:20,100
+Only then can you learn how far along the path to a UBI the pandemic has actually moved society.
+

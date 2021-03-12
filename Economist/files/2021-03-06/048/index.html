@@ -1,0 +1,389 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">048 Britain - Scottish politics</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='048';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "“THERE’S something going on.",
+    "start_Offset": 0,
+    "end_Offset": 3,
+    "start": 16.389999,
+    "end": 19.049999999999997
+  },
+  {
+    "val": "I can’t prove it, but I can smell it,”said Gordon Jackson QC, as he concluded the defence of Alex Salmond last March.",
+    "start_Offset": 4,
+    "end_Offset": 26,
+    "start": 19.1,
+    "end": 26.56
+  },
+  {
+    "val": "Mr Salmond, the former first minister of Scotland, was on trial for 13 charges of sexual assault, including an attempted rape, against nine women.",
+    "start_Offset": 27,
+    "end_Offset": 50,
+    "start": 27.130000000000003,
+    "end": 36.620000999999995
+  },
+  {
+    "val": "Mr Salmond, his lawyer conceded, could be a“bad boy”, but the allegations of criminality were the product of a“murky, murky world”of Holyrood intrigue.",
+    "start_Offset": 51,
+    "end_Offset": 76,
+    "start": 37.33,
+    "end": 46.28
+  },
+  {
+    "val": "Mr Salmond was cleared by the jury.",
+    "start_Offset": 77,
+    "end_Offset": 83,
+    "start": 46.929999,
+    "end": 48.999999
+  },
+  {
+    "val": "The previous year, he had overturned an internal Scottish government probe into claims by two women, after a judge found procedural errors left the process“tainted by apparent bias”.",
+    "start_Offset": 84,
+    "end_Offset": 112,
+    "start": 49.299999,
+    "end": 60.03
+  },
+  {
+    "val": "The smell lingers, and the proof remains elusive.",
+    "start_Offset": 113,
+    "end_Offset": 120,
+    "start": 61.09,
+    "end": 63.94
+  },
+  {
+    "val": "On March 3rd Nicola Sturgeon, Mr Salmond’s successor, gave evidence for eight hours to a committee of the Scottish government investigating her role in the affair.",
+    "start_Offset": 121,
+    "end_Offset": 146,
+    "start": 64.309999,
+    "end": 73.48
+  },
+  {
+    "val": "She faces three broad charges.",
+    "start_Offset": 147,
+    "end_Offset": 151,
+    "start": 74.12,
+    "end": 76.13000000000001
+  },
+  {
+    "val": "The most serious, and least credible, is Mr Salmond’s claim that he is a victim of a“malicious and concerted”plot by Ms Sturgeon’s inner circle to send him to jail.",
+    "start_Offset": 152,
+    "end_Offset": 182,
+    "start": 76.41,
+    "end": 86.53999999999999
+  },
+  {
+    "val": "The others are more damaging: that she misled the Scottish Parliament about her knowledge of the allegations against Mr Salmond, and that her government wasted public money by pushing on with contesting the judicial review when her lawyers regarded the case as unwinnable.",
+    "start_Offset": 183,
+    "end_Offset": 225,
+    "start": 87.13,
+    "end": 102.4
+  },
+  {
+    "val": "The inquiry has revealed flaws in Ms Sturgeon’s government, including a dangerous blurring of the lines between party business, government work and the prosecutor’s office.",
+    "start_Offset": 226,
+    "end_Offset": 250,
+    "start": 103.53999999999999,
+    "end": 113.23
+  },
+  {
+    "val": "But her performance revealed the rhetorical dexterity that has kept her at the top of Scottish politics since becoming Mr Salmond’s deputy in 2004.",
+    "start_Offset": 251,
+    "end_Offset": 274,
+    "start": 113.49,
+    "end": 122.53999999999999
+  },
+  {
+    "val": "She apologised profusely for the original botched probe.",
+    "start_Offset": 275,
+    "end_Offset": 282,
+    "start": 123.599999,
+    "end": 126.68000099999999
+  },
+  {
+    "val": "The legal advice on whether to push on was more nuanced than had been portrayed, she said.",
+    "start_Offset": 283,
+    "end_Offset": 299,
+    "start": 127.01,
+    "end": 131.23999999999998
+  },
+  {
+    "val": "An out-of-court settlement, for which Mr Salmond had begged in text messages, would have been improper.",
+    "start_Offset": 300,
+    "end_Offset": 317,
+    "start": 131.96,
+    "end": 136.88
+  },
+  {
+    "val": "She shared lawmakers’ frustration at delays in producing documents and wished“her memory was more vivid”of certain meetings.",
+    "start_Offset": 318,
+    "end_Offset": 336,
+    "start": 137.9,
+    "end": 144.46
+  },
+  {
+    "val": "The suggestion of collusion with the police was“stretching the credulity of the most devout conspiracy theorists”.",
+    "start_Offset": 337,
+    "end_Offset": 353,
+    "start": 145.369999,
+    "end": 151.39000000000001
+  },
+  {
+    "val": "But this was about him, not her.",
+    "start_Offset": 354,
+    "end_Offset": 360,
+    "start": 151.88,
+    "end": 153.69000000000003
+  },
+  {
+    "val": "Mr Salmond was a“man I had revered since I was 20 years old”.",
+    "start_Offset": 361,
+    "end_Offset": 374,
+    "start": 154.17,
+    "end": 157.639999
+  },
+  {
+    "val": "He had confessed to“deeply inappropriate behaviour”.",
+    "start_Offset": 375,
+    "end_Offset": 381,
+    "start": 158.0,
+    "end": 160.20999899999998
+  },
+  {
+    "val": "She regretted that he had no regrets.",
+    "start_Offset": 382,
+    "end_Offset": 388,
+    "start": 161.34,
+    "end": 163.61
+  },
+  {
+    "val": "The Scottish Conservatives are planning a vote of no confidence in Ms Sturgeon, although no date is yet fixed.",
+    "start_Offset": 389,
+    "end_Offset": 407,
+    "start": 164.69,
+    "end": 170.29000000000002
+  },
+  {
+    "val": "She is likely to survive.",
+    "start_Offset": 408,
+    "end_Offset": 412,
+    "start": 170.79,
+    "end": 172.22
+  },
+  {
+    "val": "Her Scottish National Party is on track for a majority in the Scottish election in May, which it hopes will open the door to an independence referendum; even her bitterest internal critics will not jeopardise the“project”.",
+    "start_Offset": 413,
+    "end_Offset": 449,
+    "start": 172.52,
+    "end": 185.3
+  },
+  {
+    "val": "The outcome may hinge on the votes of pro-independence Green MSPs, who under Scotland’s two-vote electoral system risk being punished if they bring Ms Sturgeon down.",
+    "start_Offset": 450,
+    "end_Offset": 477,
+    "start": 186.11,
+    "end": 196.019999
+  },
+  {
+    "val": "Focus groups are said to be sympathetic to her defence: that in the wake of the #MeToo movement, when complaints were raised, her government threw the book at her former mentor.",
+    "start_Offset": 478,
+    "end_Offset": 508,
+    "start": 197.279999,
+    "end": 206.25
+  },
+  {
+    "val": "“As first minister I refused to follow the age-old pattern of allowing a powerful man to use his status and connections to get what he wants,”she said.",
+    "start_Offset": 509,
+    "end_Offset": 537,
+    "start": 206.849999,
+    "end": 215.57999900000002
+  },
+  {
+    "val": "Her main regret, really, was that its aim was off.",
+    "start_Offset": 538,
+    "end_Offset": 547,
+    "start": 216.25,
+    "end": 219.45000000000002
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

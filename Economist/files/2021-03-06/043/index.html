@@ -1,0 +1,466 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">043 Europe - Armenia</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='043';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "FOR A MAN in his own army’s cross-hairs, Nikol Pashinyan, the Armenian prime minister, seems unfazed.",
+    "start_Offset": 0,
+    "end_Offset": 16,
+    "start": 14.79,
+    "end": 21.99
+  },
+  {
+    "val": "As long as the Armenian people have the final say,“there will be no coup,”he told The Economist this week.",
+    "start_Offset": 17,
+    "end_Offset": 37,
+    "start": 22.79,
+    "end": 29.059999
+  },
+  {
+    "val": "The only way out of the crisis consuming his country, he says, leads through the ballot box and early elections.",
+    "start_Offset": 38,
+    "end_Offset": 57,
+    "start": 30.04,
+    "end": 36.0
+  },
+  {
+    "val": "There are no tanks on the street in Yerevan.",
+    "start_Offset": 58,
+    "end_Offset": 66,
+    "start": 37.25,
+    "end": 39.5
+  },
+  {
+    "val": "But Mr Pashinyan is fighting for his political life.",
+    "start_Offset": 67,
+    "end_Offset": 75,
+    "start": 39.92,
+    "end": 43.34
+  },
+  {
+    "val": "On February 25th dozens of officers, including the country’s top soldier, Onik Gasparyan, demanded the prime minister’s resignation, accusing him of incompetence.",
+    "start_Offset": 76,
+    "end_Offset": 97,
+    "start": 44.22,
+    "end": 53.99
+  },
+  {
+    "val": "Mr Pashinyan called this an attempted coup, refused to step down and ordered Mr Gasparyan to do so instead.",
+    "start_Offset": 98,
+    "end_Offset": 116,
+    "start": 55.93,
+    "end": 63.76
+  },
+  {
+    "val": "(So far, he has not.",
+    "start_Offset": 117,
+    "end_Offset": 121,
+    "start": 64.38,
+    "end": 65.83
+  },
+  {
+    "val": ")  Tensions in Armenia have been brewing since November, when Mr Pashinyan signed an armistice with Azerbaijan, ending a war over Nagorno-Karabakh, a separatist ethnic-Armenian enclave inside Azerbaijan.",
+    "start_Offset": 122,
+    "end_Offset": 150,
+    "start": 67.16,
+    "end": 79.25
+  },
+  {
+    "val": "More than 6,000 people died in the fighting.",
+    "start_Offset": 151,
+    "end_Offset": 159,
+    "start": 80.099999,
+    "end": 82.74000000000001
+  },
+  {
+    "val": "Armenian defences were pummelled by Turkish drones and overrun by Azerbaijani ground forces.",
+    "start_Offset": 160,
+    "end_Offset": 172,
+    "start": 83.27,
+    "end": 89.05
+  },
+  {
+    "val": "Under the ceasefire agreement, Armenia gave up control of swathes of land which it had captured around Karabakh three decades earlier.",
+    "start_Offset": 173,
+    "end_Offset": 193,
+    "start": 90.07,
+    "end": 97.64
+  },
+  {
+    "val": "The enclave’s status remains unresolved.",
+    "start_Offset": 194,
+    "end_Offset": 198,
+    "start": 98.17,
+    "end": 100.59
+  },
+  {
+    "val": "Some 2,000 Russian troops have been deployed there to keep the peace.",
+    "start_Offset": 199,
+    "end_Offset": 211,
+    "start": 100.95,
+    "end": 105.03
+  },
+  {
+    "val": "To many Armenians, persuaded by the army and the government that the fighting was going their way, the surrender came as a shock and a betrayal.",
+    "start_Offset": 212,
+    "end_Offset": 237,
+    "start": 106.51,
+    "end": 114.47
+  },
+  {
+    "val": "Mr Pashinyan immediately came under fire.",
+    "start_Offset": 238,
+    "end_Offset": 243,
+    "start": 115.21,
+    "end": 117.75999999999999
+  },
+  {
+    "val": "The opposition blamed him for provoking the war and losing the peace.",
+    "start_Offset": 244,
+    "end_Offset": 255,
+    "start": 118.28,
+    "end": 121.74
+  },
+  {
+    "val": "Protesters stormed government buildings.",
+    "start_Offset": 256,
+    "end_Offset": 259,
+    "start": 122.349999,
+    "end": 124.659999
+  },
+  {
+    "val": "The army (and the Kremlin) bristled after Mr Pashinyan claimed that Russia’s Iskander missiles, which Armenia used at least once during the war, had turned out to be duds.",
+    "start_Offset": 260,
+    "end_Offset": 288,
+    "start": 125.58,
+    "end": 136.519999
+  },
+  {
+    "val": "He backtracked after a phone call with Russia’s president, Vladimir Putin.",
+    "start_Offset": 289,
+    "end_Offset": 299,
+    "start": 137.45,
+    "end": 141.519999
+  },
+  {
+    "val": "The protests have attracted no more than a few thousand people.",
+    "start_Offset": 300,
+    "end_Offset": 310,
+    "start": 143.09,
+    "end": 146.03
+  },
+  {
+    "val": "But those who turn up seem to be spoiling for a fight.",
+    "start_Offset": 311,
+    "end_Offset": 322,
+    "start": 146.57,
+    "end": 149.5
+  },
+  {
+    "val": "“Pashinyan sold out my homeland and my people,”says Hrachya Abramyan, a veteran of both Karabakh wars, at a rally in front of the parliament.",
+    "start_Offset": 323,
+    "end_Offset": 347,
+    "start": 150.59,
+    "end": 159.8
+  },
+  {
+    "val": "“If he does not resign, we will grab him by the ears and throw him out like a dog.”",
+    "start_Offset": 348,
+    "end_Offset": 366,
+    "start": 160.43,
+    "end": 164.89
+  },
+  {
+    "val": "The opposition parties have not warmed to an offer of snap elections, presumably because they continue to trail in the polls.",
+    "start_Offset": 367,
+    "end_Offset": 387,
+    "start": 166.11,
+    "end": 173.14000000000001
+  },
+  {
+    "val": "Instead they propose a transitional government.",
+    "start_Offset": 388,
+    "end_Offset": 393,
+    "start": 174.059999,
+    "end": 176.46
+  },
+  {
+    "val": "Some appear on the verge of endorsing an actual coup.",
+    "start_Offset": 394,
+    "end_Offset": 403,
+    "start": 177.059999,
+    "end": 179.779999
+  },
+  {
+    "val": "“I don’t like the idea,”says Davit Harutyunyan, a former minister.",
+    "start_Offset": 404,
+    "end_Offset": 414,
+    "start": 180.539999,
+    "end": 185.67
+  },
+  {
+    "val": "“But if I feel that without taking the next step we risk losing the country and civil war, then definitely.”",
+    "start_Offset": 415,
+    "end_Offset": 434,
+    "start": 186.3,
+    "end": 192.51
+  },
+  {
+    "val": "Mr Pashinyan, a former journalist, came to power in 2018, when exasperation with decades of cronyism overflowed into mass protests, bringing down the government of Serzh Sargsyan, his predecessor.",
+    "start_Offset": 435,
+    "end_Offset": 463,
+    "start": 193.88,
+    "end": 207.63
+  },
+  {
+    "val": "Yet the tide that propelled Mr Pashinyan into power has ebbed.",
+    "start_Offset": 464,
+    "end_Offset": 474,
+    "start": 208.4,
+    "end": 212.36999999999998
+  },
+  {
+    "val": "In elections two years ago, he won 70% of the vote.",
+    "start_Offset": 475,
+    "end_Offset": 485,
+    "start": 213.0,
+    "end": 216.54999999999998
+  },
+  {
+    "val": "Today only 39% of Armenians want him in charge.",
+    "start_Offset": 486,
+    "end_Offset": 494,
+    "start": 217.29,
+    "end": 221.11
+  },
+  {
+    "val": "He had already faced criticism for his handling of the economy and the covid-19 crisis.",
+    "start_Offset": 495,
+    "end_Offset": 510,
+    "start": 222.06,
+    "end": 226.91
+  },
+  {
+    "val": "He has made no new friends by shrugging off the blame for the lost war.",
+    "start_Offset": 511,
+    "end_Offset": 525,
+    "start": 227.66,
+    "end": 231.739999
+  },
+  {
+    "val": "Many see a Russian hand in the army’s move against Mr Pashinyan.",
+    "start_Offset": 526,
+    "end_Offset": 537,
+    "start": 233.199999,
+    "end": 237.06
+  },
+  {
+    "val": "Yet Russia may not want the Armenian leader gone, so much as tamed.",
+    "start_Offset": 538,
+    "end_Offset": 550,
+    "start": 237.65,
+    "end": 241.67000000000002
+  },
+  {
+    "val": "Mr Pashinyan was once eager to loosen Armenia from Russia’s grip and to improve relations with Western powers.",
+    "start_Offset": 551,
+    "end_Offset": 568,
+    "start": 242.54,
+    "end": 249.18
+  },
+  {
+    "val": "That is no longer possible.",
+    "start_Offset": 569,
+    "end_Offset": 573,
+    "start": 250.01,
+    "end": 251.729999
+  },
+  {
+    "val": "Hobbling from a lost war, squeezed between two old enemies and frustrated by Western inaction, Armenia now depends on Russia’s security guarantees more than ever, no matter who is in charge.",
+    "start_Offset": 574,
+    "end_Offset": 604,
+    "start": 252.709999,
+    "end": 265.8
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

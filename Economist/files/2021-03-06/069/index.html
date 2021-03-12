@@ -1,0 +1,564 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">069 Finance and economics - Buttonwood</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='069';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "MOST PEOPLE have little time for quants.",
+    "start_Offset": 0,
+    "end_Offset": 6,
+    "start": 11.57,
+    "end": 12.509998999999999
+  },
+  {
+    "val": "They find the language of quantitative finance far from illuminating.",
+    "start_Offset": 7,
+    "end_Offset": 16,
+    "start": 14.46,
+    "end": 25.209999000000003
+  },
+  {
+    "val": "Even fairly numerate people struggle to grasp what comes easily to pointy-headed number-crunchers.",
+    "start_Offset": 17,
+    "end_Offset": 31,
+    "start": 25.489999,
+    "end": 31.310000000000002
+  },
+  {
+    "val": "Take the idea of correlation, the co-movement of two or more variables.",
+    "start_Offset": 32,
+    "end_Offset": 44,
+    "start": 31.75,
+    "end": 37.119999
+  },
+  {
+    "val": "Such relationships vary with the period over which they are measured.",
+    "start_Offset": 45,
+    "end_Offset": 55,
+    "start": 37.559999000000005,
+    "end": 40.99
+  },
+  {
+    "val": "The direction can shift.",
+    "start_Offset": 56,
+    "end_Offset": 59,
+    "start": 41.25,
+    "end": 42.72
+  },
+  {
+    "val": "Things quickly become confusing.",
+    "start_Offset": 60,
+    "end_Offset": 63,
+    "start": 42.75,
+    "end": 44.64
+  },
+  {
+    "val": "Yet the quant argot is useful when considering perhaps the biggest fear stalking financial markets: a sustained rise in inflation that would be bad for both equities and bonds.",
+    "start_Offset": 64,
+    "end_Offset": 92,
+    "start": 45.09,
+    "end": 57.43
+  },
+  {
+    "val": "A quant might describe this as a flip in the bond-equity correlation from negative to positive.",
+    "start_Offset": 93,
+    "end_Offset": 109,
+    "start": 57.83,
+    "end": 64.219999
+  },
+  {
+    "val": "That is none too elegant, though.",
+    "start_Offset": 110,
+    "end_Offset": 115,
+    "start": 64.78,
+    "end": 67.08000000000001
+  },
+  {
+    "val": "A better choice is a term used in geopolitics as well as econometrics: regime change.",
+    "start_Offset": 116,
+    "end_Offset": 130,
+    "start": 67.36,
+    "end": 73.78
+  },
+  {
+    "val": "It is helpful in this matter to start with two stylised facts.",
+    "start_Offset": 131,
+    "end_Offset": 142,
+    "start": 74.86,
+    "end": 78.91
+  },
+  {
+    "val": "The first is that in recent years, bond and equity prices have tended to move in opposite directions over the business cycle.",
+    "start_Offset": 143,
+    "end_Offset": 164,
+    "start": 79.15,
+    "end": 86.60000000000001
+  },
+  {
+    "val": "When recessions hit, bond prices tend to rise sharply (their yields fall) and equity prices usually crash.",
+    "start_Offset": 165,
+    "end_Offset": 181,
+    "start": 86.889999,
+    "end": 94.76
+  },
+  {
+    "val": "When the economy recovers, bonds tend to fall in price and equity prices go up again.",
+    "start_Offset": 182,
+    "end_Offset": 197,
+    "start": 95.17,
+    "end": 100.219999
+  },
+  {
+    "val": "You can think of this in terms of risk appetite.",
+    "start_Offset": 198,
+    "end_Offset": 207,
+    "start": 100.71000000000001,
+    "end": 103.64000000000001
+  },
+  {
+    "val": "Government bonds are safe assets.",
+    "start_Offset": 208,
+    "end_Offset": 212,
+    "start": 104.11,
+    "end": 106.23999900000001
+  },
+  {
+    "val": "People rush into them when they fear for the future.",
+    "start_Offset": 213,
+    "end_Offset": 222,
+    "start": 106.289999,
+    "end": 108.64
+  },
+  {
+    "val": "Equities, by contrast, are risky assets, so people shun them in troubled times.",
+    "start_Offset": 223,
+    "end_Offset": 235,
+    "start": 109.14,
+    "end": 114.38
+  },
+  {
+    "val": "The second stylised fact concerns a secular relationship rather than a cyclical one.",
+    "start_Offset": 236,
+    "end_Offset": 248,
+    "start": 115.37,
+    "end": 121.58
+  },
+  {
+    "val": "Since the early 1980s bond and equity prices have moved in the same broad direction—upwards.",
+    "start_Offset": 249,
+    "end_Offset": 264,
+    "start": 122.469999,
+    "end": 129.05
+  },
+  {
+    "val": "If you look at low-frequency data over a long period, the bond-equity correlation is positive.",
+    "start_Offset": 265,
+    "end_Offset": 281,
+    "start": 129.3,
+    "end": 135.04000000000002
+  },
+  {
+    "val": "This is best understood in terms of yields rather than prices.",
+    "start_Offset": 282,
+    "end_Offset": 292,
+    "start": 135.58,
+    "end": 139.59999900000003
+  },
+  {
+    "val": "For the past four decades, there has been a secular decline in government-bond yields, reflecting a secular decline in interest rates.",
+    "start_Offset": 293,
+    "end_Offset": 314,
+    "start": 140.219999,
+    "end": 148.39000000000001
+  },
+  {
+    "val": "The earnings yield on equities has fallen, too, as have yields on other assets, such as corporate bonds and property.",
+    "start_Offset": 315,
+    "end_Offset": 334,
+    "start": 148.75,
+    "end": 155.879999
+  },
+  {
+    "val": "This should not be a surprise.",
+    "start_Offset": 335,
+    "end_Offset": 340,
+    "start": 156.49,
+    "end": 158.48
+  },
+  {
+    "val": "Yields are a gauge of expected returns.",
+    "start_Offset": 341,
+    "end_Offset": 347,
+    "start": 158.719999,
+    "end": 161.289999
+  },
+  {
+    "val": "Bonds and equities compete for investors’ capital.",
+    "start_Offset": 348,
+    "end_Offset": 354,
+    "start": 161.469999,
+    "end": 164.38
+  },
+  {
+    "val": "Over the long haul the prices and yields of each will respond to those of the other.",
+    "start_Offset": 355,
+    "end_Offset": 371,
+    "start": 164.38,
+    "end": 169.6
+  },
+  {
+    "val": "These two facts may seem at odds, but a third fact makes them consistent.",
+    "start_Offset": 372,
+    "end_Offset": 385,
+    "start": 170.639999,
+    "end": 175.11
+  },
+  {
+    "val": "In each business cycle, interest rates tend to rise as the economy gathers strength (so bonds and equities diverge over short periods).",
+    "start_Offset": 386,
+    "end_Offset": 407,
+    "start": 175.559999,
+    "end": 184.10999999999999
+  },
+  {
+    "val": "But each business-cycle peak in interest rates is lower than the previous one (so bonds and equity prices converge over the long run).",
+    "start_Offset": 408,
+    "end_Offset": 431,
+    "start": 184.37,
+    "end": 192.99
+  },
+  {
+    "val": "That in turn is a response to the secular decline in inflation.",
+    "start_Offset": 432,
+    "end_Offset": 443,
+    "start": 193.429999,
+    "end": 197.82999900000002
+  },
+  {
+    "val": "Indeed, inflation is central to the bond-equity relationship.",
+    "start_Offset": 444,
+    "end_Offset": 452,
+    "start": 199.0,
+    "end": 202.9
+  },
+  {
+    "val": "It is here that things become trickier, and the notion of regime change matters.",
+    "start_Offset": 453,
+    "end_Offset": 466,
+    "start": 203.17,
+    "end": 207.60999999999999
+  },
+  {
+    "val": "Bonds promise fixed cash payments in the future.",
+    "start_Offset": 467,
+    "end_Offset": 474,
+    "start": 207.96,
+    "end": 210.92
+  },
+  {
+    "val": "Those cashflows are worth less when inflation unexpectedly rises.",
+    "start_Offset": 475,
+    "end_Offset": 483,
+    "start": 211.23,
+    "end": 216.25
+  },
+  {
+    "val": "By contrast, equities have generally outpaced inflation over the long haul.",
+    "start_Offset": 484,
+    "end_Offset": 494,
+    "start": 216.63,
+    "end": 221.55
+  },
+  {
+    "val": "But the relationship between inflation and equity prices is not stable.",
+    "start_Offset": 495,
+    "end_Offset": 505,
+    "start": 221.89,
+    "end": 226.25
+  },
+  {
+    "val": "A study by Sushil Wadhwani, a former member of the Bank of England’s rate-setting committee, in 2013 found that higher inflation generally helped to boost stockmarket returns in Britain in the two centuries before 1914.",
+    "start_Offset": 506,
+    "end_Offset": 541,
+    "start": 226.79,
+    "end": 240.7
+  },
+  {
+    "val": "But by the last half of the 20th century a negative relationship had emerged.",
+    "start_Offset": 542,
+    "end_Offset": 555,
+    "start": 242.04,
+    "end": 246.82
+  },
+  {
+    "val": "You might best explain this finding in terms of monetary regimes.",
+    "start_Offset": 556,
+    "end_Offset": 566,
+    "start": 247.16,
+    "end": 250.889999
+  },
+  {
+    "val": "Under the pre-1914 gold standard, inflation was mean-reverting: if it was high one year, it would fall the next.",
+    "start_Offset": 567,
+    "end_Offset": 587,
+    "start": 251.199999,
+    "end": 259.46000000000004
+  },
+  {
+    "val": "But in the era of fiat money, especially in the 1970s, the checks on inflation were less binding.",
+    "start_Offset": 588,
+    "end_Offset": 605,
+    "start": 260.01,
+    "end": 266.37
+  },
+  {
+    "val": "In the past few decades central banks were given inflation targets, and the monetary regime switched again.",
+    "start_Offset": 606,
+    "end_Offset": 622,
+    "start": 267.58,
+    "end": 273.66999999999996
+  },
+  {
+    "val": "Now, yet another regime change may be afoot.",
+    "start_Offset": 623,
+    "end_Offset": 630,
+    "start": 274.0,
+    "end": 277.07
+  },
+  {
+    "val": "Fiscal stimulus is back in favour, which has an unsettling 1970s feel to it.",
+    "start_Offset": 631,
+    "end_Offset": 644,
+    "start": 277.57,
+    "end": 283.76
+  },
+  {
+    "val": "Fiscal policy fell out of fashion because it was not well suited to fine-tuning aggregate demand; politicians are reluctant to cut spending or raise taxes when the economy threatens to overheat.",
+    "start_Offset": 645,
+    "end_Offset": 676,
+    "start": 284.049999,
+    "end": 295.54
+  },
+  {
+    "val": "And the old-style central banker—reared in academia, aloof from politics, paranoid about inflation—is now almost extinct.",
+    "start_Offset": 677,
+    "end_Offset": 695,
+    "start": 295.91,
+    "end": 304.53
+  },
+  {
+    "val": "The new breed talks about climate change and inequality and is sanguine about inflation risks.",
+    "start_Offset": 696,
+    "end_Offset": 710,
+    "start": 305.02,
+    "end": 310.71999999999997
+  },
+  {
+    "val": "This feeds a general sense of lost policy discipline.",
+    "start_Offset": 711,
+    "end_Offset": 719,
+    "start": 311.02,
+    "end": 314.889999
+  },
+  {
+    "val": "Sooner or later, warn the hawks, this will end in tears.",
+    "start_Offset": 720,
+    "end_Offset": 730,
+    "start": 315.9,
+    "end": 320.27
+  },
+  {
+    "val": "Many of the people who predict the return of 1970s-style inflation used to deride the old-school, bookish rate-setter, with his fancy econometrics and lack of market smarts.",
+    "start_Offset": 731,
+    "end_Offset": 760,
+    "start": 320.549999,
+    "end": 332.79999999999995
+  },
+  {
+    "val": "It is no small irony that they now feel so nostalgic for the pointy-headed central banker.",
+    "start_Offset": 761,
+    "end_Offset": 777,
+    "start": 333.179999,
+    "end": 339.029999
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

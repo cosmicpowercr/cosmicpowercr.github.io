@@ -1,0 +1,599 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">082 Books and arts - Gene-editing</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='082';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "WHAT THE transistor once was to electronics, so CRISPR gene-editing is to biotechnology today.",
+    "start_Offset": 0,
+    "end_Offset": 14,
+    "start": 29.75,
+    "end": 35.75999899999999
+  },
+  {
+    "val": "It changes the field from something interesting but clunky, and of restricted application, into a game of infinite possibility that almost anyone can play.",
+    "start_Offset": 15,
+    "end_Offset": 38,
+    "start": 36.209998999999996,
+    "end": 45.19
+  },
+  {
+    "val": "Transistors led to computer chips and the youthful entrepreneurs of the Homebrew Computer Club in Silicon Valley.",
+    "start_Offset": 39,
+    "end_Offset": 55,
+    "start": 46.65,
+    "end": 51.809999
+  },
+  {
+    "val": "Similarly, CRISPR editing has let a new generation of would-be billionaires explore ideas that range from systematising the search for the proteins targeted by drugs, to breeding pigs that might act as organ donors for transplants.",
+    "start_Offset": 56,
+    "end_Offset": 92,
+    "start": 52.34,
+    "end": 65.99
+  },
+  {
+    "val": "The transistor transformed the world; CRISPR may do that too.",
+    "start_Offset": 93,
+    "end_Offset": 102,
+    "start": 67.259999,
+    "end": 71.39
+  },
+  {
+    "val": "But it also offers a potential which transistors never did: that of transforming human beings themselves, by editing their genes.",
+    "start_Offset": 103,
+    "end_Offset": 122,
+    "start": 72.109999,
+    "end": 80.41
+  },
+  {
+    "val": "Those genes might be in body cells, in which case the changes would die with the person to whom they were made.",
+    "start_Offset": 123,
+    "end_Offset": 144,
+    "start": 81.36,
+    "end": 87.08000000000001
+  },
+  {
+    "val": "Or they might be in germ cells, in which case they could be passed down the generations.",
+    "start_Offset": 145,
+    "end_Offset": 161,
+    "start": 87.86,
+    "end": 93.39999999999999
+  },
+  {
+    "val": "Henry Greely’s book is about the first known attempt to perform this more enduring trick, how it spectacularly backfired on the man who did it, and whether, and in what circumstances, anyone should ever try to do it again.",
+    "start_Offset": 162,
+    "end_Offset": 200,
+    "start": 94.65,
+    "end": 107.969999
+  },
+  {
+    "val": "Mr Greely is both a bioethicist and a lawyer at Stanford University, qualifications perfectly suited to his subject—the moment when germline editing went from being a topic of philosophical speculation to hard reality.",
+    "start_Offset": 201,
+    "end_Offset": 234,
+    "start": 109.02,
+    "end": 123.27999999999999
+  },
+  {
+    "val": "That moment came on November 25th 2018, when He Jiankui, a researcher at the Southern University of Science and Technology, in Shenzhen, China, announced that he had taken it upon himself to edit the genomes of two embryonic human beings (later born as twin girls), and to do so at a point in their development when those changes would affect their germ cells.",
+    "start_Offset": 235,
+    "end_Offset": 297,
+    "start": 124.24,
+    "end": 146.68
+  },
+  {
+    "val": "As depicted in“CRISPR People”, Dr He is less the villain portrayed elsewhere than a naive and tragic character who was completely out of his depth.",
+    "start_Offset": 298,
+    "end_Offset": 323,
+    "start": 148.07,
+    "end": 157.689999
+  },
+  {
+    "val": "Certainly, he was driven by a yen for fame and fortune.",
+    "start_Offset": 324,
+    "end_Offset": 334,
+    "start": 158.309999,
+    "end": 161.4
+  },
+  {
+    "val": "But he seems also to have had a genuine desire to do good.",
+    "start_Offset": 335,
+    "end_Offset": 347,
+    "start": 162.129999,
+    "end": 165.2
+  },
+  {
+    "val": "His stated aim was to protect the girls from the threat of AIDS by tweaking their genes for a protein which the responsible virus, HIV, uses to lock onto cells it is about to infect.",
+    "start_Offset": 348,
+    "end_Offset": 382,
+    "start": 166.01,
+    "end": 176.70999999999998
+  },
+  {
+    "val": "Almost up to the time that he went public with his experiment, he seems to have expected a hero’s welcome.",
+    "start_Offset": 383,
+    "end_Offset": 402,
+    "start": 177.759999,
+    "end": 183.45
+  },
+  {
+    "val": "Instead, he ended up with a three-year prison sentence.",
+    "start_Offset": 403,
+    "end_Offset": 412,
+    "start": 184.42,
+    "end": 188.54
+  },
+  {
+    "val": "An inauspicious beginning, then, for the idea of human germline editing.",
+    "start_Offset": 413,
+    "end_Offset": 423,
+    "start": 190.13,
+    "end": 194.04000000000002
+  },
+  {
+    "val": "But Mr Greely does not dismiss the possibility of future, better-conducted attempts to do it.",
+    "start_Offset": 424,
+    "end_Offset": 439,
+    "start": 194.969999,
+    "end": 199.74
+  },
+  {
+    "val": "As forensically as you would expect for an author of his background, he sets out the circumstances in which real need exists and no alternatives are available.",
+    "start_Offset": 440,
+    "end_Offset": 466,
+    "start": 200.44,
+    "end": 208.76
+  },
+  {
+    "val": "Preventing HIV infection is not among them: it is easy to avoid and is treatable if avoidance fails.",
+    "start_Offset": 467,
+    "end_Offset": 484,
+    "start": 209.37,
+    "end": 216.02
+  },
+  {
+    "val": "Mostly, his list consists of couples who carry dangerous mutations in combinations that mean they are bound to be passed on to a child unless its genes are edited.",
+    "start_Offset": 485,
+    "end_Offset": 513,
+    "start": 216.84,
+    "end": 225.71
+  },
+  {
+    "val": "This will not be many couples.",
+    "start_Offset": 514,
+    "end_Offset": 519,
+    "start": 226.67,
+    "end": 228.31
+  },
+  {
+    "val": "But it will be a few.",
+    "start_Offset": 520,
+    "end_Offset": 525,
+    "start": 228.7,
+    "end": 229.809999
+  },
+  {
+    "val": "Attitudes to germline editing may change if it proves safe and effective in these edge cases, and as knowledge increases of how human genomes work.",
+    "start_Offset": 526,
+    "end_Offset": 550,
+    "start": 231.299999,
+    "end": 239.89
+  },
+  {
+    "val": "At that point the real debate—about whether to allow the technique to be used to end the genetic lottery of reproduction, and maybe even to enhance human capabilities beyond any now currently found—will become live.",
+    "start_Offset": 551,
+    "end_Offset": 587,
+    "start": 240.98,
+    "end": 252.64999999999998
+  },
+  {
+    "val": "How scientific knowledge expands in this way is the ultimate subject of“The Code Breaker”.",
+    "start_Offset": 588,
+    "end_Offset": 602,
+    "start": 253.309999,
+    "end": 258.29
+  },
+  {
+    "val": "Peering over the edge Mr Greely’s book is a serious and scholarly work.",
+    "start_Offset": 603,
+    "end_Offset": 615,
+    "start": 259.89000000000004,
+    "end": 262.97999999999996
+  },
+  {
+    "val": "Walter Isaacson’s, by contrast, is a page-turner.",
+    "start_Offset": 616,
+    "end_Offset": 623,
+    "start": 263.37,
+    "end": 266.629999
+  },
+  {
+    "val": "It weaves history and contemporary events into a narrative propelled by the career of its protagonist, Jennifer Doudna.",
+    "start_Offset": 624,
+    "end_Offset": 641,
+    "start": 267.25,
+    "end": 273.91
+  },
+  {
+    "val": "In 2020 she was the joint winner with Emmanuelle Charpentier of the Nobel chemistry prize for—as the citation by Sweden’s Royal Academy of Sciences laconically puts it—“the development of a method for genome editing”.",
+    "start_Offset": 642,
+    "end_Offset": 677,
+    "start": 274.9,
+    "end": 287.97
+  },
+  {
+    "val": "Most people agree with the academy in recognising these two as CRISPR editing’s principal inventors—though they were assisted by many others and drew on the work of many more.",
+    "start_Offset": 678,
+    "end_Offset": 707,
+    "start": 289.33,
+    "end": 298.909999
+  },
+  {
+    "val": "There are, however, dissenters who want to share the kudos, and particularly the patents.",
+    "start_Offset": 708,
+    "end_Offset": 721,
+    "start": 299.88,
+    "end": 306.119999
+  },
+  {
+    "val": "Dr Doudna and Dr Charpentier worked with bacteria.",
+    "start_Offset": 722,
+    "end_Offset": 729,
+    "start": 306.85,
+    "end": 310.1
+  },
+  {
+    "val": "A lot of CRISPR’s applications will be in more complex creatures, such as human beings.",
+    "start_Offset": 730,
+    "end_Offset": 744,
+    "start": 310.79,
+    "end": 315.56
+  },
+  {
+    "val": "And the researcher who first tried the technique on human cells was Feng Zhang of the Broad Institute in Cambridge, Massachusetts.",
+    "start_Offset": 745,
+    "end_Offset": 765,
+    "start": 316.32,
+    "end": 323.36
+  },
+  {
+    "val": "The Broad’s lawyers are thus battling with those of the University of California, Berkeley, where Dr Doudna works, and with Dr Charpentier’s representatives, over whose patent applications give rights to what.",
+    "start_Offset": 766,
+    "end_Offset": 796,
+    "start": 324.109999,
+    "end": 336.17999999999995
+  },
+  {
+    "val": "“The Code Breaker”casts light on this dispute, as it does on many other inner workings of American science.",
+    "start_Offset": 797,
+    "end_Offset": 815,
+    "start": 338.04,
+    "end": 344.03
+  },
+  {
+    "val": "For Mr Isaacson, previously editor of Time magazine and chairman of CNN, author of acclaimed biographies of Steve Jobs and Leonardo da Vinci and now a history professor at Tulane University, is an insider’s insider.",
+    "start_Offset": 816,
+    "end_Offset": 850,
+    "start": 344.76,
+    "end": 357.0
+  },
+  {
+    "val": "His book glitters with the names of the scientific great and good.",
+    "start_Offset": 851,
+    "end_Offset": 862,
+    "start": 357.0,
+    "end": 362.33000000000004
+  },
+  {
+    "val": "Eric Lander, until recently head of the Broad and Joe Biden’s choice for chief scientific adviser, often takes the stage.",
+    "start_Offset": 863,
+    "end_Offset": 882,
+    "start": 363.08,
+    "end": 370.18
+  },
+  {
+    "val": "So does George Church, a brilliant eccentric at Harvard who hopes to revive mammoths and was Dr Zhang’s PhD supervisor.",
+    "start_Offset": 883,
+    "end_Offset": 902,
+    "start": 370.78,
+    "end": 378.559999
+  },
+  {
+    "val": "There are guest appearances by (among many others) Francis Collins, who has astutely survived from one presidential administration to another as head of the National Institutes of Health; David Baltimore, a Nobel laureate who in 1975 helped organise the first scientific meeting to look at the ethics of genetic engineering; and Anthony Fauci, adviser on infectious diseases to seven presidents.",
+    "start_Offset": 903,
+    "end_Offset": 962,
+    "start": 380.0,
+    "end": 404.26
+  },
+  {
+    "val": "The book offers a sympathetic assessment of a luminary who has fallen from grace—James Watson, co-discoverer of the structure of DNA and founding head of the Human Genome Project, who is no longer received in polite society after making some disgraceful remarks about race and intelligence.",
+    "start_Offset": 963,
+    "end_Offset": 1010,
+    "start": 405.37,
+    "end": 423.259999
+  },
+  {
+    "val": "Aside from Dr Doudna, however, the real star of the story is RNA.",
+    "start_Offset": 1011,
+    "end_Offset": 1023,
+    "start": 424.809999,
+    "end": 429.1
+  },
+  {
+    "val": "This is the neglected third member of life’s molecular trinity—the other two being DNA and proteins.",
+    "start_Offset": 1024,
+    "end_Offset": 1040,
+    "start": 430.16,
+    "end": 436.37
+  },
+  {
+    "val": "Indeed, RNA probably predates those other two molecules and, crucially for current events, it forms the genetic material of many of the viruses that afflict human beings, including the one that causes covid-19.",
+    "start_Offset": 1041,
+    "end_Offset": 1074,
+    "start": 437.16,
+    "end": 449.73
+  },
+  {
+    "val": "It is also the molecule which guides the CRISPR-editing complex to the right part of the genome to edit.",
+    "start_Offset": 1075,
+    "end_Offset": 1094,
+    "start": 450.58,
+    "end": 455.84000000000003
+  },
+  {
+    "val": "Mr Isaacson traces Dr Doudna’s career from its beginnings as a PhD student of Jack Szostak, another pillar of the scientific establishment and one of the proponents of the idea that the origin of RNA and the origin of life are intimately bound up.",
+    "start_Offset": 1095,
+    "end_Offset": 1138,
+    "start": 457.16,
+    "end": 471.09999999999997
+  },
+  {
+    "val": "He follows the byways of her early studies on RNA enzymes, known as ribozymes, and her first introduction to CRISPR in its natural role as a bacterial defence against viruses.",
+    "start_Offset": 1139,
+    "end_Offset": 1168,
+    "start": 472.0,
+    "end": 482.51000000000005
+  },
+  {
+    "val": "Later comes her fortuitous meeting with Dr Charpentier at a scientific conference in Puerto Rico.",
+    "start_Offset": 1169,
+    "end_Offset": 1183,
+    "start": 483.349999,
+    "end": 488.97999999999996
+  },
+  {
+    "val": "Fortune favours the prepared mind, and hers was well prepared to profit from what Dr Charpentier told her about her own work on CRISPR.",
+    "start_Offset": 1184,
+    "end_Offset": 1207,
+    "start": 489.89,
+    "end": 498.019999
+  },
+  {
+    "val": "But the meeting itself was serendipity.",
+    "start_Offset": 1208,
+    "end_Offset": 1213,
+    "start": 498.82,
+    "end": 501.35999999999996
+  },
+  {
+    "val": "Genes out of the bottle In telling her tale, Mr Isaacson captures the scientific process well, including the role of chance.",
+    "start_Offset": 1214,
+    "end_Offset": 1234,
+    "start": 502.65,
+    "end": 508.49
+  },
+  {
+    "val": "The hard graft at the bench, the flashes of inspiration, the importance of conferences as cauldrons of creativity, the rivalry, sometimes friendly, sometimes less so, and the sense of common purpose are all conveyed in his narrative.",
+    "start_Offset": 1235,
+    "end_Offset": 1271,
+    "start": 509.02,
+    "end": 524.97
+  },
+  {
+    "val": "“The Code Breaker”describes a dance to the music of time with these things as its steps, which began with Charles Darwin and Gregor Mendel and shows no sign of ending.",
+    "start_Offset": 1272,
+    "end_Offset": 1302,
+    "start": 525.79,
+    "end": 535.76
+  },
+  {
+    "val": "What CRISPR and its successors will mean for humanity over the next few decades is anybody’s guess.",
+    "start_Offset": 1303,
+    "end_Offset": 1319,
+    "start": 537.16,
+    "end": 542.73
+  },
+  {
+    "val": "At minimum, better health and more abundant food.",
+    "start_Offset": 1320,
+    "end_Offset": 1327,
+    "start": 543.42,
+    "end": 546.52
+  },
+  {
+    "val": "At maximum, perhaps, a world where machines now made of metal and plastic are instead made of flesh and bone, pets and garden plants can be designed to order, mammoths once again thunder over the tundra, and human reproduction itself ceases to be a matter of luck.",
+    "start_Offset": 1328,
+    "end_Offset": 1374,
+    "start": 547.36,
+    "end": 565.66
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

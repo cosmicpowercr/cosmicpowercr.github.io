@@ -1,0 +1,662 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">068 Finance and economics - Financial markets</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='068';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "THE WEEK in financial markets got off to a breezy start, belying the turmoil of the previous week.",
+    "start_Offset": 0,
+    "end_Offset": 17,
+    "start": 16.609999,
+    "end": 22.51
+  },
+  {
+    "val": "By the time the New York market closed on March 1st, the S&P 500 index of leading shares had risen by a carefree 2,5% on the day.",
+    "start_Offset": 18,
+    "end_Offset": 46,
+    "start": 22.86,
+    "end": 32.289999
+  },
+  {
+    "val": "Europe’s stockmarkets had already followed Asia’s lead in closing sharply up.",
+    "start_Offset": 47,
+    "end_Offset": 57,
+    "start": 32.87,
+    "end": 37.159999000000006
+  },
+  {
+    "val": "The mood in Asia was helped by Australia’s central bank, which acted to calm bond-market nerves by announcing it would intervene to buy long-dated government paper.",
+    "start_Offset": 58,
+    "end_Offset": 85,
+    "start": 37.61,
+    "end": 47.209999
+  },
+  {
+    "val": "Yields on ten-year Aussie bonds, which had risen quickly since New Year’s Day, fell by some 0,25 percentage points.",
+    "start_Offset": 86,
+    "end_Offset": 106,
+    "start": 47.849999,
+    "end": 54.869999
+  },
+  {
+    "val": "Stockmarkets gave up Monday’s gains on Tuesday and Wednesday.",
+    "start_Offset": 107,
+    "end_Offset": 115,
+    "start": 56.63,
+    "end": 59.21
+  },
+  {
+    "val": "But conditions in America’s government-bond market were somewhat calmer, in stark contrast to the week before, when anxiety about inflation took hold.",
+    "start_Offset": 116,
+    "end_Offset": 138,
+    "start": 59.21,
+    "end": 68.46000000000001
+  },
+  {
+    "val": "The steady fall in bond prices since the start of the year had suddenly quickened to a pace that threatened a destabilising rout.",
+    "start_Offset": 139,
+    "end_Offset": 161,
+    "start": 69.309999,
+    "end": 76.01
+  },
+  {
+    "val": "During February 25th the benchmark ten-year Treasury yield spiked above 1,6% (bond yields move inversely to prices).",
+    "start_Offset": 162,
+    "end_Offset": 180,
+    "start": 76.49,
+    "end": 84.98
+  },
+  {
+    "val": "That is still low by historical standards, but a lot higher than it started the day, or indeed the year.",
+    "start_Offset": 181,
+    "end_Offset": 200,
+    "start": 85.63,
+    "end": 91.53
+  },
+  {
+    "val": "This prompted a big one-day fall in the S&P 500 and a bigger fall in the tech-heavy NASDAQ.",
+    "start_Offset": 201,
+    "end_Offset": 221,
+    "start": 92.15,
+    "end": 98.02000000000001
+  },
+  {
+    "val": "Almost as suddenly, the worst fears about inflation have receded again—but perhaps not for long.",
+    "start_Offset": 222,
+    "end_Offset": 237,
+    "start": 98.74,
+    "end": 104.69
+  },
+  {
+    "val": "Much of what has happened is to be expected.",
+    "start_Offset": 238,
+    "end_Offset": 246,
+    "start": 105.66,
+    "end": 107.829999
+  },
+  {
+    "val": "Bond prices ought to fall as the economy recovers.",
+    "start_Offset": 247,
+    "end_Offset": 255,
+    "start": 107.92,
+    "end": 111.03
+  },
+  {
+    "val": "The ten-year Treasury is the benchmark bond and is thus a barometer of risk appetite in markets and of economic confidence more broadly.",
+    "start_Offset": 256,
+    "end_Offset": 279,
+    "start": 111.46,
+    "end": 119.58
+  },
+  {
+    "val": "And it is global benchmark.",
+    "start_Offset": 280,
+    "end_Offset": 284,
+    "start": 120.219999,
+    "end": 122.02
+  },
+  {
+    "val": "The sharp rise in Treasury yields from the start of the year until February 25th was matched by yields on bonds in other places (see chart 1).",
+    "start_Offset": 285,
+    "end_Offset": 311,
+    "start": 122.21000000000001,
+    "end": 130.12
+  },
+  {
+    "val": "Bond prices move in the opposite direction to confidence; bond yields go in the same direction as confidence.",
+    "start_Offset": 312,
+    "end_Offset": 329,
+    "start": 131.09,
+    "end": 137.26
+  },
+  {
+    "val": "When the outlook for the economy is bleak, as it was in March last year, yields fall sharply as investors rush to the safety of bonds.",
+    "start_Offset": 330,
+    "end_Offset": 355,
+    "start": 137.599999,
+    "end": 144.73000000000002
+  },
+  {
+    "val": "As the outlook brightens, bond prices start to fall and yields start to rise again.",
+    "start_Offset": 356,
+    "end_Offset": 370,
+    "start": 145.34,
+    "end": 149.82
+  },
+  {
+    "val": "Bond prices are thus countercyclical most of the time.",
+    "start_Offset": 371,
+    "end_Offset": 379,
+    "start": 150.16,
+    "end": 153.379999
+  },
+  {
+    "val": "This feature makes them very attractive diversifiers for equities, the prices of which are more procyclical, moving up and down in tandem with the economic cycle (see article).",
+    "start_Offset": 380,
+    "end_Offset": 407,
+    "start": 153.82,
+    "end": 16.789998999999998
+  },
+  {
+    "val": "Mild inflation is not to be feared.",
+    "start_Offset": 408,
+    "end_Offset": 414,
+    "start": 165.83,
+    "end": 166.41
+  },
+  {
+    "val": "Indeed it is in part changes in the market’s expectations of inflation that drive bond yields down in recessions and up in recoveries.",
+    "start_Offset": 415,
+    "end_Offset": 437,
+    "start": 166.48,
+    "end": 175.08
+  },
+  {
+    "val": "But hopes for a reflation of the economy can quickly spill over into fear of higher inflation.",
+    "start_Offset": 438,
+    "end_Offset": 454,
+    "start": 175.41,
+    "end": 180.749999
+  },
+  {
+    "val": "The case for this seems stronger than it has for many years.",
+    "start_Offset": 455,
+    "end_Offset": 466,
+    "start": 181.34,
+    "end": 184.18
+  },
+  {
+    "val": "The American economy is recovering quickly.",
+    "start_Offset": 467,
+    "end_Offset": 472,
+    "start": 184.45,
+    "end": 186.87
+  },
+  {
+    "val": "Fiscal transfers have left households with lots of extra savings.",
+    "start_Offset": 473,
+    "end_Offset": 482,
+    "start": 187.36,
+    "end": 191.38
+  },
+  {
+    "val": "Lockdowns have given rise to pent-up demand.",
+    "start_Offset": 483,
+    "end_Offset": 490,
+    "start": 191.7,
+    "end": 194.31
+  },
+  {
+    "val": "Already there is plenty of fuel for a spending spree when the economy reopens in earnest.",
+    "start_Offset": 491,
+    "end_Offset": 506,
+    "start": 194.52,
+    "end": 199.52
+  },
+  {
+    "val": "And more is on the way.",
+    "start_Offset": 507,
+    "end_Offset": 512,
+    "start": 200.06,
+    "end": 201.1
+  },
+  {
+    "val": "President Biden’s $1,9trn stimulus package is likely to become law this month.",
+    "start_Offset": 513,
+    "end_Offset": 525,
+    "start": 201.44,
+    "end": 206.89000000000001
+  },
+  {
+    "val": "A jump in the annual inflation rate seems assured in the coming months, if only because prices were depressed a year ago.",
+    "start_Offset": 526,
+    "end_Offset": 547,
+    "start": 207.26,
+    "end": 213.83
+  },
+  {
+    "val": "Perhaps, then, the strength of consumer spending, as people start to move around more freely, might further push it up.",
+    "start_Offset": 548,
+    "end_Offset": 567,
+    "start": 214.52,
+    "end": 220.9
+  },
+  {
+    "val": "These latent anxieties form the backdrop to the recent turmoil.",
+    "start_Offset": 568,
+    "end_Offset": 577,
+    "start": 221.83,
+    "end": 225.379999
+  },
+  {
+    "val": "Three factors in particular seemed to be at work.",
+    "start_Offset": 578,
+    "end_Offset": 586,
+    "start": 225.8,
+    "end": 228.42
+  },
+  {
+    "val": "First, the market for future short-term rates started to price in interest-rate increases by the Federal Reserve by early 2023, sooner than the Fed had indicated thus far.",
+    "start_Offset": 587,
+    "end_Offset": 616,
+    "start": 228.73,
+    "end": 239.21
+  },
+  {
+    "val": "You can call this the inflation-fear element: if the economy seemingly has this much momentum behind it, can the Fed really hold off from raising rates for very long?",
+    "start_Offset": 617,
+    "end_Offset": 646,
+    "start": 239.76,
+    "end": 249.47000000000003
+  },
+  {
+    "val": "And if it tightens sooner, might the peak in interest rates be higher?",
+    "start_Offset": 647,
+    "end_Offset": 659,
+    "start": 250.139999,
+    "end": 253.96
+  },
+  {
+    "val": "That would be a big concern for America’s stockmarkets, where high prices relative to future earnings are largely justified by the expectation that interest rates will remain very low for a long time.",
+    "start_Offset": 660,
+    "end_Offset": 692,
+    "start": 254.55,
+    "end": 266.589999
+  },
+  {
+    "val": "Second, just as the market was having a rethink about Fed policy, the Treasury held auctions for two-year, five-year and seven-year bond issues on February 25th.",
+    "start_Offset": 693,
+    "end_Offset": 721,
+    "start": 267.549999,
+    "end": 277.18
+  },
+  {
+    "val": "These are maturities that are sensitive to shifts in expectations about Fed policy in 2023-24.",
+    "start_Offset": 722,
+    "end_Offset": 737,
+    "start": 277.8,
+    "end": 284.83999900000003
+  },
+  {
+    "val": "Indeed the one-day rise in the five-year-bond yield was notable (see chart 2).",
+    "start_Offset": 738,
+    "end_Offset": 753,
+    "start": 285.38,
+    "end": 289.55
+  },
+  {
+    "val": "The auctions went poorly.",
+    "start_Offset": 754,
+    "end_Offset": 757,
+    "start": 289.55,
+    "end": 290.7
+  },
+  {
+    "val": "The seven-year bond had the lowest bid-to-cover ratio (a gauge of excess demand) for an issue of its kind for more than a decade.",
+    "start_Offset": 758,
+    "end_Offset": 784,
+    "start": 290.72,
+    "end": 298.609999
+  },
+  {
+    "val": "This further spooked the market about the underlying demand for bonds.",
+    "start_Offset": 785,
+    "end_Offset": 795,
+    "start": 298.719999,
+    "end": 302.569999
+  },
+  {
+    "val": "Third, the volatility in the bond market seems to have caused liquidity to dry up.",
+    "start_Offset": 796,
+    "end_Offset": 810,
+    "start": 303.759999,
+    "end": 308.31
+  },
+  {
+    "val": "So for a given volume of selling, prices fell further than they otherwise might have.",
+    "start_Offset": 811,
+    "end_Offset": 825,
+    "start": 308.83,
+    "end": 313.53
+  },
+  {
+    "val": "Each of these three factors reinforced the other—hence the drama.",
+    "start_Offset": 826,
+    "end_Offset": 836,
+    "start": 313.96,
+    "end": 317.8
+  },
+  {
+    "val": "Given the anxieties about inflation, you may wonder why the bond market recovered its poise.",
+    "start_Offset": 837,
+    "end_Offset": 851,
+    "start": 318.759999,
+    "end": 324.059999
+  },
+  {
+    "val": "There are probably limits to how far an inflation scare can run this early in the economic recovery.",
+    "start_Offset": 852,
+    "end_Offset": 869,
+    "start": 324.41,
+    "end": 330.04
+  },
+  {
+    "val": "The message from the Fed’s rate-setters has generally been that they are not even thinking about thinking about raising rates or cutting back on bond purchases.",
+    "start_Offset": 870,
+    "end_Offset": 896,
+    "start": 330.56,
+    "end": 339.42
+  },
+  {
+    "val": "In a speech on March 2nd Lael Brainard, a Fed governor, stuck to that script.",
+    "start_Offset": 897,
+    "end_Offset": 911,
+    "start": 339.54,
+    "end": 344.48
+  },
+  {
+    "val": "“Today the economy remains far from our goals in terms of both employment and inflation, and it will take some time to achieve substantial further progress,”she said.",
+    "start_Offset": 912,
+    "end_Offset": 939,
+    "start": 344.56,
+    "end": 354.26
+  },
+  {
+    "val": "The intervention by the Reserve Bank of Australia is a reminder that central banks have the firepower to cap bond yields, if they are determined to do so.",
+    "start_Offset": 940,
+    "end_Offset": 967,
+    "start": 355.11,
+    "end": 363.91999999999996
+  },
+  {
+    "val": "And some private-sector investors will see value in Treasuries at these yields.",
+    "start_Offset": 968,
+    "end_Offset": 980,
+    "start": 364.02,
+    "end": 368.34999999999997
+  },
+  {
+    "val": "Foreign buyers from Europe and Japan, for instance, where yields are lower, may find them attractive.",
+    "start_Offset": 981,
+    "end_Offset": 996,
+    "start": 368.639999,
+    "end": 373.77
+  },
+  {
+    "val": "All this has restored a measure of calm to the bond market.",
+    "start_Offset": 997,
+    "end_Offset": 1008,
+    "start": 374.71,
+    "end": 378.08
+  },
+  {
+    "val": "Ten-year Treasury yields are inching upwards again, having fallen back to 1,4%.",
+    "start_Offset": 1009,
+    "end_Offset": 1022,
+    "start": 378.49,
+    "end": 383.84
+  },
+  {
+    "val": "The equity market is choppy, but that might be expected after such a long run-up in prices.",
+    "start_Offset": 1023,
+    "end_Offset": 1040,
+    "start": 384.21,
+    "end": 389.169999
+  },
+  {
+    "val": "You could put the events of last week down to“technical issues”, the catch-all explanation for many a financial-market scare.",
+    "start_Offset": 1041,
+    "end_Offset": 1062,
+    "start": 389.67,
+    "end": 396.710001
+  },
+  {
+    "val": "But that would be a little too sanguine.",
+    "start_Offset": 1063,
+    "end_Offset": 1070,
+    "start": 397.25,
+    "end": 399.42
+  },
+  {
+    "val": "Episodes in which trading liquidity suddenly dries up seem to be becoming more frequent in the Treasury market.",
+    "start_Offset": 1071,
+    "end_Offset": 1088,
+    "start": 399.7,
+    "end": 406.21
+  },
+  {
+    "val": "These sorts of scares will recur.",
+    "start_Offset": 1089,
+    "end_Offset": 1094,
+    "start": 406.78,
+    "end": 408.64999900000004
+  },
+  {
+    "val": "Inflation is the bogeyman of financial markets.",
+    "start_Offset": 1095,
+    "end_Offset": 1101,
+    "start": 408.809999,
+    "end": 411.7
+  },
+  {
+    "val": "A whole constellation of expensive assets depends on its quiescence.",
+    "start_Offset": 1102,
+    "end_Offset": 1111,
+    "start": 412.07,
+    "end": 416.18
+  },
+  {
+    "val": "No one can yet be confident that it will stay subdued.",
+    "start_Offset": 1112,
+    "end_Offset": 1122,
+    "start": 416.85,
+    "end": 419.96
+  },
+  {
+    "val": "Further bouts of bond-market jitters are likely before the year is out.",
+    "start_Offset": 1123,
+    "end_Offset": 1135,
+    "start": 420.28,
+    "end": 424.32
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>

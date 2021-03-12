@@ -1,0 +1,200 @@
+1
+00:00:20,970 --> 00:00:32,260
+ON MARCH 5TH 2020 Mumbai’s horseracing season culminated with the Poonawalla Breeders’ Multimillion, a day-long extravaganza dominated by India’s first family of the sport, the Poonawallas.
+
+2
+00:00:32,410 --> 00:00:44,290
+Triumphs at the track were accompanied by news reports on the Bollywood lifestyles of Adar Poonawalla and his wife, Natasha, whom Elle magazine described as“India’s first lady of fabulousness”.
+
+3
+00:00:46,270 --> 00:00:55,280
+Only cursory attention spilled over to the couple’s day job running Serum Institute of India, the press-shy vaccine-maker at the root of the family fortune.
+
+4
+00:00:56,470 --> 00:01:01,130
+A year on it is the company, not its flamboyant owners, that is making headlines.
+
+5
+00:01:02,139 --> 00:01:20,890
+As the covid-19 vaccination drive encounters production glitches in Europe, hits distribution snags in America and faces a geopolitical scramble for supply everywhere, Serum Institute has emerged as the one firm apparently able to ramp up production fast and export the doses without courting controversy.
+
+6
+00:01:21,250 --> 00:01:35,120
+By the end of the year, Mr Poonawalla says, it will add 1,5bn covid-19 shots to 1,3bn-1,5bn doses against diseases from measles to tuberculosis that it already produces annually.
+
+7
+00:01:35,520 --> 00:01:47,549
+On February 23rd it dispatched the first mass shipment, of 70m shots of the Oxford-AstraZeneca vaccine, to India and two dozen other poor countries in the COVAX vaccine-sharing programme.
+
+8
+00:01:47,859 --> 00:01:52,790
+On March 1st Canada said it will procure 500,000 doses from the company.
+
+9
+00:01:53,690 --> 00:02:05,620
+The relatively small family concern, which entered last year with annual revenues of $735m and a workforce of 6,000, is becoming mission-critical to the global fight against the coronavirus.
+
+10
+00:02:06,869 --> 00:02:10,320
+Mr Poonawalla’s plans are ambitious, to put it mildly.
+
+11
+00:02:10,730 --> 00:02:17,900
+He wants to raise monthly production of the Oxford vaccine from the current 60m-70m to 100m by April.
+
+12
+00:02:18,509 --> 00:02:31,830
+That month the company will start churning out 40m-50m of a shot developed by Novavax, an American biotechnology firm, to build up a“large stock”as it undergoes accelerated review by a number of global regulators.
+
+13
+00:02:32,650 --> 00:02:39,190
+By late summer Serum Institute expects to be making another vaccine, by SpyBiotech, a British startup.
+
+14
+00:02:39,740 --> 00:02:48,250
+In early 2022 it hopes to be producing a one-dose nasal vaccine being developed by Codagenix, another American biotech firm.
+
+15
+00:02:49,520 --> 00:03:00,329
+Mr Poonawalla estimates that until rivals’ new capacity comes online in the autumn, his company’s output will account for perhaps 40-50% of the world’s supply.
+
+16
+00:03:00,809 --> 00:03:14,470
+Unlike Pfizer, an American drug giant which recently upped its production goal from 1,3bn to 2bn doses this year, Serum Institute’s shots are cheap and do not need to be stored at ultra-low temperatures.
+
+17
+00:03:14,860 --> 00:03:17,849
+They will inoculate swathes of the poor world.
+
+18
+00:03:18,469 --> 00:03:26,270
+Some of the factors behind the company’s rise to prominence, like the pandemic and scientists’ rapid response to it, have been beyond its control.
+
+19
+00:03:27,010 --> 00:03:41,980
+But Serum Institute has also placed bold bets that run counter to the traditional process of making vaccines, in which investments in capacity and distribution follow years of research, then more years of clinical trials for safety and efficacy.
+
+20
+00:03:42,890 --> 00:03:54,750
+A brief conversation last April, between Mr Poonawalla and his father Cyrus, Serum Institute’s founder, resulted in a decision to start producing the Oxford vaccine before any clinical trials had begun.
+
+21
+00:03:55,700 --> 00:03:57,960
+It is the latest daring coup by the Poonawallas.
+
+22
+00:03:57,960 --> 00:04:10,960
+In the 1960s Cyrus turned his horse-breeding business into one that used retired steeds as living vessels to create antibody serum for treatment of snake bites, tetanus and other scourges.
+
+23
+00:04:11,869 --> 00:04:22,640
+Forty years later his son, who has been chief executive since 2011, has added 165 countries as customers (often while courting Natasha on holidays).
+
+24
+00:04:23,250 --> 00:04:27,040
+International sales now account for 70% of the firm’s total.
+
+25
+00:04:27,380 --> 00:04:37,460
+In December Serum Institute released the first vaccine to be fully developed in India, against a variant of pneumonia which kills 68,000 Indian children a year.
+
+26
+00:04:38,590 --> 00:04:51,840
+The company’s initial investment of $80m in capacity to produce the untested Oxford shot came from its billionaire owners’ own pocket—a tidy sum next to the previous year’s $46m in capital expenditure.
+
+27
+00:04:52,720 --> 00:05:10,750
+Since then Serum Institute has received a further $800m: $270m from the Poonawallas, $300m from the Bill & Melinda Gates Foundation, the world’s biggest charity, and the rest from prepayments by governments, including those of Bangladesh and Morocco.
+
+28
+00:05:11,550 --> 00:05:15,460
+The privately held firm will not say how much of that money has already been deployed.
+
+29
+00:05:15,990 --> 00:05:19,410
+But Mr Poonawalla says it has doubled production capacity.
+
+30
+00:05:19,940 --> 00:05:25,950
+It could do this quickly, he adds, thanks to a strategy of installing“excess capacity ahead of demand”.
+
+31
+00:05:26,850 --> 00:05:38,030
+For decades it had been adding a new building each year; one that was ready to go shortly before the fateful chat between father and son was immediately repurposed for the covid-19 effort.
+
+32
+00:05:39,370 --> 00:05:48,210
+A long-standing collaboration with Oxford and Novavax as part of an effort to create a malaria vaccine allowed Serum Institute to secure their recipes early.
+
+33
+00:05:49,050 --> 00:05:58,680
+Deep relationships with suppliers of everything from glass vials to expensive“bioreactors”for the production of biological substances have helped smooth procurement.
+
+34
+00:05:59,250 --> 00:06:04,790
+Serum Institute has hired 1,000 new employees, increasing its workforce by a sixth.
+
+35
+00:06:05,590 --> 00:06:14,420
+Another 500 construction workers are putting up new buildings with higher production capacity to add to the 30 or so that the company has erected over the years.
+
+36
+00:06:15,400 --> 00:06:23,020
+At the current pace, Mr Poonawalla thinks, it will take at least two years for the global supply of covid-19 jabs to meet demand.
+
+37
+00:06:23,500 --> 00:06:29,590
+It could take less if the world’s regulators co-ordinated more closely for the duration of the crisis, he ventures.
+
+38
+00:06:30,259 --> 00:06:38,430
+Until then Serum Institute expects to be selling the jabs more or less at cost, which means about $3-5 a dose for the Oxford vaccine.
+
+39
+00:06:39,170 --> 00:06:41,620
+After that, margins will eventually rise.
+
+40
+00:06:42,450 --> 00:06:47,740
+“This situation will last for a long time and there will be future demand,”Mr Poonawalla predicts.
+
+41
+00:06:48,950 --> 00:06:56,790
+Covid-19 looks certain to become endemic in many parts of the world, with annual vaccination drives akin to those for influenza becoming the norm.
+
+42
+00:06:57,690 --> 00:07:05,230
+His firm’s output will peak at 600m-700m doses a year for each of the four vaccines it is currently eyeing, he says.
+
+43
+00:07:06,530 --> 00:07:13,620
+The pandemic will leave vaccine-making more prominent than ever before, Mr Poonawalla believes—and much more crowded.
+
+44
+00:07:14,460 --> 00:07:21,630
+This will inject competition into what most drugmakers consider a thankless volume business with considerable capital outlays.
+
+45
+00:07:22,580 --> 00:07:36,670
+A fire earlier this year at one new building sent a shudder down the spines of the world’s covid-responders until the company assured them that the accident, which affected a production line for a tuberculosis jab, will not hurt the pandemic effort.
+
+46
+00:07:47,010 --> 00:07:52,860
+And vaccine nationalism could stymie exports from India or imports of ingredients and kit.
+
+47
+00:07:53,830 --> 00:07:58,800
+Mr Poonawalla nevertheless remains confident that his firm will maintain its leading position.
+
+48
+00:07:59,639 --> 00:08:11,930
+In contrast to big pharma, which spends billions on marketing costly medicines, it sells its vaccines chiefly to national health authorities, which prize low prices and reliable supply above all.
+
+49
+00:08:13,030 --> 00:08:16,410
+Those have always been Serum Institute’s strong suits.
+
+50
+00:08:17,110 --> 00:08:25,090
+And the Indian company’s remarkable response to covid-19 has bought it more global goodwill than any advertising campaign could hope to.
+

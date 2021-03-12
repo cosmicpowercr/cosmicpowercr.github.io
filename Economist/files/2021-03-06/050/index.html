@@ -1,0 +1,298 @@
+<html>
+
+<head>
+    <title>每日听力</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src="../../live2d-widget/autoload.js"></script>
+    <h1 class="filetitle">050 Britain - Refurbishing Number 10</h1>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headerBar {
+            position: fixed;
+            color: #fff;
+            font-family: '微软雅黑', '黑体', arial, tahoma, verdana, sans-serif;
+            font-size: 16px;
+            background: url('../../resource/playBack.jpg') 0 -200px repeat-x;
+            width: 100%;
+            height: 48px;
+            z-index: 8;
+            left: 0;
+            top: 0;
+            padding: 0 65px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            line-height: 32px;
+            height: 31px;
+            margin: 8px 0 7px 0;
+            float: left;
+        }
+
+        .logo a {
+            background: url('../../resource/playBack.jpg') -119px 1px no-repeat;
+            padding-left: 45px;
+            display: block;
+            color: #fff;
+        }
+
+        #audio {
+            margin-top: 9px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        #transcript {
+            margin: 10px auto;
+            /* margin-top: 70px; */
+            margin-bottom: 5em;
+            white-space: pre-wrap;
+            /* line-height: 2em; */
+            border-style: solid;
+            border-width: 1px;
+            width: 1000px;
+            /* padding-top: 25px; */
+            padding-bottom: 25px;
+            padding-right: 50px;
+            padding-left: 50px;
+            color: rgb(0, 0, 0);
+            font-size: 20pt;
+        }
+
+        .active {
+            color: #058cf5;
+        }
+
+        .filetitle {
+            margin-top: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 5px;
+            width: 1000px;
+            padding-right: 50px;
+            padding-left: 50px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 加载jsonp -->
+    <script type="text/javascript">
+        var musicnames;
+        function indexDemo(result) {
+            //回调函数名称(indexDemo)，需要与 src 中一致，而且要与文件地址中名一致。jsonp格式 名称({})
+            //不然无法获取到对应的文件
+            musicnames = result["files"]
+        }    
+    </script>
+    <!--jsonp中 需要注意的是
+    <script  src="jq.json?callback=loa"></script>
+    src ? 之前为文件地址，? 之后为回调函数callback名称，
+    回调函数可以简写为 cb ,  然后 回调函数 名称要与  文件中的名称一致
+    可以在 对应的文件名中看下，如，jq.json?callback=loa,jq.json的  名字为  loa-->
+    <script type="text/javascript" src="../index.json?callback=indexDemo"></script>
+
+    <script src="../../music-widget/music.js"></script>
+    <script>
+        // 计算uid值在jsonp中的数值
+        var UID='050';
+        for (var k = 0; k < musicnames.length; k++) {
+            if (musicnames[k]["uid"] == UID) { nowMusic = k; }
+        }
+        clearMusicList();
+        musicnames.forEach(function (musicname) {
+            pushMusic({
+                "musicName": "../" + musicname["uid"] + "/a.mp3",
+                "musicCover": "./images/bg1.jpg"
+            });
+        })
+        musicload();
+    </script>
+    <link rel="stylesheet" href="../../music-widget/music.css">
+
+
+    <div class="headerBar">
+        <div class="header" id="getlangNow" lang="en">
+            <h1 class="logo"><a href="http://0.0.0.0:8765/">每日听力</a></h1>
+        </div>
+    </div>
+    <div id="transcript"></div>
+    <script>
+        //与自定义的播放器联系起来
+        var $a = document.querySelector('#mp3');
+
+        var $trans = document.getElementById("transcript");
+
+        var sentences = []
+    // 创建可点击文字
+    function render(ret) {
+      for (var k = 0; k < ret.length; k++) {
+        sentences.push(txt_click(ret[k]));
+      }
+    }
+
+    var cur_sentence = 0;
+    function highlight_sentence() {
+      var t = $a.currentTime;
+      var active = document.querySelectorAll('.active');
+      for (var i = 0; i < active.length; i++) {
+        active[i].classList.remove('active');
+      }
+      for (var k = 0; k < sentences.length; k++) {
+        if (INLINE_JSON[k].start < t && INLINE_JSON[k].end > t) {
+          cur_sentence = sentences[k];
+          cur_sentence.classList.add('active');
+          // 自动翻滚
+          var scrollto = document.querySelectorAll('.active')[0];
+          scrollto.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+          break;
+        }
+        //TODO:Error
+      }
+
+      window.requestAnimationFrame(highlight_sentence);
+    }
+    window.requestAnimationFrame(highlight_sentence);
+
+    function txt_click(sentence) {
+      //创建段落
+      var $$wd = document.createElement('p');
+      var $wd = document.createElement('span');
+      var $wdText = document.createTextNode(sentence.val);
+      $wd.appendChild($wdText);
+      $$wd.appendChild($wd)
+      $$wd.onclick = function () {
+        $a.currentTime = sentence.start;
+        $a.play()
+      };
+      //trans 是全局变量
+      $trans.appendChild($$wd);
+      return $$wd
+    }
+
+        var INLINE_JSON=[
+  {
+    "val": "ON FEBRUARY 14th 1962, the American people fell in love with the White House.",
+    "start_Offset": 0,
+    "end_Offset": 13,
+    "start": 18.01,
+    "end": 23.5
+  },
+  {
+    "val": "Jackie Kennedy, with some help from CBS News, guided 56m of them through her renovations.",
+    "start_Offset": 14,
+    "end_Offset": 28,
+    "start": 23.94,
+    "end": 29.879999
+  },
+  {
+    "val": "The tour made such good television that the first lady won an Emmy; and, as Mrs Kennedy intended, the smartened-up White House came to embody the grandeur of American democracy.",
+    "start_Offset": 29,
+    "end_Offset": 59,
+    "start": 30.32,
+    "end": 40.44
+  },
+  {
+    "val": "Carrie Symonds, Boris Johnson’s fiancee, may have a harder time getting the British public to buy into her plan for sprucing up the prime ministerial quarters in Downing Street.",
+    "start_Offset": 60,
+    "end_Offset": 88,
+    "start": 41.49,
+    "end": 50.969999
+  },
+  {
+    "val": "According to a profile in Tatler magazine, she wants to get rid of the“John Lewis furniture nightmare”—a dangerous reference to the department store that is a mecca to the British middle classes—and replace it with something more upmarket.",
+    "start_Offset": 89,
+    "end_Offset": 129,
+    "start": 51.42,
+    "end": 64.11
+  },
+  {
+    "val": "The Daily Mail reports that the plan is to pay for the refurbishment through a privately funded charity.",
+    "start_Offset": 130,
+    "end_Offset": 147,
+    "start": 64.679999,
+    "end": 70.0
+  },
+  {
+    "val": "The plan would offer a solution to a particular problem.",
+    "start_Offset": 148,
+    "end_Offset": 157,
+    "start": 70.309999,
+    "end": 72.96
+  },
+  {
+    "val": "Number 10 is a venue for hosting world leaders but prime ministers get only £30,000 a year from the public purse for redecorations, and a parliamentary expenses scandal over claims for duck-houses and moat-cleaning 12 years ago means that Britons are hawk-eyed when it comes to their politicians’ expenses.",
+    "start_Offset": 158,
+    "end_Offset": 210,
+    "start": 73.4,
+    "end": 92.08
+  },
+  {
+    "val": "Angela Rayner, Labour’s deputy leader, was derided this week when it emerged she had the audacity to claim expenses for Apple AirPods and an iPad.",
+    "start_Offset": 211,
+    "end_Offset": 235,
+    "start": 92.68,
+    "end": 101.629999
+  },
+  {
+    "val": "Britons would rather their prime ministers lived in a hovel and their MPs communicate by carrier pigeon than pay for such extravagances as curtains and computers from the public purse.",
+    "start_Offset": 236,
+    "end_Offset": 265,
+    "start": 102.259999,
+    "end": 112.28
+  },
+  {
+    "val": "An alternative would be for Mr Johnson to follow the example of Barack Obama and Donald Trump, who reportedly paid for $1,5m and $1,75m of refurbishments respectively out of their own pockets.",
+    "start_Offset": 266,
+    "end_Offset": 299,
+    "start": 112.99,
+    "end": 127.23
+  },
+  {
+    "val": "That is unlikely to happen.",
+    "start_Offset": 300,
+    "end_Offset": 304,
+    "start": 127.76,
+    "end": 129.06
+  },
+  {
+    "val": "Mr Johnson’s salary, at £160,000, is modest for a world leader, and with a couple of divorces behind him and at least six children, he has a lot of mouths to feed.",
+    "start_Offset": 305,
+    "end_Offset": 337,
+    "start": 129.31,
+    "end": 139.78999900000002
+  },
+  {
+    "val": "In the year before he took the current job he earned £829,255, mostly from writing.",
+    "start_Offset": 338,
+    "end_Offset": 353,
+    "start": 140.11,
+    "end": 147.47
+  },
+  {
+    "val": "He had a contract for a book on Shakespeare, which was due to be published last April, four years late; but even the famously productive prime minister has presumably had little time recently to devote to the Bard.",
+    "start_Offset": 354,
+    "end_Offset": 391,
+    "start": 147.66,
+    "end": 159.289999
+  },
+  {
+    "val": "Mr Johnson’s publishers are evidently taking a realistic view of his attitude to deadlines, for Amazon now gives its publication date as 2035.",
+    "start_Offset": 392,
+    "end_Offset": 414,
+    "start": 159.71,
+    "end": 169.89000000000001
+  }
+];
+        render(INLINE_JSON);
+    </script>
+</body>
+
+</html>
